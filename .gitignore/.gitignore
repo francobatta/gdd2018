@@ -328,3 +328,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+# SQL
+gd_esquema.Maestra.Table.*
+gd_esquema.Schema.*
+EjecutarScriptTablaMaestra.bat
