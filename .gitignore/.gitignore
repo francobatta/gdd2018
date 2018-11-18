@@ -333,3 +333,4 @@ ASALocalRun/
 gd_esquema.Maestra.Table.*
 gd_esquema.Schema.*
 EjecutarScriptTablaMaestra.bat
+*.pdf
