@@ -17,7 +17,11 @@ namespace PalcoNet
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1()); PA MOSTRAR EL PROGRAMA
-            PalcoNet.BDManager.BDManager.queryOptionalObject("SELECT 1 FROM..."); // MUESTRO BD
+            objetito jijo = new objetito();
+            jijo.Espec_Empresa_Razon_Social = "ASDASDJ#JIEEEEEEEEEEEE";
+            PalcoNet.BDManager.BDManager.queryOptionalObject("SELECT * FROM gd_esquema.Maestra", jijo, PalcoNet.BDManager.queryTypes.SINGLE_RETURNING_QUERY); // MUESTRO BD
+            MessageBox.Show(jijo.Espec_Empresa_Razon_Social.ToString());
         }
     }
+    public class objetito { public String Espec_Empresa_Razon_Social { get; set; } }
 }

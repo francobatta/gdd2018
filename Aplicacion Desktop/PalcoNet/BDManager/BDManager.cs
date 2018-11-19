@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,12 +25,15 @@ namespace PalcoNet.BDManager
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
             {
+                myObj = o;
                 connection.Open();
                 command = new SqlCommand(sqlQuery, connection);
                 qt.DoStuff();
+                command.Dispose();
             }
         }
         public static SqlCommand command { get; set; }
+        public static object myObj { get; set; }
     }
     public enum queryTypes
     {
@@ -37,15 +41,29 @@ namespace PalcoNet.BDManager
     }
     public static class Extensions
     {
-        public static object DoStuff(this queryTypes q)
+        public static void DoStuff(this queryTypes q)
         {
             switch(q)
             {
-                case queryTypes.NON_RETURNING_QUERY: { BDManager.command.ExecuteNonQuery(); return null; }
-                case queryTypes.SINGLE_RETURNING_QUERY: return null;
-                case queryTypes.MULTIPLE_RETURNING_QUERY: return null;
+                case queryTypes.NON_RETURNING_QUERY: { BDManager.command.ExecuteNonQuery(); break; }
+                case queryTypes.SINGLE_RETURNING_QUERY:
+                    {
+                        SqlDataReader reader = BDManager.command.ExecuteReader();
+                        Type myType = BDManager.myObj.GetType();
+                        PropertyInfo[] props = myType.GetProperties();
+                        reader.Read();
+                        foreach (PropertyInfo p in props)
+                        {
+                            p.SetValue(BDManager.myObj, reader[p.Name]);
+                        }
+                        reader.Close();
+                        break; } 
+                case queryTypes.MULTIPLE_RETURNING_QUERY:
+                    {
+                        SqlDataReader reader = BDManager.command.ExecuteReader();
+                        reader.Close();
+                        break; }
             }
-            return null;
         }
     }
 }
