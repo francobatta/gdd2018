@@ -25,9 +25,9 @@ namespace PalcoNet.BDManager
             var sql = new StringBuilder("INSERT INTO " + tableName + " (");
             Type myType = BDManager.myObj.GetType();
             PropertyInfo[] props = myType.GetProperties();
-            appendList(sql, props);
+            appendList(sql, props.Select(p => p.Name).ToArray());
             sql.Append(" VALUES (");
-            appendList(sql, props, "@");
+            appendList(sql, props.Select(p => p.Name).ToArray(), "@");
             queryOptionalObject(sql.ToString(), o, queryTypes.NON_RETURNING_QUERY);
         }
         public static void selectIntoObject(String tableName, String id, Object o) 
