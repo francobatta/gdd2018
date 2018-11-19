@@ -20,10 +20,21 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
+        public static void insertInto(String tableName, object o)
+        {
+            var sql = new StringBuilder("INSERT INTO " + tableName + " (");
+            Type myType = BDManager.myObj.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            appendList(sql, props);
+            sql.Append(" VALUES (");
+            appendList(sql, props, "@");
+            queryOptionalObject(sql.ToString(), o, queryTypes.NON_RETURNING_QUERY);
+        }
         public static void selectIntoObject(String tableName, String id, Object o) 
         {
             queryOptionalObject("SELECT * FROM " + tableName + " WHERE id=" + id, o, queryTypes.SINGLE_RETURNING_QUERY);
-        }
+        } // Llena el objeto que le pases de acuerdo al tableName e id que la pases. EN la bd la columna id debe llamarse id
+        // La condicion es que los atributos del mismo coincidan con los nombres de los columnas de la tabla (se puede hacer mas generico como que tablename sea de acuerdo al nombre de la clase)
         public static void queryOptionalObject(String sqlQuery,Object o = null, queryTypes qt = queryTypes.NON_RETURNING_QUERY)
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
@@ -37,6 +48,17 @@ namespace PalcoNet.BDManager
         }
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        private static void appendList(StringBuilder sql, String[] s, String preceding = default(string))
+        {
+            foreach (String st in s)
+            {
+                sql.Append(preceding + st);
+                if (!st.Equals(s[s.Length - 1]))
+                    sql.Append(",");
+                else
+                    sql.Append(")");
+            }
+        }
     }
     public enum queryTypes
     {
@@ -70,4 +92,5 @@ namespace PalcoNet.BDManager
             }
         }
     }
+
 }
