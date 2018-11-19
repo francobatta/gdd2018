@@ -20,14 +20,18 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
+        public static void updateSet(String tableName, object o) 
+        {
+            var sql = new StringBuilder("UPDATE " + tableName + " SET ");
+            var listaParaUpdate = getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
+            appendList(sql,listaParaUpdate);
+        }
         public static void insertInto(String tableName, object o)
         {
             var sql = new StringBuilder("INSERT INTO " + tableName + " (");
-            Type myType = BDManager.myObj.GetType();
-            PropertyInfo[] props = myType.GetProperties();
-            appendList(sql, props.Select(p => p.Name).ToArray());
+            appendList(sql, getPropertiesFromObj().Select(p => p.Name).ToArray());
             sql.Append(" VALUES (");
-            appendList(sql, props.Select(p => p.Name).ToArray(), "@");
+            appendList(sql, getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
             queryOptionalObject(sql.ToString(), o, queryTypes.NON_RETURNING_QUERY);
         }
         public static void selectIntoObject(String tableName, String id, Object o) 
@@ -48,16 +52,22 @@ namespace PalcoNet.BDManager
         }
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
-        private static void appendList(StringBuilder sql, String[] s, String preceding = default(string))
+        private static void appendList(StringBuilder sql, String[] s, String preceding = default(string), String appendIfNotLast = ",", String appendIfLast = ")") // no es del dominio, hace appends a un string
         {
             foreach (String st in s)
             {
                 sql.Append(preceding + st);
                 if (!st.Equals(s[s.Length - 1]))
-                    sql.Append(",");
+                    sql.Append(appendIfNotLast);
                 else
-                    sql.Append(")");
+                    sql.Append(appendIfLast);
             }
+        }
+        public static PropertyInfo[] getPropertiesFromObj() // no es del dominio, obtiene las properties de un objeto estatico X
+        {
+            Type myType = BDManager.myObj.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props;
         }
     }
     public enum queryTypes
@@ -71,7 +81,7 @@ namespace PalcoNet.BDManager
             switch(q)
             {
                 case queryTypes.NON_RETURNING_QUERY: {
-                    foreach (PropertyInfo p in getPropertiesFromObj()) 
+                    foreach (PropertyInfo p in BDManager.getPropertiesFromObj()) 
                     {
                         BDManager.command.Parameters.AddWithValue("@"+p.Name,p.GetValue(BDManager.myObj));
                     }
@@ -81,7 +91,7 @@ namespace PalcoNet.BDManager
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();
                         reader.Read();
-                        foreach (PropertyInfo p in getPropertiesFromObj())
+                        foreach (PropertyInfo p in BDManager.getPropertiesFromObj())
                         {
                             p.SetValue(BDManager.myObj, reader[p.Name]);
                         }
@@ -90,17 +100,10 @@ namespace PalcoNet.BDManager
                 case queryTypes.MULTIPLE_RETURNING_QUERY:
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();
-                        MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun (tipo ID que matchee?)");
+                        MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun");
                         reader.Close();
                         break; }
             }
-        }
-
-        private static PropertyInfo[] getPropertiesFromObj()
-        {
-            Type myType = BDManager.myObj.GetType();
-            PropertyInfo[] props = myType.GetProperties();
-            return props;
         }
     }
 
