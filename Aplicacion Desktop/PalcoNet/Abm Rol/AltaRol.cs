@@ -40,5 +40,11 @@ namespace PalcoNet.Abm_Rol
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
+
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            nombre.Text = default(String);
+            listaFuncionalidadesAsignadas.Items.Clear();
+        }
     }
 }
