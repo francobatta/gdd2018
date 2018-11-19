@@ -11,7 +11,6 @@ namespace PalcoNet.BDManager
 {
     public static class BDManager
     {
-        //abstract void DoStuff(SqlCommand com);
         private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -20,6 +19,10 @@ namespace PalcoNet.BDManager
             builder.Password = "gdEspectaculos2018";
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
+        }
+        public static void selectIntoObject(String tableName, String id, Object o) 
+        {
+            queryOptionalObject("SELECT * FROM " + tableName + " WHERE id=" + id, o, queryTypes.SINGLE_RETURNING_QUERY);
         }
         public static void queryOptionalObject(String sqlQuery,Object o = null, queryTypes qt = queryTypes.NON_RETURNING_QUERY)
         {
@@ -61,6 +64,7 @@ namespace PalcoNet.BDManager
                 case queryTypes.MULTIPLE_RETURNING_QUERY:
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();
+                        MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun (tipo ID que matchee?)");
                         reader.Close();
                         break; }
             }
