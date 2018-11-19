@@ -7,3 +7,5 @@ C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\Palco
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.MainWindow.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Rol.MainWindow.resources
