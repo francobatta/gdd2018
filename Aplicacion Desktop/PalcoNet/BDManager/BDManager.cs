@@ -70,14 +70,18 @@ namespace PalcoNet.BDManager
         {
             switch(q)
             {
-                case queryTypes.NON_RETURNING_QUERY: { BDManager.command.ExecuteNonQuery(); break; }
+                case queryTypes.NON_RETURNING_QUERY: {
+                    foreach (PropertyInfo p in getPropertiesFromObj()) 
+                    {
+                        BDManager.command.Parameters.AddWithValue("@"+p.Name,p.GetValue(BDManager.myObj));
+                    }
+                    BDManager.command.ExecuteNonQuery(); break;
+                }
                 case queryTypes.SINGLE_RETURNING_QUERY:
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();
-                        Type myType = BDManager.myObj.GetType();
-                        PropertyInfo[] props = myType.GetProperties();
                         reader.Read();
-                        foreach (PropertyInfo p in props)
+                        foreach (PropertyInfo p in getPropertiesFromObj())
                         {
                             p.SetValue(BDManager.myObj, reader[p.Name]);
                         }
@@ -90,6 +94,13 @@ namespace PalcoNet.BDManager
                         reader.Close();
                         break; }
             }
+        }
+
+        private static PropertyInfo[] getPropertiesFromObj()
+        {
+            Type myType = BDManager.myObj.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props;
         }
     }
 
