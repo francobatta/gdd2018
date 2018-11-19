@@ -23,12 +23,9 @@ namespace PalcoNet
             jijo.otroValor = "34";
             PalcoNet.BDManager.BDManager.insertInto("dbo.Table_1", jijo);
             PalcoNet.BDManager.BDManager.selectIntoObject("dbo.Table_1", "2", jijo2);
-            MessageBox.Show(jijo.Espec_Empresa_Razon_Social + " " + jijo2.Espec_Empresa_Razon_Social + "si son iguales hizo bien");
-            MessageBox.Show(jijo.otroValor + " " + jijo2.otroValor + "si son iguales hizo bien");
             jijo2.otroValor = "3443";
             PalcoNet.BDManager.BDManager.updateSet("dbo.Table_1", jijo2);
-            MessageBox.Show(jijo2.otroValor + " debe ser 3443 y " + jijo2.Espec_Empresa_Razon_Social + "debe ser jijito");
         }
     }
-    public class objetito { public String Espec_Empresa_Razon_Social { get; set; } public String otroValor {get; set;} }
+    public class objetito { public String Espec_Empresa_Razon_Social { get; set; } public String otroValor { get; set; } public int id { get; set; } }
 }
