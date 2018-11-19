@@ -20,22 +20,26 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
-        public static void updateSet(String tableName, object o) 
+        public static void updateSet(String tableName, object o)
         {
+            myObj = o;
             var sql = new StringBuilder("UPDATE " + tableName + " SET ");
             var listaParaUpdate = getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate);
         }
         public static void insertInto(String tableName, object o)
         {
+            myObj = o;
             var sql = new StringBuilder("INSERT INTO " + tableName + " (");
             appendList(sql, getPropertiesFromObj().Select(p => p.Name).ToArray());
             sql.Append(" VALUES (");
             appendList(sql, getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
+            MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(), o, queryTypes.NON_RETURNING_QUERY);
         }
-        public static void selectIntoObject(String tableName, String id, Object o) 
+        public static void selectIntoObject(String tableName, String id, Object o)
         {
+            myObj = o;
             queryOptionalObject("SELECT * FROM " + tableName + " WHERE id=" + id, o, queryTypes.SINGLE_RETURNING_QUERY);
         } // Llena el objeto que le pases de acuerdo al tableName e id que la pases. EN la bd la columna id debe llamarse id
         // La condicion es que los atributos del mismo coincidan con los nombres de los columnas de la tabla (se puede hacer mas generico como que tablename sea de acuerdo al nombre de la clase)
@@ -63,11 +67,11 @@ namespace PalcoNet.BDManager
                     sql.Append(appendIfLast);
             }
         }
-        public static PropertyInfo[] getPropertiesFromObj() // no es del dominio, obtiene las properties de un objeto estatico X
+        public static PropertyInfo[] getPropertiesFromObj() // no es del dominio, obtiene las properties de un objeto estatico X menos su id
         {
             Type myType = BDManager.myObj.GetType();
             PropertyInfo[] props = myType.GetProperties();
-            return props;
+            return props.Where(p => p.Name != "id").ToArray();
         }
     }
     public enum queryTypes
@@ -83,7 +87,7 @@ namespace PalcoNet.BDManager
                 case queryTypes.NON_RETURNING_QUERY: {
                     foreach (PropertyInfo p in BDManager.getPropertiesFromObj()) 
                     {
-                        BDManager.command.Parameters.AddWithValue("@"+p.Name,p.GetValue(BDManager.myObj));
+                        BDManager.command.Parameters.AddWithValue("@" + p.Name, p.GetValue(BDManager.myObj) ?? DBNull.Value); // ?? para que null no de error
                     }
                     BDManager.command.ExecuteNonQuery(); break;
                 }
@@ -93,7 +97,7 @@ namespace PalcoNet.BDManager
                         reader.Read();
                         foreach (PropertyInfo p in BDManager.getPropertiesFromObj())
                         {
-                            p.SetValue(BDManager.myObj, reader[p.Name]);
+                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ?  default(string) : reader[p.Name]));
                         }
                         reader.Close();
                         break; } 
