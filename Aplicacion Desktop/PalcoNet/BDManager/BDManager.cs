@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace PalcoNet.BDManager
 {
-    public class BDManager
+    public static class BDManager
     {
-        static String getConnectionString()
+        //abstract void DoStuff(SqlCommand com);
+        private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost\\SQLSERVER2012";
@@ -19,18 +20,32 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
-        public static void metodoDeEjemplo()
+        public static void queryOptionalObject(String sqlQuery,Object o = null, queryTypes qt = queryTypes.NON_RETURNING_QUERY)
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
             {
                 connection.Open();
-                String sql = "SELECT Ubicacion_Asiento FROM gd_esquema.Maestra";
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    object s = command.ExecuteScalar();
-                    MessageBox.Show("me pude conectar y con ExecuteScalar tiro un (1) registro de Ubicacion_Asiento: " + s.ToString());
-                }
+                command = new SqlCommand(sqlQuery, connection);
+                qt.DoStuff();
             }
+        }
+        public static SqlCommand command { get; set; }
+    }
+    public enum queryTypes
+    {
+        NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY
+    }
+    public static class Extensions
+    {
+        public static object DoStuff(this queryTypes q)
+        {
+            switch(q)
+            {
+                case queryTypes.NON_RETURNING_QUERY: { BDManager.command.ExecuteNonQuery(); return null; }
+                case queryTypes.SINGLE_RETURNING_QUERY: return null;
+                case queryTypes.MULTIPLE_RETURNING_QUERY: return null;
+            }
+            return null;
         }
     }
 }

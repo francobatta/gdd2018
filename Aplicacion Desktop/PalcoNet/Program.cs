@@ -17,7 +17,7 @@ namespace PalcoNet
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1()); PA MOSTRAR EL PROGRAMA
-            PalcoNet.BDManager.BDManager.metodoDeEjemplo(); // MUESTRO BD
+            PalcoNet.BDManager.BDManager.queryOptionalObject("SELECT 1 FROM..."); // MUESTRO BD
         }
     }
 }

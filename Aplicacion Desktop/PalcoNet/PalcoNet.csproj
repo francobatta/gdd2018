@@ -75,6 +75,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="BDManager\BDManager.cs" />
+    <Compile Include="BDManager\queryTypes.cs" />
     <Compile Include="Canje Puntos\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
