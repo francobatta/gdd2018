@@ -8,18 +8,33 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Empresa
+namespace PalcoNet.Abm_Cliente
 {
-    public partial class ModificaRol : Form
+    public partial class ModificaCliente : Form
     {
-        public ModificaRol()
+        public ModificaCliente()
         {
             InitializeComponent();
         }
-        private void ModificaRol_Load(object sender, EventArgs e)
+
+        private void ModificaCliente_Load(object sender, EventArgs e)
         {
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
         {
@@ -29,22 +44,16 @@ namespace PalcoNet.Abm_Empresa
         private void minimizingLabel_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
+        }   
         protected override void WndProc(ref Message m) // PARA QUE SE PUEDA HACER DRAGGING DEL FORM
-        {
-            base.WndProc(ref m);
-            if (m.Msg == WM_NCHITTEST)
-                m.Result = (IntPtr)(HT_CAPTION);
-        }
+    {
+        base.WndProc(ref m);
+        if (m.Msg == WM_NCHITTEST)
+            m.Result = (IntPtr)(HT_CAPTION);
+    }
 
-        private const int WM_NCHITTEST = 0x84;
-        private const int HT_CLIENT = 0x1;
-        private const int HT_CAPTION = 0x2;
-
-        private void btn_limpiar_Click(object sender, EventArgs e)
-        {
-            nombre.Text = default(String);
-            listaFuncionalidadesAsignadas.Items.Clear();
-        }
+    private const int WM_NCHITTEST = 0x84;
+    private const int HT_CLIENT = 0x1;
+    private const int HT_CAPTION = 0x2;
     }
 }

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Empresa
 {
-    public partial class ModificaRol : Form
+    public partial class BusquedaEmpresa : Form
     {
-        public ModificaRol()
+        public BusquedaEmpresa()
         {
             InitializeComponent();
         }
-        private void ModificaRol_Load(object sender, EventArgs e)
+        private void BusquedaEmpresa_Load(object sender, EventArgs e)
         {
 
         }
@@ -41,10 +41,9 @@ namespace PalcoNet.Abm_Empresa
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
 
-        private void btn_limpiar_Click(object sender, EventArgs e)
+        private void btn_seleccionar_Click(object sender, EventArgs e)
         {
-            nombre.Text = default(String);
-            listaFuncionalidadesAsignadas.Items.Clear();
+
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Abm_Rol
+﻿namespace PalcoNet.Abm_Empresa
 {
     partial class ModificaRol
     {

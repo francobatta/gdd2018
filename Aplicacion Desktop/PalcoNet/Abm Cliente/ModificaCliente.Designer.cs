@@ -1,6 +1,6 @@
 ﻿namespace PalcoNet.Abm_Cliente
 {
-    partial class MainWindow
+    partial class ModificaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificaCliente));
             this.topbar = new System.Windows.Forms.Panel();
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -37,7 +37,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.sidepanel = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -118,9 +117,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(161, 24);
+            this.titleLabel.Size = new System.Drawing.Size(252, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Alta de cliente";
+            this.titleLabel.Text = "Modificación de cliente";
             // 
             // closingLabel
             // 
@@ -169,26 +168,12 @@
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
             this.sidepanel.Name = "sidepanel";
             this.sidepanel.Size = new System.Drawing.Size(200, 617);
             this.sidepanel.TabIndex = 0;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 55);
-            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(190, 85);
-            this.label17.TabIndex = 50;
-            this.label17.Text = "Cuando ud. se dé de alta, se le generará un usuario de primer acceso al sistema, " +
-    "cuyo username es igual a su N° de CUIL.";
             // 
             // label1
             // 
@@ -563,7 +548,7 @@
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
             // 
-            // MainWindow
+            // ModificaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -619,16 +604,15 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainWindow";
+            this.Name = "ModificaCliente";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Load += new System.EventHandler(this.ModificaCliente_Load);
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.sidepanel.ResumeLayout(false);
-            this.sidepanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -686,7 +670,6 @@
         private System.Windows.Forms.ComboBox tipoTarjeta;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
-        private System.Windows.Forms.Label label17;
 
     }
 }
