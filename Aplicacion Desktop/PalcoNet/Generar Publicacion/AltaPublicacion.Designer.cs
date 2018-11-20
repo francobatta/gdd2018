@@ -68,6 +68,17 @@
             this.usuarioResponsable = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.estado = new System.Windows.Forms.ComboBox();
+            this.listaUbicaciones = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tipoUbicacion = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btn_agregarUbicacion = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -182,7 +193,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(206, 92);
+            this.label1.Location = new System.Drawing.Point(206, 79);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 21);
             this.label1.TabIndex = 5;
@@ -190,7 +201,7 @@
             // 
             // descripcion
             // 
-            this.descripcion.Location = new System.Drawing.Point(210, 116);
+            this.descripcion.Location = new System.Drawing.Point(210, 103);
             this.descripcion.Multiline = true;
             this.descripcion.Name = "descripcion";
             this.descripcion.Size = new System.Drawing.Size(336, 44);
@@ -200,7 +211,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(206, 166);
+            this.label3.Location = new System.Drawing.Point(206, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(105, 21);
             this.label3.TabIndex = 9;
@@ -459,6 +470,107 @@
             this.estado.Size = new System.Drawing.Size(247, 21);
             this.estado.TabIndex = 62;
             // 
+            // listaUbicaciones
+            // 
+            this.listaUbicaciones.FormattingEnabled = true;
+            this.listaUbicaciones.Location = new System.Drawing.Point(210, 262);
+            this.listaUbicaciones.Name = "listaUbicaciones";
+            this.listaUbicaciones.Size = new System.Drawing.Size(336, 95);
+            this.listaUbicaciones.TabIndex = 63;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(210, 198);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(26, 20);
+            this.textBox1.TabIndex = 64;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(313, 198);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(26, 20);
+            this.textBox2.TabIndex = 65;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(416, 198);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(26, 20);
+            this.textBox3.TabIndex = 66;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(207, 179);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 16);
+            this.label7.TabIndex = 68;
+            this.label7.Text = "Fila";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(310, 179);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 16);
+            this.label16.TabIndex = 69;
+            this.label16.Text = "Asiento";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(413, 179);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(48, 16);
+            this.label18.TabIndex = 70;
+            this.label18.Text = "Precio";
+            // 
+            // tipoUbicacion
+            // 
+            this.tipoUbicacion.FormattingEnabled = true;
+            this.tipoUbicacion.Location = new System.Drawing.Point(510, 198);
+            this.tipoUbicacion.Name = "tipoUbicacion";
+            this.tipoUbicacion.Size = new System.Drawing.Size(36, 21);
+            this.tipoUbicacion.TabIndex = 71;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(507, 179);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(35, 16);
+            this.label19.TabIndex = 72;
+            this.label19.Text = "Tipo";
+            // 
+            // btn_agregarUbicacion
+            // 
+            this.btn_agregarUbicacion.BackColor = System.Drawing.Color.Gold;
+            this.btn_agregarUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregarUbicacion.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregarUbicacion.Location = new System.Drawing.Point(210, 226);
+            this.btn_agregarUbicacion.Name = "btn_agregarUbicacion";
+            this.btn_agregarUbicacion.Size = new System.Drawing.Size(168, 30);
+            this.btn_agregarUbicacion.TabIndex = 73;
+            this.btn_agregarUbicacion.Text = "Agregar Ubicación";
+            this.btn_agregarUbicacion.UseVisualStyleBackColor = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(384, 226);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 30);
+            this.button1.TabIndex = 74;
+            this.button1.Text = "Eliminar Ubicación elegida";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // AltaPublicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -467,6 +579,17 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_agregarUbicacion);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.tipoUbicacion);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.usuarioResponsable);
@@ -559,6 +682,17 @@
         private System.Windows.Forms.TextBox usuarioResponsable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox estado;
+        private System.Windows.Forms.ListBox listaUbicaciones;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ComboBox tipoUbicacion;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btn_agregarUbicacion;
+        private System.Windows.Forms.Button button1;
 
     }
 }
