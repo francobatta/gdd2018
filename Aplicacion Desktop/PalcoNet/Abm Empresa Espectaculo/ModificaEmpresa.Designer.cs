@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class ModificaEmpresa
+﻿    partial class ModificaEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -447,4 +445,3 @@
         private System.Windows.Forms.Button btn_guardar;
 
     }
-}

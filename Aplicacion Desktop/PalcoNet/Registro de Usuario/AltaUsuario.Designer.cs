@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class AltaUsuario
+﻿    partial class AltaUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -345,4 +343,3 @@
         private System.Windows.Forms.ListBox listaRoles;
 
     }
-}

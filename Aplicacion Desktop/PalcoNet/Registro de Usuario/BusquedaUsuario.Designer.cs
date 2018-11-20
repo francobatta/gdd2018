@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class BusquedaUsuario
+﻿    partial class BusquedaUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -304,4 +302,3 @@
         private System.Windows.Forms.Label label17;
 
     }
-}

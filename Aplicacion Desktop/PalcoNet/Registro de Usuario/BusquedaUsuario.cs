@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Registro_de_Usuario
-{
     public partial class BusquedaUsuario : Form
     {
         public BusquedaUsuario()
@@ -46,4 +44,3 @@ namespace PalcoNet.Registro_de_Usuario
 
         }
     }
-}

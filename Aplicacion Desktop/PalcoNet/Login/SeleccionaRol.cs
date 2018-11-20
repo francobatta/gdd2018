@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace PalcoNet.Login
-{
     public partial class SeleccionaRol : Form
     {
         public SeleccionaRol()
@@ -61,4 +58,3 @@ namespace PalcoNet.Login
 
     }
     }
-}

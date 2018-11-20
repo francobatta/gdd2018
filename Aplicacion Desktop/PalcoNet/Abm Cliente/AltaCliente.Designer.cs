@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Generar_Publicacion
-{
-    partial class MainWindow
+﻿partial class AltaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaCliente));
             this.topbar = new System.Windows.Forms.Panel();
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
@@ -561,6 +559,7 @@
             this.btn_guardar.TabIndex = 48;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // MainWindow
             // 
@@ -618,9 +617,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainWindow";
-            this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Name = "AltaCliente";
+            this.Text = "AltaCliente";
+            this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -688,4 +687,3 @@
         private System.Windows.Forms.Label label17;
 
     }
-}

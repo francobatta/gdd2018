@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Registro_de_Usuario
-{
-    public partial class MainWindow : Form
+    public partial class AltaRol : Form
     {
-        public MainWindow()
+        public AltaRol()
         {
             InitializeComponent();
         }
-        private void MainWindow_Load(object sender, EventArgs e)
+        private void AltaRol_Load(object sender, EventArgs e)
         {
 
         }
@@ -47,4 +45,3 @@ namespace PalcoNet.Registro_de_Usuario
             listaFuncionalidadesAsignadas.Items.Clear();
         }
     }
-}

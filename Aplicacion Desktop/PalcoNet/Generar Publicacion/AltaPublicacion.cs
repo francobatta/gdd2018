@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Generar_Publicacion
-{
     public partial class AltaPublicacion : Form
     {
         public AltaPublicacion()
@@ -56,4 +54,3 @@ namespace PalcoNet.Generar_Publicacion
     private const int HT_CLIENT = 0x1;
     private const int HT_CAPTION = 0x2;
     }
-}

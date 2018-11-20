@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Registro_de_Usuario
-{
     public partial class ModificaRol : Form
     {
         public ModificaRol()
@@ -47,4 +45,3 @@ namespace PalcoNet.Registro_de_Usuario
             listaFuncionalidadesAsignadas.Items.Clear();
         }
     }
-}

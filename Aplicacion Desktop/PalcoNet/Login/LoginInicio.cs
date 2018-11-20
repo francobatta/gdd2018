@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace PalcoNet.Login
-{
     public partial class LoginInicio : Form
     {
         public LoginInicio()
@@ -43,4 +40,3 @@ namespace PalcoNet.Login
     private const int HT_CLIENT = 0x1;
     private const int HT_CAPTION = 0x2;
     }
-}

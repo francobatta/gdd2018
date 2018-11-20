@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Registro_de_Usuario
-{
     public partial class ModificaUsuario : Form
     {
         public ModificaUsuario()
@@ -56,4 +54,3 @@ namespace PalcoNet.Registro_de_Usuario
     private const int HT_CLIENT = 0x1;
     private const int HT_CAPTION = 0x2;
     }
-}

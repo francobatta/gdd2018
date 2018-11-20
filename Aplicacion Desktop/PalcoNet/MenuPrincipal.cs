@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet
-{
     public partial class MenuPrincipal : Form
     {
         public MenuPrincipal()
@@ -41,4 +39,3 @@ namespace PalcoNet
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
     }
-}

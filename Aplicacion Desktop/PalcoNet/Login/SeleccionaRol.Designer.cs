@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Login
-{
-    partial class SeleccionaRol
+﻿    partial class SeleccionaRol
     {
         /// <summary>
         /// Required designer variable.
@@ -262,4 +260,3 @@
         private System.Windows.Forms.DataGridView listaRolesUsuario;
 
     }
-}

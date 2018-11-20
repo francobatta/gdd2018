@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class MainWindow
+﻿    partial class AltaRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaRol));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -244,7 +242,7 @@
             this.MinimizeBox = false;
             this.Name = "MainWindow";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.MainWindow_Load);
+            this.Load += new System.EventHandler(this.AltaRol_Load);
             this.sidepanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -276,4 +274,3 @@
         private System.Windows.Forms.Button btn_limpiar;
 
     }
-}

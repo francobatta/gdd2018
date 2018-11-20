@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Login
-{
-    partial class LoginInicio
+﻿    partial class LoginInicio
     {
         /// <summary>
         /// Required designer variable.
@@ -293,4 +291,3 @@
         private System.Windows.Forms.Label label2;
 
     }
-}

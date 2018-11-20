@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class ElegirGrado
+﻿    partial class ElegirGrado
     {
         /// <summary>
         /// Required designer variable.
@@ -328,4 +326,3 @@
         private System.Windows.Forms.Button btn_limpiar;
 
     }
-}

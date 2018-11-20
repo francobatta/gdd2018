@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Generar_Publicacion
-{
-    partial class AltaEmpresa
+﻿    partial class AltaEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -463,4 +461,3 @@
         private System.Windows.Forms.Label label17;
 
     }
-}

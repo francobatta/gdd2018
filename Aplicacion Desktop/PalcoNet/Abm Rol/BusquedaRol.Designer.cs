@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class BusquedaRol
+﻿    partial class BusquedaRol
     {
         /// <summary>
         /// Required designer variable.
@@ -234,4 +232,3 @@
         private System.Windows.Forms.Button button1;
 
     }
-}

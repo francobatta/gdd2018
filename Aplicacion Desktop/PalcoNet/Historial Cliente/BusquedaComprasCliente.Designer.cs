@@ -1,5 +1,4 @@
-﻿namespace PalcoNet.Historial_Cliente{
-    partial class BusquedaComprasCliente
+﻿    partial class BusquedaComprasCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -204,4 +203,3 @@
         private System.Windows.Forms.Label label17;
 
     }
-}

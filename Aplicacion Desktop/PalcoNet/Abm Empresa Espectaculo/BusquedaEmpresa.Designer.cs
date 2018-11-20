@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class BusquedaEmpresa
+﻿    partial class BusquedaEmpresa
     {
         /// <summary>
         /// Required designer variable.
@@ -349,4 +347,3 @@
         private System.Windows.Forms.Label label17;
 
     }
-}

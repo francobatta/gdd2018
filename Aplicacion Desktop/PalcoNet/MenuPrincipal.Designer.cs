@@ -1,6 +1,4 @@
-﻿namespace PalcoNet
-{
-    partial class MenuPrincipal
+﻿    partial class MenuPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -171,4 +169,3 @@
         private System.Windows.Forms.Label minimizingLabel;
 
     }
-}

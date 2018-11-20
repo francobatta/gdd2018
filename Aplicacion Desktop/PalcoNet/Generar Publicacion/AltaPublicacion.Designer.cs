@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Generar_Publicacion
-{
-    partial class AltaPublicacion
+﻿    partial class AltaPublicacion
     {
         /// <summary>
         /// Required designer variable.
@@ -696,4 +694,3 @@
         private System.Windows.Forms.Button btn_eliminarUbicacionSeleccionada;
 
     }
-}

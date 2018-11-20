@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class BusquedaCliente
+﻿    partial class BusquedaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -396,4 +394,3 @@
         private System.Windows.Forms.Button btn_limpiar;
 
     }
-}

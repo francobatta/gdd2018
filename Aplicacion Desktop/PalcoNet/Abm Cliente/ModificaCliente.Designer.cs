@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Generar_Publicacion
-{
-    partial class ModificaCliente
+﻿    partial class ModificaCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -672,4 +670,3 @@
         private System.Windows.Forms.Button btn_guardar;
 
     }
-}

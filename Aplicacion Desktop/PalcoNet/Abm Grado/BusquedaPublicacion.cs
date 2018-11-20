@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace PalcoNet.Registro_de_Usuario
-{
     public partial class BusquedaPublicacion : Form
     {
         public BusquedaPublicacion()
@@ -46,4 +43,3 @@ namespace PalcoNet.Registro_de_Usuario
 
         }
     }
-}

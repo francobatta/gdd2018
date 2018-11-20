@@ -1,6 +1,4 @@
-﻿namespace PalcoNet.Registro_de_Usuario
-{
-    partial class ModificaRol
+﻿    partial class ModificaRol
     {
         /// <summary>
         /// Required designer variable.
@@ -300,4 +298,3 @@
         private System.Windows.Forms.Label label3;
 
     }
-}

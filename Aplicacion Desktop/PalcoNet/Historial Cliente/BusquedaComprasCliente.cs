@@ -8,8 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Historial_Cliente
-{
     public partial class BusquedaComprasCliente : Form
     {
         public BusquedaComprasCliente()
@@ -41,4 +39,3 @@ namespace PalcoNet.Historial_Cliente
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
     }
-}
