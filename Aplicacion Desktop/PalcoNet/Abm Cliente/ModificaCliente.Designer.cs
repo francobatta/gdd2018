@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Abm_Cliente
+﻿namespace PalcoNet.Generar_Publicacion
 {
     partial class ModificaCliente
     {

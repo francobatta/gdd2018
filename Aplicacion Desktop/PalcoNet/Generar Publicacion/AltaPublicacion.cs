@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Generar_Publicacion
 {
-    public partial class ModificaCliente : Form
+    public partial class AltaPublicacion : Form
     {
-        public ModificaCliente()
+        public AltaPublicacion()
         {
             InitializeComponent();
         }
 
-        private void ModificaCliente_Load(object sender, EventArgs e)
+        private void AltaPublicacion_Load(object sender, EventArgs e)
         {
 
         }

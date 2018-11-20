@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Cliente
+namespace PalcoNet.Generar_Publicacion
 {
     public partial class AltaEmpresa : Form
     {

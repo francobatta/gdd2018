@@ -7,9 +7,6 @@ C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\Palco
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.MainWindow.resources
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.ModificaCliente.resources
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.AltaEmpresa.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Grado.BusquedaCliente.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Grado.BusquedaEmpresa.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Grado.ModificaEmpresa.resources
@@ -19,3 +16,7 @@ C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\Palco
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Grado.BusquedaRol.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Grado.ModificaRol.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Historial_Cliente.BusquedaComprasCliente.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Generar_Publicacion.MainWindow.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Generar_Publicacion.ModificaCliente.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Generar_Publicacion.AltaEmpresa.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Generar_Publicacion.AltaPublicacion.resources

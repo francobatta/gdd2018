@@ -117,6 +117,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="BDManager.cs" />
+    <Compile Include="Generar Publicacion\AltaPublicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Publicacion\AltaPublicacion.Designer.cs">
+      <DependentUpon>AltaPublicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Historial Cliente\BusquedaComprasCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,12 +153,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Generar Publicacion\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Generar Publicacion\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Rendicion Comisiones\Form1.cs">
@@ -207,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ModificaRol.resx">
       <DependentUpon>ModificaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Publicacion\AltaPublicacion.resx">
+      <DependentUpon>AltaPublicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial Cliente\BusquedaComprasCliente.resx">
       <DependentUpon>BusquedaComprasCliente.cs</DependentUpon>
