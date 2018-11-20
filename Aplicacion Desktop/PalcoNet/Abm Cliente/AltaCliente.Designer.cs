@@ -72,7 +72,7 @@
             this.codSeguridad = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.ntarjeta = new System.Windows.Forms.TextBox();
+            this.nroTarjeta = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.fechavtotarjeta = new System.Windows.Forms.DateTimePicker();
             this.tipoTarjeta = new System.Windows.Forms.ComboBox();
@@ -503,12 +503,12 @@
             this.label21.TabIndex = 36;
             this.label21.Text = "Fecha de vto.";
             // 
-            // ntarjeta
+            // nroTarjeta
             // 
-            this.ntarjeta.Location = new System.Drawing.Point(679, 162);
-            this.ntarjeta.Name = "ntarjeta";
-            this.ntarjeta.Size = new System.Drawing.Size(247, 20);
-            this.ntarjeta.TabIndex = 35;
+            this.nroTarjeta.Location = new System.Drawing.Point(679, 162);
+            this.nroTarjeta.Name = "nroTarjeta";
+            this.nroTarjeta.Size = new System.Drawing.Size(247, 20);
+            this.nroTarjeta.TabIndex = 35;
             // 
             // label22
             // 
@@ -561,7 +561,7 @@
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
-            // MainWindow
+            // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -579,7 +579,7 @@
             this.Controls.Add(this.codSeguridad);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.ntarjeta);
+            this.Controls.Add(this.nroTarjeta);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.cpostal);
@@ -678,7 +678,7 @@
         private System.Windows.Forms.TextBox codSeguridad;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox ntarjeta;
+        private System.Windows.Forms.TextBox nroTarjeta;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DateTimePicker fechavtotarjeta;
         private System.Windows.Forms.ComboBox tipoTarjeta;
