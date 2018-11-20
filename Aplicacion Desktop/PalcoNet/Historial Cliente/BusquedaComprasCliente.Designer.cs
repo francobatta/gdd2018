@@ -1,6 +1,5 @@
-﻿namespace PalcoNet.Abm_Grado
-{
-    partial class ModificaRol
+﻿namespace PalcoNet.Historial_Cliente{
+    partial class BusquedaComprasCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificaRol));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaComprasCliente));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -37,23 +36,19 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
-            this.funcionalidades = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.listaFuncionalidadesAsignadas = new System.Windows.Forms.ListBox();
-            this.label = new System.Windows.Forms.Label();
-            this.btn_guardar = new System.Windows.Forms.Button();
-            this.btn_limpiar = new System.Windows.Forms.Button();
+            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
+            this.label17 = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
@@ -124,9 +119,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(214, 24);
+            this.titleLabel.Size = new System.Drawing.Size(194, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Modificación de Rol";
+            this.titleLabel.Text = "Historial de cliente";
             // 
             // closingLabel
             // 
@@ -141,87 +136,32 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
-            // nombre
+            // listadoActualRoles
             // 
-            this.nombre.Location = new System.Drawing.Point(337, 56);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(100, 20);
-            this.nombre.TabIndex = 2;
+            this.listadoActualRoles.AllowUserToAddRows = false;
+            this.listadoActualRoles.AllowUserToDeleteRows = false;
+            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoActualRoles.Location = new System.Drawing.Point(210, 56);
+            this.listadoActualRoles.MultiSelect = false;
+            this.listadoActualRoles.Name = "listadoActualRoles";
+            this.listadoActualRoles.ReadOnly = true;
+            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoActualRoles.Size = new System.Drawing.Size(1229, 549);
+            this.listadoActualRoles.TabIndex = 10;
             // 
-            // funcionalidades
+            // label17
             // 
-            this.funcionalidades.FormattingEnabled = true;
-            this.funcionalidades.Location = new System.Drawing.Point(638, 55);
-            this.funcionalidades.Name = "funcionalidades";
-            this.funcionalidades.Size = new System.Drawing.Size(314, 21);
-            this.funcionalidades.TabIndex = 3;
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 56);
+            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(187, 34);
+            this.label17.TabIndex = 51;
+            this.label17.Text = "Usted puede ver su historial de compra aquí";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(206, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 21);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Nombre de Rol";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(443, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Funcionalidades de Rol";
-            // 
-            // listaFuncionalidadesAsignadas
-            // 
-            this.listaFuncionalidadesAsignadas.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaFuncionalidadesAsignadas.FormattingEnabled = true;
-            this.listaFuncionalidadesAsignadas.ItemHeight = 24;
-            this.listaFuncionalidadesAsignadas.Location = new System.Drawing.Point(210, 121);
-            this.listaFuncionalidadesAsignadas.Name = "listaFuncionalidadesAsignadas";
-            this.listaFuncionalidadesAsignadas.Size = new System.Drawing.Size(742, 484);
-            this.listaFuncionalidadesAsignadas.TabIndex = 6;
-            // 
-            // label
-            // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.Location = new System.Drawing.Point(206, 97);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(378, 21);
-            this.label.TabIndex = 7;
-            this.label.Text = "Funcionalidades asignadas al Rol actualmente:";
-            // 
-            // btn_guardar
-            // 
-            this.btn_guardar.BackColor = System.Drawing.Color.PaleGreen;
-            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_guardar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.Location = new System.Drawing.Point(958, 538);
-            this.btn_guardar.Name = "btn_guardar";
-            this.btn_guardar.Size = new System.Drawing.Size(481, 67);
-            this.btn_guardar.TabIndex = 8;
-            this.btn_guardar.Text = "Guardar";
-            this.btn_guardar.UseVisualStyleBackColor = false;
-            // 
-            // btn_limpiar
-            // 
-            this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
-            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.Location = new System.Drawing.Point(958, 55);
-            this.btn_limpiar.Name = "btn_limpiar";
-            this.btn_limpiar.Size = new System.Drawing.Size(481, 67);
-            this.btn_limpiar.TabIndex = 9;
-            this.btn_limpiar.Text = "Limpiar";
-            this.btn_limpiar.UseVisualStyleBackColor = false;
-            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
-            // 
-            // ModificaRol
+            // BusquedaComprasCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -229,30 +169,24 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_limpiar);
-            this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.label);
-            this.Controls.Add(this.listaFuncionalidadesAsignadas);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.funcionalidades);
-            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.listadoActualRoles);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ModificaRol";
+            this.Name = "BusquedaComprasCliente";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.ModificaRol_Load);
+            this.Load += new System.EventHandler(this.BusquedaComprasCliente_Load);
             this.sidepanel.ResumeLayout(false);
+            this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -266,14 +200,8 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
-        private System.Windows.Forms.TextBox nombre;
-        private System.Windows.Forms.ComboBox funcionalidades;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox listaFuncionalidadesAsignadas;
-        private System.Windows.Forms.Label label;
-        private System.Windows.Forms.Button btn_guardar;
-        private System.Windows.Forms.Button btn_limpiar;
+        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.Label label17;
 
     }
 }

@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Abm_Grado
 {
-    public partial class BusquedaEmpresa : Form
+    public partial class ElegirGrado : Form
     {
-        public BusquedaEmpresa()
+        public ElegirGrado()
         {
             InitializeComponent();
         }
-        private void BusquedaEmpresa_Load(object sender, EventArgs e)
+        private void ElegirGrado_Load(object sender, EventArgs e)
         {
 
         }

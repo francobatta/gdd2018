@@ -8,15 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Grado
+namespace PalcoNet.Historial_Cliente
 {
-    public partial class BusquedaEmpresa : Form
+    public partial class BusquedaComprasCliente : Form
     {
-        public BusquedaEmpresa()
+        public BusquedaComprasCliente()
         {
             InitializeComponent();
         }
-        private void BusquedaEmpresa_Load(object sender, EventArgs e)
+        private void BusquedaComprasCliente_Load(object sender, EventArgs e)
         {
 
         }
@@ -40,10 +40,5 @@ namespace PalcoNet.Abm_Grado
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
-
-        private void btn_seleccionar_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

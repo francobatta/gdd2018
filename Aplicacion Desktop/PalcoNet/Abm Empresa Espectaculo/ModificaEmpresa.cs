@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Empresa
+namespace PalcoNet.Abm_Grado
 {
     public partial class ModificaEmpresa : Form
     {

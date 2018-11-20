@@ -80,11 +80,17 @@
     <Compile Include="Abm Empresa Espectaculo\ModificaEmpresa.Designer.cs">
       <DependentUpon>ModificaEmpresa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Grado\Form1.cs">
+    <Compile Include="Abm Grado\BusquedaPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Grado\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Grado\BusquedaPublicacion.Designer.cs">
+      <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Grado\ElegirGrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Grado\ElegirGrado.Designer.cs">
+      <DependentUpon>ElegirGrado.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Rol\AltaRol.cs">
       <SubType>Form</SubType>
@@ -111,6 +117,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="BDManager.cs" />
+    <Compile Include="Historial Cliente\BusquedaComprasCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial Cliente\BusquedaComprasCliente.Designer.cs">
+      <DependentUpon>BusquedaComprasCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validaciones.cs" />
     <Compile Include="queryTypes.cs" />
     <Compile Include="Canje Puntos\Form1.cs">
@@ -149,12 +161,6 @@
     <Compile Include="Generar Rendicion Comisiones\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Historial Cliente\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Historial Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +193,12 @@
     <EmbeddedResource Include="Abm Empresa Espectaculo\ModificaEmpresa.resx">
       <DependentUpon>ModificaEmpresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Grado\BusquedaPublicacion.resx">
+      <DependentUpon>BusquedaPublicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Grado\ElegirGrado.resx">
+      <DependentUpon>ElegirGrado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -195,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ModificaRol.resx">
       <DependentUpon>ModificaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial Cliente\BusquedaComprasCliente.resx">
+      <DependentUpon>BusquedaComprasCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

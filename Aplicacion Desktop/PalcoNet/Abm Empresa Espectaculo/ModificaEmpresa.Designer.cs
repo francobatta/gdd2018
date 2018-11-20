@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Abm_Empresa
+﻿namespace PalcoNet.Abm_Grado
 {
     partial class ModificaEmpresa
     {
