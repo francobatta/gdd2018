@@ -117,6 +117,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="BDManager.cs" />
+    <Compile Include="Login\SeleccionaRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\SeleccionaRol.Designer.cs">
+      <DependentUpon>SeleccionaRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Publicacion\AltaPublicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,12 @@
     <Compile Include="Historial Cliente\BusquedaComprasCliente.Designer.cs">
       <DependentUpon>BusquedaComprasCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\LoginInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginInicio.Designer.cs">
+      <DependentUpon>LoginInicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registro de Usuario\AltaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +152,12 @@
     </Compile>
     <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro de Usuario\ModificaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\ModificaUsuario.Designer.cs">
+      <DependentUpon>ModificaUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro de Usuario\RegistraUsuario.cs">
       <SubType>Form</SubType>
@@ -165,12 +183,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Editar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Rendicion Comisiones\Form1.cs">
@@ -220,6 +232,9 @@
     <EmbeddedResource Include="Abm Rol\ModificaRol.resx">
       <DependentUpon>ModificaRol.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\SeleccionaRol.resx">
+      <DependentUpon>SeleccionaRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Publicacion\AltaPublicacion.resx">
       <DependentUpon>AltaPublicacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -235,11 +250,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Login\LoginInicio.resx">
+      <DependentUpon>LoginInicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registro de Usuario\AltaUsuario.resx">
       <DependentUpon>AltaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro de Usuario\BusquedaUsuario.resx">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario\ModificaUsuario.resx">
+      <DependentUpon>ModificaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro de Usuario\RegistraUsuario.resx">
       <DependentUpon>RegistraUsuario.cs</DependentUpon>

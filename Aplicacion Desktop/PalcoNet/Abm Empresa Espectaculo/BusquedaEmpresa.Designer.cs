@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaEmpresa));
             this.sidepanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
@@ -39,22 +40,21 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
+            this.listadoEmpresas = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
-            this.CUIL = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.apellido = new System.Windows.Forms.TextBox();
+            this.CUIT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
+            this.razonSocial = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -67,6 +67,18 @@
             this.sidepanel.Name = "sidepanel";
             this.sidepanel.Size = new System.Drawing.Size(200, 617);
             this.sidepanel.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 56);
+            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(187, 187);
+            this.label17.TabIndex = 52;
+            this.label17.Text = resources.GetString("label17.Text");
             // 
             // panel1
             // 
@@ -171,18 +183,18 @@
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
-            // listadoActualRoles
+            // listadoEmpresas
             // 
-            this.listadoActualRoles.AllowUserToAddRows = false;
-            this.listadoActualRoles.AllowUserToDeleteRows = false;
-            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualRoles.Location = new System.Drawing.Point(210, 248);
-            this.listadoActualRoles.MultiSelect = false;
-            this.listadoActualRoles.Name = "listadoActualRoles";
-            this.listadoActualRoles.ReadOnly = true;
-            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualRoles.Size = new System.Drawing.Size(742, 357);
-            this.listadoActualRoles.TabIndex = 10;
+            this.listadoEmpresas.AllowUserToAddRows = false;
+            this.listadoEmpresas.AllowUserToDeleteRows = false;
+            this.listadoEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoEmpresas.Location = new System.Drawing.Point(210, 248);
+            this.listadoEmpresas.MultiSelect = false;
+            this.listadoEmpresas.Name = "listadoEmpresas";
+            this.listadoEmpresas.ReadOnly = true;
+            this.listadoEmpresas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoEmpresas.Size = new System.Drawing.Size(742, 357);
+            this.listadoEmpresas.TabIndex = 10;
             // 
             // button1
             // 
@@ -208,12 +220,12 @@
             this.btn_buscar.Text = "Buscar ";
             this.btn_buscar.UseVisualStyleBackColor = false;
             // 
-            // CUIL
+            // email
             // 
-            this.CUIL.Location = new System.Drawing.Point(317, 222);
-            this.CUIL.Name = "CUIL";
-            this.CUIL.Size = new System.Drawing.Size(247, 20);
-            this.CUIL.TabIndex = 24;
+            this.email.Location = new System.Drawing.Point(317, 222);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(247, 20);
+            this.email.TabIndex = 24;
             // 
             // label5
             // 
@@ -225,12 +237,12 @@
             this.label5.TabIndex = 23;
             this.label5.Text = "E-Mail";
             // 
-            // apellido
+            // CUIT
             // 
-            this.apellido.Location = new System.Drawing.Point(317, 147);
-            this.apellido.Name = "apellido";
-            this.apellido.Size = new System.Drawing.Size(247, 20);
-            this.apellido.TabIndex = 18;
+            this.CUIT.Location = new System.Drawing.Point(317, 147);
+            this.CUIT.Name = "CUIT";
+            this.CUIT.Size = new System.Drawing.Size(247, 20);
+            this.CUIT.TabIndex = 18;
             // 
             // label2
             // 
@@ -242,12 +254,12 @@
             this.label2.TabIndex = 17;
             this.label2.Text = "CUIT";
             // 
-            // nombre
+            // razonSocial
             // 
-            this.nombre.Location = new System.Drawing.Point(317, 76);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(247, 20);
-            this.nombre.TabIndex = 16;
+            this.razonSocial.Location = new System.Drawing.Point(317, 76);
+            this.razonSocial.Name = "razonSocial";
+            this.razonSocial.Size = new System.Drawing.Size(247, 20);
+            this.razonSocial.TabIndex = 16;
             // 
             // label1
             // 
@@ -271,18 +283,6 @@
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 56);
-            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(187, 187);
-            this.label17.TabIndex = 52;
-            this.label17.Text = resources.GetString("label17.Text");
-            // 
             // BusquedaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,15 +292,15 @@
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
             this.Controls.Add(this.btn_limpiar);
-            this.Controls.Add(this.CUIL);
+            this.Controls.Add(this.email);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.apellido);
+            this.Controls.Add(this.CUIT);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.razonSocial);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listadoActualRoles);
+            this.Controls.Add(this.listadoEmpresas);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -318,7 +318,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,14 +336,14 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.DataGridView listadoEmpresas;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox CUIL;
+        private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox apellido;
+        private System.Windows.Forms.TextBox CUIT;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox razonSocial;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Label label17;

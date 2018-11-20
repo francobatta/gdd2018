@@ -23,3 +23,6 @@ C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\Palco
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Registro_de_Usuario.BusquedaRol.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Registro_de_Usuario.ModificaRol.resources
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Registro_de_Usuario.BusquedaUsuario.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Registro_de_Usuario.ModificaUsuario.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Login.SeleccionaRol.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Login.LoginInicio.resources

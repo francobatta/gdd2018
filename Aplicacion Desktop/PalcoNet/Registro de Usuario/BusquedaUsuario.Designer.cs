@@ -40,7 +40,7 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
+            this.listadoUsuarios = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
             this.username = new System.Windows.Forms.TextBox();
@@ -50,7 +50,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -180,18 +180,18 @@
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
-            // listadoActualRoles
+            // listadoUsuarios
             // 
-            this.listadoActualRoles.AllowUserToAddRows = false;
-            this.listadoActualRoles.AllowUserToDeleteRows = false;
-            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualRoles.Location = new System.Drawing.Point(210, 102);
-            this.listadoActualRoles.MultiSelect = false;
-            this.listadoActualRoles.Name = "listadoActualRoles";
-            this.listadoActualRoles.ReadOnly = true;
-            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualRoles.Size = new System.Drawing.Size(742, 503);
-            this.listadoActualRoles.TabIndex = 10;
+            this.listadoUsuarios.AllowUserToAddRows = false;
+            this.listadoUsuarios.AllowUserToDeleteRows = false;
+            this.listadoUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoUsuarios.Location = new System.Drawing.Point(210, 102);
+            this.listadoUsuarios.MultiSelect = false;
+            this.listadoUsuarios.Name = "listadoUsuarios";
+            this.listadoUsuarios.ReadOnly = true;
+            this.listadoUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoUsuarios.Size = new System.Drawing.Size(742, 503);
+            this.listadoUsuarios.TabIndex = 10;
             // 
             // button1
             // 
@@ -219,9 +219,9 @@
             // 
             // username
             // 
-            this.username.Location = new System.Drawing.Point(317, 76);
+            this.username.Location = new System.Drawing.Point(300, 76);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(247, 20);
+            this.username.Size = new System.Drawing.Size(652, 20);
             this.username.TabIndex = 16;
             // 
             // label1
@@ -259,7 +259,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listadoActualRoles);
+            this.Controls.Add(this.listadoUsuarios);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -277,7 +277,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -295,7 +295,7 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.DataGridView listadoUsuarios;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.TextBox username;

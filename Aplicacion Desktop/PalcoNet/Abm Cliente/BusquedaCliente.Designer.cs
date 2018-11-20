@@ -40,10 +40,10 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
+            this.listadoClientes = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
-            this.CUIL = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.nDoc = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoClientes)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -187,18 +187,18 @@
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
-            // listadoActualRoles
+            // listadoClientes
             // 
-            this.listadoActualRoles.AllowUserToAddRows = false;
-            this.listadoActualRoles.AllowUserToDeleteRows = false;
-            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualRoles.Location = new System.Drawing.Point(210, 248);
-            this.listadoActualRoles.MultiSelect = false;
-            this.listadoActualRoles.Name = "listadoActualRoles";
-            this.listadoActualRoles.ReadOnly = true;
-            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualRoles.Size = new System.Drawing.Size(742, 357);
-            this.listadoActualRoles.TabIndex = 10;
+            this.listadoClientes.AllowUserToAddRows = false;
+            this.listadoClientes.AllowUserToDeleteRows = false;
+            this.listadoClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoClientes.Location = new System.Drawing.Point(210, 248);
+            this.listadoClientes.MultiSelect = false;
+            this.listadoClientes.Name = "listadoClientes";
+            this.listadoClientes.ReadOnly = true;
+            this.listadoClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoClientes.Size = new System.Drawing.Size(742, 357);
+            this.listadoClientes.TabIndex = 10;
             // 
             // button1
             // 
@@ -224,12 +224,12 @@
             this.btn_buscar.Text = "Buscar ";
             this.btn_buscar.UseVisualStyleBackColor = false;
             // 
-            // CUIL
+            // email
             // 
-            this.CUIL.Location = new System.Drawing.Point(299, 222);
-            this.CUIL.Name = "CUIL";
-            this.CUIL.Size = new System.Drawing.Size(247, 20);
-            this.CUIL.TabIndex = 24;
+            this.email.Location = new System.Drawing.Point(299, 222);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(247, 20);
+            this.email.TabIndex = 24;
             // 
             // label5
             // 
@@ -331,7 +331,7 @@
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
             this.Controls.Add(this.btn_limpiar);
-            this.Controls.Add(this.CUIL);
+            this.Controls.Add(this.email);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.nDoc);
             this.Controls.Add(this.label4);
@@ -343,7 +343,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listadoActualRoles);
+            this.Controls.Add(this.listadoClientes);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -361,7 +361,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoClientes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,11 +379,11 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.DataGridView listadoClientes;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox CUIL;
+        private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox nDoc;
         private System.Windows.Forms.Label label4;
