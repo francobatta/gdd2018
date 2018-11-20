@@ -25,6 +25,6 @@ using System.Threading.Tasks;
         public class Letras : RegexType
         {
             public String Regex() { return @"^[a-zA-Z]+$"; }
-            public String Significado() { return "por lo menos una letra"; }
+            public String Significado() { return "solo letras"; }
         }
     }

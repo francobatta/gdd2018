@@ -28,7 +28,7 @@ using System.Windows.Forms;
                 Validaciones.inicializarValidador();
                 Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
                 Validaciones.esValido(apellido.Name, apellido.Text, new Validaciones.Letras());
-                if (Validaciones.camposInvalidos != default(string))
+                if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                     throw new CamposInvalidosException();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
