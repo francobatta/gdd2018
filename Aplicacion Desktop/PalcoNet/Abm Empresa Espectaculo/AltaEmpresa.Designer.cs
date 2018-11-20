@@ -166,10 +166,9 @@
             this.label17.Location = new System.Drawing.Point(4, 55);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(187, 85);
+            this.label17.Size = new System.Drawing.Size(188, 170);
             this.label17.TabIndex = 50;
-            this.label17.Text = "Cuando la empresa se dé de alta, se le generará un usuario de primer acceso al si" +
-    "stema, cuyo username es igual a su N° de CUIT.";
+            this.label17.Text = resources.GetString("label17.Text");
             // 
             // label1
             // 

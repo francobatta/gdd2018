@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PalcoNet.Abm_Grado
+namespace PalcoNet.Registro_de_Usuario
 {
     public partial class BusquedaRol : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Abm_Grado
+﻿namespace PalcoNet.Registro_de_Usuario
 {
     partial class ElegirGrado
     {
@@ -38,13 +38,16 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
-            this.btn_seleccionar = new System.Windows.Forms.Button();
+            this.btn_guardar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.descripcion = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gradoActual = new System.Windows.Forms.Label();
+            this.grados = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -114,7 +117,7 @@
             this.topbar.Dock = System.Windows.Forms.DockStyle.Top;
             this.topbar.Location = new System.Drawing.Point(200, 0);
             this.topbar.Name = "topbar";
-            this.topbar.Size = new System.Drawing.Size(829, 49);
+            this.topbar.Size = new System.Drawing.Size(339, 49);
             this.topbar.TabIndex = 1;
             // 
             // minimizingLabel
@@ -123,7 +126,7 @@
             this.minimizingLabel.BackColor = System.Drawing.Color.Transparent;
             this.minimizingLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizingLabel.ForeColor = System.Drawing.Color.White;
-            this.minimizingLabel.Location = new System.Drawing.Point(761, 11);
+            this.minimizingLabel.Location = new System.Drawing.Point(270, 11);
             this.minimizingLabel.Name = "minimizingLabel";
             this.minimizingLabel.Size = new System.Drawing.Size(34, 25);
             this.minimizingLabel.TabIndex = 4;
@@ -147,25 +150,25 @@
             this.closingLabel.BackColor = System.Drawing.Color.Transparent;
             this.closingLabel.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.closingLabel.ForeColor = System.Drawing.Color.White;
-            this.closingLabel.Location = new System.Drawing.Point(793, 11);
+            this.closingLabel.Location = new System.Drawing.Point(302, 11);
             this.closingLabel.Name = "closingLabel";
             this.closingLabel.Size = new System.Drawing.Size(26, 25);
             this.closingLabel.TabIndex = 2;
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
-            // btn_seleccionar
+            // btn_guardar
             // 
-            this.btn_seleccionar.BackColor = System.Drawing.Color.LightGreen;
-            this.btn_seleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_seleccionar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_seleccionar.Location = new System.Drawing.Point(536, 329);
-            this.btn_seleccionar.Name = "btn_seleccionar";
-            this.btn_seleccionar.Size = new System.Drawing.Size(481, 67);
-            this.btn_seleccionar.TabIndex = 9;
-            this.btn_seleccionar.Text = "Guardar";
-            this.btn_seleccionar.UseVisualStyleBackColor = false;
-            this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
+            this.btn_guardar.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_guardar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_guardar.Location = new System.Drawing.Point(364, 329);
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(164, 67);
+            this.btn_guardar.TabIndex = 9;
+            this.btn_guardar.Text = "Guardar";
+            this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
             // label1
             // 
@@ -233,21 +236,55 @@
             this.gradoActual.TabIndex = 14;
             this.gradoActual.Text = "-";
             // 
+            // grados
+            // 
+            this.grados.FormattingEnabled = true;
+            this.grados.Location = new System.Drawing.Point(210, 222);
+            this.grados.Name = "grados";
+            this.grados.Size = new System.Drawing.Size(318, 21);
+            this.grados.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(210, 198);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(318, 21);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Elija el nuevo grado para la publicación";
+            // 
+            // btn_limpiar
+            // 
+            this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
+            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar.Location = new System.Drawing.Point(210, 329);
+            this.btn_limpiar.Name = "btn_limpiar";
+            this.btn_limpiar.Size = new System.Drawing.Size(148, 67);
+            this.btn_limpiar.TabIndex = 17;
+            this.btn_limpiar.Text = "Limpiar";
+            this.btn_limpiar.UseVisualStyleBackColor = false;
+            // 
             // ElegirGrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1029, 408);
+            this.ClientSize = new System.Drawing.Size(539, 408);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_limpiar);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.grados);
             this.Controls.Add(this.gradoActual);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.descripcion);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.id);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_seleccionar);
+            this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -278,7 +315,7 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
-        private System.Windows.Forms.Button btn_seleccionar;
+        private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label id;
@@ -286,6 +323,9 @@
         private System.Windows.Forms.Label descripcion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label gradoActual;
+        private System.Windows.Forms.ComboBox grados;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_limpiar;
 
     }
 }

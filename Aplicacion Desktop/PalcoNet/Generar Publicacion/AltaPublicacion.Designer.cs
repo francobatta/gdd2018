@@ -57,7 +57,7 @@
             this.btn_guardar = new System.Windows.Forms.Button();
             this.listaFechasEspectaculo = new System.Windows.Forms.ListBox();
             this.btn_agregarFechaEspectaculo = new System.Windows.Forms.Button();
-            this.btn_SacarFechaSeleccionada = new System.Windows.Forms.Button();
+            this.btn_eliminarFechaSeleccionada = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -69,16 +69,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.estado = new System.Windows.Forms.ComboBox();
             this.listaUbicaciones = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.filaUbicacion = new System.Windows.Forms.TextBox();
+            this.asientoUbicacion = new System.Windows.Forms.TextBox();
+            this.precioUbicacion = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.tipoUbicacion = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.btn_agregarUbicacion = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_eliminarUbicacionSeleccionada = new System.Windows.Forms.Button();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -184,10 +184,11 @@
             this.label17.Location = new System.Drawing.Point(4, 55);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(178, 119);
+            this.label17.Size = new System.Drawing.Size(180, 153);
             this.label17.TabIndex = 50;
             this.label17.Text = "A través de la funcionalidad Fechas de espectáculo, el usuario puede generar publ" +
-    "icaciones cuya fecha de espectáculo aumente en forma incremental.";
+    "icaciones cuya fecha de espectáculo aumente en forma incremental. Las mismas se " +
+    "insertarán en forma de lote.";
             // 
             // label1
             // 
@@ -368,17 +369,17 @@
             this.btn_agregarFechaEspectaculo.Text = "Agregar Fecha";
             this.btn_agregarFechaEspectaculo.UseVisualStyleBackColor = false;
             // 
-            // btn_SacarFechaSeleccionada
+            // btn_eliminarFechaSeleccionada
             // 
-            this.btn_SacarFechaSeleccionada.BackColor = System.Drawing.Color.DarkOrange;
-            this.btn_SacarFechaSeleccionada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_SacarFechaSeleccionada.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_SacarFechaSeleccionada.Location = new System.Drawing.Point(732, 146);
-            this.btn_SacarFechaSeleccionada.Name = "btn_SacarFechaSeleccionada";
-            this.btn_SacarFechaSeleccionada.Size = new System.Drawing.Size(168, 67);
-            this.btn_SacarFechaSeleccionada.TabIndex = 52;
-            this.btn_SacarFechaSeleccionada.Text = "Eliminar Fecha elegida";
-            this.btn_SacarFechaSeleccionada.UseVisualStyleBackColor = false;
+            this.btn_eliminarFechaSeleccionada.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_eliminarFechaSeleccionada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminarFechaSeleccionada.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminarFechaSeleccionada.Location = new System.Drawing.Point(732, 146);
+            this.btn_eliminarFechaSeleccionada.Name = "btn_eliminarFechaSeleccionada";
+            this.btn_eliminarFechaSeleccionada.Size = new System.Drawing.Size(168, 67);
+            this.btn_eliminarFechaSeleccionada.TabIndex = 52;
+            this.btn_eliminarFechaSeleccionada.Text = "Eliminar Fecha elegida";
+            this.btn_eliminarFechaSeleccionada.UseVisualStyleBackColor = false;
             // 
             // label2
             // 
@@ -478,26 +479,26 @@
             this.listaUbicaciones.Size = new System.Drawing.Size(336, 95);
             this.listaUbicaciones.TabIndex = 63;
             // 
-            // textBox1
+            // filaUbicacion
             // 
-            this.textBox1.Location = new System.Drawing.Point(210, 198);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(26, 20);
-            this.textBox1.TabIndex = 64;
+            this.filaUbicacion.Location = new System.Drawing.Point(210, 198);
+            this.filaUbicacion.Name = "filaUbicacion";
+            this.filaUbicacion.Size = new System.Drawing.Size(46, 20);
+            this.filaUbicacion.TabIndex = 64;
             // 
-            // textBox2
+            // asientoUbicacion
             // 
-            this.textBox2.Location = new System.Drawing.Point(313, 198);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(26, 20);
-            this.textBox2.TabIndex = 65;
+            this.asientoUbicacion.Location = new System.Drawing.Point(313, 198);
+            this.asientoUbicacion.Name = "asientoUbicacion";
+            this.asientoUbicacion.Size = new System.Drawing.Size(53, 20);
+            this.asientoUbicacion.TabIndex = 65;
             // 
-            // textBox3
+            // precioUbicacion
             // 
-            this.textBox3.Location = new System.Drawing.Point(416, 198);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(26, 20);
-            this.textBox3.TabIndex = 66;
+            this.precioUbicacion.Location = new System.Drawing.Point(416, 198);
+            this.precioUbicacion.Name = "precioUbicacion";
+            this.precioUbicacion.Size = new System.Drawing.Size(45, 20);
+            this.precioUbicacion.TabIndex = 66;
             // 
             // label7
             // 
@@ -559,17 +560,17 @@
             this.btn_agregarUbicacion.Text = "Agregar Ubicación";
             this.btn_agregarUbicacion.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btn_eliminarUbicacionSeleccionada
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkOrange;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(384, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 30);
-            this.button1.TabIndex = 74;
-            this.button1.Text = "Eliminar Ubicación elegida";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_eliminarUbicacionSeleccionada.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_eliminarUbicacionSeleccionada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminarUbicacionSeleccionada.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminarUbicacionSeleccionada.Location = new System.Drawing.Point(384, 226);
+            this.btn_eliminarUbicacionSeleccionada.Name = "btn_eliminarUbicacionSeleccionada";
+            this.btn_eliminarUbicacionSeleccionada.Size = new System.Drawing.Size(162, 30);
+            this.btn_eliminarUbicacionSeleccionada.TabIndex = 74;
+            this.btn_eliminarUbicacionSeleccionada.Text = "Eliminar Ubicación elegida";
+            this.btn_eliminarUbicacionSeleccionada.UseVisualStyleBackColor = false;
             // 
             // AltaPublicacion
             // 
@@ -579,16 +580,16 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_eliminarUbicacionSeleccionada);
             this.Controls.Add(this.btn_agregarUbicacion);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.tipoUbicacion);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.precioUbicacion);
+            this.Controls.Add(this.asientoUbicacion);
+            this.Controls.Add(this.filaUbicacion);
             this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.label6);
@@ -600,7 +601,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btn_SacarFechaSeleccionada);
+            this.Controls.Add(this.btn_eliminarFechaSeleccionada);
             this.Controls.Add(this.btn_agregarFechaEspectaculo);
             this.Controls.Add(this.listaFechasEspectaculo);
             this.Controls.Add(this.btn_limpiar);
@@ -671,7 +672,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ListBox listaFechasEspectaculo;
         private System.Windows.Forms.Button btn_agregarFechaEspectaculo;
-        private System.Windows.Forms.Button btn_SacarFechaSeleccionada;
+        private System.Windows.Forms.Button btn_eliminarFechaSeleccionada;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
@@ -683,16 +684,16 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox estado;
         private System.Windows.Forms.ListBox listaUbicaciones;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox filaUbicacion;
+        private System.Windows.Forms.TextBox asientoUbicacion;
+        private System.Windows.Forms.TextBox precioUbicacion;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox tipoUbicacion;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btn_agregarUbicacion;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_eliminarUbicacionSeleccionada;
 
     }
 }

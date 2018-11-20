@@ -1,4 +1,4 @@
-﻿namespace PalcoNet.Abm_Grado
+﻿namespace PalcoNet.Registro_de_Usuario
 {
     partial class BusquedaPublicacion
     {

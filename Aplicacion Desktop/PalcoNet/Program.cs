@@ -16,7 +16,7 @@ namespace PalcoNet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PalcoNet.Abm_Grado.MainWindow()); //PA MOSTRAR EL PROGRAMA
+            Application.Run(new PalcoNet.Registro_de_Usuario.AltaUsuario()); //PA MOSTRAR EL PROGRAMA
             //objetito jijo = new objetito();
             //objetito jijo2 = new objetito();
             //jijo.Espec_Empresa_Razon_Social = "jijto"; // tengo un objeto trucho jijoo, esto es solo de prueba hice una Table_1 y meti unas boludeces

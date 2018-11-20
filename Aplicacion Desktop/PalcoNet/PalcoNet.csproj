@@ -129,6 +129,24 @@
     <Compile Include="Historial Cliente\BusquedaComprasCliente.Designer.cs">
       <DependentUpon>BusquedaComprasCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\AltaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\AltaUsuario.Designer.cs">
+      <DependentUpon>AltaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro de Usuario\BusquedaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
+      <DependentUpon>BusquedaUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro de Usuario\RegistraUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro de Usuario\RegistraUsuario.Designer.cs">
+      <DependentUpon>RegistraUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Validaciones.cs" />
     <Compile Include="queryTypes.cs" />
     <Compile Include="Canje Puntos\Form1.cs">
@@ -169,12 +187,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro de Usuario\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Registro de Usuario\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Abm Cliente\AltaCliente.resx">
       <DependentUpon>AltaCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +235,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Registro de Usuario\AltaUsuario.resx">
+      <DependentUpon>AltaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario\BusquedaUsuario.resx">
+      <DependentUpon>BusquedaUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro de Usuario\RegistraUsuario.resx">
+      <DependentUpon>RegistraUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

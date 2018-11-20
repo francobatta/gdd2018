@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace PalcoNet.Registro_de_Usuario
 {
-    public partial class BusquedaCliente : Form
+    public partial class BusquedaUsuario : Form
     {
-        public BusquedaCliente()
+        public BusquedaUsuario()
         {
             InitializeComponent();
         }
-        private void BusquedaCliente_Load(object sender, EventArgs e)
+        private void BusquedaUsuario_Load(object sender, EventArgs e)
         {
 
         }

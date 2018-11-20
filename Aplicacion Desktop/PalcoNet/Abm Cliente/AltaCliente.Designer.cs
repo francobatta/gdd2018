@@ -185,10 +185,9 @@
             this.label17.Location = new System.Drawing.Point(4, 55);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(190, 85);
+            this.label17.Size = new System.Drawing.Size(190, 153);
             this.label17.TabIndex = 50;
-            this.label17.Text = "Cuando ud. se dé de alta, se le generará un usuario de primer acceso al sistema, " +
-    "cuyo username es igual a su N° de CUIL.";
+            this.label17.Text = resources.GetString("label17.Text");
             // 
             // label1
             // 
