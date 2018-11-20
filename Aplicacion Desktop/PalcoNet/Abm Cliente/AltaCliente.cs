@@ -25,28 +25,35 @@ using System.Windows.Forms;
         {
             try
             {
-                Validaciones.inicializarValidador();
-                Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
-                Validaciones.esValido(apellido.Name, apellido.Text, new Validaciones.Letras());
-                Validaciones.esValido(tipoDoc.Name, tipoDoc.Text, new Validaciones.Letras());
-                Validaciones.esValido(nDoc.Name, nDoc.Text, new Validaciones.Numeros());
-                Validaciones.esValido(CUIL.Name, CUIL.Text, new Validaciones.Numeros());
-                Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
-                Validaciones.esValido(telefono.Name, telefono.Text, new Validaciones.NumerosGuion());
-                Validaciones.esValido(localidad.Name, localidad.Text, new Validaciones.NumerosLetrasGuion());
-                Validaciones.esValido(ciudad.Name, ciudad.Text, new Validaciones.NumerosLetrasGuion());
-                Validaciones.esValido(calle.Name, calle.Text, new Validaciones.NumerosLetrasGuion());
-                Validaciones.esValido(piso.Name, piso.Text, new Validaciones.NumerosGuion());
-                Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
-                Validaciones.esValido(cpostal.Name, cpostal.Text, new Validaciones.Numeros());
-                Validaciones.esValido(nroTarjeta.Name, nroTarjeta.Text, new Validaciones.Numeros());
-                Validaciones.esValido(codSeguridad.Name, codSeguridad.Text, new Validaciones.Numeros());
-                Validaciones.esValido(nombreTitularTarjeta.Name, nombreTitularTarjeta.Text, new Validaciones.Letras());
-                Validaciones.esValido(tipoTarjeta.Name, tipoTarjeta.Text, new Validaciones.Letras());
-                if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
-                    throw new CamposInvalidosException();
+                validarCamposCliente();
+                // armar objetito cliente
+                // validar PK no repetida contra la base usando BDManager
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void validarCamposCliente()
+        {
+            Validaciones.inicializarValidador();
+            Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
+            Validaciones.esValido(apellido.Name, apellido.Text, new Validaciones.Letras());
+            Validaciones.esValido(tipoDoc.Name, tipoDoc.Text, new Validaciones.Letras());
+            Validaciones.esValido(nDoc.Name, nDoc.Text, new Validaciones.Numeros());
+            Validaciones.esValido(CUIL.Name, CUIL.Text, new Validaciones.Numeros());
+            Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
+            Validaciones.esValido(telefono.Name, telefono.Text, new Validaciones.NumerosGuion());
+            Validaciones.esValido(localidad.Name, localidad.Text, new Validaciones.NumerosLetrasGuion());
+            Validaciones.esValido(ciudad.Name, ciudad.Text, new Validaciones.NumerosLetrasGuion());
+            Validaciones.esValido(calle.Name, calle.Text, new Validaciones.NumerosLetrasGuion());
+            Validaciones.esValido(piso.Name, piso.Text, new Validaciones.NumerosGuion());
+            Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
+            Validaciones.esValido(cpostal.Name, cpostal.Text, new Validaciones.Numeros());
+            Validaciones.esValido(nroTarjeta.Name, nroTarjeta.Text, new Validaciones.Numeros());
+            Validaciones.esValido(codSeguridad.Name, codSeguridad.Text, new Validaciones.Numeros());
+            Validaciones.esValido(nombreTitularTarjeta.Name, nombreTitularTarjeta.Text, new Validaciones.Letras());
+            Validaciones.esValido(tipoTarjeta.Name, tipoTarjeta.Text, new Validaciones.Letras());
+            if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                throw new CamposInvalidosException();
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)

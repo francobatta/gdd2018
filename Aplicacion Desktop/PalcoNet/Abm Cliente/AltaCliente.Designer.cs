@@ -311,9 +311,12 @@
             // 
             this.fechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fechaNac.Location = new System.Drawing.Point(390, 352);
+            this.fechaNac.MaxDate = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
+            this.fechaNac.MinDate = new System.DateTime(1900, 2, 1, 0, 0, 0, 0);
             this.fechaNac.Name = "fechaNac";
             this.fechaNac.Size = new System.Drawing.Size(156, 20);
             this.fechaNac.TabIndex = 19;
+            this.fechaNac.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
             // label8
             // 
@@ -524,9 +527,12 @@
             // 
             this.fechavtotarjeta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fechavtotarjeta.Location = new System.Drawing.Point(712, 265);
+            this.fechavtotarjeta.MaxDate = new System.DateTime(2030, 12, 29, 0, 0, 0, 0);
+            this.fechavtotarjeta.MinDate = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             this.fechavtotarjeta.Name = "fechavtotarjeta";
             this.fechavtotarjeta.Size = new System.Drawing.Size(214, 20);
             this.fechavtotarjeta.TabIndex = 46;
+            this.fechavtotarjeta.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
             // tipoTarjeta
             // 
