@@ -45,6 +45,7 @@
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.passwordAnterior = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -134,6 +135,7 @@
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.sidepanel.Controls.Add(this.label2);
             this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
@@ -223,6 +225,18 @@
             this.label4.TabIndex = 52;
             this.label4.Text = "Contraseña";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(5, 62);
+            this.label2.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 170);
+            this.label2.TabIndex = 51;
+            this.label2.Text = resources.GetString("label2.Text");
+            // 
             // LoginInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +290,7 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox passwordAnterior;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label2;
 
     }
 }
