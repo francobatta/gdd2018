@@ -8,6 +8,11 @@ C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\Palco
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
 C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.MainWindow.resources
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Rol.MainWindow.resources
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Rol.BusquedaRol.resources
-C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Rol.ModificaRol.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.BusquedaCliente.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.ModificaCliente.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Cliente.AltaEmpresa.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.BusquedaEmpresa.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.ModificaEmpresa.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.MainWindow.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.BusquedaRol.resources
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Abm_Empresa.ModificaRol.resources
