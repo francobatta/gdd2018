@@ -88,7 +88,6 @@
     </Compile>
     <Compile Include="BDManager.cs" />
     <Compile Include="Validaciones.cs" />
-    <Compile Include="Layout_forms\Class1.cs" />
     <Compile Include="queryTypes.cs" />
     <Compile Include="Canje Puntos\Form1.cs">
       <SubType>Form</SubType>
