@@ -87,7 +87,7 @@ CREATE TABLE EQUISDE.cliente(
 
 CREATE TABLE EQUISDE.rol(
 	id_rol bigint PRIMARY KEY IDENTITY,
-	nombre nvarchar(255),
+	nombre nvarchar(255) UNIQUE,
 	habilitado bit
 )
 

@@ -56,6 +56,9 @@
     <Compile Include="Abm Cliente\BusquedaCliente.Designer.cs">
       <DependentUpon>BusquedaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Rol\rol_x_funcionalidad.cs" />
+    <Compile Include="Abm Rol\funcionalidad.cs" />
+    <Compile Include="Abm Rol\rol.cs" />
     <Compile Include="CamposInvalidosException.cs" />
     <Compile Include="Abm Cliente\ModificaCliente.cs">
       <SubType>Form</SubType>

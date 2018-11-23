@@ -17,7 +17,8 @@ using System.Windows.Forms;
         }
         private void AltaRol_Load(object sender, EventArgs e)
         {
-            BDManager.fillComboBoxFrom("SELECT id_funcionalidad,nombre FROM EQUISDE.funcionalidad",funcionalidades);
+            BDManager.fillComboBoxFrom("SELECT * FROM EQUISDE.funcionalidad",new funcionalidad(),funcionalidades);
+            listaFuncionalidadesAsignadas.DisplayMember = funcionalidades.DisplayMember;
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -44,5 +45,44 @@ using System.Windows.Forms;
         {
             nombre.Text = default(String);
             listaFuncionalidadesAsignadas.Items.Clear();
+        }
+
+        private void btn_agregar_Click(object sender, EventArgs e)
+        {
+        if(funcionalidades.SelectedItem != null && !listaFuncionalidadesAsignadas.Items.Contains(funcionalidades.SelectedItem))
+            listaFuncionalidadesAsignadas.Items.Add(funcionalidades.SelectedItem);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            listaFuncionalidadesAsignadas.Items.Remove(listaFuncionalidadesAsignadas.SelectedItem);
+        }
+
+        private void btn_guardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Validaciones.inicializarValidador();
+                Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
+                Validaciones.esValido("Funcionalidades asignadas", listaFuncionalidadesAsignadas.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
+                if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                    throw new CamposInvalidosException();
+                // fin validaciones regex
+                if (BDManager.exists("rol", "nombre", nombre.Text)) MessageBox.Show("Nombre del rol repetido", "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                {
+                    BDManager.insertInto("rol", new rol { nombre = nombre.Text, habilitado = "1" });
+                    rol rolDummy = new rol();
+                    BDManager.selectIntoObjectByString("rol", "nombre", nombre.Text, rolDummy);
+                    foreach (var f in listaFuncionalidadesAsignadas.Items)
+                    {
+                        System.Type type = f.GetType();
+                        String id = (String)type.GetProperty("id_funcionalidad").GetValue(f);
+                        
+                        BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = id, id_rol= rolDummy.id_rol});
+                    }
+                }
+            }
+            catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
     }
