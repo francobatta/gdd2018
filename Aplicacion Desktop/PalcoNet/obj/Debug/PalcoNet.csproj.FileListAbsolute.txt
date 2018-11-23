@@ -1,1 +1,2 @@
 \\VBOXSVR\PalcoNet\src\PalcoNet\bin\Debug\PalcoNet.exe.config
+C:\Users\Franc6\source\repos\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.exe.config
