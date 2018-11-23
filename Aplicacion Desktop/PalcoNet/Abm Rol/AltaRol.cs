@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.BDManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ using System.Windows.Forms;
         }
         private void AltaRol_Load(object sender, EventArgs e)
         {
-
+            BDManager.fillComboBoxFrom("SELECT id_funcionalidad,nombre FROM EQUISDE.funcionalidad",funcionalidades);
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)

@@ -219,7 +219,7 @@
             this.btn_limpiar.UseVisualStyleBackColor = false;
             this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
-            // MainWindow
+            // AltaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -240,7 +240,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainWindow";
+            this.Name = "AltaRol";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.AltaRol_Load);
             this.sidepanel.ResumeLayout(false);

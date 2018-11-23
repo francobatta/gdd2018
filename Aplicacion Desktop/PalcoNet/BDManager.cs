@@ -13,6 +13,7 @@ namespace PalcoNet.BDManager
     {
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        public static ComboBox toFill { get; set; }
         private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -69,6 +70,11 @@ namespace PalcoNet.BDManager
                 command.Dispose();
             }
         }
+        public static void fillComboBoxFrom(String s, ComboBox c)
+        {
+            toFill = c;
+            queryOptionalObject(s, queryTypes.FILL_COMBOBOX);
+        }
         private static void appendList(StringBuilder sql, String[] s, String preceding = default(string), String appendIfNotLast = ",", String appendIfLast = ")") // no es del dominio, hace appends a un string
         {
             foreach (String st in s)
@@ -83,7 +89,8 @@ namespace PalcoNet.BDManager
     }
     public enum queryTypes
     {
-        NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY
+        NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY,
+        FILL_COMBOBOX
     }
     public static class Extensions
     {
@@ -130,6 +137,18 @@ namespace PalcoNet.BDManager
                         MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun");
                         reader.Close();
                         break; }
+                case queryTypes.FILL_COMBOBOX:
+                    {
+                        SqlDataReader reader = BDManager.command.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            BDManager.toFill.Items.Add(new { id = reader.GetString(0), name = reader.GetString(1) });
+                        }
+                        BDManager.toFill.ValueMember = "id";
+                        BDManager.toFill.DisplayMember = "name";
+                        reader.Close();
+                        break;
+                    }
             }
         }
     }
