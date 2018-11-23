@@ -26,7 +26,7 @@ namespace PalcoNet.BDManager
         public static void delete(String tableName, String idColumn , object o = null)
         {
             myObj = o;
-            var sql = new StringBuilder("DELETE FROM " + tableName);
+            var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
             if (!myObj.Equals(null))
                 sql.Append(" WHERE " + idColumn + "=" + Extensions.getIdFromObj());
             MessageBox.Show(sql.ToString());
@@ -35,7 +35,7 @@ namespace PalcoNet.BDManager
         public static void updateSet(String tableName, object o)
         {
             myObj = o;
-            var sql = new StringBuilder("UPDATE " + tableName + " SET ");
+            var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate,"",",","");
             sql.Append(" WHERE id=" + Extensions.getIdFromObj().First().GetValue(myObj));
@@ -45,21 +45,47 @@ namespace PalcoNet.BDManager
         public static void insertInto(String tableName, object o)
         {
             myObj = o;
-            var sql = new StringBuilder("INSERT INTO " + tableName + " (");
+            var sql = new StringBuilder("INSERT INTO EQUISDE." + tableName + " (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray());
             sql.Append(" VALUES (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
+        public static bool exists(String tableName, String campo, String valor)
+        {
+            using (SqlConnection connection = new SqlConnection(getConnectionString()))
+            {
+                connection.Open();
+                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'");
+                command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'", connection);
+                SqlDataReader reader = BDManager.command.ExecuteReader();
+                if (reader.Read()) return true;
+                reader.Close();
+                command.Dispose();
+                return false;
+            }
+        }
+        public static void genericFillObject(String query, object o)
+        {
+            myObj = o;
+            queryOptionalObject(query, queryTypes.SINGLE_RETURNING_QUERY);
+            o = myObj;
+        }
         public static void selectIntoObject(String tableName, String idColumn, String id, Object o)
         {
             myObj = o;
-            var sql = "SELECT * FROM " + tableName + " WHERE " + idColumn + "=" + id;
+            var sql = "SELECT * FROM EQUISDE." + tableName + " WHERE " + idColumn + "=" + id;
             MessageBox.Show(sql);
             queryOptionalObject(sql, queryTypes.SINGLE_RETURNING_QUERY);
-        } // Llena el objeto que le pases de acuerdo al tableName e id que la pases. EN la bd la columna id debe llamarse id
-        // La condicion es que los atributos del mismo coincidan con los nombres de los columnas de la tabla (se puede hacer mas generico como que tablename sea de acuerdo al nombre de la clase)
+        }
+        public static void selectIntoObjectByString(String tableName, String col, String val, Object o)
+        {
+            myObj = o;
+            var sql = "SELECT * FROM EQUISDE." + tableName + " WHERE " + col + "='" + val + "'";
+            MessageBox.Show(sql);
+            queryOptionalObject(sql, queryTypes.SINGLE_RETURNING_QUERY);
+        }
         public static void queryOptionalObject(String sqlQuery, queryTypes qt = queryTypes.NON_RETURNING_QUERY)
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
@@ -70,9 +96,10 @@ namespace PalcoNet.BDManager
                 command.Dispose();
             }
         }
-        public static void fillComboBoxFrom(String s, ComboBox c)
+        public static void fillComboBoxFrom(String s, object o, ComboBox c)
         {
             toFill = c;
+            myObj = o;
             queryOptionalObject(s, queryTypes.FILL_COMBOBOX);
         }
         private static void appendList(StringBuilder sql, String[] s, String preceding = default(string), String appendIfNotLast = ",", String appendIfLast = ")") // no es del dominio, hace appends a un string
@@ -98,13 +125,13 @@ namespace PalcoNet.BDManager
         {
             Type myType = BDManager.myObj.GetType();
             PropertyInfo[] props = myType.GetProperties();
-            return props.Where(p => p.Name != "id").ToArray();
+            return props.Where(p => p.Name != "id_"+myType.Name).ToArray();
         }
         public static PropertyInfo[] getIdFromObj() // no es del dominio, obtiene el id de un objeto estatico X
         {
             Type myType = BDManager.myObj.GetType();
             PropertyInfo[] props = myType.GetProperties();
-            return props.Where(p => p.Name == "id").ToArray();
+            return props.Where(p => p.Name == "id_"+myType.Name).ToArray();
         }
         public static void DoStuff(this queryTypes q)
         {
@@ -123,11 +150,11 @@ namespace PalcoNet.BDManager
                         reader.Read();
                         foreach (PropertyInfo p in getPropertiesFromObj())
                         {
-                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ?  default(string) : reader[p.Name]));
+                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ?  default(string) : reader[p.Name].ToString()));
                         }
                         foreach (PropertyInfo p in getIdFromObj())
                         {
-                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name]));
+                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
                         } // en el caso del insert es necesario otorgar el id al objeto
                         reader.Close();
                         break; } 
@@ -142,10 +169,11 @@ namespace PalcoNet.BDManager
                         SqlDataReader reader = BDManager.command.ExecuteReader();
                         while (reader.Read())
                         {
-                            BDManager.toFill.Items.Add(new { id = reader.GetString(0), name = reader.GetString(1) });
+                            BDManager.toFill.Items.Add(new { id = reader["id_"+BDManager.myObj.GetType().Name].ToString(), nombre = reader["nombre"].ToString() });
                         }
                         BDManager.toFill.ValueMember = "id";
-                        BDManager.toFill.DisplayMember = "name";
+                        BDManager.toFill.DisplayMember = "nombre";
+                        BDManager.toFill.SelectedIndex = 0;
                         reader.Close();
                         break;
                     }

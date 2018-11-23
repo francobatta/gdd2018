@@ -42,6 +42,11 @@ using System.Threading.Tasks;
             public String Regex() { return @"^([a-zA-Z0-9-]+\s*[a-zA-Z0-9-]+)+$"; }
             public String Significado() { return "números, letras, guión"; }
         }
+        public class NumeroNoCreo : RegexType
+        {
+            public String Regex() { return @"^[1-9]+$"; }
+            public String Significado() { return "número no cero"; }
+        }
         public class Email : RegexType
         {
             public String Regex()
