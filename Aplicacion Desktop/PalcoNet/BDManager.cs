@@ -22,12 +22,12 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
-        public static void delete(String tableName, object o = null)
+        public static void delete(String tableName, String idColumn , object o = null)
         {
             myObj = o;
             var sql = new StringBuilder("DELETE FROM " + tableName);
             if (!myObj.Equals(null))
-                sql.Append(" WHERE id=" + Extensions.getIdFromObj());
+                sql.Append(" WHERE " + idColumn + "=" + Extensions.getIdFromObj());
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
@@ -51,10 +51,10 @@ namespace PalcoNet.BDManager
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
-        public static void selectIntoObject(String tableName, String id, Object o)
+        public static void selectIntoObject(String tableName, String idColumn, String id, Object o)
         {
             myObj = o;
-            var sql = "SELECT * FROM " + tableName + " WHERE id=" + id;
+            var sql = "SELECT * FROM " + tableName + " WHERE " + idColumn + "=" + id;
             MessageBox.Show(sql);
             queryOptionalObject(sql, queryTypes.SINGLE_RETURNING_QUERY);
         } // Llena el objeto que le pases de acuerdo al tableName e id que la pases. EN la bd la columna id debe llamarse id
