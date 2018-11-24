@@ -22,9 +22,10 @@ using System.Windows.Forms;
         {
             nombre.Text = rolAModificar.nombre;
             // estados
-            estadoRol.Items.Add("True");
-            estadoRol.Items.Add("False");
-            estadoRol.SelectedItem = rolAModificar.habilitado;
+            if (rolAModificar.habilitado == "False")
+                btn_habilitar_rol.Enabled = true;
+            else
+                btn_habilitar_rol.Enabled = false;
             // todas funcionalidades
             List<object> listaFuncionalidadesGeneralesBD = BDManager.getList("SELECT * FROM EQUISDE.funcionalidad", new funcionalidad());
             List<funcionalidad> listaFuncionalidadesGenerales = listaFuncionalidadesGeneralesBD.Cast<funcionalidad>().ToList();
@@ -96,7 +97,6 @@ using System.Windows.Forms;
                     throw new CamposInvalidosException();
                 // fin validaciones regex
                 rolAModificar.nombre = nombre.Text;
-                rolAModificar.habilitado = estadoRol.Text;
                 BDManager.updateSet("rol", "id_rol", rolAModificar);
                 BDManager.deleteByField("rol_x_funcionalidad", "id_rol", rolAModificar.id_rol);
                 foreach (funcionalidad f in listaFuncionalidadesAsignadas.Items)
@@ -106,5 +106,11 @@ using System.Windows.Forms;
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
+        }
+
+        private void btn_habilitar_rol_Click(object sender, EventArgs e)
+        {
+            rolAModificar.habilitado = "True";
+            btn_habilitar_rol.Enabled = false;
         }
     }

@@ -43,10 +43,10 @@
             this.label = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_limpiar = new System.Windows.Forms.Button();
-            this.estadoRol = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.btn_eliminar = new System.Windows.Forms.Button();
             this.btn_agregar = new System.Windows.Forms.Button();
+            this.btn_habilitar_rol = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,6 +56,7 @@
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
@@ -186,7 +187,7 @@
             this.listaFuncionalidadesAsignadas.ItemHeight = 24;
             this.listaFuncionalidadesAsignadas.Location = new System.Drawing.Point(210, 121);
             this.listaFuncionalidadesAsignadas.Name = "listaFuncionalidadesAsignadas";
-            this.listaFuncionalidadesAsignadas.Size = new System.Drawing.Size(742, 460);
+            this.listaFuncionalidadesAsignadas.Size = new System.Drawing.Size(742, 436);
             this.listaFuncionalidadesAsignadas.TabIndex = 6;
             // 
             // label
@@ -225,25 +226,6 @@
             this.btn_limpiar.UseVisualStyleBackColor = false;
             this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
-            // estadoRol
-            // 
-            this.estadoRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.estadoRol.FormattingEnabled = true;
-            this.estadoRol.Location = new System.Drawing.Point(335, 584);
-            this.estadoRol.Name = "estadoRol";
-            this.estadoRol.Size = new System.Drawing.Size(176, 21);
-            this.estadoRol.TabIndex = 10;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(206, 584);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 21);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Estado del Rol:";
-            // 
             // btn_eliminar
             // 
             this.btn_eliminar.BackColor = System.Drawing.Color.DeepPink;
@@ -270,6 +252,31 @@
             this.btn_agregar.UseVisualStyleBackColor = false;
             this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
+            // btn_habilitar_rol
+            // 
+            this.btn_habilitar_rol.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_habilitar_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_habilitar_rol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_habilitar_rol.Location = new System.Drawing.Point(210, 563);
+            this.btn_habilitar_rol.Name = "btn_habilitar_rol";
+            this.btn_habilitar_rol.Size = new System.Drawing.Size(741, 41);
+            this.btn_habilitar_rol.TabIndex = 14;
+            this.btn_habilitar_rol.Text = "Volver a habilitar rol";
+            this.btn_habilitar_rol.UseVisualStyleBackColor = false;
+            this.btn_habilitar_rol.Click += new System.EventHandler(this.btn_habilitar_rol_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 59);
+            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(190, 153);
+            this.label17.TabIndex = 51;
+            this.label17.Text = resources.GetString("label17.Text");
+            // 
             // ModificaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -278,10 +285,9 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_habilitar_rol);
             this.Controls.Add(this.btn_eliminar);
             this.Controls.Add(this.btn_agregar);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.estadoRol);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.label);
@@ -299,6 +305,7 @@
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.ModificaRol_Load);
             this.sidepanel.ResumeLayout(false);
+            this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -327,9 +334,9 @@
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_limpiar;
-        private System.Windows.Forms.ComboBox estadoRol;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_eliminar;
         private System.Windows.Forms.Button btn_agregar;
+        private System.Windows.Forms.Button btn_habilitar_rol;
+        private System.Windows.Forms.Label label17;
 
     }

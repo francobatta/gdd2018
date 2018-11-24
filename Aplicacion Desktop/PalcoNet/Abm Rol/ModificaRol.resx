@@ -186,10 +186,7 @@
   <metadata name="funcionalidades.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="listaFuncionalidadesAsignadas.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="estadoRol.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Acá el botón "Volver a habilitar rol" estará habilitado para presionar si y solo si el rol se encuentra inhabilitado al momento de la modificación. No se incluye la decisión de volver a inhabilitar rol por enunciado.</value>
+  </data>
 </root>
