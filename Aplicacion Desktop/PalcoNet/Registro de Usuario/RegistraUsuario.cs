@@ -70,6 +70,7 @@ using System.Windows.Forms;
                 throw new PasswordIncorrectaException();
             user.password = passwordNueva.Text;
             BDManager.updateEncryptedUser(user);
+            MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a registrar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (ControlDePKException) { MessageBox.Show("Contraseña nueva mal escrita", "Error al validar campos del usuario a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

@@ -68,9 +68,6 @@ CREATE TABLE EQUISDE.empresa(
 	mail nvarchar(50),
 	habilitado bit DEFAULT 1
 )
-INSERT INTO EQUISDE.usuario VALUES ('miuser','jijo1234',1)
-INSERT INTO EQUISDE.rol VALUES ('rol1',1)
-INSERT INTO EQUISDE.rol_x_usuario (username, id_rol) VALUES ('miuser', 1)
 
 CREATE TABLE EQUISDE.cliente(
 	username varchar(50) PRIMARY KEY REFERENCES EQUISDE.usuario,
@@ -82,7 +79,7 @@ CREATE TABLE EQUISDE.cliente(
 	id_direccion bigint REFERENCES EQUISDE.direccion,
 	telefono nvarchar(50),
 	fecha_creacion datetime,
-	habilitado bit,
+	habilitado bit DEFAULT 1,
 	puntos bigint,
 	cuil nvarchar(255),
 	tipo_documento nvarchar(30)

@@ -1,4 +1,5 @@
 ﻿using PalcoNet;
+using PalcoNet.BDManager;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PalcoNet.Abm_Cliente;
 
     public partial class AltaCliente : Form
     {
@@ -27,9 +29,52 @@ using System.Windows.Forms;
             {
                 validarCamposCliente();
                 // armar objetito cliente
-                // validar PK no repetida contra la base usando BDManager
+                cliente c = new cliente();
+                direccion d = new direccion();
+                tarjeta t = new tarjeta();
+                 //c.username = Login.usuarioLogueado();
+                 c.nombre = nombre.Text;
+                 c.apellido = apellido.Text;
+                 c.tipoDoc = tipoDoc.Text;
+                 c.nDoc = nDoc.Text;
+                 c.CUIL = CUIL.Text;
+                 c.email = email.Text;
+                 c.telefono = telefono.Text;
+                 c.fechaNac = fechaNac.Text;
+                 d.localidad = localidad.Text;
+                 d.ciudad = ciudad.Text;
+                 d.calle = calle.Text;
+                 d.piso = piso.Text;
+                 d.depto = depto.Text;
+                 d.cpostal = cpostal.Text;
+                 t.nroTarjeta = nroTarjeta.Text;
+                 t.codSeguridad = codSeguridad.Text;
+                 t.nombreTitularTarjeta = nombreTitularTarjeta.Text;
+                 t.tipoTarjeta = tipoTarjeta.Text;
+                 t.fechaVto = fechavtotarjeta.Text;
+                // valido CUIL
+                if (BDManager.exists("cliente", "CUIL", c.CUIL))
+                    throw new ClienteInvalidoException();
+                // validar tipodoc+ndoc contra la base usando BDManager
+                if (BDManager.existsButWith("cliente","tipoDoc",tipoDoc.Text,"nDoc="+nDoc.Text))
+                    throw new ClienteInvalidoException();
+                // inserto dir
+                BDManager.insertInto("direccion", d);
+                String dirKey = default(string);
+                BDManager.genericFillObject("SELECT id_direccion FROM direccion d JOIN cliente c ON d.id_direccion = c.id_direccion WHERE c.CUIL="+c.CUIL, dirKey);
+                c.id_direccion = dirKey;
+                // inserto tarjeta
+                BDManager.insertInto("direccion", d);
+                String tKey = default(string);
+                BDManager.genericFillObject("SELECT id_tarjeta FROM tarjeta t JOIN cliente c ON t.id_tarjeta = c.tarjeta WHERE c.CUIL=" + c.CUIL, dirKey);
+                c.id_tarjeta = tKey;
+                // inserto cliente
+                BDManager.insertInto("cliente", c);
+                MessageBox.Show("El cliente ha sido insertado", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (ClienteInvalidoException) { MessageBox.Show("CUIL ya existente en sistema", "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void validarCamposCliente()
@@ -39,7 +84,7 @@ using System.Windows.Forms;
             Validaciones.esValido(apellido.Name, apellido.Text, new Validaciones.Letras());
             Validaciones.esValido(tipoDoc.Name, tipoDoc.Text, new Validaciones.Letras());
             Validaciones.esValido(nDoc.Name, nDoc.Text, new Validaciones.Numeros());
-            Validaciones.esValido(CUIL.Name, CUIL.Text, new Validaciones.Numeros());
+            Validaciones.esValido(CUIL.Name, CUIL.Text, new Validaciones.CUIT());
             Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
             Validaciones.esValido(telefono.Name, telefono.Text, new Validaciones.NumerosGuion());
             Validaciones.esValido(localidad.Name, localidad.Text, new Validaciones.NumerosLetrasGuion());

@@ -233,6 +233,7 @@
             // 
             // tipoDoc
             // 
+            this.tipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDoc.FormattingEnabled = true;
             this.tipoDoc.Location = new System.Drawing.Point(376, 166);
             this.tipoDoc.Name = "tipoDoc";
@@ -536,6 +537,7 @@
             // 
             // tipoTarjeta
             // 
+            this.tipoTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoTarjeta.FormattingEnabled = true;
             this.tipoTarjeta.Location = new System.Drawing.Point(689, 573);
             this.tipoTarjeta.Name = "tipoTarjeta";
