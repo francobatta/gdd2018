@@ -11,7 +11,7 @@ using System.Threading.Tasks;
             this.fecha_creacion = DateTime.Today.ToString();
         }
         public String id_direccion { get; set; }
-        public String id_tarjeta { get; set; }
+        public String nroTarjeta { get; set; }
         public String username { get; set; }
         public String nombre {get;set;}
         public String apellido {get;set;}

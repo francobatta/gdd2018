@@ -69,10 +69,8 @@ using System.Windows.Forms;
                 BDManager.genericFillObject("SELECT id_direccion FROM direccion d JOIN cliente c ON d.id_direccion = c.id_direccion WHERE c.CUIL="+c.CUIL, dirKey);
                 c.id_direccion = dirKey;
                 // inserto tarjeta
-                BDManager.insertInto("direccion", d);
-                String tKey = default(string);
-                BDManager.genericFillObject("SELECT id_tarjeta FROM tarjeta t JOIN cliente c ON t.id_tarjeta = c.tarjeta WHERE c.CUIL=" + c.CUIL, dirKey);
-                c.id_tarjeta = tKey;
+                BDManager.insertInto("tarjeta", t);
+                c.nroTarjeta = nroTarjeta.Text;
                 // inserto cliente
                 BDManager.insertInto("cliente", c);
                 MessageBox.Show("El cliente ha sido insertado", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
