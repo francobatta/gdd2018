@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -13,7 +14,9 @@ namespace PalcoNet.BDManager
     {
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        public static Type dummyType { get; set; }
         public static ComboBox toFill { get; set; }
+        public static List<object> listaObjetosRetornados = new List<object>();
         private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -23,7 +26,7 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
-        public static void delete(String tableName, String idColumn , object o = null)
+        public static void delete(String tableName, String idColumn , object o)
         {
             myObj = o;
             var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
@@ -32,15 +35,32 @@ namespace PalcoNet.BDManager
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
-        public static void updateSet(String tableName, object o)
+        public static void deleteByField(String tableName, String field, String value)
+        {
+            var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
+            if (!myObj.Equals(null))
+                sql.Append(" WHERE " + field + "=" + value);
+            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString());
+        }
+        public static void updateSet(String tableName, String idColumn, object o)
         {
             myObj = o;
             var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate,"",",","");
-            sql.Append(" WHERE id=" + Extensions.getIdFromObj().First().GetValue(myObj));
-            MessageBox.Show(sql.ToString());
-            queryOptionalObject(sql.ToString());
+            MessageBox.Show(" WHERE " + idColumn + "=" + Extensions.getIdFromObj().First().GetValue(myObj));
+            sql.Append(" WHERE "+idColumn +"=" + Extensions.getIdFromObj().First().GetValue(myObj));
+            queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
+        }
+        public static void updateSetStringKey(String tableName, String idColumn, String idVal, object o)
+        {
+            myObj = o;
+            var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
+            var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
+            appendList(sql, listaParaUpdate, "", ",", "");
+            sql.Append(" WHERE " + idColumn + "='" + idVal +"'");
+            queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
         }
         public static void insertInto(String tableName, object o)
         {
@@ -51,6 +71,18 @@ namespace PalcoNet.BDManager
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
+        }
+        public static void insertEncryptedUser(usuario u)
+        {
+            var sql = new StringBuilder("INSERT INTO EQUISDE.usuario (username,password) VALUES ('"+u.username+"',HASHBYTES('SHA2_256','"+u.password+"'))");
+            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString(),queryTypes.JUST_DO_STUFF);
+        }
+        public static void updateEncryptedUser(usuario u)
+        {
+            var sql = new StringBuilder("UPDATE EQUISDE.usuario SET username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='"+u.username+"'");
+            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString(), queryTypes.JUST_DO_STUFF);
         }
         public static bool exists(String tableName, String campo, String valor)
         {
@@ -66,11 +98,31 @@ namespace PalcoNet.BDManager
                 return false;
             }
         }
+        public static bool existsButWith(String tableName, String campo, String valor, String With)
+        {
+            using (SqlConnection connection = new SqlConnection(getConnectionString()))
+            {
+                connection.Open();
+                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With );
+                command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With, connection);
+                SqlDataReader reader = BDManager.command.ExecuteReader();
+                if (reader.Read()) return true;
+                reader.Close();
+                command.Dispose();
+                return false;
+            }
+        }
         public static void genericFillObject(String query, object o)
         {
             myObj = o;
             queryOptionalObject(query, queryTypes.SINGLE_RETURNING_QUERY);
             o = myObj;
+        }
+        public static List<object> getList(String query,object contenedorGenerico) // no pude usar generics porque el C# se enoja con la clase estatica. o define el
+        {
+            dummyType = contenedorGenerico.GetType();
+            queryOptionalObject(query, queryTypes.MULTIPLE_RETURNING_QUERY);
+            return listaObjetosRetornados;
         }
         public static void selectIntoObject(String tableName, String idColumn, String id, Object o)
         {
@@ -96,12 +148,6 @@ namespace PalcoNet.BDManager
                 command.Dispose();
             }
         }
-        public static void fillComboBoxFrom(String s, object o, ComboBox c)
-        {
-            toFill = c;
-            myObj = o;
-            queryOptionalObject(s, queryTypes.FILL_COMBOBOX);
-        }
         private static void appendList(StringBuilder sql, String[] s, String preceding = default(string), String appendIfNotLast = ",", String appendIfLast = ")") // no es del dominio, hace appends a un string
         {
             foreach (String st in s)
@@ -113,11 +159,23 @@ namespace PalcoNet.BDManager
                     sql.Append(appendIfLast);
             }
         }
+        public static DataTable getData(string selectCommand)
+        {
+                using (SqlConnection connection = new SqlConnection(getConnectionString()))
+                {
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connection);
+                    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                    DataTable table = new DataTable();
+                    dataAdapter.Fill(table);
+                    return table;
+                }
+        }
+
     }
     public enum queryTypes
     {
         NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY,
-        FILL_COMBOBOX
+        JUST_DO_STUFF
     }
     public static class Extensions
     {
@@ -137,6 +195,10 @@ namespace PalcoNet.BDManager
         {
             switch(q)
             {
+                case queryTypes.JUST_DO_STUFF:
+                    {
+                        BDManager.command.ExecuteNonQuery(); break;
+                    }
                 case queryTypes.NON_RETURNING_QUERY: {
                     foreach (PropertyInfo p in getPropertiesFromObj()) 
                     {
@@ -160,24 +222,41 @@ namespace PalcoNet.BDManager
                         break; } 
                 case queryTypes.MULTIPLE_RETURNING_QUERY:
                     {
-                        SqlDataReader reader = BDManager.command.ExecuteReader();
-                        MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun");
-                        reader.Close();
-                        break; }
-                case queryTypes.FILL_COMBOBOX:
-                    {
+                        BDManager.listaObjetosRetornados = new List<object>();
                         SqlDataReader reader = BDManager.command.ExecuteReader();
                         while (reader.Read())
                         {
-                            BDManager.toFill.Items.Add(new { id = reader["id_"+BDManager.myObj.GetType().Name].ToString(), nombre = reader["nombre"].ToString() });
+                            propsFromObj propGetter = new propsFromObj();
+                            object instance = Activator.CreateInstance(BDManager.dummyType);
+                            foreach (PropertyInfo p in propGetter.getPropertiesFromObj(instance))
+                            {
+                                p.SetValue(instance, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            }
+                            foreach (PropertyInfo p in propGetter.getIdFromObj(instance))
+                            {
+                                p.SetValue(instance, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            }
+                            BDManager.listaObjetosRetornados.Add(instance);
                         }
-                        BDManager.toFill.ValueMember = "id";
-                        BDManager.toFill.DisplayMember = "nombre";
-                        BDManager.toFill.SelectedIndex = 0;
                         reader.Close();
                         break;
                     }
             }
+        }
+    }
+    public class propsFromObj
+    {
+        public PropertyInfo[] getPropertiesFromObj(object o) // no es del dominio, obtiene las properties de un objeto estatico X menos su id
+        {
+            Type myType = o.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props.Where(p => p.Name != "id_"+myType.Name).ToArray();
+        }
+        public PropertyInfo[] getIdFromObj(object o) // no es del dominio, obtiene el id de un objeto estatico X
+        {
+            Type myType = o.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props.Where(p => p.Name == "id_"+myType.Name).ToArray();
         }
     }
 

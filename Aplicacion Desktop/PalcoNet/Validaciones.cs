@@ -37,6 +37,11 @@ using System.Threading.Tasks;
             public String Regex() { return @"^[0-9]+[\s]*$"; }
             public String Significado() { return "solo números"; }
         }
+        public class CUIT : RegexType
+        {
+            public String Regex() { return @"^(20|23|24|27|30|33|34)(-)?[0-9]{8}(-)?[0-9]$"; }
+            public String Significado() { return "solo números"; }
+        }
         public class NumerosLetrasGuion : RegexType
         {
             public String Regex() { return @"^([a-zA-Z0-9-]+\s*[a-zA-Z0-9-]+)+$"; }
@@ -45,7 +50,7 @@ using System.Threading.Tasks;
         public class NumeroNoCreo : RegexType
         {
             public String Regex() { return @"^[1-9]+$"; }
-            public String Significado() { return "número no cero"; }
+            public String Significado() { return "por lo menos uno/a"; }
         }
         public class Email : RegexType
         {

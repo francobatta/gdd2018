@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.rol = new System.Windows.Forms.ComboBox();
+            this.comboboxRoles = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
@@ -202,13 +202,14 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Rol";
             // 
-            // rol
+            // comboboxRoles
             // 
-            this.rol.FormattingEnabled = true;
-            this.rol.Location = new System.Drawing.Point(245, 166);
-            this.rol.Name = "rol";
-            this.rol.Size = new System.Drawing.Size(317, 21);
-            this.rol.TabIndex = 10;
+            this.comboboxRoles.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboboxRoles.FormattingEnabled = true;
+            this.comboboxRoles.Location = new System.Drawing.Point(245, 166);
+            this.comboboxRoles.Name = "comboboxRoles";
+            this.comboboxRoles.Size = new System.Drawing.Size(317, 21);
+            this.comboboxRoles.TabIndex = 10;
             // 
             // label9
             // 
@@ -232,6 +233,7 @@
             this.btn_limpiar.TabIndex = 49;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_guardar
             // 
@@ -244,6 +246,7 @@
             this.btn_guardar.TabIndex = 48;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_eliminarRolSeleccionado
             // 
@@ -256,6 +259,7 @@
             this.btn_eliminarRolSeleccionado.TabIndex = 77;
             this.btn_eliminarRolSeleccionado.Text = "Eliminar Rol elegido";
             this.btn_eliminarRolSeleccionado.UseVisualStyleBackColor = false;
+            this.btn_eliminarRolSeleccionado.Click += new System.EventHandler(this.btn_eliminarRolSeleccionado_Click);
             // 
             // btn_agregarRol
             // 
@@ -268,6 +272,7 @@
             this.btn_agregarRol.TabIndex = 76;
             this.btn_agregarRol.Text = "Agregar Rol";
             this.btn_agregarRol.UseVisualStyleBackColor = false;
+            this.btn_agregarRol.Click += new System.EventHandler(this.btn_agregarRol_Click);
             // 
             // listaRoles
             // 
@@ -291,7 +296,7 @@
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.rol);
+            this.Controls.Add(this.comboboxRoles);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.password);
             this.Controls.Add(this.label2);
@@ -333,7 +338,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox rol;
+        private System.Windows.Forms.ComboBox comboboxRoles;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;

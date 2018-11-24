@@ -56,6 +56,11 @@
     <Compile Include="Abm Cliente\BusquedaCliente.Designer.cs">
       <DependentUpon>BusquedaCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Cliente\cliente.cs" />
+    <Compile Include="Abm Cliente\ClienteInvalidoException.cs" />
+    <Compile Include="Abm Cliente\direccion.cs" />
+    <Compile Include="Abm Cliente\tarjeta.cs" />
+    <Compile Include="Abm Rol\RolManager.cs" />
     <Compile Include="Abm Rol\rol_x_funcionalidad.cs" />
     <Compile Include="Abm Rol\funcionalidad.cs" />
     <Compile Include="Abm Rol\rol.cs" />
@@ -163,6 +168,10 @@
     <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\PasswordIncorrectaException.cs" />
+    <Compile Include="Registro de Usuario\rol_x_usuario.cs" />
+    <Compile Include="Registro de Usuario\ControlDePKException.cs" />
+    <Compile Include="Registro de Usuario\usuario.cs" />
     <Compile Include="Registro de Usuario\ModificaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

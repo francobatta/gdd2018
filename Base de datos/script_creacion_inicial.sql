@@ -45,7 +45,8 @@ CREATE SCHEMA EQUISDE
 GO
 CREATE TABLE EQUISDE.usuario(
 	username varchar(50) PRIMARY KEY,
-	password varchar(64)
+	password varchar(64),
+	habilitado bit DEFAULT 1
 );
 
 CREATE TABLE EQUISDE.direccion(
@@ -65,7 +66,7 @@ CREATE TABLE EQUISDE.empresa(
 	cuit nvarchar(255),
 	fecha_creacion datetime,
 	mail nvarchar(50),
-	habilitado bit
+	habilitado bit DEFAULT 1
 )
 
 
@@ -79,22 +80,22 @@ CREATE TABLE EQUISDE.cliente(
 	id_direccion bigint REFERENCES EQUISDE.direccion,
 	telefono nvarchar(50),
 	fecha_creacion datetime,
-	habilitado bit,
+	habilitado bit DEFAULT 1,
 	puntos bigint,
 	cuil nvarchar(255),
-	tipo_documento nvarchar(30)
+	tipo_documento nvarchar(30) DEFAULT 'DNI'
 )
 
 CREATE TABLE EQUISDE.rol(
 	id_rol bigint PRIMARY KEY IDENTITY,
-	nombre nvarchar(255) UNIQUE,
-	habilitado bit
+	nombre nvarchar(255),
+	habilitado bit DEFAULT 1
 )
 
 CREATE TABLE EQUISDE.rol_x_usuario(
 	id_rol bigint REFERENCES EQUISDE.rol,
-	usuario varchar(50) REFERENCES EQUISDE.usuario,
-	primary key(id_rol,usuario)
+	username varchar(50) REFERENCES EQUISDE.usuario,
+	primary key(id_rol,username)
 )
 
 CREATE TABLE EQUISDE.funcionalidad(

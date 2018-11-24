@@ -163,12 +163,15 @@
             // 
             this.listadoActualRoles.AllowUserToAddRows = false;
             this.listadoActualRoles.AllowUserToDeleteRows = false;
+            this.listadoActualRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listadoActualRoles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listadoActualRoles.Location = new System.Drawing.Point(210, 76);
             this.listadoActualRoles.MultiSelect = false;
             this.listadoActualRoles.Name = "listadoActualRoles";
             this.listadoActualRoles.ReadOnly = true;
             this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoActualRoles.ShowEditingIcon = false;
             this.listadoActualRoles.Size = new System.Drawing.Size(742, 529);
             this.listadoActualRoles.TabIndex = 10;
             // 
@@ -183,6 +186,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Dar de baja";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // BusquedaRol
             // 
