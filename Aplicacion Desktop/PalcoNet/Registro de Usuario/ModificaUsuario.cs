@@ -12,11 +12,12 @@ using System.Windows.Forms;
     public partial class ModificaUsuario : Form
     {
         public usuario usuarioAModificar { get; set; }
-        public List<rol> listaRolesDeEseUsuario { get; set; }
+        public List<rol> listaRolesDeEseUsuario = new List<rol>();
         public ModificaUsuario(usuario u)
         {
             InitializeComponent();
             this.usuarioAModificar = u;
+
         }
 
         private void ModificaUsuario_Load(object sender, EventArgs e)
@@ -28,10 +29,9 @@ using System.Windows.Forms;
             listaRolesUsuario.DataSource = listaRolesGeneral;
             listaRolesUsuario.DisplayMember = "nombre";
             // roles de ESE usuario
-            List<object> listaTraidaDeBD = BDManager.getList(
-                "SELECT r.id_rol, r.nombre FROM EQUISDE.rol r JOIN EQUISDE.rol_x_usuario ru ON r.id_rol = ru.id_rol JOIN EQUISDE.usuario u ON ru.usuario = u.username WHERE u.username =" + usuarioAModificar.username
-                , new rol());
+            List<object> listaTraidaDeBD = BDManager.getList("SELECT * FROM EQUISDE.rol r JOIN EQUISDE.rol_x_usuario ru ON r.id_rol = ru.id_rol JOIN EQUISDE.usuario u ON ru.username = u.username WHERE r.habilitado=1 AND u.username ='" + usuarioAModificar.username + "'", new rol());
             listaRolesDeEseUsuario = listaTraidaDeBD.Cast<rol>().ToList();
+            MessageBox.Show(listaRolesDeEseUsuario.Count.ToString());
             listaRoles.DataSource = listaRolesDeEseUsuario;
             listaRoles.DisplayMember = "nombre";
         }
@@ -56,4 +56,9 @@ using System.Windows.Forms;
     private const int WM_NCHITTEST = 0x84;
     private const int HT_CLIENT = 0x1;
     private const int HT_CAPTION = 0x2;
+
+    private void btn_limpiar_Click(object sender, EventArgs e)
+    {
+
+    }
     }

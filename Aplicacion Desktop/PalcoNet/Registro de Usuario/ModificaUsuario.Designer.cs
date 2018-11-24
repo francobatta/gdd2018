@@ -233,6 +233,7 @@
             this.btn_limpiar.TabIndex = 49;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_guardar
             // 

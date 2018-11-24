@@ -66,12 +66,11 @@ CREATE TABLE EQUISDE.empresa(
 	cuit nvarchar(255),
 	fecha_creacion datetime,
 	mail nvarchar(50),
-	habilitado bit
+	habilitado bit DEFAULT 1
 )
 INSERT INTO EQUISDE.usuario VALUES ('miuser','jijo1234',1)
 INSERT INTO EQUISDE.rol VALUES ('rol1',1)
-INSERT INTO EQUISDE.rol_x_usuario (usuario, id_rol) VALUES ('miuser', 1)
-
+INSERT INTO EQUISDE.rol_x_usuario (username, id_rol) VALUES ('miuser', 1)
 
 CREATE TABLE EQUISDE.cliente(
 	username varchar(50) PRIMARY KEY REFERENCES EQUISDE.usuario,
@@ -92,13 +91,13 @@ CREATE TABLE EQUISDE.cliente(
 CREATE TABLE EQUISDE.rol(
 	id_rol bigint PRIMARY KEY IDENTITY,
 	nombre nvarchar(255),
-	habilitado bit
+	habilitado bit DEFAULT 1
 )
 
 CREATE TABLE EQUISDE.rol_x_usuario(
 	id_rol bigint REFERENCES EQUISDE.rol,
-	usuario varchar(50) REFERENCES EQUISDE.usuario,
-	primary key(id_rol,usuario)
+	username varchar(50) REFERENCES EQUISDE.usuario,
+	primary key(id_rol,username)
 )
 
 CREATE TABLE EQUISDE.funcionalidad(
