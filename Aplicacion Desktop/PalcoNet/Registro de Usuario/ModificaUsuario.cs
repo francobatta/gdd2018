@@ -1,4 +1,5 @@
 ﻿using PalcoNet.BDManager;
+using PalcoNet.Registro_de_Usuario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,9 +115,7 @@ using System.Windows.Forms;
             this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-
     }
-
     private void btn_habilitar_rol_Click(object sender, EventArgs e)
     {
         usuarioAModificar.habilitado = "True";

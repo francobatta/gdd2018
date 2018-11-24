@@ -170,6 +170,7 @@
             // 
             // username
             // 
+            this.username.Enabled = false;
             this.username.Location = new System.Drawing.Point(315, 80);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(247, 20);
