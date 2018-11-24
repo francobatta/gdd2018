@@ -64,7 +64,6 @@ using System.Windows.Forms;
 
     private void btn_limpiar_Click(object sender, EventArgs e)
     {
-        username.Text = default(String);
         password.Text = default(String);
         listaRoles.DataSource = null;
     }
@@ -114,7 +113,9 @@ using System.Windows.Forms;
             MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
-        catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+
+    
     }
     private void btn_habilitar_rol_Click(object sender, EventArgs e)
     {

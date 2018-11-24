@@ -16,7 +16,11 @@ namespace PalcoNet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BusquedaUsuario()); //PA MOSTRAR EL PROGRAMA
+            usuario u = new usuario();
+            u.username = "jijo2";
+            u.password = "buta2";
+            BDManager.BDManager.insertEncryptedUser(u);
+            Application.Run(new RegistraUsuario(u)); //PA MOSTRAR EL PROGRAMA
         }
     }
 }

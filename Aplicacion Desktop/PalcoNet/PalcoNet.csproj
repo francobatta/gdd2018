@@ -164,6 +164,7 @@
     <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\PasswordIncorrectaException.cs" />
     <Compile Include="Registro de Usuario\rol_x_usuario.cs" />
     <Compile Include="Registro de Usuario\ControlDePKException.cs" />
     <Compile Include="Registro de Usuario\usuario.cs" />

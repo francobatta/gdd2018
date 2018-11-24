@@ -98,13 +98,13 @@ namespace PalcoNet.BDManager
                 return false;
             }
         }
-        public static bool existsButNotWith(String tableName, String campo, String valor, String notWith, String valNotWith)
+        public static bool existsButWith(String tableName, String campo, String valor, String With)
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
             {
                 connection.Open();
-                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + notWith + "!=" + valNotWith);
-                command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'", connection);
+                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With );
+                command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With, connection);
                 SqlDataReader reader = BDManager.command.ExecuteReader();
                 if (reader.Read()) return true;
                 reader.Close();
