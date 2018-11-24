@@ -13,7 +13,9 @@ namespace PalcoNet.BDManager
     {
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        public static Type dummyType { get; set; }
         public static ComboBox toFill { get; set; }
+        public static List<object> listaObjetosRetornados = new List<object>();
         private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -72,6 +74,12 @@ namespace PalcoNet.BDManager
             queryOptionalObject(query, queryTypes.SINGLE_RETURNING_QUERY);
             o = myObj;
         }
+        public static List<object> getList(String query,object contenedorGenerico) // no pude usar generics porque el C# se enoja con la clase estatica. o define el
+        {
+            dummyType = contenedorGenerico.GetType();
+            queryOptionalObject(query, queryTypes.MULTIPLE_RETURNING_QUERY);
+            return listaObjetosRetornados;
+        }
         public static void selectIntoObject(String tableName, String idColumn, String id, Object o)
         {
             myObj = o;
@@ -95,12 +103,6 @@ namespace PalcoNet.BDManager
                 qt.DoStuff();
                 command.Dispose();
             }
-        }
-        public static void fillComboBoxFrom(String s, object o, ComboBox c)
-        {
-            toFill = c;
-            myObj = o;
-            queryOptionalObject(s, queryTypes.FILL_COMBOBOX);
         }
         private static void appendList(StringBuilder sql, String[] s, String preceding = default(string), String appendIfNotLast = ",", String appendIfLast = ")") // no es del dominio, hace appends a un string
         {
@@ -160,24 +162,41 @@ namespace PalcoNet.BDManager
                         break; } 
                 case queryTypes.MULTIPLE_RETURNING_QUERY:
                     {
-                        SqlDataReader reader = BDManager.command.ExecuteReader();
-                        MessageBox.Show("Falta implementar porque no tenemos una restriccion clara aun");
-                        reader.Close();
-                        break; }
-                case queryTypes.FILL_COMBOBOX:
-                    {
+                        BDManager.listaObjetosRetornados = new List<object>();
                         SqlDataReader reader = BDManager.command.ExecuteReader();
                         while (reader.Read())
                         {
-                            BDManager.toFill.Items.Add(new { id = reader["id_"+BDManager.myObj.GetType().Name].ToString(), nombre = reader["nombre"].ToString() });
+                            propsFromObj propGetter = new propsFromObj();
+                            object instance = Activator.CreateInstance(BDManager.dummyType);
+                            foreach (PropertyInfo p in propGetter.getPropertiesFromObj(instance))
+                            {
+                                p.SetValue(instance, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            }
+                            foreach (PropertyInfo p in propGetter.getIdFromObj(instance))
+                            {
+                                p.SetValue(instance, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            }
+                            BDManager.listaObjetosRetornados.Add(instance);
                         }
-                        BDManager.toFill.ValueMember = "id";
-                        BDManager.toFill.DisplayMember = "nombre";
-                        BDManager.toFill.SelectedIndex = 0;
                         reader.Close();
                         break;
                     }
             }
+        }
+    }
+    public class propsFromObj
+    {
+        public PropertyInfo[] getPropertiesFromObj(object o) // no es del dominio, obtiene las properties de un objeto estatico X menos su id
+        {
+            Type myType = o.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props.Where(p => p.Name != "id_"+myType.Name).ToArray();
+        }
+        public PropertyInfo[] getIdFromObj(object o) // no es del dominio, obtiene el id de un objeto estatico X
+        {
+            Type myType = o.GetType();
+            PropertyInfo[] props = myType.GetProperties();
+            return props.Where(p => p.Name == "id_"+myType.Name).ToArray();
         }
     }
 

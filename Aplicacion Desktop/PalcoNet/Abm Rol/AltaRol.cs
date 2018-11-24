@@ -17,8 +17,12 @@ using System.Windows.Forms;
         }
         private void AltaRol_Load(object sender, EventArgs e)
         {
-            BDManager.fillComboBoxFrom("SELECT * FROM EQUISDE.funcionalidad",new funcionalidad(),funcionalidades);
-            listaFuncionalidadesAsignadas.DisplayMember = funcionalidades.DisplayMember;
+            List<object> listaTraidaDeBD = BDManager.getList("SELECT * FROM EQUISDE.funcionalidad", new funcionalidad());
+            List<funcionalidad> listaFuncionalidades = listaTraidaDeBD.Cast<funcionalidad>().ToList();
+            funcionalidades.DataSource = listaFuncionalidades;
+            funcionalidades.DisplayMember = "nombre";
+            //listaFuncionalidadesAsignadas.DataSource = listaFuncionalidades;
+            listaFuncionalidadesAsignadas.DisplayMember = "nombre";
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -64,7 +68,7 @@ using System.Windows.Forms;
             {
                 Validaciones.inicializarValidador();
                 Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
-                Validaciones.esValido("Funcionalidades asignadas", listaFuncionalidadesAsignadas.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
+                Validaciones.esValido("funcionalidades asignadas", listaFuncionalidadesAsignadas.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
                 if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                     throw new CamposInvalidosException();
                 // fin validaciones regex
@@ -74,13 +78,8 @@ using System.Windows.Forms;
                     BDManager.insertInto("rol", new rol { nombre = nombre.Text, habilitado = "1" });
                     rol rolDummy = new rol();
                     BDManager.selectIntoObjectByString("rol", "nombre", nombre.Text, rolDummy);
-                    foreach (var f in listaFuncionalidadesAsignadas.Items)
-                    {
-                        System.Type type = f.GetType();
-                        String id = (String)type.GetProperty("id_funcionalidad").GetValue(f);
-                        
-                        BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = id, id_rol= rolDummy.id_rol});
-                    }
+                    foreach (funcionalidad f in listaFuncionalidadesAsignadas.Items)
+                        BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = f.id_funcionalidad, id_rol= rolDummy.id_rol});
                 }
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

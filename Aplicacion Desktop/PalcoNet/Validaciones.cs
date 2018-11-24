@@ -45,7 +45,7 @@ using System.Threading.Tasks;
         public class NumeroNoCreo : RegexType
         {
             public String Regex() { return @"^[1-9]+$"; }
-            public String Significado() { return "número no cero"; }
+            public String Significado() { return "por lo menos uno/a"; }
         }
         public class Email : RegexType
         {
