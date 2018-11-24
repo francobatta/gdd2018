@@ -54,8 +54,9 @@ CREATE TABLE EQUISDE.direccion(
 	calle nvarchar(50),
 	nro_calle numeric(18,0),
 	piso numeric(18,0),
+	ciudad nvarchar(50),
 	depto nvarchar(50),
-	cod_postal nvarchar(50),
+	cpostal nvarchar(50),
 	localidad nvarchar(50)
 )
 
@@ -218,21 +219,21 @@ WHEN NOT MATCHED BY TARGET THEN
 GO
 MERGE EQUISDE.direccion d
 USING (SELECT DISTINCT Espec_Empresa_Dom_Calle,Espec_Empresa_Nro_Calle,Espec_Empresa_Piso,Espec_Empresa_Depto,Espec_Empresa_Cod_Postal FROM gd_esquema.Maestra WHERE Espec_Empresa_Dom_Calle IS NOT NULL) f
-ON d.calle = f.Espec_Empresa_Dom_Calle AND d.nro_calle = f.Espec_Empresa_Nro_Calle AND d.piso = f.Espec_Empresa_Piso AND d.depto = f.Espec_Empresa_Depto AND d.cod_postal = f.Espec_Empresa_Cod_Postal 
+ON d.calle = f.Espec_Empresa_Dom_Calle AND d.nro_calle = f.Espec_Empresa_Nro_Calle AND d.piso = f.Espec_Empresa_Piso AND d.depto = f.Espec_Empresa_Depto AND d.cpostal = f.Espec_Empresa_Cod_Postal 
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(calle,nro_calle,piso,depto,cod_postal)
+	INSERT(calle,nro_calle,piso,depto,cpostal)
 	VALUES(f.Espec_Empresa_Dom_Calle,f.Espec_Empresa_Nro_Calle,f.Espec_Empresa_Piso,f.Espec_Empresa_Depto,f.Espec_Empresa_Cod_Postal);
 
 MERGE EQUISDE.direccion d
 USING (SELECT DISTINCT Cli_Dom_Calle,Cli_Nro_Calle,Cli_Piso, Cli_Depto, Cli_Cod_Postal FROM gd_esquema.Maestra WHERE Cli_Dom_Calle IS NOT NULL)f
-ON d.calle = f.Cli_Dom_Calle AND d.nro_calle = f.Cli_Nro_Calle AND d.piso = f.Cli_Piso AND d.depto = f.Cli_Depto AND d.cod_postal = f.Cli_Cod_Postal 
+ON d.calle = f.Cli_Dom_Calle AND d.nro_calle = f.Cli_Nro_Calle AND d.piso = f.Cli_Piso AND d.depto = f.Cli_Depto AND d.cpostal = f.Cli_Cod_Postal 
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(calle,nro_calle,piso,depto,cod_postal)
+	INSERT(calle,nro_calle,piso,depto,cpostal)
 	VALUES(f.Cli_Dom_Calle,f.Cli_Nro_Calle,f.Cli_Piso,f.Cli_Depto,f.Cli_Cod_Postal);
 
 MERGE EQUISDE.empresa d
 USING (SELECT DISTINCT Espec_Empresa_Razon_Social,Espec_Empresa_Cuit,Espec_Empresa_Fecha_Creacion,Espec_Empresa_Mail,id_direccion FROM gd_esquema.Maestra gd JOIN EQUISDE.direccion di
-ON(gd.Espec_Empresa_Dom_Calle = di.calle AND gd.Espec_Empresa_Nro_Calle= di.nro_calle AND gd.Espec_Empresa_Piso=di.piso AND gd.Espec_Empresa_Depto = di.depto AND gd.Espec_Empresa_Cod_Postal = di.cod_postal))f
+ON(gd.Espec_Empresa_Dom_Calle = di.calle AND gd.Espec_Empresa_Nro_Calle= di.nro_calle AND gd.Espec_Empresa_Piso=di.piso AND gd.Espec_Empresa_Depto = di.depto AND gd.Espec_Empresa_Cod_Postal = di.cpostal))f
 ON f.Espec_Empresa_Cuit = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,razon_social,cuit,fecha_creacion,mail,id_direccion)
@@ -240,7 +241,7 @@ WHEN NOT MATCHED BY TARGET THEN
 
 MERGE EQUISDE.cliente d
 USING (SELECT DISTINCT Cli_Dni,Cli_Apeliido,Cli_Nombre,Cli_Fecha_Nac,Cli_Mail,GETDATE() fecha_creacion, id_direccion FROM gd_esquema.Maestra gd JOIN EQUISDE.direccion di
-ON(gd.Cli_Dom_Calle = di.calle AND gd.Cli_Nro_Calle= di.nro_calle AND gd.Cli_Piso=di.piso AND gd.Cli_Depto = di.depto AND gd.Cli_Cod_Postal = di.cod_postal))f
+ON(gd.Cli_Dom_Calle = di.calle AND gd.Cli_Nro_Calle= di.nro_calle AND gd.Cli_Piso=di.piso AND gd.Cli_Depto = di.depto AND gd.Cli_Cod_Postal = di.cpostal))f
 ON f.Cli_Dni = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,nombre, apellido, dni,mail,fecha_nacimiento, fecha_creacion, id_direccion)
