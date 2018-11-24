@@ -16,7 +16,7 @@ namespace PalcoNet
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AltaUsuario()); //PA MOSTRAR EL PROGRAMA
+            Application.Run(new BusquedaUsuario()); //PA MOSTRAR EL PROGRAMA
         }
     }
 }

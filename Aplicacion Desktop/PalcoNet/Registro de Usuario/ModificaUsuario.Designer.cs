@@ -41,7 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.rol = new System.Windows.Forms.ComboBox();
+            this.listaRolesUsuario = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
@@ -202,13 +202,14 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Rol";
             // 
-            // rol
+            // listaRolesUsuario
             // 
-            this.rol.FormattingEnabled = true;
-            this.rol.Location = new System.Drawing.Point(245, 166);
-            this.rol.Name = "rol";
-            this.rol.Size = new System.Drawing.Size(317, 21);
-            this.rol.TabIndex = 10;
+            this.listaRolesUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.listaRolesUsuario.FormattingEnabled = true;
+            this.listaRolesUsuario.Location = new System.Drawing.Point(245, 166);
+            this.listaRolesUsuario.Name = "listaRolesUsuario";
+            this.listaRolesUsuario.Size = new System.Drawing.Size(317, 21);
+            this.listaRolesUsuario.TabIndex = 10;
             // 
             // label9
             // 
@@ -291,7 +292,7 @@
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.rol);
+            this.Controls.Add(this.listaRolesUsuario);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.password);
             this.Controls.Add(this.label2);
@@ -333,7 +334,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox rol;
+        private System.Windows.Forms.ComboBox listaRolesUsuario;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;

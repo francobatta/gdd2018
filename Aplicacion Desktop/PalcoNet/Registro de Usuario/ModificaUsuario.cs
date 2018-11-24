@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.BDManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,14 +11,21 @@ using System.Windows.Forms;
 
     public partial class ModificaUsuario : Form
     {
-        public ModificaUsuario()
+        public usuario usuarioAModificar { get; set; }
+        public ModificaUsuario(usuario u)
         {
             InitializeComponent();
+            this.usuarioAModificar = u;
         }
 
         private void ModificaUsuario_Load(object sender, EventArgs e)
         {
-
+            username.Text = usuarioAModificar.username;
+            // todos los roles
+            List<object> listaRolesBD = BDManager.getList("SELECT * FROM EQUISDE.rol", new rol());
+            List<rol> listaRoles = listaRolesBD.Cast<rol>().ToList();
+            listaRolesUsuario.DataSource = listaRoles;
+            listaRolesUsuario.DisplayMember = "nombre";
         }
 
 

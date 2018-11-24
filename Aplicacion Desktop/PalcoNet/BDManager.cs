@@ -49,8 +49,17 @@ namespace PalcoNet.BDManager
             var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate,"",",","");
+            MessageBox.Show(" WHERE " + idColumn + "=" + Extensions.getIdFromObj().First().GetValue(myObj));
             sql.Append(" WHERE "+idColumn +"=" + Extensions.getIdFromObj().First().GetValue(myObj));
-            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
+        }
+        public static void updateSetStringKey(String tableName, String idColumn, String idVal, object o)
+        {
+            myObj = o;
+            var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
+            var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
+            appendList(sql, listaParaUpdate, "", ",", "");
+            sql.Append(" WHERE " + idColumn + "='" + idVal +"'");
             queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
         }
         public static void insertInto(String tableName, object o)
@@ -130,7 +139,7 @@ namespace PalcoNet.BDManager
                     sql.Append(appendIfLast);
             }
         }
-        public static DataTable GetData(string selectCommand)
+        public static DataTable getData(string selectCommand)
         {
                 using (SqlConnection connection = new SqlConnection(getConnectionString()))
                 {

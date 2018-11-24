@@ -17,7 +17,7 @@ using System.Windows.Forms;
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
-            listadoActualRoles.DataSource = BDManager.GetData("SELECT id_rol, nombre, habilitado FROM EQUISDE.rol");
+            listadoActualRoles.DataSource = BDManager.getData("SELECT id_rol, nombre, habilitado FROM EQUISDE.rol");
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ using System.Windows.Forms;
             try
             {
                 DataGridViewRow filaElegida = listadoActualRoles.CurrentRow;
-                if (filaElegida.Selected == false)
+                if (filaElegida == null || filaElegida.Selected == false)
                     throw new CamposInvalidosException();
                 rol rolACambiar = new rol();
                 BDManager.selectIntoObject("rol", "id_rol", filaElegida.Cells["id_rol"].Value.ToString(), rolACambiar);

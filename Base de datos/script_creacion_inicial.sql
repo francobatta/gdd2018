@@ -45,7 +45,8 @@ CREATE SCHEMA EQUISDE
 GO
 CREATE TABLE EQUISDE.usuario(
 	username varchar(50) PRIMARY KEY,
-	password varchar(64)
+	password varchar(64),
+	habilitado bit DEFAULT 1
 );
 
 CREATE TABLE EQUISDE.direccion(

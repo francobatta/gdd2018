@@ -8,4 +8,5 @@ using System.Threading.Tasks;
     {
         public String username { get; set; }
         public String password { get; set; }
+        public String habilitado { get; set; }
     }
