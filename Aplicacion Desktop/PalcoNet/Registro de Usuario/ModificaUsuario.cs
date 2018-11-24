@@ -29,11 +29,11 @@ using System.Windows.Forms;
             listaRolesUsuario.DisplayMember = "nombre";
             // roles de ESE usuario
             List<object> listaTraidaDeBD = BDManager.getList(
-                "SELECT r.id_rol, r.nombre FROM EQUISDE.usuario u JOIN EQUISDE.rol_x_usuario ru ON u.username = ru.username JOIN EQUISDE.rol r ON ru.id_dol = r.id_rol WHERE u.username =" + usuarioAModificar.username
+                "SELECT r.id_rol, r.nombre FROM EQUISDE.rol r JOIN EQUISDE.rol_x_usuario ru ON r.id_rol = ru.id_rol JOIN EQUISDE.usuario u ON ru.usuario = u.username WHERE u.username =" + usuarioAModificar.username
                 , new rol());
             listaRolesDeEseUsuario = listaTraidaDeBD.Cast<rol>().ToList();
             listaRoles.DataSource = listaRolesDeEseUsuario;
-            listaRoles.DisplayMember = "username";
+            listaRoles.DisplayMember = "nombre";
         }
 
         // controles de cualquier form

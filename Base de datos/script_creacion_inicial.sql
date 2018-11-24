@@ -68,6 +68,10 @@ CREATE TABLE EQUISDE.empresa(
 	mail nvarchar(50),
 	habilitado bit
 )
+INSERT INTO EQUISDE.usuario VALUES ('miuser','jijo1234',1)
+INSERT INTO EQUISDE.rol VALUES ('rol1',1)
+INSERT INTO EQUISDE.rol_x_usuario (usuario, id_rol) VALUES ('miuser', 1)
+
 
 CREATE TABLE EQUISDE.cliente(
 	username varchar(50) PRIMARY KEY REFERENCES EQUISDE.usuario,
