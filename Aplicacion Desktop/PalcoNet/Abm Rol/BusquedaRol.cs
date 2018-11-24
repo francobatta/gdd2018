@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.BDManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,7 @@ using System.Windows.Forms;
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
+            listadoActualRoles.DataSource = BDManager.GetData("SELECT id_rol, nombre, habilitado FROM EQUISDE.rol");
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -41,6 +42,39 @@ using System.Windows.Forms;
 
         private void btn_seleccionar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DataGridViewRow filaElegida = listadoActualRoles.CurrentRow;
+                if (filaElegida.Selected == false)
+                    throw new CamposInvalidosException();
+                rol rolACambiar = new rol();
+                BDManager.selectIntoObject("rol", "id_rol", filaElegida.Cells["id_rol"].Value.ToString(), rolACambiar);
+                ModificaRol modificaRol = new ModificaRol(rolACambiar); // SE LO PASO POR CONSTRUCTOR Y QUE EL MODIFICADOR SE ENCARGUE
+                modificaRol.ShowDialog();
+            }
+            catch (CamposInvalidosException)
+            {
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar rol", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+            DataGridViewRow filaElegida = listadoActualRoles.CurrentRow;
+            if (filaElegida.Selected == false)
+                throw new CamposInvalidosException();
+            rol rolACambiar = new rol();
+            BDManager.selectIntoObject("rol", "id_rol", filaElegida.Cells["id_rol"].Value.ToString(), rolACambiar);
+            rolACambiar.habilitado = "False";
+            BDManager.updateSet("rol", "id_rol", rolACambiar);
+            MessageBox.Show("Rol "+ rolACambiar.nombre +" inhabilitado con éxito", "Inhabilitación de rol", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (CamposInvalidosException)
+            {
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar rol", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }

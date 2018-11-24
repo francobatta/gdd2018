@@ -21,7 +21,6 @@ using System.Windows.Forms;
             List<funcionalidad> listaFuncionalidades = listaTraidaDeBD.Cast<funcionalidad>().ToList();
             funcionalidades.DataSource = listaFuncionalidades;
             funcionalidades.DisplayMember = "nombre";
-            //listaFuncionalidadesAsignadas.DataSource = listaFuncionalidades;
             listaFuncionalidadesAsignadas.DisplayMember = "nombre";
         }
         // controles de cualquier form
@@ -72,15 +71,11 @@ using System.Windows.Forms;
                 if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                     throw new CamposInvalidosException();
                 // fin validaciones regex
-                if (BDManager.exists("rol", "nombre", nombre.Text)) MessageBox.Show("Nombre del rol repetido", "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                else
-                {
-                    BDManager.insertInto("rol", new rol { nombre = nombre.Text, habilitado = "1" });
+                    BDManager.insertInto("rol", new rol { nombre = nombre.Text, habilitado = "True" });
                     rol rolDummy = new rol();
                     BDManager.selectIntoObjectByString("rol", "nombre", nombre.Text, rolDummy);
                     foreach (funcionalidad f in listaFuncionalidadesAsignadas.Items)
-                        BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = f.id_funcionalidad, id_rol= rolDummy.id_rol});
-                }
+                        BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = f.id_funcionalidad, id_rol = rolDummy.id_rol});
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }

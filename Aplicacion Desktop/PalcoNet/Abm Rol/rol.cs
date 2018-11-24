@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    class rol
+    public class rol
     {
        public String id_rol { get; set; }
        public String nombre { get; set; }

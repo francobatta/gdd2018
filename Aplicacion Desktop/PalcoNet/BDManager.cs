@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -25,7 +26,7 @@ namespace PalcoNet.BDManager
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
-        public static void delete(String tableName, String idColumn , object o = null)
+        public static void delete(String tableName, String idColumn , object o)
         {
             myObj = o;
             var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
@@ -34,15 +35,23 @@ namespace PalcoNet.BDManager
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
-        public static void updateSet(String tableName, object o)
+        public static void deleteByField(String tableName, String field, String value)
+        {
+            var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
+            if (!myObj.Equals(null))
+                sql.Append(" WHERE " + field + "=" + value);
+            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString());
+        }
+        public static void updateSet(String tableName, String idColumn, object o)
         {
             myObj = o;
             var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate,"",",","");
-            sql.Append(" WHERE id=" + Extensions.getIdFromObj().First().GetValue(myObj));
+            sql.Append(" WHERE "+idColumn +"=" + Extensions.getIdFromObj().First().GetValue(myObj));
             MessageBox.Show(sql.ToString());
-            queryOptionalObject(sql.ToString());
+            queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
         }
         public static void insertInto(String tableName, object o)
         {
@@ -115,11 +124,23 @@ namespace PalcoNet.BDManager
                     sql.Append(appendIfLast);
             }
         }
+        public static DataTable GetData(string selectCommand)
+        {
+                using (SqlConnection connection = new SqlConnection(getConnectionString()))
+                {
+                    SqlDataAdapter dataAdapter = new SqlDataAdapter(selectCommand, connection);
+                    SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+                    DataTable table = new DataTable();
+                    dataAdapter.Fill(table);
+                    return table;
+                }
+        }
+
     }
     public enum queryTypes
     {
         NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY,
-        FILL_COMBOBOX
+        JUST_DO_STUFF
     }
     public static class Extensions
     {
@@ -139,6 +160,10 @@ namespace PalcoNet.BDManager
         {
             switch(q)
             {
+                case queryTypes.JUST_DO_STUFF:
+                    {
+                        BDManager.command.ExecuteNonQuery(); break;
+                    }
                 case queryTypes.NON_RETURNING_QUERY: {
                     foreach (PropertyInfo p in getPropertiesFromObj()) 
                     {

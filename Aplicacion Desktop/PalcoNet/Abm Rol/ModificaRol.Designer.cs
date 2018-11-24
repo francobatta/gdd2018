@@ -45,6 +45,8 @@
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.estadoRol = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btn_eliminar = new System.Windows.Forms.Button();
+            this.btn_agregar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -150,6 +152,7 @@
             // 
             // funcionalidades
             // 
+            this.funcionalidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.funcionalidades.FormattingEnabled = true;
             this.funcionalidades.Location = new System.Drawing.Point(638, 55);
             this.funcionalidades.Name = "funcionalidades";
@@ -207,6 +210,7 @@
             this.btn_guardar.TabIndex = 8;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_limpiar
             // 
@@ -223,6 +227,7 @@
             // 
             // estadoRol
             // 
+            this.estadoRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estadoRol.FormattingEnabled = true;
             this.estadoRol.Location = new System.Drawing.Point(335, 584);
             this.estadoRol.Name = "estadoRol";
@@ -239,6 +244,32 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Estado del Rol:";
             // 
+            // btn_eliminar
+            // 
+            this.btn_eliminar.BackColor = System.Drawing.Color.DeepPink;
+            this.btn_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar.Location = new System.Drawing.Point(958, 218);
+            this.btn_eliminar.Name = "btn_eliminar";
+            this.btn_eliminar.Size = new System.Drawing.Size(120, 63);
+            this.btn_eliminar.TabIndex = 13;
+            this.btn_eliminar.Text = "Eliminar seleccionado";
+            this.btn_eliminar.UseVisualStyleBackColor = false;
+            this.btn_eliminar.Click += new System.EventHandler(this.btn_eliminar_Click);
+            // 
+            // btn_agregar
+            // 
+            this.btn_agregar.BackColor = System.Drawing.Color.Gold;
+            this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregar.Location = new System.Drawing.Point(958, 128);
+            this.btn_agregar.Name = "btn_agregar";
+            this.btn_agregar.Size = new System.Drawing.Size(120, 84);
+            this.btn_agregar.TabIndex = 12;
+            this.btn_agregar.Text = "Agregar";
+            this.btn_agregar.UseVisualStyleBackColor = false;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
+            // 
             // ModificaRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +278,8 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_eliminar);
+            this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.estadoRol);
             this.Controls.Add(this.btn_limpiar);
@@ -296,5 +329,7 @@
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.ComboBox estadoRol;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btn_eliminar;
+        private System.Windows.Forms.Button btn_agregar;
 
     }
