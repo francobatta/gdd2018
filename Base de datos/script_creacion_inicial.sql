@@ -27,7 +27,9 @@ DROP TABLE EQUISDE.funcionalidad
 IF OBJECT_ID('EQUISDE.rol_x_usuario') IS NOT NULL
 DROP TABLE EQUISDE.rol_x_usuario 
 IF OBJECT_ID('EQUISDE.rol') IS NOT NULL
-DROP TABLE EQUISDE.rol  
+DROP TABLE EQUISDE.rol
+IF OBJECT_ID('EQUISDE.tarjeta') IS NOT NULL
+DROP TABLE EQUISDE.tarjeta
 IF OBJECT_ID('EQUISDE.cliente') IS NOT NULL
 DROP TABLE EQUISDE.cliente 
 IF OBJECT_ID('EQUISDE.empresa') IS NOT NULL
@@ -54,8 +56,9 @@ CREATE TABLE EQUISDE.direccion(
 	calle nvarchar(50),
 	nro_calle numeric(18,0),
 	piso numeric(18,0),
+	ciudad nvarchar(50),
 	depto nvarchar(50),
-	cod_postal nvarchar(50),
+	cpostal nvarchar(50),
 	localidad nvarchar(50)
 )
 
@@ -68,6 +71,7 @@ CREATE TABLE EQUISDE.empresa(
 	mail nvarchar(50),
 	habilitado bit DEFAULT 1
 )
+
 
 CREATE TABLE EQUISDE.cliente(
 	username varchar(50) PRIMARY KEY REFERENCES EQUISDE.usuario,
@@ -197,6 +201,16 @@ CREATE TABLE EQUISDE.premio_x_cliente(
 	PRIMARY KEY(id_premio,username)
 )
 
+CREATE TABLE EQUISDE.tarjeta(
+	nro_tarjeta bigint PRIMARY KEY,
+	username varchar(50) REFERENCES EQUISDE.cliente,
+	fecha_vencimiento datetime,
+	cod_seguridad numeric(10,0),
+	nombre_titular nvarchar(255),
+	tipo_tarjeta varchar(3),
+	importe numeric(18,0),
+	CHECK(tipo_tarjeta in ('DNI','LE','CI'))
+)
 
 GO
 MERGE EQUISDE.usuario d
@@ -207,6 +221,20 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.username, HASHBYTES('SHA2_256',f.username));
 
 GO
+
+INSERT INTO EQUISDE.rol
+(nombre,habilitado)
+VALUES('empresa',1),('cliente',1),('admin',1);
+
+
+
+MERGE EQUISDE.rol_x_usuario d
+USING (SELECT DISTINCT Espec_Empresa_Cuit username,id_rol FROM gd_esquema.Maestra JOIN EQUISDE.rol ON(nombre='empresa') WHERE Espec_Empresa_Cuit IS NOT NULL) f
+ON d.username = f.username AND d.id_rol = f.id_rol
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT(username,id_rol)
+	VALUES(f.username,f.id_rol);
+
 MERGE EQUISDE.usuario d
 USING (SELECT DISTINCT CAST(Cli_Dni AS varchar(255)) username FROM gd_esquema.Maestra WHERE Cli_Dni IS NOT NULL) f
 ON f.username = d.username
@@ -215,23 +243,32 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.username, HASHBYTES('SHA2_256',username));
 
 GO
+
+MERGE EQUISDE.rol_x_usuario d
+USING (SELECT DISTINCT CAST(Cli_Dni AS varchar(255)) username,id_rol FROM gd_esquema.Maestra JOIN EQUISDE.rol ON(nombre='cliente') WHERE Cli_Dni IS NOT NULL) f
+ON d.username = f.username AND d.id_rol = f.id_rol
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT(username,id_rol)
+	VALUES(f.username,f.id_rol);
+
+
 MERGE EQUISDE.direccion d
 USING (SELECT DISTINCT Espec_Empresa_Dom_Calle,Espec_Empresa_Nro_Calle,Espec_Empresa_Piso,Espec_Empresa_Depto,Espec_Empresa_Cod_Postal FROM gd_esquema.Maestra WHERE Espec_Empresa_Dom_Calle IS NOT NULL) f
-ON d.calle = f.Espec_Empresa_Dom_Calle AND d.nro_calle = f.Espec_Empresa_Nro_Calle AND d.piso = f.Espec_Empresa_Piso AND d.depto = f.Espec_Empresa_Depto AND d.cod_postal = f.Espec_Empresa_Cod_Postal 
+ON d.calle = f.Espec_Empresa_Dom_Calle AND d.nro_calle = f.Espec_Empresa_Nro_Calle AND d.piso = f.Espec_Empresa_Piso AND d.depto = f.Espec_Empresa_Depto AND d.cpostal = f.Espec_Empresa_Cod_Postal 
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(calle,nro_calle,piso,depto,cod_postal)
+	INSERT(calle,nro_calle,piso,depto,cpostal)
 	VALUES(f.Espec_Empresa_Dom_Calle,f.Espec_Empresa_Nro_Calle,f.Espec_Empresa_Piso,f.Espec_Empresa_Depto,f.Espec_Empresa_Cod_Postal);
 
 MERGE EQUISDE.direccion d
 USING (SELECT DISTINCT Cli_Dom_Calle,Cli_Nro_Calle,Cli_Piso, Cli_Depto, Cli_Cod_Postal FROM gd_esquema.Maestra WHERE Cli_Dom_Calle IS NOT NULL)f
-ON d.calle = f.Cli_Dom_Calle AND d.nro_calle = f.Cli_Nro_Calle AND d.piso = f.Cli_Piso AND d.depto = f.Cli_Depto AND d.cod_postal = f.Cli_Cod_Postal 
+ON d.calle = f.Cli_Dom_Calle AND d.nro_calle = f.Cli_Nro_Calle AND d.piso = f.Cli_Piso AND d.depto = f.Cli_Depto AND d.cpostal = f.Cli_Cod_Postal 
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(calle,nro_calle,piso,depto,cod_postal)
+	INSERT(calle,nro_calle,piso,depto,cpostal)
 	VALUES(f.Cli_Dom_Calle,f.Cli_Nro_Calle,f.Cli_Piso,f.Cli_Depto,f.Cli_Cod_Postal);
 
 MERGE EQUISDE.empresa d
 USING (SELECT DISTINCT Espec_Empresa_Razon_Social,Espec_Empresa_Cuit,Espec_Empresa_Fecha_Creacion,Espec_Empresa_Mail,id_direccion FROM gd_esquema.Maestra gd JOIN EQUISDE.direccion di
-ON(gd.Espec_Empresa_Dom_Calle = di.calle AND gd.Espec_Empresa_Nro_Calle= di.nro_calle AND gd.Espec_Empresa_Piso=di.piso AND gd.Espec_Empresa_Depto = di.depto AND gd.Espec_Empresa_Cod_Postal = di.cod_postal))f
+ON(gd.Espec_Empresa_Dom_Calle = di.calle AND gd.Espec_Empresa_Nro_Calle= di.nro_calle AND gd.Espec_Empresa_Piso=di.piso AND gd.Espec_Empresa_Depto = di.depto AND gd.Espec_Empresa_Cod_Postal = di.cpostal))f
 ON f.Espec_Empresa_Cuit = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,razon_social,cuit,fecha_creacion,mail,id_direccion)
@@ -239,7 +276,7 @@ WHEN NOT MATCHED BY TARGET THEN
 
 MERGE EQUISDE.cliente d
 USING (SELECT DISTINCT Cli_Dni,Cli_Apeliido,Cli_Nombre,Cli_Fecha_Nac,Cli_Mail,GETDATE() fecha_creacion, id_direccion FROM gd_esquema.Maestra gd JOIN EQUISDE.direccion di
-ON(gd.Cli_Dom_Calle = di.calle AND gd.Cli_Nro_Calle= di.nro_calle AND gd.Cli_Piso=di.piso AND gd.Cli_Depto = di.depto AND gd.Cli_Cod_Postal = di.cod_postal))f
+ON(gd.Cli_Dom_Calle = di.calle AND gd.Cli_Nro_Calle= di.nro_calle AND gd.Cli_Piso=di.piso AND gd.Cli_Depto = di.depto AND gd.Cli_Cod_Postal = di.cpostal))f
 ON f.Cli_Dni = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,nombre, apellido, dni,mail,fecha_nacimiento, fecha_creacion, id_direccion)
