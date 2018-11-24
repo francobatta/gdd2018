@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PalcoNet.Abm_Cliente;
 
     public partial class AltaCliente : Form
     {
@@ -20,7 +19,13 @@ using PalcoNet.Abm_Cliente;
 
         private void AltaCliente_Load(object sender, EventArgs e)
         {
-
+            tipoDoc.Items.Add("DNI");
+            tipoDoc.Items.Add("LE");
+            tipoDoc.Items.Add("CI");
+            tipoDoc.SelectedIndex = 0;
+            tipoTarjeta.Items.Add("Mastercard");
+            tipoTarjeta.Items.Add("VISA");
+            tipoTarjeta.SelectedIndex = 0;
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -35,12 +40,12 @@ using PalcoNet.Abm_Cliente;
                  //c.username = Login.usuarioLogueado();
                  c.nombre = nombre.Text;
                  c.apellido = apellido.Text;
-                 c.tipoDoc = tipoDoc.Text;
-                 c.nDoc = nDoc.Text;
+                 c.tipo_documento = tipoDoc.Text;
+                 c.dni = nDoc.Text;
                  c.CUIL = CUIL.Text;
-                 c.email = email.Text;
+                 c.mail = email.Text;
                  c.telefono = telefono.Text;
-                 c.fechaNac = fechaNac.Text;
+                 c.fecha_nacimiento = fechaNac.Text;
                  d.localidad = localidad.Text;
                  d.ciudad = ciudad.Text;
                  d.calle = calle.Text;
@@ -56,7 +61,7 @@ using PalcoNet.Abm_Cliente;
                 if (BDManager.exists("cliente", "CUIL", c.CUIL))
                     throw new ClienteInvalidoException();
                 // validar tipodoc+ndoc contra la base usando BDManager
-                if (BDManager.existsButWith("cliente","tipoDoc",tipoDoc.Text,"nDoc="+nDoc.Text))
+                if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"nDoc="+dni.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
                 BDManager.insertInto("direccion", d);
@@ -120,4 +125,27 @@ using PalcoNet.Abm_Cliente;
     private const int WM_NCHITTEST = 0x84;
     private const int HT_CLIENT = 0x1;
     private const int HT_CAPTION = 0x2;
+
+    private void btn_limpiar_Click(object sender, EventArgs e)
+    {
+        nombre.Text = default(String);
+        apellido.Text = default(String);
+        tipoDoc.Text = default(String);
+        nDoc.Text = default(String);
+        CUIL.Text = default(String);
+        email.Text = default(String);
+        telefono.Text = default(String);
+        fechaNac.Text = default(String);
+        localidad.Text = default(String);
+        ciudad.Text = default(String);
+        calle.Text = default(String);
+        piso.Text = default(String);
+        depto.Text = default(String);
+        cpostal.Text = default(String);
+        nroTarjeta.Text = default(String);
+        codSeguridad.Text = default(String);
+        nombreTitularTarjeta.Text = default(String);
+        tipoTarjeta.Text = default(String);
+        fechavtotarjeta.Text = default(String);
+    }
     }

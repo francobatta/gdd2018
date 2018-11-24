@@ -82,7 +82,7 @@ CREATE TABLE EQUISDE.cliente(
 	habilitado bit DEFAULT 1,
 	puntos bigint,
 	cuil nvarchar(255),
-	tipo_documento nvarchar(30)
+	tipo_documento nvarchar(30) DEFAULT 'DNI'
 )
 
 CREATE TABLE EQUISDE.rol(
