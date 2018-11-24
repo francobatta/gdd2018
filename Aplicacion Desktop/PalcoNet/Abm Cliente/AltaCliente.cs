@@ -61,7 +61,7 @@ using System.Windows.Forms;
                 if (BDManager.exists("cliente", "CUIL", c.CUIL))
                     throw new ClienteInvalidoException();
                 // validar tipodoc+ndoc contra la base usando BDManager
-                if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"nDoc="+dni.Text))
+                if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"nDoc="+nDoc.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
                 BDManager.insertInto("direccion", d);

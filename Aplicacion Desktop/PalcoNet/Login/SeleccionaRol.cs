@@ -16,22 +16,9 @@ using System.Windows.Forms;
 
         private void SeleccionaRol_Load(object sender, EventArgs e)
         {
-
+            listaRolesUsuario.DataSource = usuarioGlobal.posiblesRoles;
+            usernameDisplay.Text = usuarioGlobal.usuarioLogueado.username;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
         {
@@ -55,6 +42,22 @@ using System.Windows.Forms;
 
     private void btn_ingresar_Click(object sender, EventArgs e)
     {
-
+        try
+        {
+            DataGridViewRow filaElegida = listaRolesUsuario.CurrentRow;
+            if (filaElegida == null || filaElegida.Selected == false)
+                throw new CamposInvalidosException();
+            rol r = new rol();
+            r.id_rol = filaElegida.Cells["id_rol"].Value.ToString();
+            r.nombre = filaElegida.Cells["nombre"].Value.ToString();
+            usuarioGlobal.rolLogueado = r;
+            MessageBox.Show("Rol elegido satisfactoriamente", "Selección de rol", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // abro menu y cierro esto
+            this.Hide();
+            var MenuPrincipal = new MenuPrincipal();
+            MenuPrincipal.Closed += (s, args) => this.Close();
+            MenuPrincipal.Show();
+        }
+        catch (CamposInvalidosException) { MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar rol", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
     }
