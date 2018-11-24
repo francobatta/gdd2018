@@ -12,6 +12,7 @@ using System.Windows.Forms;
     public partial class ModificaUsuario : Form
     {
         public usuario usuarioAModificar { get; set; }
+        public List<rol> listaRolesDeEseUsuario { get; set; }
         public ModificaUsuario(usuario u)
         {
             InitializeComponent();
@@ -23,23 +24,17 @@ using System.Windows.Forms;
             username.Text = usuarioAModificar.username;
             // todos los roles
             List<object> listaRolesBD = BDManager.getList("SELECT * FROM EQUISDE.rol", new rol());
-            List<rol> listaRoles = listaRolesBD.Cast<rol>().ToList();
-            listaRolesUsuario.DataSource = listaRoles;
+            List<rol> listaRolesGeneral = listaRolesBD.Cast<rol>().ToList();
+            listaRolesUsuario.DataSource = listaRolesGeneral;
             listaRolesUsuario.DisplayMember = "nombre";
+            // roles de ESE usuario
+            List<object> listaTraidaDeBD = BDManager.getList(
+                "SELECT r.id_rol, r.nombre FROM EQUISDE.usuario u JOIN EQUISDE.rol_x_usuario ru ON u.username = ru.username JOIN EQUISDE.rol r ON ru.id_dol = r.id_rol WHERE u.username =" + usuarioAModificar.username
+                , new rol());
+            listaRolesDeEseUsuario = listaTraidaDeBD.Cast<rol>().ToList();
+            listaRoles.DataSource = listaRolesDeEseUsuario;
+            listaRoles.DisplayMember = "username";
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)

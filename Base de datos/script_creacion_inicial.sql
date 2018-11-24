@@ -69,7 +69,6 @@ CREATE TABLE EQUISDE.empresa(
 	habilitado bit
 )
 
-
 CREATE TABLE EQUISDE.cliente(
 	username varchar(50) PRIMARY KEY REFERENCES EQUISDE.usuario,
 	nombre nvarchar(255),

@@ -63,13 +63,14 @@ using System.Windows.Forms;
             try
             {
             DataGridViewRow filaElegida = listadoActualRoles.CurrentRow;
-            if (filaElegida.Selected == false)
+            if (filaElegida == null || filaElegida.Selected == false)
                 throw new CamposInvalidosException();
             rol rolACambiar = new rol();
             BDManager.selectIntoObject("rol", "id_rol", filaElegida.Cells["id_rol"].Value.ToString(), rolACambiar);
             rolACambiar.habilitado = "False";
             BDManager.updateSet("rol", "id_rol", rolACambiar);
-            MessageBox.Show("Rol "+ rolACambiar.nombre +" inhabilitado con éxito", "Inhabilitación de rol", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            BDManager.deleteByField("rol_x_usuario", "id_rol", rolACambiar.id_rol); //les saco a los users el rol inhabilitado
+            MessageBox.Show("Rol "+ rolACambiar.nombre +" inhabilitado con éxito. Rol quitado de los usuarios que lo posean.", "Inhabilitación de rol", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (CamposInvalidosException)
             {

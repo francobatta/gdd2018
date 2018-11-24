@@ -74,7 +74,7 @@ using System.Windows.Forms;
             try
             {
                 DataGridViewRow filaElegida = listadoUsuarios.CurrentRow;
-                if (filaElegida.Selected == false)
+                if (filaElegida == null || filaElegida.Selected == false)
                     throw new CamposInvalidosException();
                 usuario usuarioACambiar = new usuario();
                 BDManager.selectIntoObjectByString("usuario", "username", filaElegida.Cells["username"].Value.ToString(), usuarioACambiar);
