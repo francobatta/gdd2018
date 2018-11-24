@@ -63,7 +63,7 @@ using System.Windows.Forms;
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             nombre.Text = default(String);
-            listaFuncionalidadesAsignadas.Items.Clear();
+            listaFuncionalidadesAsignadas.DataSource = null;
         }
 
         private void btn_agregar_Click(object sender, EventArgs e)
@@ -102,7 +102,9 @@ using System.Windows.Forms;
                 foreach (funcionalidad f in listaFuncionalidadesAsignadas.Items)
                 {
                     BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = f.id_funcionalidad, id_rol = rolAModificar.id_rol });
-                }                
+                }
+                MessageBox.Show("El rol ha sido modificado", "Rol modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 

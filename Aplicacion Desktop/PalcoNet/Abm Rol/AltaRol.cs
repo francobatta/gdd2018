@@ -58,7 +58,10 @@ using System.Windows.Forms;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listaFuncionalidadesAsignadas.Items.Remove(listaFuncionalidadesAsignadas.SelectedItem);
+            if (listaFuncionalidadesAsignadas.SelectedItem != null)
+                listaFuncionalidadesAsignadas.Items.Remove(listaFuncionalidadesAsignadas.SelectedItem);
+            else
+                MessageBox.Show("Seleccione item a eliminar de la lista", "No hay item seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -76,6 +79,8 @@ using System.Windows.Forms;
                     BDManager.selectIntoObjectByString("rol", "nombre", nombre.Text, rolDummy);
                     foreach (funcionalidad f in listaFuncionalidadesAsignadas.Items)
                         BDManager.insertInto("rol_x_funcionalidad", new rol_x_funcionalidad { id_funcionalidad = f.id_funcionalidad, id_rol = rolDummy.id_rol});
+                    MessageBox.Show("El rol ha sido dado de alta", "Rol dado de alta correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del rol a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }

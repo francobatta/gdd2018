@@ -164,6 +164,8 @@
     <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\ControlDePKException.cs" />
+    <Compile Include="Registro de Usuario\usuario.cs" />
     <Compile Include="Registro de Usuario\ModificaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
