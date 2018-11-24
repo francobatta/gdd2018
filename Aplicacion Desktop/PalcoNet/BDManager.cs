@@ -78,6 +78,12 @@ namespace PalcoNet.BDManager
             MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(),queryTypes.JUST_DO_STUFF);
         }
+        public static void updateEncryptedUser(usuario u)
+        {
+            var sql = new StringBuilder("UPDATE EQUISDE.usuario SET username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='"+u.username+"'");
+            MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString(), queryTypes.JUST_DO_STUFF);
+        }
         public static bool exists(String tableName, String campo, String valor)
         {
             using (SqlConnection connection = new SqlConnection(getConnectionString()))

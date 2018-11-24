@@ -46,8 +46,9 @@
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_eliminarRolSeleccionado = new System.Windows.Forms.Button();
-            this.btn_agregarRol = new System.Windows.Forms.Button();
+            this.btn_agregarUsuario = new System.Windows.Forms.Button();
             this.listaRoles = new System.Windows.Forms.ListBox();
+            this.btn_habilitar_rol = new System.Windows.Forms.Button();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,7 +143,7 @@
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
             this.sidepanel.Name = "sidepanel";
-            this.sidepanel.Size = new System.Drawing.Size(200, 333);
+            this.sidepanel.Size = new System.Drawing.Size(200, 362);
             this.sidepanel.TabIndex = 0;
             // 
             // label17
@@ -161,7 +162,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(206, 92);
+            this.label1.Location = new System.Drawing.Point(206, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 21);
             this.label1.TabIndex = 5;
@@ -169,7 +170,7 @@
             // 
             // username
             // 
-            this.username.Location = new System.Drawing.Point(315, 93);
+            this.username.Location = new System.Drawing.Point(315, 80);
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(247, 20);
             this.username.TabIndex = 6;
@@ -178,7 +179,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(206, 129);
+            this.label2.Location = new System.Drawing.Point(206, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 21);
             this.label2.TabIndex = 7;
@@ -186,7 +187,7 @@
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(315, 130);
+            this.password.Location = new System.Drawing.Point(315, 114);
             this.password.Name = "password";
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(247, 20);
@@ -196,7 +197,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(206, 166);
+            this.label3.Location = new System.Drawing.Point(206, 150);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 21);
             this.label3.TabIndex = 9;
@@ -206,7 +207,7 @@
             // 
             this.listaRolesUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.listaRolesUsuario.FormattingEnabled = true;
-            this.listaRolesUsuario.Location = new System.Drawing.Point(245, 166);
+            this.listaRolesUsuario.Location = new System.Drawing.Point(245, 150);
             this.listaRolesUsuario.Name = "listaRolesUsuario";
             this.listaRolesUsuario.Size = new System.Drawing.Size(317, 21);
             this.listaRolesUsuario.TabIndex = 10;
@@ -240,44 +241,60 @@
             this.btn_guardar.BackColor = System.Drawing.Color.PaleGreen;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.Location = new System.Drawing.Point(568, 257);
+            this.btn_guardar.Location = new System.Drawing.Point(568, 288);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(481, 67);
             this.btn_guardar.TabIndex = 48;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_eliminarRolSeleccionado
             // 
             this.btn_eliminarRolSeleccionado.BackColor = System.Drawing.Color.DarkOrange;
             this.btn_eliminarRolSeleccionado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminarRolSeleccionado.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminarRolSeleccionado.Location = new System.Drawing.Point(384, 193);
+            this.btn_eliminarRolSeleccionado.Location = new System.Drawing.Point(384, 177);
             this.btn_eliminarRolSeleccionado.Name = "btn_eliminarRolSeleccionado";
             this.btn_eliminarRolSeleccionado.Size = new System.Drawing.Size(178, 30);
             this.btn_eliminarRolSeleccionado.TabIndex = 77;
             this.btn_eliminarRolSeleccionado.Text = "Eliminar Rol elegido";
             this.btn_eliminarRolSeleccionado.UseVisualStyleBackColor = false;
+            this.btn_eliminarRolSeleccionado.Click += new System.EventHandler(this.btn_eliminarRolSeleccionado_Click);
             // 
-            // btn_agregarRol
+            // btn_agregarUsuario
             // 
-            this.btn_agregarRol.BackColor = System.Drawing.Color.Gold;
-            this.btn_agregarRol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_agregarRol.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregarRol.Location = new System.Drawing.Point(210, 193);
-            this.btn_agregarRol.Name = "btn_agregarRol";
-            this.btn_agregarRol.Size = new System.Drawing.Size(168, 30);
-            this.btn_agregarRol.TabIndex = 76;
-            this.btn_agregarRol.Text = "Agregar Rol";
-            this.btn_agregarRol.UseVisualStyleBackColor = false;
+            this.btn_agregarUsuario.BackColor = System.Drawing.Color.Gold;
+            this.btn_agregarUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregarUsuario.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregarUsuario.Location = new System.Drawing.Point(210, 177);
+            this.btn_agregarUsuario.Name = "btn_agregarUsuario";
+            this.btn_agregarUsuario.Size = new System.Drawing.Size(168, 30);
+            this.btn_agregarUsuario.TabIndex = 76;
+            this.btn_agregarUsuario.Text = "Agregar Rol";
+            this.btn_agregarUsuario.UseVisualStyleBackColor = false;
+            this.btn_agregarUsuario.Click += new System.EventHandler(this.btn_agregarRol_Click);
             // 
             // listaRoles
             // 
             this.listaRoles.FormattingEnabled = true;
-            this.listaRoles.Location = new System.Drawing.Point(210, 229);
+            this.listaRoles.Location = new System.Drawing.Point(210, 213);
             this.listaRoles.Name = "listaRoles";
             this.listaRoles.Size = new System.Drawing.Size(352, 95);
             this.listaRoles.TabIndex = 75;
+            // 
+            // btn_habilitar_rol
+            // 
+            this.btn_habilitar_rol.BackColor = System.Drawing.Color.AliceBlue;
+            this.btn_habilitar_rol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_habilitar_rol.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_habilitar_rol.Location = new System.Drawing.Point(210, 314);
+            this.btn_habilitar_rol.Name = "btn_habilitar_rol";
+            this.btn_habilitar_rol.Size = new System.Drawing.Size(352, 41);
+            this.btn_habilitar_rol.TabIndex = 78;
+            this.btn_habilitar_rol.Text = "Volver a habilitar usuario";
+            this.btn_habilitar_rol.UseVisualStyleBackColor = false;
+            this.btn_habilitar_rol.Click += new System.EventHandler(this.btn_habilitar_rol_Click);
             // 
             // ModificaUsuario
             // 
@@ -285,10 +302,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1060, 333);
+            this.ClientSize = new System.Drawing.Size(1060, 362);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_habilitar_rol);
             this.Controls.Add(this.btn_eliminarRolSeleccionado);
-            this.Controls.Add(this.btn_agregarRol);
+            this.Controls.Add(this.btn_agregarUsuario);
             this.Controls.Add(this.listaRoles);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
@@ -341,7 +359,8 @@
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button btn_eliminarRolSeleccionado;
-        private System.Windows.Forms.Button btn_agregarRol;
+        private System.Windows.Forms.Button btn_agregarUsuario;
         private System.Windows.Forms.ListBox listaRoles;
+        private System.Windows.Forms.Button btn_habilitar_rol;
 
     }
