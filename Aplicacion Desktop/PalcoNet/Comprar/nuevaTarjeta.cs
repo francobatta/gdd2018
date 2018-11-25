@@ -52,6 +52,8 @@ public partial class nuevaTarjeta : Form
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
                 tarjeta tar = new tarjeta();
                 tar.nro_tarjeta = NroTarjeta.Text;
                 tar.username = usuarioGlobal.usuarioLogueado.username;
@@ -60,5 +62,17 @@ public partial class nuevaTarjeta : Form
                 tar.cod_seguridad = CodSeguridad.Text;
                 MessageBox.Show("La tarjeta ha sido insertado", "Tarjeta insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
+            }
+            catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la tarjeta a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void validarCamposCliente()
+        {
+            Validaciones.inicializarValidador();
+            Validaciones.esValido(NroTarjeta.Name, NroTarjeta.Text, new Validaciones.Numeros());
+            Validaciones.esValido(CodSeguridad.Name, CodSeguridad.Text, new Validaciones.Numeros());
+            Validaciones.esValido(NombreTitular.Name, NombreTitular.Text, new Validaciones.Letras());
+            if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                throw new CamposInvalidosException();
         }
     }

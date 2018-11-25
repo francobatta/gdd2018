@@ -53,6 +53,8 @@
             this.Carrito = new System.Windows.Forms.ListBox();
             this.eliminarCarrito = new System.Windows.Forms.Button();
             this.Compra = new System.Windows.Forms.Button();
+            this.fechaIN = new System.Windows.Forms.DateTimePicker();
+            this.FechaOut = new System.Windows.Forms.DateTimePicker();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -309,7 +311,23 @@
             this.Compra.UseVisualStyleBackColor = true;
             this.Compra.Click += new System.EventHandler(this.Compra_Click);
             // 
-            // comprar
+            // fechaIN
+            // 
+            this.fechaIN.Location = new System.Drawing.Point(682, 109);
+            this.fechaIN.Name = "fechaIN";
+            this.fechaIN.Size = new System.Drawing.Size(200, 20);
+            this.fechaIN.TabIndex = 19;
+            this.fechaIN.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
+            // 
+            // FechaOut
+            // 
+            this.FechaOut.Location = new System.Drawing.Point(682, 144);
+            this.FechaOut.Name = "FechaOut";
+            this.FechaOut.Size = new System.Drawing.Size(200, 20);
+            this.FechaOut.TabIndex = 20;
+            this.FechaOut.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
+            // 
+            // nuevaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -317,6 +335,8 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.FechaOut);
+            this.Controls.Add(this.fechaIN);
             this.Controls.Add(this.Compra);
             this.Controls.Add(this.eliminarCarrito);
             this.Controls.Add(this.Carrito);
@@ -339,7 +359,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "nuevaCompra";
-            this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.nuevaCompra_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
@@ -383,5 +402,7 @@
         private System.Windows.Forms.ListBox Carrito;
         private System.Windows.Forms.Button eliminarCarrito;
         private System.Windows.Forms.Button Compra;
+        private System.Windows.Forms.DateTimePicker fechaIN;
+        private System.Windows.Forms.DateTimePicker FechaOut;
 
     }

@@ -21,7 +21,8 @@ using PalcoNet.BDManager;
         {
             //Falta validar rango fechas
             ListaEsp.DataSource = BDManager.getData(
-              "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado WHERE e.estado LIKE 'Alta'"
+                //REEMPLAZAR EL GETDATE POR LA FECHA DE COMPRA
+              "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento"
               );
             //
             List<object> listaTraidaDeBD = BDManager.getList("SELECT codigo_tipo, descripcion FROM EQUISDE.tipo", new tipo());
@@ -125,18 +126,28 @@ using PalcoNet.BDManager;
         private void filtrar_Click(object sender, EventArgs e)
         {
             //falta validacion
-            String ids="(";
+            String filtroCategorias = "";
+            String filtroFechas = "";
+            if (ListaCat.Items.Count > 1) {
+                String ids = "(";
                 foreach (var t in ListaCat.Items)
                 {
-                    ids+=t.ToString();
-                    ids+=",";
-                    }
-            ids = ids.Remove(ids.Length - 1); 
-            ids=")";
+                    ids += t.ToString();
+                    ids += ",";
+                }
+                ids = ids.Remove(ids.Length - 1);
+                ids = ")";
+                filtroCategorias = " AND u.codigo_tipo IN " + ids;
+            }
+            if (!(fechaIN.Text == FechaOut.Text)) {
+                filtroFechas = " AND p.fecha_publicacion BEETWEEN " + fechaIN.Text + " AND " + FechaOut.Text;
+            }
             ListaEsp.DataSource = null;
             ListaEsp.DataSource = BDManager.getData(
-              "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion"+
-            "WHERE e.estado LIKE 'Alta' AND p.descripcion LIKE '%" + Descripcion.Text + "%' AND u.codigo_tipo IN " + ids
+                //REemplazar el getdate por la fecha de compra!
+              "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN grado g ON g.id_grado=p.id_grado"+
+            "WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento AND p.descripcion LIKE '%" + Descripcion.Text + "%'"+filtroCategorias+filtroFechas+
+            "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC"
               );
         }
 
@@ -151,6 +162,7 @@ using PalcoNet.BDManager;
         private void Compra_Click(object sender, EventArgs e)
         {
             try{
+            Validaciones.inicializarValidador();
             compra_x_ubicacion cu = new compra_x_ubicacion();
             compra com = new compra();
             com.username = usuarioGlobal.usuarioLogueado.username;
@@ -184,5 +196,13 @@ using PalcoNet.BDManager;
             }
             }
              catch (CompraInvalidaException) { MessageBox.Show("Importe negativo", "Error al validar campos de la compra al insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+        private void validarCamposCompra()
+        {
+            Validaciones.inicializarValidador();
+            Validaciones.esValido(Descripcion.Name, Descripcion.Text, new Validaciones.Letras());
+            Validaciones.esValido(Email.Name, Email.Text, new Validaciones.Email());
+            if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                throw new CamposInvalidosException();
         }
         }
