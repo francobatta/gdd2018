@@ -125,14 +125,17 @@ CREATE TABLE EQUISDE.estadop(
 	CHECK(estado IN ('P','B','F'))
 )
 
-INSERT INTO EQUISDE.grado
-VALUES(1,'Alta'),(2,'Media'),(3,'Baja');
 
 CREATE TABLE EQUISDE.grado(
 	id_grado bigint IDENTITY PRIMARY KEY,
 	estado varchar(30),
 	CHECK(estado IN ('Alta','Baja','Media'))
 )
+
+INSERT INTO EQUISDE.grado
+VALUES('Alta'),('Media'),('Baja');
+
+
 CREATE TABLE EQUISDE.publicacion(
 	id_publicacion numeric(18,0) PRIMARY KEY IDENTITY,
 	id_rubro bigint REFERENCES EQUISDE.rubro,
@@ -231,8 +234,7 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.username, HASHBYTES('SHA2_256',f.username));
 
 GO
-INSERT INTO EQUISDE.grado
-VALUES(1,'Alta'),(2,'Media'),(3,'Baja');
+
 
 INSERT INTO EQUISDE.rol
 (nombre)
@@ -352,8 +354,8 @@ MERGE EQUISDE.compra d
 USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni,Forma_Pago_Desc FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL) f
 ON d.username = f.Cli_Dni AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha AND d.forma_de_pago = f.Forma_Pago_Desc
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(username,fecha_compra,cantidad,forma_de_pago)
-	VALUES(f.Cli_Dni,f.Compra_Fecha,f.Compra_Cantidad,f.Forma_Pago_Desc);
+	INSERT(username,fecha_compra,cantidad,forma_de_pago,fecha_vencimiento_puntos)
+	VALUES(f.Cli_Dni,f.Compra_Fecha,f.Compra_Cantidad,f.Forma_Pago_Desc,DATEADD(month,3,f.Compra_Fecha));
 
 MERGE EQUISDE.compra_x_ubicacion d
 USING(SELECT DISTINCT id_ubicacion, id_compra FROM EQUISDE.ubicacion u JOIN gd_esquema.Maestra m ON (u.id_publicacion = m.Espectaculo_Cod AND u.codigo_tipo = m.Ubicacion_Tipo_Codigo AND u.fila = m.Ubicacion_Fila AND u.asiento = m.Ubicacion_Asiento AND u.precio = m.Ubicacion_Precio AND u.sin_numerar = m.Ubicacion_Sin_numerar)
@@ -400,5 +402,10 @@ INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
 INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',3)
 INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad)
 
-
-SELECT TOP 5 p.username,cuit,estado visibilidad,COUNT(*) cantidad FROM EQUISDE.publicacion p JOIN EQUISDE.empresa e ON(p.username = e.username) left JOIN EQUISDE.grado g ON(g.id_grado=p.id_grado) JOIN EQUISDE.ubicacion u ON (p.id_publicacion=u.id_publicacion) LEFT JOIN EQUISDE.compra_x_ubicacion cu ON (u.id_ubicacion = cu.id_ubicacion)  WHERE cu.id_compra IS NULL AND p.fecha_publicacion BETWEEN CAST('2018/01/01' AS datetime) AND CAST('2018/04/30' AS datetime) GROUP BY p.username,cuit,razon_social,estado,fecha_publicacion,p.id_grado,p.id_publicacion ORDER BY  cantidad DESC,fecha_publicacion,p.id_grado ASC
+SELECT nombre, apellido, COUNT(cp.id_compra) cantidad_compra, p.username usuario_empresa FROM EQUISDE.cliente cl
+JOIN EQUISDE.compra cp ON (cp.username = cl.username)
+JOIN EQUISDE.compra_x_ubicacion cu ON (cp.id_compra = cu.id_compra)
+JOIN EQUISDE.ubicacion u ON(cu.id_ubicacion = u.id_ubicacion)
+JOIN EQUISDE.publicacion p ON (p.id_publicacion = u.id_publicacion)
+GROUP BY nombre,apellido,p.username
+ORDER BY cantidad_compra
