@@ -17,7 +17,7 @@ public partial class nuevaTarjeta : Form
         }
         private void nuevaTarjeta_Load(object sender, EventArgs e)
         {
-            listadoActualCompras.DataSource = BDManager.getData("SELECT DISTINCT fecha_compra,email,c.cantidad,puntos,forma_de_pago FROM EQUISDE.compra c JOIN EQUISDE.item i ON(i.id_compra=c.id_compra) JOIN EQUISDE.factura f ON(f.id_factura=i.id_factura) WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
+          
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -43,5 +43,22 @@ public partial class nuevaTarjeta : Form
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                tarjeta tar = new tarjeta();
+                tar.nro_tarjeta = NroTarjeta.Text;
+                tar.username = usuarioGlobal.usuarioLogueado.username;
+                tar.nombre_titular = NombreTitular.Text;
+                tar.fecha_vencimiento = FechaVencimiento.Text;
+                tar.cod_seguridad = CodSeguridad.Text;
+                MessageBox.Show("La tarjeta ha sido insertado", "Tarjeta insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
         }
     }

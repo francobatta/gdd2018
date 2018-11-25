@@ -1,4 +1,4 @@
-﻿    partial class BusquedaComprasCliente
+﻿partial class nuevaTarjeta
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaComprasCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevaTarjeta));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,12 +36,19 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
-            this.listadoActualCompras = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.NroTarjeta = new System.Windows.Forms.TextBox();
+            this.FechaVencimiento = new System.Windows.Forms.TextBox();
+            this.CodSeguridad = new System.Windows.Forms.TextBox();
+            this.NombreTitular = new System.Windows.Forms.TextBox();
+            this.Guardar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -148,22 +155,82 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
-            // listadoActualCompras
+            // label1
             // 
-            this.listadoActualCompras.AllowUserToAddRows = false;
-            this.listadoActualCompras.AllowUserToDeleteRows = false;
-            this.listadoActualCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listadoActualCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.listadoActualCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualCompras.Location = new System.Drawing.Point(210, 56);
-            this.listadoActualCompras.MultiSelect = false;
-            this.listadoActualCompras.Name = "listadoActualCompras";
-            this.listadoActualCompras.ReadOnly = true;
-            this.listadoActualCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualCompras.Size = new System.Drawing.Size(1229, 549);
-            this.listadoActualCompras.TabIndex = 10;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(274, 177);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Nro Tarjeta";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // BusquedaComprasCliente
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(274, 233);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Fecha Vencimiento";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(274, 278);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Cod Seguridad";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(274, 328);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Nombre Titular";
+            // 
+            // NroTarjeta
+            // 
+            this.NroTarjeta.Location = new System.Drawing.Point(443, 174);
+            this.NroTarjeta.Name = "NroTarjeta";
+            this.NroTarjeta.Size = new System.Drawing.Size(100, 20);
+            this.NroTarjeta.TabIndex = 10;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.Location = new System.Drawing.Point(443, 230);
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.Size = new System.Drawing.Size(100, 20);
+            this.FechaVencimiento.TabIndex = 11;
+            // 
+            // CodSeguridad
+            // 
+            this.CodSeguridad.Location = new System.Drawing.Point(443, 275);
+            this.CodSeguridad.Name = "CodSeguridad";
+            this.CodSeguridad.Size = new System.Drawing.Size(100, 20);
+            this.CodSeguridad.TabIndex = 12;
+            // 
+            // NombreTitular
+            // 
+            this.NombreTitular.Location = new System.Drawing.Point(443, 325);
+            this.NombreTitular.Name = "NombreTitular";
+            this.NombreTitular.Size = new System.Drawing.Size(100, 20);
+            this.NombreTitular.TabIndex = 13;
+            // 
+            // Guardar
+            // 
+            this.Guardar.Location = new System.Drawing.Point(716, 475);
+            this.Guardar.Name = "Guardar";
+            this.Guardar.Size = new System.Drawing.Size(75, 23);
+            this.Guardar.TabIndex = 15;
+            this.Guardar.Text = "Guardar";
+            this.Guardar.UseVisualStyleBackColor = true;
+            this.Guardar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // nuevaTarjeta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,15 +238,23 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.listadoActualCompras);
+            this.Controls.Add(this.Guardar);
+            this.Controls.Add(this.NombreTitular);
+            this.Controls.Add(this.CodSeguridad);
+            this.Controls.Add(this.FechaVencimiento);
+            this.Controls.Add(this.NroTarjeta);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BusquedaComprasCliente";
+            this.Name = "nuevaTarjeta";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.BusquedaComprasCliente_Load);
+            this.Load += new System.EventHandler(this.nuevaTarjeta_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -187,8 +262,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualCompras)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -202,7 +277,15 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
-        private System.Windows.Forms.DataGridView listadoActualCompras;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox NroTarjeta;
+        private System.Windows.Forms.TextBox FechaVencimiento;
+        private System.Windows.Forms.TextBox CodSeguridad;
+        private System.Windows.Forms.TextBox NombreTitular;
+        private System.Windows.Forms.Button Guardar;
 
     }

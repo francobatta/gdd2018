@@ -169,6 +169,11 @@ using PalcoNet.BDManager;
             }  
             if(aux<0)
                 throw new CompraInvalidaException();
+            if (!BDManager.exists("tarjeta", "username", usuarioGlobal.usuarioLogueado.username)) {
+                nuevaTarjeta m = new nuevaTarjeta();
+                m.ShowDialog();
+            }
+            com.forma_de_pago = "tarjeta";
             BDManager.insertInto("compra", com);
             cu.id_compra = com.id_compra;
 
@@ -176,7 +181,7 @@ using PalcoNet.BDManager;
             {
                 cu.id_ubicacion = t.ToString();
                 BDManager.insertInto("compra_x_ubicacion", cu);
-            }   
+            }
             }
              catch (CompraInvalidaException) { MessageBox.Show("Importe negativo", "Error al validar campos de la compra al insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
