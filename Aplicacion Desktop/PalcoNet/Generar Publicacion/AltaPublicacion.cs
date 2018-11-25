@@ -76,7 +76,7 @@ using System.Windows.Forms;
             // comienzo armado del objeto general
                 // rubro
             publicacion nuevaPublicacion = new publicacion();
-            nuevaPublicacion.id_rubro = rubro.SelectedValue as String;
+            nuevaPublicacion.id_rubro = rubro.SelectedValue.ToString();
                 // direccion
             direccion d = new direccion();
             d.localidad = localidad.Text;
@@ -86,28 +86,24 @@ using System.Windows.Forms;
             d.piso = piso.Text;
             d.depto = depto.Text;
             d.cpostal = cpostal.Text;
-            MessageBox.Show("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
-    );
+            BDManager.insertInto("direccion", d);
             BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
     "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
     , d);
             nuevaPublicacion.id_direccion = d.id_direccion;
                 // estado
-            estadoP est = new estadoP();
-            MessageBox.Show(estado.SelectedValue as String);
-            MessageBox.Show(estado.SelectedItem as String);
-            BDManager.selectIntoObjectByString("estado","estado",estado.SelectedValue as String,est);
-            nuevaPublicacion.id_estado = est.id_estado;
+            estadop est = new estadop();
+            BDManager.selectIntoObjectByString("estadop", "estado", estado.SelectedItem.ToString(), est);
+            nuevaPublicacion.id_estado = est.id_estadop;
                 // grado
             grado grad = new grado();
-            BDManager.selectIntoObjectByString("grado", "estado", grado.SelectedValue as String, est);
+            BDManager.selectIntoObjectByString("grado", "estado", grado.SelectedItem.ToString(), grad);
             nuevaPublicacion.id_grado = grad.id_grado;
             //nuevaPublicacion.username = usuarioGlobal.usuarioLogueado.username;
             nuevaPublicacion.descripcion = descripcion.Text;
             nuevaPublicacion.fecha_publicacion = fechaPublicacion.Value.ToString();
             // para todas las fechas de espectaculo
-            foreach (String f in listaFechasEspectaculo.Items)
+            foreach (DateTime f in listaFechasEspectaculo.Items)
             {
                 nuevaPublicacion.fecha_vencimiento = f.ToString();
                 BDManager.insertInto("publicacion", nuevaPublicacion);

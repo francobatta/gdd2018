@@ -148,7 +148,7 @@
     <Compile Include="Comprar\comprar.Designer.cs">
       <DependentUpon>comprar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Publicacion\estado.cs" />
+    <Compile Include="Generar Publicacion\estadop.cs" />
     <Compile Include="Generar Publicacion\publicacion.cs" />
     <Compile Include="Generar Publicacion\rubro.cs" />
     <Compile Include="Generar Publicacion\tipo.cs" />

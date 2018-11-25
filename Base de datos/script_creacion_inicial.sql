@@ -388,5 +388,8 @@ VALUES(convert(datetime,'01/01/2019',121),convert(datetime,'10/03/2018',121),321
 INSERT INTO EQUISDE.grado
 VALUES('Alta'),('Media'),('Baja');
 
+INSERT INTO EQUISDE.estadop
+VALUES('B','F')
+
 INSERT INTO EQUISDE.rubro
 VALUES ('pelicula')

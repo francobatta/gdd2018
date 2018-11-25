@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class estadoP
+    public class estadop
     {
-        public String id_estado { get; set; }
+        public String id_estadop { get; set; }
         public String estado { get; set; }
     }
