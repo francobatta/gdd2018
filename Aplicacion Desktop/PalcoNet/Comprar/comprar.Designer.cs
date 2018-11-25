@@ -36,10 +36,29 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ListaEsp = new System.Windows.Forms.DataGridView();
+            this.ListaUbi = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.tipoUbi = new System.Windows.Forms.ComboBox();
+            this.agregarTipo = new System.Windows.Forms.Button();
+            this.eliminarTipo = new System.Windows.Forms.Button();
+            this.ListaCat = new System.Windows.Forms.ListBox();
+            this.Descripcionl = new System.Windows.Forms.Label();
+            this.Descripcion = new System.Windows.Forms.TextBox();
+            this.filtrar = new System.Windows.Forms.Button();
+            this.Emaill = new System.Windows.Forms.Label();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.Carrito = new System.Windows.Forms.ListBox();
+            this.eliminarCarrito = new System.Windows.Forms.Button();
+            this.Compra = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaEsp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaUbi)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -145,6 +164,151 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
+            // ListaEsp
+            // 
+            this.ListaEsp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListaEsp.Location = new System.Drawing.Point(288, 213);
+            this.ListaEsp.Name = "ListaEsp";
+            this.ListaEsp.Size = new System.Drawing.Size(617, 88);
+            this.ListaEsp.TabIndex = 2;
+            this.ListaEsp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListaEsp_CellContentClick);
+            // 
+            // ListaUbi
+            // 
+            this.ListaUbi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ListaUbi.Location = new System.Drawing.Point(288, 332);
+            this.ListaUbi.Name = "ListaUbi";
+            this.ListaUbi.Size = new System.Drawing.Size(617, 91);
+            this.ListaUbi.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(930, 214);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(195, 87);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Seleccionar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(930, 336);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(195, 87);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Agregar carrito";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tipoUbi
+            // 
+            this.tipoUbi.FormattingEnabled = true;
+            this.tipoUbi.Location = new System.Drawing.Point(288, 82);
+            this.tipoUbi.Name = "tipoUbi";
+            this.tipoUbi.Size = new System.Drawing.Size(121, 21);
+            this.tipoUbi.TabIndex = 6;
+            this.tipoUbi.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // agregarTipo
+            // 
+            this.agregarTipo.Location = new System.Drawing.Point(415, 82);
+            this.agregarTipo.Name = "agregarTipo";
+            this.agregarTipo.Size = new System.Drawing.Size(87, 23);
+            this.agregarTipo.TabIndex = 8;
+            this.agregarTipo.Text = "Agregar";
+            this.agregarTipo.UseVisualStyleBackColor = true;
+            this.agregarTipo.Click += new System.EventHandler(this.agregarTipo_Click);
+            // 
+            // eliminarTipo
+            // 
+            this.eliminarTipo.Location = new System.Drawing.Point(508, 82);
+            this.eliminarTipo.Name = "eliminarTipo";
+            this.eliminarTipo.Size = new System.Drawing.Size(75, 23);
+            this.eliminarTipo.TabIndex = 9;
+            this.eliminarTipo.Text = "Eliminar";
+            this.eliminarTipo.UseVisualStyleBackColor = true;
+            this.eliminarTipo.Click += new System.EventHandler(this.eliminarTipo_Click);
+            // 
+            // ListaCat
+            // 
+            this.ListaCat.FormattingEnabled = true;
+            this.ListaCat.Location = new System.Drawing.Point(288, 109);
+            this.ListaCat.Name = "ListaCat";
+            this.ListaCat.Size = new System.Drawing.Size(292, 56);
+            this.ListaCat.TabIndex = 10;
+            // 
+            // Descripcionl
+            // 
+            this.Descripcionl.AutoSize = true;
+            this.Descripcionl.Location = new System.Drawing.Point(285, 187);
+            this.Descripcionl.Name = "Descripcionl";
+            this.Descripcionl.Size = new System.Drawing.Size(63, 13);
+            this.Descripcionl.TabIndex = 11;
+            this.Descripcionl.Text = "Descripcion";
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.Location = new System.Drawing.Point(355, 187);
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Size = new System.Drawing.Size(100, 20);
+            this.Descripcion.TabIndex = 12;
+            this.Descripcion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // filtrar
+            // 
+            this.filtrar.Location = new System.Drawing.Point(1022, 78);
+            this.filtrar.Name = "filtrar";
+            this.filtrar.Size = new System.Drawing.Size(195, 87);
+            this.filtrar.TabIndex = 13;
+            this.filtrar.Text = "Filtrar";
+            this.filtrar.UseVisualStyleBackColor = true;
+            this.filtrar.Click += new System.EventHandler(this.filtrar_Click);
+            // 
+            // Emaill
+            // 
+            this.Emaill.AutoSize = true;
+            this.Emaill.Location = new System.Drawing.Point(285, 576);
+            this.Emaill.Name = "Emaill";
+            this.Emaill.Size = new System.Drawing.Size(32, 13);
+            this.Emaill.TabIndex = 14;
+            this.Emaill.Text = "Email";
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(355, 573);
+            this.Email.Name = "Email";
+            this.Email.Size = new System.Drawing.Size(100, 20);
+            this.Email.TabIndex = 15;
+            // 
+            // Carrito
+            // 
+            this.Carrito.FormattingEnabled = true;
+            this.Carrito.Location = new System.Drawing.Point(288, 467);
+            this.Carrito.Name = "Carrito";
+            this.Carrito.Size = new System.Drawing.Size(617, 69);
+            this.Carrito.TabIndex = 16;
+            // 
+            // eliminarCarrito
+            // 
+            this.eliminarCarrito.Location = new System.Drawing.Point(930, 467);
+            this.eliminarCarrito.Name = "eliminarCarrito";
+            this.eliminarCarrito.Size = new System.Drawing.Size(195, 64);
+            this.eliminarCarrito.TabIndex = 17;
+            this.eliminarCarrito.Text = "Eliminar";
+            this.eliminarCarrito.UseVisualStyleBackColor = true;
+            this.eliminarCarrito.Click += new System.EventHandler(this.eliminarCarrito_Click);
+            // 
+            // Compra
+            // 
+            this.Compra.Location = new System.Drawing.Point(930, 550);
+            this.Compra.Name = "Compra";
+            this.Compra.Size = new System.Drawing.Size(195, 64);
+            this.Compra.TabIndex = 18;
+            this.Compra.Text = "Compra";
+            this.Compra.UseVisualStyleBackColor = true;
+            this.Compra.Click += new System.EventHandler(this.Compra_Click);
+            // 
             // comprar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +317,22 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.Compra);
+            this.Controls.Add(this.eliminarCarrito);
+            this.Controls.Add(this.Carrito);
+            this.Controls.Add(this.Email);
+            this.Controls.Add(this.Emaill);
+            this.Controls.Add(this.filtrar);
+            this.Controls.Add(this.Descripcion);
+            this.Controls.Add(this.Descripcionl);
+            this.Controls.Add(this.ListaCat);
+            this.Controls.Add(this.eliminarTipo);
+            this.Controls.Add(this.agregarTipo);
+            this.Controls.Add(this.tipoUbi);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ListaUbi);
+            this.Controls.Add(this.ListaEsp);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -168,7 +348,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaEsp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaUbi)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -183,5 +366,22 @@
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label17;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridView ListaEsp;
+        private System.Windows.Forms.DataGridView ListaUbi;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox tipoUbi;
+        private System.Windows.Forms.Button agregarTipo;
+        private System.Windows.Forms.Button eliminarTipo;
+        private System.Windows.Forms.ListBox ListaCat;
+        private System.Windows.Forms.Label Descripcionl;
+        private System.Windows.Forms.TextBox Descripcion;
+        private System.Windows.Forms.Button filtrar;
+        private System.Windows.Forms.Label Emaill;
+        private System.Windows.Forms.TextBox Email;
+        private System.Windows.Forms.ListBox Carrito;
+        private System.Windows.Forms.Button eliminarCarrito;
+        private System.Windows.Forms.Button Compra;
 
     }
