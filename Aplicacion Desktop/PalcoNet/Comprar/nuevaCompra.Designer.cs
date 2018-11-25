@@ -1,4 +1,4 @@
-﻿partial class comprar
+﻿partial class nuevaCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(comprar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevaCompra));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -338,9 +338,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "comprar";
+            this.Name = "nuevaCompra";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.comprar_Load);
+            this.Load += new System.EventHandler(this.nuevaCompra_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);

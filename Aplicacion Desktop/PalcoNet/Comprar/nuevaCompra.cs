@@ -9,15 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PalcoNet.BDManager;
 
-    public partial class comprar : Form
+    public partial class nuevaCompra : Form
     {
         public publicacion pub { get; set; }
         public ubicacion ubi { get; set; }
-        public comprar()
+        public nuevaCompra()
         {
             InitializeComponent();
         }
-        private void comprar_Load(object sender, EventArgs e)
+        private void nuevaCompra_Load(object sender, EventArgs e)
         {
             //Falta validar rango fechas
             ListaEsp.DataSource = BDManager.getData(
@@ -152,7 +152,7 @@ using PalcoNet.BDManager;
         {
             try{
             compra_x_ubicacion cu = new compra_x_ubicacion();
-            compraBD com = new compraBD();
+            compra com = new compra();
             com.username = usuarioGlobal.usuarioLogueado.username;
             com.email = Email.Text;
             //Falta atributo fecha
@@ -174,7 +174,7 @@ using PalcoNet.BDManager;
 
             foreach (var t in Carrito.Items)
             {
-                cu.id_ubicacion = t.ToString()
+                cu.id_ubicacion = t.ToString();
                 BDManager.insertInto("compra_x_ubicacion", cu);
             }   
             }

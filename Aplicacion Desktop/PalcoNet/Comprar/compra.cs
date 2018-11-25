@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
- public class compraBD
+ public class compra
     {
          public String id_compra {get;set;}
          public String username { get; set; }
