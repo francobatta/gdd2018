@@ -33,7 +33,7 @@ namespace PalcoNet.BDManager
             var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
             if (!myObj.Equals(null))
                 sql.Append(" WHERE " + idColumn + "=" + Extensions.getIdFromObj());
-            MessageBox.Show(sql.ToString());
+            //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
         public static void deleteByField(String tableName, String field, String value)
@@ -41,7 +41,7 @@ namespace PalcoNet.BDManager
             var sql = new StringBuilder("DELETE FROM EQUISDE." + tableName);
             if (!myObj.Equals(null))
                 sql.Append(" WHERE " + field + "=" + value);
-            MessageBox.Show(sql.ToString());
+            //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
         public static void updateSet(String tableName, String idColumn, object o)
@@ -50,7 +50,7 @@ namespace PalcoNet.BDManager
             var sql = new StringBuilder("UPDATE EQUISDE." + tableName + " SET ");
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql,listaParaUpdate,"",",","");
-            MessageBox.Show(" WHERE " + idColumn + "=" + Extensions.getIdFromObj().First().GetValue(myObj));
+            //MessageBox.Show(" WHERE " + idColumn + "=" + Extensions.getIdFromObj().First().GetValue(myObj));
             sql.Append(" WHERE "+idColumn +"=" + Extensions.getIdFromObj().First().GetValue(myObj));
             queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
         }
@@ -70,19 +70,19 @@ namespace PalcoNet.BDManager
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray());
             sql.Append(" VALUES (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
-            MessageBox.Show(sql.ToString());
+            //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString());
         }
         public static void insertEncryptedUser(usuario u)
         {
             var sql = new StringBuilder("INSERT INTO EQUISDE.usuario (username,password) VALUES ('"+u.username+"',HASHBYTES('SHA2_256','"+u.password+"'))");
-            MessageBox.Show(sql.ToString());
+            //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(),queryTypes.JUST_DO_STUFF);
         }
         public static void updateEncryptedUser(usuario u)
         {
             var sql = new StringBuilder("UPDATE EQUISDE.usuario SET username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='"+u.username+"'");
-            MessageBox.Show(sql.ToString());
+            //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(), queryTypes.JUST_DO_STUFF);
         }
         public static bool exists(String tableName, String campo, String valor)
@@ -90,7 +90,7 @@ namespace PalcoNet.BDManager
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
             {
                 connection.Open();
-                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'");
+                //MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'");
                 command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "'", connection);
                 SqlDataReader reader = BDManager.command.ExecuteReader();
                 if (reader.Read()) return true;
@@ -104,7 +104,7 @@ namespace PalcoNet.BDManager
             using (SqlConnection connection = new SqlConnection(getConnectionString()))
             {
                 connection.Open();
-                MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With );
+                //MessageBox.Show("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With );
                 command = new SqlCommand("SELECT 1 FROM EQUISDE." + tableName + " WHERE " + campo + "='" + valor + "' AND " + With, connection);
                 SqlDataReader reader = BDManager.command.ExecuteReader();
                 if (reader.Read()) return true;
@@ -129,14 +129,14 @@ namespace PalcoNet.BDManager
         {
             myObj = o;
             var sql = "SELECT * FROM EQUISDE." + tableName + " WHERE " + idColumn + "=" + id;
-            MessageBox.Show(sql);
+            //MessageBox.Show(sql);
             queryOptionalObject(sql, queryTypes.SINGLE_RETURNING_QUERY);
         }
         public static void selectIntoObjectByString(String tableName, String col, String val, Object o)
         {
             myObj = o;
             var sql = "SELECT * FROM EQUISDE." + tableName + " WHERE " + col + "='" + val + "'";
-            MessageBox.Show(sql);
+            //MessageBox.Show(sql);
             queryOptionalObject(sql, queryTypes.SINGLE_RETURNING_QUERY);
         }
         public static void queryOptionalObject(String sqlQuery, queryTypes qt = queryTypes.NON_RETURNING_QUERY)

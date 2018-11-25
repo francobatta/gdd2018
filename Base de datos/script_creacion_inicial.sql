@@ -236,8 +236,7 @@ VALUES('empresa',1),('cliente',1),('admin',1);
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('AltaCliente'),('BusquedaCliente'),('ModificaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('ModificaEmpresa'),('BusquedaPublicacion'),('ElegirGrado'),('AltaRol'),('BusquedaRol'),
-('ModificaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ModificaUsuario'),('RegistraUsuario');
+VALUES('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario');
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)

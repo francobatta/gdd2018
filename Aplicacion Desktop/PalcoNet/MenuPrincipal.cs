@@ -31,7 +31,13 @@ using System.Windows.Forms;
                     Size = new Size(200, 100),
                     Font = new Font("Century Gothic", 12),
                     ForeColor = Color.Gainsboro,
-                    BackColor = Color.DarkBlue
+                    BackColor = Color.DarkBlue,
+                };
+                btn.Click += (s, efe) =>
+                {
+                    Type myType = Type.GetType(f.nombre);
+                    Form formi = (Form)Activator.CreateInstance(myType);
+                    formi.ShowDialog();
                 };
                 conjuntoBotones.Controls.Add(btn);
             }
@@ -56,4 +62,6 @@ using System.Windows.Forms;
         private const int WM_NCHITTEST = 0x84;
         private const int HT_CLIENT = 0x1;
         private const int HT_CAPTION = 0x2;
+
+        public Form formi { get; set; }
     }
