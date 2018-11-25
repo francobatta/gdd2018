@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-    class direccion
+    public class direccion
     {
         public String id_direccion { get; set; }
         public String localidad { get; set; }

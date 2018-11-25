@@ -65,7 +65,6 @@
             this.cpostal = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.nombreTitularTarjeta = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.codSeguridad = new System.Windows.Forms.TextBox();
@@ -74,9 +73,10 @@
             this.ntarjeta = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.fechavtotarjeta = new System.Windows.Forms.DateTimePicker();
-            this.tipoTarjeta = new System.Windows.Forms.ComboBox();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
+            this.nroCalle = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -360,7 +360,7 @@
             // 
             this.calle.Location = new System.Drawing.Point(299, 463);
             this.calle.Name = "calle";
-            this.calle.Size = new System.Drawing.Size(247, 20);
+            this.calle.Size = new System.Drawing.Size(151, 20);
             this.calle.TabIndex = 26;
             // 
             // label12
@@ -435,16 +435,6 @@
             this.label16.TabIndex = 33;
             this.label16.Text = "Datos de tarjeta de crédito";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(564, 573);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(125, 21);
-            this.label18.TabIndex = 42;
-            this.label18.Text = "Tipo de tarjeta";
-            // 
             // nombreTitularTarjeta
             // 
             this.nombreTitularTarjeta.Location = new System.Drawing.Point(742, 471);
@@ -514,14 +504,6 @@
             this.fechavtotarjeta.Size = new System.Drawing.Size(214, 20);
             this.fechavtotarjeta.TabIndex = 46;
             // 
-            // tipoTarjeta
-            // 
-            this.tipoTarjeta.FormattingEnabled = true;
-            this.tipoTarjeta.Location = new System.Drawing.Point(689, 573);
-            this.tipoTarjeta.Name = "tipoTarjeta";
-            this.tipoTarjeta.Size = new System.Drawing.Size(237, 21);
-            this.tipoTarjeta.TabIndex = 47;
-            // 
             // btn_limpiar
             // 
             this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
@@ -533,6 +515,7 @@
             this.btn_limpiar.TabIndex = 49;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_guardar
             // 
@@ -545,6 +528,25 @@
             this.btn_guardar.TabIndex = 48;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
+            // 
+            // nroCalle
+            // 
+            this.nroCalle.Location = new System.Drawing.Point(484, 462);
+            this.nroCalle.MaxLength = 50;
+            this.nroCalle.Name = "nroCalle";
+            this.nroCalle.Size = new System.Drawing.Size(62, 20);
+            this.nroCalle.TabIndex = 53;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(456, 463);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 21);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "N";
             // 
             // ModificaCliente
             // 
@@ -554,11 +556,11 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.nroCalle);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.tipoTarjeta);
             this.Controls.Add(this.fechavtotarjeta);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.nombreTitularTarjeta);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.codSeguridad);
@@ -604,7 +606,6 @@
             this.MinimizeBox = false;
             this.Name = "ModificaCliente";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.ModificaCliente_Load);
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -656,7 +657,6 @@
         private System.Windows.Forms.TextBox cpostal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox nombreTitularTarjeta;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox codSeguridad;
@@ -665,8 +665,9 @@
         private System.Windows.Forms.TextBox ntarjeta;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DateTimePicker fechavtotarjeta;
-        private System.Windows.Forms.ComboBox tipoTarjeta;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
+        private System.Windows.Forms.TextBox nroCalle;
+        private System.Windows.Forms.Label label23;
 
     }

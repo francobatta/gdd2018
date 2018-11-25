@@ -44,7 +44,25 @@ using System.Windows.Forms;
 
         private void btn_seleccionar_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                DataGridViewRow filaElegida = listadoClientes.CurrentRow;
+                if (filaElegida == null || filaElegida.Selected == false)
+                    throw new CamposInvalidosException();
+                cliente cAModificar = new cliente();
+                direccion dAModificar = new direccion();
+                tarjeta tAModificar = new tarjeta();
+                BDManager.selectIntoObjectByString("cliente", "username", filaElegida.Cells["username"].Value.ToString(), cAModificar);
+                BDManager.selectIntoObject("direccion", "id_direccion", filaElegida.Cells["id_direccion"].Value.ToString(), dAModificar);
+                BDManager.selectIntoObject("tarjeta", "username", filaElegida.Cells["username"].Value.ToString(), tAModificar);
+                ModificaCliente m = new ModificaCliente(cAModificar, dAModificar,tAModificar);
+                m.ShowDialog();
+                this.Close();
+            }
+            catch (CamposInvalidosException)
+            {
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar empresa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
