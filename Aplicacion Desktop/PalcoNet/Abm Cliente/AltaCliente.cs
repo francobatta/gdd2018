@@ -61,6 +61,7 @@ using System.Windows.Forms;
                 if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"dni="+nDoc.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
+                BDManager.insertInto("direccion", d);
                 MessageBox.Show("SELECT id_direccion FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
                     "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'");
                 BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
@@ -74,7 +75,6 @@ using System.Windows.Forms;
                 c.username = c.CUIL;
                 // inserto tarjeta y clientebueno
                 BDManager.insertEncryptedUser(u);
-                BDManager.insertInto("direccion", d);
                 BDManager.insertInto("cliente", c);
                 BDManager.insertInto("tarjeta", t);
                 MessageBox.Show("El cliente ha sido insertado.", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);

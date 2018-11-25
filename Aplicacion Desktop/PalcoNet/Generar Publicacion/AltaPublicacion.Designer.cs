@@ -75,6 +75,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.btn_agregarUbicacion = new System.Windows.Forms.Button();
             this.btn_eliminarUbicacionSeleccionada = new System.Windows.Forms.Button();
+            this.nroCalle = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -217,16 +219,18 @@
             // fechaEspectaculo
             // 
             this.fechaEspectaculo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fechaEspectaculo.Location = new System.Drawing.Point(744, 120);
+            this.fechaEspectaculo.Location = new System.Drawing.Point(608, 138);
+            this.fechaEspectaculo.MaxDate = new System.DateTime(2100, 12, 18, 0, 0, 0, 0);
+            this.fechaEspectaculo.MinDate = new System.DateTime(1990, 12, 3, 0, 0, 0, 0);
             this.fechaEspectaculo.Name = "fechaEspectaculo";
-            this.fechaEspectaculo.Size = new System.Drawing.Size(156, 20);
+            this.fechaEspectaculo.Size = new System.Drawing.Size(344, 20);
             this.fechaEspectaculo.TabIndex = 19;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(552, 119);
+            this.label8.Location = new System.Drawing.Point(604, 103);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(186, 21);
             this.label8.TabIndex = 20;
@@ -257,7 +261,7 @@
             // 
             this.calle.Location = new System.Drawing.Point(299, 416);
             this.calle.Name = "calle";
-            this.calle.Size = new System.Drawing.Size(247, 20);
+            this.calle.Size = new System.Drawing.Size(119, 20);
             this.calle.TabIndex = 26;
             // 
             // label12
@@ -350,7 +354,7 @@
             // listaFechasEspectaculo
             // 
             this.listaFechasEspectaculo.FormattingEnabled = true;
-            this.listaFechasEspectaculo.Location = new System.Drawing.Point(556, 226);
+            this.listaFechasEspectaculo.Location = new System.Drawing.Point(608, 237);
             this.listaFechasEspectaculo.Name = "listaFechasEspectaculo";
             this.listaFechasEspectaculo.Size = new System.Drawing.Size(344, 368);
             this.listaFechasEspectaculo.TabIndex = 50;
@@ -360,7 +364,7 @@
             this.btn_agregarFechaEspectaculo.BackColor = System.Drawing.Color.Gold;
             this.btn_agregarFechaEspectaculo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregarFechaEspectaculo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregarFechaEspectaculo.Location = new System.Drawing.Point(556, 146);
+            this.btn_agregarFechaEspectaculo.Location = new System.Drawing.Point(608, 164);
             this.btn_agregarFechaEspectaculo.Name = "btn_agregarFechaEspectaculo";
             this.btn_agregarFechaEspectaculo.Size = new System.Drawing.Size(168, 67);
             this.btn_agregarFechaEspectaculo.TabIndex = 51;
@@ -373,7 +377,7 @@
             this.btn_eliminarFechaSeleccionada.BackColor = System.Drawing.Color.DarkOrange;
             this.btn_eliminarFechaSeleccionada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminarFechaSeleccionada.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminarFechaSeleccionada.Location = new System.Drawing.Point(732, 146);
+            this.btn_eliminarFechaSeleccionada.Location = new System.Drawing.Point(784, 164);
             this.btn_eliminarFechaSeleccionada.Name = "btn_eliminarFechaSeleccionada";
             this.btn_eliminarFechaSeleccionada.Size = new System.Drawing.Size(168, 67);
             this.btn_eliminarFechaSeleccionada.TabIndex = 52;
@@ -406,9 +410,12 @@
             // 
             this.fechaPublicacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.fechaPublicacion.Location = new System.Drawing.Point(394, 363);
+            this.fechaPublicacion.MaxDate = new System.DateTime(2109, 7, 5, 0, 0, 0, 0);
+            this.fechaPublicacion.MinDate = new System.DateTime(1900, 2, 7, 0, 0, 0, 0);
             this.fechaPublicacion.Name = "fechaPublicacion";
             this.fechaPublicacion.Size = new System.Drawing.Size(152, 20);
             this.fechaPublicacion.TabIndex = 54;
+            this.fechaPublicacion.Value = new System.DateTime(2018, 11, 25, 0, 0, 0, 0);
             // 
             // rubro
             // 
@@ -561,6 +568,24 @@
             this.btn_eliminarUbicacionSeleccionada.UseVisualStyleBackColor = false;
             this.btn_eliminarUbicacionSeleccionada.Click += new System.EventHandler(this.btn_eliminarUbicacionSeleccionada_Click);
             // 
+            // nroCalle
+            // 
+            this.nroCalle.Location = new System.Drawing.Point(449, 418);
+            this.nroCalle.MaxLength = 50;
+            this.nroCalle.Name = "nroCalle";
+            this.nroCalle.Size = new System.Drawing.Size(97, 20);
+            this.nroCalle.TabIndex = 76;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(421, 417);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 21);
+            this.label23.TabIndex = 75;
+            this.label23.Text = "N";
+            // 
             // AltaPublicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -569,6 +594,8 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.nroCalle);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_eliminarUbicacionSeleccionada);
             this.Controls.Add(this.btn_agregarUbicacion);
             this.Controls.Add(this.label19);
@@ -679,5 +706,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button btn_agregarUbicacion;
         private System.Windows.Forms.Button btn_eliminarUbicacionSeleccionada;
+        private System.Windows.Forms.TextBox nroCalle;
+        private System.Windows.Forms.Label label23;
 
     }

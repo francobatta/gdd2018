@@ -34,7 +34,7 @@ using System.Threading.Tasks;
         }
         public class Numeros : RegexType
         {
-            public String Regex() { return @"^[0-9]+[\s]*$"; }
+            public String Regex() { return @"^[0-9]+$"; }
             public String Significado() { return "solo números"; }
         }
         public class CUIT : RegexType
@@ -44,7 +44,7 @@ using System.Threading.Tasks;
         }
         public class NumerosLetrasGuion : RegexType
         {
-            public String Regex() { return @"^([a-zA-Z0-9-]+\s*[a-zA-Z0-9-]+)+$"; }
+            public String Regex() { return @"^[a-zA-Z0-9-]+$"; }
             public String Significado() { return "números, letras, guión"; }
         }
         public class NumeroNoCreo : RegexType

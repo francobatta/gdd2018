@@ -382,7 +382,10 @@ WHEN NOT MATCHED BY TARGET THEN
 
 INSERT INTO EQUISDE.premio
 (fecha_vencimiento,fecha_emision,puntos_necesarios,descripcion)
-VALUES('01/01/2019','10/03/2018',321,'Entradas al superclasico'),('10/01/2019','11/22/2018',120,'Peluche de Winnie Pooh'),('02/15/2019','09/08/2018',0,'Alienware')
+VALUES(convert(datetime,'01/01/2019',121),convert(datetime,'10/03/2018',121),321,'Entradas al superclasico'),(convert(datetime,'10/01/2019',121),convert(datetime,'11/12/2018',121),120,'Peluche de Winnie Pooh'),(convert(datetime,'02/04/2019',121),convert(datetime,'09/08/2018',121),0,'Alienware')
 
 INSERT INTO EQUISDE.grado
 VALUES('Alta'),('Media'),('Baja');
+
+INSERT INTO EQUISDE.rubro
+VALUES ('pelicula')

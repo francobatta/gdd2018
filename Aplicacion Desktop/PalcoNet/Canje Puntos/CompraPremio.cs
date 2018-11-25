@@ -56,9 +56,9 @@ using PalcoNet.Canje_Puntos;
                     throw new PuntosFaltanteException();
                 }
                 premio_x_cliente premioCliente = new premio_x_cliente();
-                BDManager.selectIntoObject("publicacion", "id_publicacion", filaElegida.Cells["id_publicacion"].Value.ToString(), publicacionAUsar);
-                ElegirGrado elegirGrado = new ElegirGrado(publicacionAUsar); // SE LO PASO POR CONSTRUCTOR Y QUE EL MODIFICADOR SE ENCARGUE
-                elegirGrado.ShowDialog();
+                //BDManager.selectIntoObject("publicacion", "id_publicacion", filaElegida.Cells["id_publicacion"].Value.ToString(), publicacionAUsar);
+                //ElegirGrado elegirGrado = new ElegirGrado(publicacionAUsar); // SE LO PASO POR CONSTRUCTOR Y QUE EL MODIFICADOR SE ENCARGUE
+                //elegirGrado.ShowDialog();
             }
             catch (CamposInvalidosException)
             {
