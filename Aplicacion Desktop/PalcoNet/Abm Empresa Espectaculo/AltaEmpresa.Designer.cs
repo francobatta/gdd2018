@@ -42,8 +42,6 @@
             this.CUIL = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.telefono = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.localidad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -220,23 +218,6 @@
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(247, 20);
             this.email.TabIndex = 16;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(206, 200);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 21);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "Teléfono";
-            // 
-            // telefono
-            // 
-            this.telefono.Location = new System.Drawing.Point(299, 201);
-            this.telefono.Name = "telefono";
-            this.telefono.Size = new System.Drawing.Size(247, 20);
-            this.telefono.TabIndex = 18;
             // 
             // label9
             // 
@@ -421,8 +402,6 @@
             this.Controls.Add(this.localidad);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.telefono);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.email);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.CUIL);
@@ -466,8 +445,6 @@
         private System.Windows.Forms.TextBox CUIL;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox email;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox telefono;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox localidad;
         private System.Windows.Forms.Label label10;
