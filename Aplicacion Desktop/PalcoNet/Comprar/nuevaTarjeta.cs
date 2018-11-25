@@ -75,4 +75,12 @@ public partial class nuevaTarjeta : Form
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
         }
+
+        private void Limpiar_Click(object sender, EventArgs e)
+        {
+            FechaVencimiento.Text = default(String);
+            NombreTitular.Text = default(String);
+            NroTarjeta.Text = default(String);
+            CodSeguridad.Text = default(String);
+        }
     }

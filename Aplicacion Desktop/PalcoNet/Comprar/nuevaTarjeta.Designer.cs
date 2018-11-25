@@ -45,6 +45,7 @@
             this.CodSeguridad = new System.Windows.Forms.TextBox();
             this.NombreTitular = new System.Windows.Forms.TextBox();
             this.Guardar = new System.Windows.Forms.Button();
+            this.Limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -158,9 +159,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(274, 177);
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.label1.Location = new System.Drawing.Point(265, 204);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.Size = new System.Drawing.Size(102, 21);
             this.label1.TabIndex = 5;
             this.label1.Text = "Nro Tarjeta";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -168,67 +170,92 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(274, 233);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.label2.Location = new System.Drawing.Point(265, 273);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 13);
+            this.label2.Size = new System.Drawing.Size(172, 21);
             this.label2.TabIndex = 6;
             this.label2.Text = "Fecha Vencimiento";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 278);
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.label3.Location = new System.Drawing.Point(268, 355);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.Size = new System.Drawing.Size(136, 21);
             this.label3.TabIndex = 7;
             this.label3.Text = "Cod Seguridad";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(274, 328);
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12.25F);
+            this.label4.Location = new System.Drawing.Point(274, 449);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(76, 13);
+            this.label4.Size = new System.Drawing.Size(130, 21);
             this.label4.TabIndex = 8;
             this.label4.Text = "Nombre Titular";
             // 
             // NroTarjeta
             // 
-            this.NroTarjeta.Location = new System.Drawing.Point(443, 174);
+            this.NroTarjeta.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NroTarjeta.Location = new System.Drawing.Point(479, 206);
             this.NroTarjeta.Name = "NroTarjeta";
-            this.NroTarjeta.Size = new System.Drawing.Size(100, 20);
+            this.NroTarjeta.Size = new System.Drawing.Size(183, 21);
             this.NroTarjeta.TabIndex = 10;
             // 
             // FechaVencimiento
             // 
-            this.FechaVencimiento.Location = new System.Drawing.Point(443, 230);
+            this.FechaVencimiento.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FechaVencimiento.Location = new System.Drawing.Point(479, 273);
             this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.Size = new System.Drawing.Size(100, 20);
+            this.FechaVencimiento.Size = new System.Drawing.Size(183, 21);
             this.FechaVencimiento.TabIndex = 11;
             // 
             // CodSeguridad
             // 
-            this.CodSeguridad.Location = new System.Drawing.Point(443, 275);
+            this.CodSeguridad.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CodSeguridad.Location = new System.Drawing.Point(479, 355);
             this.CodSeguridad.Name = "CodSeguridad";
-            this.CodSeguridad.Size = new System.Drawing.Size(100, 20);
+            this.CodSeguridad.Size = new System.Drawing.Size(183, 21);
             this.CodSeguridad.TabIndex = 12;
             // 
             // NombreTitular
             // 
-            this.NombreTitular.Location = new System.Drawing.Point(443, 325);
+            this.NombreTitular.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NombreTitular.Location = new System.Drawing.Point(479, 449);
             this.NombreTitular.Name = "NombreTitular";
-            this.NombreTitular.Size = new System.Drawing.Size(100, 20);
+            this.NombreTitular.Size = new System.Drawing.Size(183, 21);
             this.NombreTitular.TabIndex = 13;
             // 
             // Guardar
             // 
-            this.Guardar.Location = new System.Drawing.Point(716, 475);
+            this.Guardar.BackColor = System.Drawing.Color.PaleGreen;
+            this.Guardar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Guardar.Font = new System.Drawing.Font("Century Gothic", 15.25F);
+            this.Guardar.Location = new System.Drawing.Point(1141, 484);
             this.Guardar.Name = "Guardar";
-            this.Guardar.Size = new System.Drawing.Size(75, 23);
+            this.Guardar.Size = new System.Drawing.Size(178, 104);
             this.Guardar.TabIndex = 15;
             this.Guardar.Text = "Guardar";
-            this.Guardar.UseVisualStyleBackColor = true;
+            this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Limpiar
+            // 
+            this.Limpiar.BackColor = System.Drawing.Color.LightPink;
+            this.Limpiar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Limpiar.Font = new System.Drawing.Font("Century Gothic", 15.25F);
+            this.Limpiar.Location = new System.Drawing.Point(1141, 82);
+            this.Limpiar.Name = "Limpiar";
+            this.Limpiar.Size = new System.Drawing.Size(178, 104);
+            this.Limpiar.TabIndex = 16;
+            this.Limpiar.Text = "Limpiar";
+            this.Limpiar.UseVisualStyleBackColor = false;
+            this.Limpiar.Click += new System.EventHandler(this.Limpiar_Click);
             // 
             // nuevaTarjeta
             // 
@@ -238,6 +265,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.Limpiar);
             this.Controls.Add(this.Guardar);
             this.Controls.Add(this.NombreTitular);
             this.Controls.Add(this.CodSeguridad);
@@ -287,5 +315,6 @@
         private System.Windows.Forms.TextBox CodSeguridad;
         private System.Windows.Forms.TextBox NombreTitular;
         private System.Windows.Forms.Button Guardar;
+        private System.Windows.Forms.Button Limpiar;
 
     }

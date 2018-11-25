@@ -55,6 +55,7 @@
             this.Compra = new System.Windows.Forms.Button();
             this.fechaIN = new System.Windows.Forms.DateTimePicker();
             this.FechaOut = new System.Windows.Forms.DateTimePicker();
+            this.Limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -185,22 +186,32 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.PaleGreen;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 15.25F);
             this.button1.Location = new System.Drawing.Point(930, 214);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(195, 87);
             this.button1.TabIndex = 4;
             this.button1.Text = "Seleccionar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.Gold;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 2;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.25F);
             this.button2.Location = new System.Drawing.Point(930, 336);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(195, 87);
             this.button2.TabIndex = 5;
             this.button2.Text = "Agregar carrito";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tipoUbi
@@ -214,22 +225,32 @@
             // 
             // agregarTipo
             // 
+            this.agregarTipo.BackColor = System.Drawing.Color.Gold;
+            this.agregarTipo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.agregarTipo.FlatAppearance.BorderSize = 2;
+            this.agregarTipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.agregarTipo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agregarTipo.Location = new System.Drawing.Point(415, 82);
             this.agregarTipo.Name = "agregarTipo";
             this.agregarTipo.Size = new System.Drawing.Size(87, 23);
             this.agregarTipo.TabIndex = 8;
             this.agregarTipo.Text = "Agregar";
-            this.agregarTipo.UseVisualStyleBackColor = true;
+            this.agregarTipo.UseVisualStyleBackColor = false;
             this.agregarTipo.Click += new System.EventHandler(this.agregarTipo_Click);
             // 
             // eliminarTipo
             // 
+            this.eliminarTipo.BackColor = System.Drawing.Color.DarkOrange;
+            this.eliminarTipo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.eliminarTipo.FlatAppearance.BorderSize = 2;
+            this.eliminarTipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.eliminarTipo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.eliminarTipo.Location = new System.Drawing.Point(508, 82);
             this.eliminarTipo.Name = "eliminarTipo";
             this.eliminarTipo.Size = new System.Drawing.Size(75, 23);
             this.eliminarTipo.TabIndex = 9;
             this.eliminarTipo.Text = "Eliminar";
-            this.eliminarTipo.UseVisualStyleBackColor = true;
+            this.eliminarTipo.UseVisualStyleBackColor = false;
             this.eliminarTipo.Click += new System.EventHandler(this.eliminarTipo_Click);
             // 
             // ListaCat
@@ -243,9 +264,10 @@
             // Descripcionl
             // 
             this.Descripcionl.AutoSize = true;
+            this.Descripcionl.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Descripcionl.Location = new System.Drawing.Point(285, 187);
             this.Descripcionl.Name = "Descripcionl";
-            this.Descripcionl.Size = new System.Drawing.Size(63, 13);
+            this.Descripcionl.Size = new System.Drawing.Size(70, 16);
             this.Descripcionl.TabIndex = 11;
             this.Descripcionl.Text = "Descripcion";
             // 
@@ -259,20 +281,26 @@
             // 
             // filtrar
             // 
+            this.filtrar.BackColor = System.Drawing.Color.LightPink;
+            this.filtrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.filtrar.FlatAppearance.BorderSize = 2;
+            this.filtrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.filtrar.Font = new System.Drawing.Font("Century Gothic", 15.25F);
             this.filtrar.Location = new System.Drawing.Point(1022, 78);
             this.filtrar.Name = "filtrar";
             this.filtrar.Size = new System.Drawing.Size(195, 87);
             this.filtrar.TabIndex = 13;
             this.filtrar.Text = "Filtrar";
-            this.filtrar.UseVisualStyleBackColor = true;
+            this.filtrar.UseVisualStyleBackColor = false;
             this.filtrar.Click += new System.EventHandler(this.filtrar_Click);
             // 
             // Emaill
             // 
             this.Emaill.AutoSize = true;
+            this.Emaill.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Emaill.Location = new System.Drawing.Point(285, 576);
             this.Emaill.Name = "Emaill";
-            this.Emaill.Size = new System.Drawing.Size(32, 13);
+            this.Emaill.Size = new System.Drawing.Size(36, 16);
             this.Emaill.TabIndex = 14;
             this.Emaill.Text = "Email";
             // 
@@ -293,39 +321,61 @@
             // 
             // eliminarCarrito
             // 
+            this.eliminarCarrito.BackColor = System.Drawing.Color.DarkOrange;
+            this.eliminarCarrito.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.eliminarCarrito.FlatAppearance.BorderSize = 2;
+            this.eliminarCarrito.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.eliminarCarrito.Font = new System.Drawing.Font("Century Gothic", 15.25F);
             this.eliminarCarrito.Location = new System.Drawing.Point(930, 467);
             this.eliminarCarrito.Name = "eliminarCarrito";
             this.eliminarCarrito.Size = new System.Drawing.Size(195, 64);
             this.eliminarCarrito.TabIndex = 17;
             this.eliminarCarrito.Text = "Eliminar";
-            this.eliminarCarrito.UseVisualStyleBackColor = true;
+            this.eliminarCarrito.UseVisualStyleBackColor = false;
             this.eliminarCarrito.Click += new System.EventHandler(this.eliminarCarrito_Click);
             // 
             // Compra
             // 
+            this.Compra.BackColor = System.Drawing.Color.PaleGreen;
+            this.Compra.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Compra.FlatAppearance.BorderSize = 2;
+            this.Compra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Compra.Font = new System.Drawing.Font("Century Gothic", 15.25F);
             this.Compra.Location = new System.Drawing.Point(930, 550);
             this.Compra.Name = "Compra";
             this.Compra.Size = new System.Drawing.Size(195, 64);
             this.Compra.TabIndex = 18;
             this.Compra.Text = "Compra";
-            this.Compra.UseVisualStyleBackColor = true;
+            this.Compra.UseVisualStyleBackColor = false;
             this.Compra.Click += new System.EventHandler(this.Compra_Click);
             // 
             // fechaIN
             // 
+            this.fechaIN.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaIN.Location = new System.Drawing.Point(682, 109);
             this.fechaIN.Name = "fechaIN";
-            this.fechaIN.Size = new System.Drawing.Size(200, 20);
+            this.fechaIN.Size = new System.Drawing.Size(200, 21);
             this.fechaIN.TabIndex = 19;
             this.fechaIN.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
             // FechaOut
             // 
+            this.FechaOut.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaOut.Location = new System.Drawing.Point(682, 144);
             this.FechaOut.Name = "FechaOut";
-            this.FechaOut.Size = new System.Drawing.Size(200, 20);
+            this.FechaOut.Size = new System.Drawing.Size(200, 21);
             this.FechaOut.TabIndex = 20;
             this.FechaOut.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
+            // 
+            // Limpiar
+            // 
+            this.Limpiar.Location = new System.Drawing.Point(1244, 82);
+            this.Limpiar.Name = "Limpiar";
+            this.Limpiar.Size = new System.Drawing.Size(195, 87);
+            this.Limpiar.TabIndex = 21;
+            this.Limpiar.Text = "button3";
+            this.Limpiar.UseVisualStyleBackColor = true;
+            this.Limpiar.Click += new System.EventHandler(this.button3_Click);
             // 
             // nuevaCompra
             // 
@@ -335,6 +385,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.Limpiar);
             this.Controls.Add(this.FechaOut);
             this.Controls.Add(this.fechaIN);
             this.Controls.Add(this.Compra);
@@ -404,5 +455,6 @@
         private System.Windows.Forms.Button Compra;
         private System.Windows.Forms.DateTimePicker fechaIN;
         private System.Windows.Forms.DateTimePicker FechaOut;
+        private System.Windows.Forms.Button Limpiar;
 
     }
