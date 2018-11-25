@@ -26,10 +26,12 @@ using System.Windows.Forms;
             estado.Items.Add('P');
             estado.Items.Add('F');
             estado.SelectedIndex = 0;
+            
             rubro.DataSource = BDManager.getData("SELECT * FROM EQUISDE.rubro");
             tipoUbicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.tipo");
             rubro.DisplayMember = "descripcion";
             rubro.ValueMember = "id_rubro";
+            rubro.SelectedIndex = 0;
             tipoUbicacion.DisplayMember = "descripcion";
             tipoUbicacion.ValueMember = "codigo_tipo";
         }
@@ -63,14 +65,11 @@ using System.Windows.Forms;
             Validaciones.inicializarValidador();
             Validaciones.esValido(descripcion.Name, descripcion.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("ubicaciones", listaUbicaciones.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
-            Validaciones.esValido("rubro", rubro.SelectedValue as String, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("calle", calle.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("núm. calle", nroCalle.Text, new Validaciones.Numeros());
             Validaciones.esValido("piso", piso.Text, new Validaciones.Numeros());
             Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("cód. postal", cpostal.Text, new Validaciones.Numeros());
-            Validaciones.esValido("grado", grado.SelectedItem.ToString(), new Validaciones.NumerosLetrasGuion());
-            Validaciones.esValido("estado", estado.SelectedItem.ToString(), new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("fechas de espectáculo", listaFechasEspectaculo.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
@@ -80,19 +79,31 @@ using System.Windows.Forms;
             nuevaPublicacion.id_rubro = rubro.SelectedValue as String;
                 // direccion
             direccion d = new direccion();
+            d.localidad = localidad.Text;
+            d.ciudad = ciudad.Text;
+            d.calle = calle.Text;
+            d.nro_calle = nroCalle.Text;
+            d.piso = piso.Text;
+            d.depto = depto.Text;
+            d.cpostal = cpostal.Text;
+            MessageBox.Show("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
+    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
+    );
             BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
     "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
     , d);
             nuevaPublicacion.id_direccion = d.id_direccion;
                 // estado
             estadoP est = new estadoP();
+            MessageBox.Show(estado.SelectedValue as String);
+            MessageBox.Show(estado.SelectedItem as String);
             BDManager.selectIntoObjectByString("estado","estado",estado.SelectedValue as String,est);
             nuevaPublicacion.id_estado = est.id_estado;
                 // grado
             grado grad = new grado();
             BDManager.selectIntoObjectByString("grado", "estado", grado.SelectedValue as String, est);
             nuevaPublicacion.id_grado = grad.id_grado;
-            nuevaPublicacion.username = usuarioGlobal.usuarioLogueado.username;
+            //nuevaPublicacion.username = usuarioGlobal.usuarioLogueado.username;
             nuevaPublicacion.descripcion = descripcion.Text;
             nuevaPublicacion.fecha_publicacion = fechaPublicacion.Value.ToString();
             // para todas las fechas de espectaculo
@@ -121,10 +132,6 @@ using System.Windows.Forms;
         piso.Text = default(String);
         depto.Text = default(String);
         cpostal.Text = default(String);
-        //grado
-        grado.SelectedIndex = -1;
-        //estado
-        estado.SelectedIndex = -1;
         //listaFechas
         listaFechasEspectaculo.Items.Clear();
     }

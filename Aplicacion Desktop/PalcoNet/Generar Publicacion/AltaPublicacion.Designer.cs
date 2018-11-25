@@ -77,6 +77,10 @@
             this.btn_eliminarUbicacionSeleccionada = new System.Windows.Forms.Button();
             this.nroCalle = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.ciudad = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.localidad = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -171,7 +175,7 @@
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
             this.sidepanel.Name = "sidepanel";
-            this.sidepanel.Size = new System.Drawing.Size(200, 617);
+            this.sidepanel.Size = new System.Drawing.Size(200, 646);
             this.sidepanel.TabIndex = 0;
             // 
             // label17
@@ -259,7 +263,7 @@
             // 
             // calle
             // 
-            this.calle.Location = new System.Drawing.Point(299, 416);
+            this.calle.Location = new System.Drawing.Point(299, 479);
             this.calle.Name = "calle";
             this.calle.Size = new System.Drawing.Size(119, 20);
             this.calle.TabIndex = 26;
@@ -268,7 +272,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(206, 415);
+            this.label12.Location = new System.Drawing.Point(206, 478);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 21);
             this.label12.TabIndex = 25;
@@ -276,7 +280,7 @@
             // 
             // piso
             // 
-            this.piso.Location = new System.Drawing.Point(299, 442);
+            this.piso.Location = new System.Drawing.Point(299, 505);
             this.piso.Name = "piso";
             this.piso.Size = new System.Drawing.Size(247, 20);
             this.piso.TabIndex = 28;
@@ -285,7 +289,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(206, 441);
+            this.label13.Location = new System.Drawing.Point(206, 504);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 21);
             this.label13.TabIndex = 27;
@@ -293,7 +297,7 @@
             // 
             // depto
             // 
-            this.depto.Location = new System.Drawing.Point(299, 468);
+            this.depto.Location = new System.Drawing.Point(299, 531);
             this.depto.Name = "depto";
             this.depto.Size = new System.Drawing.Size(247, 20);
             this.depto.TabIndex = 30;
@@ -302,7 +306,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(206, 467);
+            this.label14.Location = new System.Drawing.Point(206, 530);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 21);
             this.label14.TabIndex = 29;
@@ -310,7 +314,7 @@
             // 
             // cpostal
             // 
-            this.cpostal.Location = new System.Drawing.Point(299, 494);
+            this.cpostal.Location = new System.Drawing.Point(299, 557);
             this.cpostal.Name = "cpostal";
             this.cpostal.Size = new System.Drawing.Size(247, 20);
             this.cpostal.TabIndex = 32;
@@ -319,7 +323,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(206, 493);
+            this.label15.Location = new System.Drawing.Point(206, 556);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 21);
             this.label15.TabIndex = 31;
@@ -343,7 +347,7 @@
             this.btn_guardar.BackColor = System.Drawing.Color.PaleGreen;
             this.btn_guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_guardar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_guardar.Location = new System.Drawing.Point(958, 539);
+            this.btn_guardar.Location = new System.Drawing.Point(958, 564);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(481, 67);
             this.btn_guardar.TabIndex = 48;
@@ -356,7 +360,7 @@
             this.listaFechasEspectaculo.FormattingEnabled = true;
             this.listaFechasEspectaculo.Location = new System.Drawing.Point(608, 237);
             this.listaFechasEspectaculo.Name = "listaFechasEspectaculo";
-            this.listaFechasEspectaculo.Size = new System.Drawing.Size(344, 368);
+            this.listaFechasEspectaculo.Size = new System.Drawing.Size(344, 394);
             this.listaFechasEspectaculo.TabIndex = 50;
             // 
             // btn_agregarFechaEspectaculo
@@ -430,7 +434,7 @@
             // 
             this.grado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.grado.FormattingEnabled = true;
-            this.grado.Location = new System.Drawing.Point(299, 520);
+            this.grado.Location = new System.Drawing.Point(299, 583);
             this.grado.Name = "grado";
             this.grado.Size = new System.Drawing.Size(247, 21);
             this.grado.TabIndex = 58;
@@ -439,7 +443,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(206, 520);
+            this.label4.Location = new System.Drawing.Point(206, 583);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 21);
             this.label4.TabIndex = 57;
@@ -449,7 +453,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(206, 550);
+            this.label6.Location = new System.Drawing.Point(206, 613);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 61;
@@ -459,7 +463,7 @@
             // 
             this.estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estado.FormattingEnabled = true;
-            this.estado.Location = new System.Drawing.Point(299, 550);
+            this.estado.Location = new System.Drawing.Point(299, 613);
             this.estado.Name = "estado";
             this.estado.Size = new System.Drawing.Size(247, 21);
             this.estado.TabIndex = 62;
@@ -570,7 +574,7 @@
             // 
             // nroCalle
             // 
-            this.nroCalle.Location = new System.Drawing.Point(449, 418);
+            this.nroCalle.Location = new System.Drawing.Point(449, 478);
             this.nroCalle.MaxLength = 50;
             this.nroCalle.Name = "nroCalle";
             this.nroCalle.Size = new System.Drawing.Size(97, 20);
@@ -580,11 +584,45 @@
             // 
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(421, 417);
+            this.label23.Location = new System.Drawing.Point(421, 477);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(22, 21);
             this.label23.TabIndex = 75;
             this.label23.Text = "N";
+            // 
+            // ciudad
+            // 
+            this.ciudad.Location = new System.Drawing.Point(299, 446);
+            this.ciudad.Name = "ciudad";
+            this.ciudad.Size = new System.Drawing.Size(247, 20);
+            this.ciudad.TabIndex = 80;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(206, 445);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 21);
+            this.label5.TabIndex = 79;
+            this.label5.Text = "Ciudad";
+            // 
+            // localidad
+            // 
+            this.localidad.Location = new System.Drawing.Point(299, 420);
+            this.localidad.Name = "localidad";
+            this.localidad.Size = new System.Drawing.Size(247, 20);
+            this.localidad.TabIndex = 78;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(206, 419);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(87, 21);
+            this.label20.TabIndex = 77;
+            this.label20.Text = "Localidad";
             // 
             // AltaPublicacion
             // 
@@ -592,8 +630,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1451, 617);
+            this.ClientSize = new System.Drawing.Size(1451, 646);
             this.ControlBox = false;
+            this.Controls.Add(this.ciudad);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.localidad);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.nroCalle);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_eliminarUbicacionSeleccionada);
@@ -708,5 +750,9 @@
         private System.Windows.Forms.Button btn_eliminarUbicacionSeleccionada;
         private System.Windows.Forms.TextBox nroCalle;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox ciudad;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox localidad;
+        private System.Windows.Forms.Label label20;
 
     }
