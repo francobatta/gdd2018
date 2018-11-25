@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -20,10 +21,10 @@ namespace PalcoNet.BDManager
         private static String getConnectionString()
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "localhost\\SQLSERVER2012";
-            builder.UserID = "gdEspectaculos2018";
-            builder.Password = "gd2018";
-            builder.InitialCatalog = "GD2C2018";
+            builder.DataSource = ConfigurationManager.AppSettings["BDServer"];
+            builder.UserID = ConfigurationManager.AppSettings["userID"];
+            builder.Password = ConfigurationManager.AppSettings["password"];
+            builder.InitialCatalog = ConfigurationManager.AppSettings["useBD"];
             return builder.ConnectionString;
         }
         public static void delete(String tableName, String idColumn , object o)
@@ -170,7 +171,6 @@ namespace PalcoNet.BDManager
                     return table;
                 }
         }
-
     }
     public enum queryTypes
     {
