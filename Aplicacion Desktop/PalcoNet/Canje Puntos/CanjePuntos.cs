@@ -53,7 +53,9 @@ using System.Windows.Forms;
 
         private void btn_elegir_premios_Click(object sender, EventArgs e)
         {
-
+            CompraPremio compraPremio = new CompraPremio(Convert.ToInt32(puntos_actual.Text));
+            compraPremio.Closed += (s, args) => this.Close();
+            compraPremio.Show();
         }
 
         private void listadoActualPublicacion_CellContentClick(object sender, DataGridViewCellEventArgs e)

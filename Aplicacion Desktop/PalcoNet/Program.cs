@@ -20,7 +20,7 @@ namespace PalcoNet
             //u.username = "jijo2";
             //u.password = "buta2";
             //BDManager.BDManager.insertEncryptedUser(u);
-            Application.Run(new AltaPublicacion()); //PA MOSTRAR EL PROGRAMA
+            Application.Run(new CanjePuntos()); //PA MOSTRAR EL PROGRAMA
         }
     }
 }

@@ -5,7 +5,9 @@ DROP TABLE EQUISDE.premio
 IF OBJECT_ID('EQUISDE.item') IS NOT NULL
 DROP TABLE EQUISDE.item 
 IF OBJECT_ID('EQUISDE.factura') IS NOT NULL
-DROP TABLE EQUISDE.factura 
+DROP TABLE EQUISDE.factura
+IF OBJECT_ID('EQUISDE.compra_x_ubicacion') IS NOT NULL
+DROP TABLE EQUISDE.compra_x_ubicacion
 IF OBJECT_ID('EQUISDE.compra') IS NOT NULL
 DROP TABLE EQUISDE.compra 
 IF OBJECT_ID('EQUISDE.ubicacion') IS NOT NULL
@@ -164,11 +166,16 @@ CREATE TABLE EQUISDE.ubicacion(
 CREATE TABLE EQUISDE.compra(
 	id_compra bigint PRIMARY KEY IDENTITY,
 	username varchar(50) REFERENCES EQUISDE.cliente,
-	id_ubicacion bigint REFERENCES EQUISDE.ubicacion,
 	email nvarchar(255),
 	fecha_compra datetime,
 	cantidad numeric(18,0),
 	puntos bigint DEFAULT 0
+)
+
+CREATE TABLE EQUISDE.compra_x_ubicacion(
+	id_ubicacion bigint REFERENCES EQUISDE.ubicacion,
+	id_compra bigint REFERENCES EQUISDE.compra,
+	PRIMARY KEY(id_compra,id_ubicacion)
 )
 
 CREATE TABLE EQUISDE.factura(
@@ -340,12 +347,19 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.Espectaculo_Cod,f.Ubicacion_Tipo_Codigo,f.Ubicacion_Fila,f.Ubicacion_Asiento,f.Ubicacion_Precio,f.Ubicacion_Sin_numerar);
 
 MERGE EQUISDE.compra d
-USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni, id_ubicacion FROM gd_esquema.Maestra JOIN EQUISDE.ubicacion ON (Espectaculo_Cod=id_publicacion AND Ubicacion_Tipo_Codigo = codigo_tipo AND Ubicacion_Fila=fila
-AND Ubicacion_Asiento = asiento AND Ubicacion_Precio = precio AND Ubicacion_Sin_numerar = sin_numerar) WHERE Compra_Fecha IS NOT NULL) f
-ON d.username = f.Cli_Dni AND d.id_ubicacion = f.id_ubicacion AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha
+USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL) f
+ON d.username = f.Cli_Dni AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(username,id_ubicacion,fecha_compra,cantidad)
-	VALUES(f.Cli_Dni,f.id_ubicacion,f.Compra_Fecha,f.Compra_Cantidad);
+	INSERT(username,fecha_compra,cantidad)
+	VALUES(f.Cli_Dni,f.Compra_Fecha,f.Compra_Cantidad);
+
+MERGE EQUISDE.compra_x_ubicacion d
+USING(SELECT DISTINCT id_ubicacion, id_compra FROM EQUISDE.ubicacion u JOIN gd_esquema.Maestra m ON (u.id_publicacion = m.Espectaculo_Cod AND u.codigo_tipo = m.Ubicacion_Tipo_Codigo AND u.fila = m.Ubicacion_Fila AND u.asiento = m.Ubicacion_Asiento AND u.precio = m.Ubicacion_Precio AND u.sin_numerar = m.Ubicacion_Sin_numerar)
+JOIN EQUISDE.compra c ON (c.username=m.Cli_Dni AND c.fecha_compra = m.Compra_Fecha AND c.cantidad = m.Compra_Cantidad) WHERE id_ubicacion IS NOT NULL AND id_compra IS NOT NULL)f
+ON d.id_ubicacion = f.id_ubicacion AND d.id_compra = f.id_compra
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT(id_compra,id_ubicacion)
+	VALUES(f.id_compra,f.id_ubicacion);
 
 SET IDENTITY_INSERT EQUISDE.factura ON
 
@@ -368,7 +382,7 @@ WHEN NOT MATCHED BY TARGET THEN
 
 INSERT INTO EQUISDE.premio
 (fecha_vencimiento,fecha_emision,puntos_necesarios,descripcion)
-VALUES('01-01-2019','03-10-2018',321,'Entradas al superclasico'),('01-10-2019','22-11-2018',120,'Peluche de Winnie Pooh'),('15-02-2019','09-08-2018',480,'Alienware')
+VALUES('01/01/2019','10/03/2018',321,'Entradas al superclasico'),('10/01/2019','11/22/2018',120,'Peluche de Winnie Pooh'),('02/15/2019','09/08/2018',0,'Alienware')
 
 INSERT INTO EQUISDE.grado
 VALUES('Alta'),('Media'),('Baja');

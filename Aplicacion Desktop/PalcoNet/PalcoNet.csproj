@@ -128,12 +128,20 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Canje Puntos\premio_x_cliente.cs" />
+    <Compile Include="Canje Puntos\CompraPremio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Canje Puntos\CompraPremio.Designer.cs">
+      <DependentUpon>CompraPremio.cs</DependentUpon>
+    </Compile>
     <Compile Include="Canje Puntos\CanjePuntos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Canje Puntos\CanjePuntos.Designer.cs">
       <DependentUpon>CanjePuntos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Canje Puntos\PuntosFaltanteException.cs" />
     <Compile Include="Comprar\comprar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +271,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ModificaRol.resx">
       <DependentUpon>ModificaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Canje Puntos\CompraPremio.resx">
+      <DependentUpon>CompraPremio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Canje Puntos\CanjePuntos.resx">
       <DependentUpon>CanjePuntos.cs</DependentUpon>
