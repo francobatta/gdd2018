@@ -90,6 +90,7 @@ using System.Windows.Forms;
         Validaciones.esValido("Asiento", asientoUbicacion.Text, new Validaciones.Numeros());
         Validaciones.esValido("Fila", filaUbicacion.Text, new Validaciones.NumerosLetrasGuion());
         Validaciones.esValido("Precio", precioUbicacion.Text, new Validaciones.Numeros());
+        Validaciones.esValido("Tipo", tipoUbicacion.Text, new Validaciones.Letras());
         if (!String.IsNullOrEmpty(Validaciones.camposInvalidos) || tipoUbicacion.SelectedItem == null)
             throw new CamposInvalidosException();
         ubicacion u = new ubicacion();
@@ -112,7 +113,10 @@ using System.Windows.Forms;
 
     private void btn_agregarFechaEspectaculo_Click(object sender, EventArgs e)
     {
+        if (listaFechasEspectaculo.Items.Count == 0 || fechaEspectaculo.Value > (DateTime)listaFechasEspectaculo.Items[listaFechasEspectaculo.Items.Count - 1])
         listaFechasEspectaculo.Items.Add(fechaEspectaculo.Value);
+        else
+            MessageBox.Show("Error al insertar fecha. Comprobar que sea mayor a la última ingresada", "Fecha mal elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
 
     private void btn_eliminarFechaSeleccionada_Click(object sender, EventArgs e)
