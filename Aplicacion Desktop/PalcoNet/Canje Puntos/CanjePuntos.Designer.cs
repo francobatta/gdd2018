@@ -1,4 +1,4 @@
-﻿    partial class BusquedaPublicacion
+﻿partial class CanjePuntos
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaPublicacion));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CanjePuntos));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,12 +38,17 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoActualPublicacion = new System.Windows.Forms.DataGridView();
+            this.listadoPuntos = new System.Windows.Forms.DataGridView();
+            this.listadoComprasPuntos = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.puntos_actual = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualPublicacion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoPuntos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoComprasPuntos)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -65,11 +70,9 @@
             this.label17.Location = new System.Drawing.Point(4, 56);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(190, 136);
+            this.label17.Size = new System.Drawing.Size(186, 68);
             this.label17.TabIndex = 52;
-            this.label17.Text = "Usted puede ver el listado de publicaciones para el usuario. Para elegir el grado" +
-    " de una publicación, basta con \"pintar\" la fila sobre la que se quiera operar, y" +
-    " luego tocar el botón \"elegir grado\".";
+            this.label17.Text = "Usted puede ver los puntos que obtuvo en cada compra y canjear puntos con ello";
             // 
             // panel1
             // 
@@ -134,9 +137,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(263, 24);
+            this.titleLabel.Size = new System.Drawing.Size(77, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Listado de publicaciones";
+            this.titleLabel.Text = "Puntos";
             // 
             // closingLabel
             // 
@@ -157,9 +160,9 @@
             this.label.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label.Location = new System.Drawing.Point(206, 52);
             this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(380, 21);
+            this.label.Size = new System.Drawing.Size(144, 21);
             this.label.TabIndex = 7;
-            this.label.Text = "Listado actual de publicaciones para el usuario:";
+            this.label.Text = "Puntos obtenidos";
             // 
             // btn_seleccionar
             // 
@@ -170,24 +173,73 @@
             this.btn_seleccionar.Name = "btn_seleccionar";
             this.btn_seleccionar.Size = new System.Drawing.Size(481, 67);
             this.btn_seleccionar.TabIndex = 9;
-            this.btn_seleccionar.Text = "Elegir grado";
+            this.btn_seleccionar.Text = "Comprar Premios";
             this.btn_seleccionar.UseVisualStyleBackColor = false;
-            this.btn_seleccionar.Click += new System.EventHandler(this.btn_elegir_grado_Click);
+            this.btn_seleccionar.Click += new System.EventHandler(this.btn_elegir_premios_Click);
             // 
-            // listadoActualPublicacion
+            // listadoPuntos
             // 
-            this.listadoActualPublicacion.AllowUserToAddRows = false;
-            this.listadoActualPublicacion.AllowUserToDeleteRows = false;
-            this.listadoActualPublicacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualPublicacion.Location = new System.Drawing.Point(210, 76);
-            this.listadoActualPublicacion.MultiSelect = false;
-            this.listadoActualPublicacion.Name = "listadoActualPublicacion";
-            this.listadoActualPublicacion.ReadOnly = true;
-            this.listadoActualPublicacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualPublicacion.Size = new System.Drawing.Size(742, 529);
-            this.listadoActualPublicacion.TabIndex = 10;
+            this.listadoPuntos.AllowUserToAddRows = false;
+            this.listadoPuntos.AllowUserToDeleteRows = false;
+            this.listadoPuntos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listadoPuntos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.listadoPuntos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoPuntos.Location = new System.Drawing.Point(210, 76);
+            this.listadoPuntos.MultiSelect = false;
+            this.listadoPuntos.Name = "listadoPuntos";
+            this.listadoPuntos.ReadOnly = true;
+            this.listadoPuntos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoPuntos.Size = new System.Drawing.Size(580, 420);
+            this.listadoPuntos.TabIndex = 10;
+            this.listadoPuntos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoActualPublicacion_CellContentClick);
             // 
-            // BusquedaPublicacion
+            // listadoComprasPuntos
+            // 
+            this.listadoComprasPuntos.AllowUserToAddRows = false;
+            this.listadoComprasPuntos.AllowUserToDeleteRows = false;
+            this.listadoComprasPuntos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listadoComprasPuntos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            this.listadoComprasPuntos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoComprasPuntos.Location = new System.Drawing.Point(835, 76);
+            this.listadoComprasPuntos.MultiSelect = false;
+            this.listadoComprasPuntos.Name = "listadoComprasPuntos";
+            this.listadoComprasPuntos.ReadOnly = true;
+            this.listadoComprasPuntos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoComprasPuntos.Size = new System.Drawing.Size(580, 420);
+            this.listadoComprasPuntos.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(831, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(139, 21);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Puntos gastados";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(206, 547);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(208, 30);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Puntos actuales:";
+            // 
+            // puntos_actual
+            // 
+            this.puntos_actual.AutoSize = true;
+            this.puntos_actual.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.puntos_actual.Location = new System.Drawing.Point(420, 547);
+            this.puntos_actual.Name = "puntos_actual";
+            this.puntos_actual.Size = new System.Drawing.Size(21, 30);
+            this.puntos_actual.TabIndex = 14;
+            this.puntos_actual.Text = "-";
+            this.puntos_actual.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // CanjePuntos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -195,7 +247,11 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.listadoActualPublicacion);
+            this.Controls.Add(this.puntos_actual);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listadoComprasPuntos);
+            this.Controls.Add(this.listadoPuntos);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -203,9 +259,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BusquedaPublicacion";
+            this.Name = "CanjePuntos";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.BusquedaPublicacion_Load);
+            this.Load += new System.EventHandler(this.CanjePuntos_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -213,7 +269,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualPublicacion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoPuntos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoComprasPuntos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,7 +288,11 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoActualPublicacion;
+        private System.Windows.Forms.DataGridView listadoPuntos;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.DataGridView listadoComprasPuntos;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label puntos_actual;
 
     }

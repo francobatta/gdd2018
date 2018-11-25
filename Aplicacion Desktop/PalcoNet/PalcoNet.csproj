@@ -128,6 +128,12 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Canje Puntos\CanjePuntos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Canje Puntos\CanjePuntos.Designer.cs">
+      <DependentUpon>CanjePuntos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar\comprar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,12 +211,6 @@
     </Compile>
     <Compile Include="Validaciones.cs" />
     <Compile Include="queryTypes.cs" />
-    <Compile Include="Canje Puntos\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Canje Puntos\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Editar Publicacion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,6 +263,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Rol\ModificaRol.resx">
       <DependentUpon>ModificaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Canje Puntos\CanjePuntos.resx">
+      <DependentUpon>CanjePuntos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar\comprar.resx">
       <DependentUpon>comprar.cs</DependentUpon>

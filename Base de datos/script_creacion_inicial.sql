@@ -168,7 +168,7 @@ CREATE TABLE EQUISDE.compra(
 	email nvarchar(255),
 	fecha_compra datetime,
 	cantidad numeric(18,0),
-	puntos bigint
+	puntos bigint DEFAULT 0
 )
 
 CREATE TABLE EQUISDE.factura(
@@ -192,7 +192,7 @@ CREATE TABLE EQUISDE.premio(
 	id_premio bigint PRIMARY KEY IDENTITY,
 	fecha_vencimiento datetime,
 	fecha_emision datetime,
-	puntos_necesario bigint,
+	puntos_necesarios bigint,
 	descripcion nvarchar(255)
 )
 
@@ -365,6 +365,10 @@ ON f.Factura_Nro = d.id_factura AND f.id_compra = d.id_compra AND f.Item_Factura
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_factura,id_compra,importe_comision,descripcion,cantidad)
 	VALUES(f.Factura_Nro,f.id_compra,f.Item_Factura_Monto,f.Item_Factura_Descripcion, f.Item_Factura_Cantidad);
+
+INSERT INTO EQUISDE.premio
+(fecha_vencimiento,fecha_emision,puntos_necesarios,descripcion)
+VALUES('01-01-2019','03-10-2018',321,'Entradas al superclasico'),('01-10-2019','22-11-2018',120,'Peluche de Winnie Pooh'),('15-02-2019','09-08-2018',480,'Alienware')
 
 INSERT INTO EQUISDE.grado
 VALUES('Alta'),('Media'),('Baja');
