@@ -61,9 +61,4 @@ using System.Windows.Forms;
             MessageBox.Show("Se modifico el grado", "Grado de la publicacion modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
-
-        private void btn_limpiar_Click(object sender, EventArgs e)
-        {
-            gradosCombobox.Text = default(String);
-        }
-    }
+}
