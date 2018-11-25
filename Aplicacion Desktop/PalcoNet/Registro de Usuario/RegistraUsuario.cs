@@ -68,6 +68,8 @@ using System.Windows.Forms;
                 throw new ControlDePKException();
             if (!BDManager.existsButWith("usuario", "username", user.username, "password=HASHBYTES('SHA2_256','" + passwordAnterior.Text + "')"))
                 throw new PasswordIncorrectaException();
+            if (passwordAnterior.Text == passwordNueva.Text)
+                throw new PasswordIgualException();
             user.password = passwordNueva.Text;
             BDManager.updateEncryptedUser(user);
             MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -76,6 +78,7 @@ using System.Windows.Forms;
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a registrar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (ControlDePKException) { MessageBox.Show("Contraseña nueva mal escrita", "Error al validar campos del usuario a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (PasswordIncorrectaException) { MessageBox.Show("Contraseña anterior incorrecta", "Error al validar contraseña", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        catch (PasswordIgualException) { MessageBox.Show("Contraseña anterior y nueva iguales", "Error al validar contraseña", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 
     }
     }

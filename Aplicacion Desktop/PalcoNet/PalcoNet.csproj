@@ -129,9 +129,11 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicacion\publicacion.cs" />
+    <Compile Include="Login\DebeCambiarContraseniaException_2.cs" />
     <Compile Include="Login\usuarioGlobal.cs" />
     <Compile Include="Login\UsuarioInhabilitadoException.cs" />
     <Compile Include="Login\UsuarioNoExistenteException.cs" />
+    <Compile Include="Login\UsuarioNoTieneRolesException.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +177,7 @@
     <Compile Include="Registro de Usuario\BusquedaUsuario.Designer.cs">
       <DependentUpon>BusquedaUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Registro de Usuario\PasswordIgualException.cs" />
     <Compile Include="Registro de Usuario\PasswordIncorrectaException.cs" />
     <Compile Include="Registro de Usuario\rol_x_usuario.cs" />
     <Compile Include="Registro de Usuario\ControlDePKException.cs" />

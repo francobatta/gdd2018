@@ -77,9 +77,7 @@ using System.Windows.Forms;
                 BDManager.insertInto("direccion", d);
                 BDManager.insertInto("cliente", c);
                 BDManager.insertInto("tarjeta", t);
-                MessageBox.Show("El cliente ha sido insertado. Al clickear OK, se le pedirá que efectúe un cambio de contraseña predeterminada para su usuario nuevo.", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                RegistraUsuario registraUsuario = new RegistraUsuario(u);
-                registraUsuario.ShowDialog();
+                MessageBox.Show("El cliente ha sido insertado.", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
@@ -99,6 +97,7 @@ using System.Windows.Forms;
             Validaciones.esValido(localidad.Name, localidad.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido(ciudad.Name, ciudad.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido(calle.Name, calle.Text, new Validaciones.NumerosLetrasGuion());
+            Validaciones.esValido(nroCalle.Name, nroCalle.Text, new Validaciones.Numeros());
             Validaciones.esValido(piso.Name, piso.Text, new Validaciones.NumerosGuion());
             Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido(cpostal.Name, cpostal.Text, new Validaciones.Numeros());
