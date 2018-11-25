@@ -236,8 +236,8 @@ VALUES('empresa',1),('cliente',1),('admin',1);
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('abm de rol'),('registro de usuario'),('abm de clientes'),('abm de empresa de espectaculos'),('abm de rubro'),('abm grado de publicacion'),('generar publicacion'),('editar publicacion'),('comprar'),('historial de cliente'),
-('canje de administracion de puntos'),('generar rendicion de comisiones'),('listado estadistico');
+VALUES('AltaCliente'),('BusquedaCliente'),('ModificaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('ModificaEmpresa'),('BusquedaPublicacion'),('ElegirGrado'),('AltaRol'),('BusquedaRol'),
+('ModificaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ModificaUsuario'),('RegistraUsuario');
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
@@ -393,3 +393,9 @@ VALUES('B'),('F');
 
 INSERT INTO EQUISDE.rubro
 VALUES ('pelicula');
+
+INSERT INTO EQUISDE.usuario (username,password) VALUES ('admin',HASHBYTES('SHA2_256','w23e'))
+
+INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
+INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',4)
+INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 4 FROM EQUISDE.funcionalidad)

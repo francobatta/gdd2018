@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.BDManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,7 +17,24 @@ using System.Windows.Forms;
         }
         private void MainWindow_Load(object sender, EventArgs e)
         {
-
+            // funcionalidades de ESE rol
+            List<object> listaTraidaDeBD = BDManager.getList(
+                "SELECT f.id_funcionalidad, f.nombre FROM EQUISDE.funcionalidad f JOIN EQUISDE.rol_x_funcionalidad rf ON f.id_funcionalidad = rf.id_funcionalidad JOIN EQUISDE.rol r ON rf.id_rol = r.id_rol WHERE rf.id_rol =" + usuarioGlobal.rolLogueado.id_rol
+                , new funcionalidad());
+            List<funcionalidad>listaFuncionalidades = listaTraidaDeBD.Cast<funcionalidad>().ToList();
+            foreach(funcionalidad f in listaFuncionalidades)
+            {
+                var btn = new Button
+                {
+                    Name = f.nombre,
+                    Text = f.nombre,
+                    Size = new Size(200, 100),
+                    Font = new Font("Century Gothic", 12),
+                    ForeColor = Color.Gainsboro,
+                    BackColor = Color.DarkBlue
+                };
+                conjuntoBotones.Controls.Add(btn);
+            }
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)

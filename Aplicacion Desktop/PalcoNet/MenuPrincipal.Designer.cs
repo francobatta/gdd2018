@@ -35,6 +35,7 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
+            this.conjuntoBotones = new System.Windows.Forms.FlowLayoutPanel();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -131,6 +132,14 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
+            // conjuntoBotones
+            // 
+            this.conjuntoBotones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.conjuntoBotones.Location = new System.Drawing.Point(200, 49);
+            this.conjuntoBotones.Name = "conjuntoBotones";
+            this.conjuntoBotones.Size = new System.Drawing.Size(1251, 568);
+            this.conjuntoBotones.TabIndex = 2;
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +148,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.conjuntoBotones);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -167,5 +177,6 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
+        private System.Windows.Forms.FlowLayoutPanel conjuntoBotones;
 
     }

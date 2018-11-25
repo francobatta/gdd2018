@@ -64,7 +64,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.estado = new System.Windows.Forms.ComboBox();
-            this.listaUbicaciones = new System.Windows.Forms.ListBox();
             this.filaUbicacion = new System.Windows.Forms.TextBox();
             this.asientoUbicacion = new System.Windows.Forms.TextBox();
             this.precioUbicacion = new System.Windows.Forms.TextBox();
@@ -81,10 +80,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.localidad = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.listaUbicaciones = new System.Windows.Forms.DataGridView();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.sidepanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // topbar
@@ -468,40 +469,32 @@
             this.estado.Size = new System.Drawing.Size(247, 21);
             this.estado.TabIndex = 62;
             // 
-            // listaUbicaciones
-            // 
-            this.listaUbicaciones.FormattingEnabled = true;
-            this.listaUbicaciones.Location = new System.Drawing.Point(210, 262);
-            this.listaUbicaciones.Name = "listaUbicaciones";
-            this.listaUbicaciones.Size = new System.Drawing.Size(336, 95);
-            this.listaUbicaciones.TabIndex = 63;
-            // 
             // filaUbicacion
             // 
-            this.filaUbicacion.Location = new System.Drawing.Point(210, 198);
+            this.filaUbicacion.Location = new System.Drawing.Point(210, 199);
             this.filaUbicacion.Name = "filaUbicacion";
             this.filaUbicacion.Size = new System.Drawing.Size(46, 20);
             this.filaUbicacion.TabIndex = 64;
             // 
             // asientoUbicacion
             // 
-            this.asientoUbicacion.Location = new System.Drawing.Point(313, 198);
+            this.asientoUbicacion.Location = new System.Drawing.Point(262, 199);
             this.asientoUbicacion.Name = "asientoUbicacion";
             this.asientoUbicacion.Size = new System.Drawing.Size(53, 20);
             this.asientoUbicacion.TabIndex = 65;
             // 
             // precioUbicacion
             // 
-            this.precioUbicacion.Location = new System.Drawing.Point(372, 198);
+            this.precioUbicacion.Location = new System.Drawing.Point(321, 198);
             this.precioUbicacion.Name = "precioUbicacion";
-            this.precioUbicacion.Size = new System.Drawing.Size(45, 20);
+            this.precioUbicacion.Size = new System.Drawing.Size(96, 20);
             this.precioUbicacion.TabIndex = 66;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(207, 179);
+            this.label7.Location = new System.Drawing.Point(207, 180);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(31, 16);
             this.label7.TabIndex = 68;
@@ -511,7 +504,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(310, 179);
+            this.label16.Location = new System.Drawing.Point(259, 180);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(56, 16);
             this.label16.TabIndex = 69;
@@ -521,7 +514,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(369, 179);
+            this.label18.Location = new System.Drawing.Point(318, 179);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(48, 16);
             this.label18.TabIndex = 70;
@@ -624,6 +617,22 @@
             this.label20.TabIndex = 77;
             this.label20.Text = "Localidad";
             // 
+            // listaUbicaciones
+            // 
+            this.listaUbicaciones.AllowUserToAddRows = false;
+            this.listaUbicaciones.AllowUserToDeleteRows = false;
+            this.listaUbicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaUbicaciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.listaUbicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaUbicaciones.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.listaUbicaciones.Location = new System.Drawing.Point(210, 262);
+            this.listaUbicaciones.MultiSelect = false;
+            this.listaUbicaciones.Name = "listaUbicaciones";
+            this.listaUbicaciones.ReadOnly = true;
+            this.listaUbicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaUbicaciones.Size = new System.Drawing.Size(336, 95);
+            this.listaUbicaciones.TabIndex = 81;
+            // 
             // AltaPublicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,6 +641,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 646);
             this.ControlBox = false;
+            this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.ciudad);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.localidad);
@@ -648,7 +658,6 @@
             this.Controls.Add(this.precioUbicacion);
             this.Controls.Add(this.asientoUbicacion);
             this.Controls.Add(this.filaUbicacion);
-            this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.grado);
@@ -693,6 +702,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -737,7 +747,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox estado;
-        private System.Windows.Forms.ListBox listaUbicaciones;
         private System.Windows.Forms.TextBox filaUbicacion;
         private System.Windows.Forms.TextBox asientoUbicacion;
         private System.Windows.Forms.TextBox precioUbicacion;
@@ -754,5 +763,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox localidad;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridView listaUbicaciones;
 
     }

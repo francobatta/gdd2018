@@ -93,6 +93,11 @@ using PalcoNet.Login;
                 usuarioGlobal.rolLogueado = listaRolesDeEseUsuario[0];
             }
             MessageBox.Show("Login exitoso del usuario " + u.username, "Login completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Hide();
+            // show other form
+            MenuPrincipal m = new MenuPrincipal();
+            m.ShowDialog();
+            // close application
             this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a loguear", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

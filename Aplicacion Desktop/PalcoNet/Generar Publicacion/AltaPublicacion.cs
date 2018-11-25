@@ -15,7 +15,7 @@ using System.Windows.Forms;
         {
             InitializeComponent();
         }
-
+        public List<ubicacion> ubicaciones = new List<ubicacion>();
         private void AltaPublicacion_Load(object sender, EventArgs e)
         {
             grado.Items.Add("Alta");
@@ -64,7 +64,7 @@ using System.Windows.Forms;
         {
             Validaciones.inicializarValidador();
             Validaciones.esValido(descripcion.Name, descripcion.Text, new Validaciones.NumerosLetrasGuion());
-            Validaciones.esValido("ubicaciones", listaUbicaciones.Items.Count.ToString(), new Validaciones.NumeroNoCreo());
+            Validaciones.esValido("ubicaciones", ubicaciones.Count.ToString(), new Validaciones.NumeroNoCreo());
             Validaciones.esValido("calle", calle.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("núm. calle", nroCalle.Text, new Validaciones.Numeros());
             Validaciones.esValido("piso", piso.Text, new Validaciones.Numeros());
@@ -100,7 +100,7 @@ using System.Windows.Forms;
             grado grad = new grado();
             BDManager.selectIntoObjectByString("grado", "estado", grado.SelectedItem.ToString(), grad);
             nuevaPublicacion.id_grado = grad.id_grado;
-            //nuevaPublicacion.username = usuarioGlobal.usuarioLogueado.username;
+            nuevaPublicacion.username = usuarioGlobal.usuarioLogueado.username;
             nuevaPublicacion.descripcion = descripcion.Text;
             nuevaPublicacion.fecha_publicacion = fechaPublicacion.Value.ToString();
             // para todas las fechas de espectaculo
@@ -108,7 +108,16 @@ using System.Windows.Forms;
             {
                 nuevaPublicacion.fecha_vencimiento = f.ToString();
                 BDManager.insertInto("publicacion", nuevaPublicacion);
+                foreach (ubicacion u in ubicaciones)
+                {
+                    publicacion pDummy = new publicacion();
+                    BDManager.genericFillObject(
+ "SELECT * FROM publicacion WHERE username="+usuarioGlobal.usuarioLogueado.username+" AND descripcion="+nuevaPublicacion.descripcion+" AND fecha_vencimiento=" + nuevaPublicacion.fecha_vencimiento, pDummy);
+                    u.id_publicacion = pDummy.id_publicacion;
+                    BDManager.insertInto("ubicacion", u);
+                }
             }
+            // ahora que todo fue bien inserto las ubicaciones
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la publicación a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
@@ -121,7 +130,7 @@ using System.Windows.Forms;
         asientoUbicacion.Text = default(String);
         precioUbicacion.Text = default(String);
         tipoUbicacion.Text = default(String);
-        listaUbicaciones.Items.Clear();
+        listaUbicaciones.DataSource = null;
         //rubro
         rubro.Text = default(String);
         //direccion
@@ -149,15 +158,28 @@ using System.Windows.Forms;
         u.fila = filaUbicacion.Text;
         u.precio = precioUbicacion.Text;
         u.codigo_tipo = tipoUbicacion.SelectedValue.ToString();
-        listaUbicaciones.Items.Add(u);
+        ubicaciones.Add(u);
+        listaUbicaciones.DataSource = null;
+        listaUbicaciones.DataSource = ubicaciones;
+        listaUbicaciones.Columns["id_ubicacion"].Visible = false;
+        listaUbicaciones.Columns["id_publicacion"].Visible = false;
+        listaUbicaciones.Columns["sin_numerar"].Visible = false;
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de ubicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
 
     private void btn_eliminarUbicacionSeleccionada_Click(object sender, EventArgs e)
     {
-        if (listaUbicaciones.SelectedItem != null)
-            listaUbicaciones.Items.Remove(listaUbicaciones.SelectedItem);
+        if (listaUbicaciones.CurrentRow != null && listaUbicaciones.SelectedRows[0].Index > -1)
+        {
+            ubicaciones.RemoveAt(listaUbicaciones.CurrentCell.RowIndex);
+            listaUbicaciones.DataSource = ubicaciones;
+            listaUbicaciones.DataSource = null;
+            listaUbicaciones.DataSource = ubicaciones;
+            listaUbicaciones.Columns["id_ubicacion"].Visible = false;
+            listaUbicaciones.Columns["id_publicacion"].Visible = false;
+            listaUbicaciones.Columns["sin_numerar"].Visible = false;
+        }
         else
             MessageBox.Show("Debe elegir una ubicación", "Fila no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
     }
@@ -177,4 +199,5 @@ using System.Windows.Forms;
         else
         { MessageBox.Show("Debe elegir una fecha a eliminar", "Fecha no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
+
     }
