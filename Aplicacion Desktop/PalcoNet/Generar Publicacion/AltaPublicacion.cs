@@ -93,6 +93,7 @@ using System.Windows.Forms;
             nuevaPublicacion.id_direccion = d.id_direccion;
                 // estado
             estadop est = new estadop();
+            MessageBox.Show(estado.SelectedItem.ToString());
             BDManager.selectIntoObjectByString("estadop", "estado", estado.SelectedItem.ToString(), est);
             nuevaPublicacion.id_estado = est.id_estadop;
                 // grado

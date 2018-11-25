@@ -120,7 +120,7 @@ CREATE TABLE EQUISDE.rubro(
 )
 
 CREATE TABLE EQUISDE.estadop(
-	id_estado bigint PRIMARY KEY IDENTITY,
+	id_estadop bigint PRIMARY KEY IDENTITY,
 	estado char(1),
 	CHECK(estado IN ('P','B','F'))
 )
