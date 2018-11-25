@@ -28,6 +28,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaComprasCliente));
             this.sidepanel = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
@@ -35,13 +36,12 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
-            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
-            this.label17 = new System.Windows.Forms.Label();
+            this.listadoActualCompras = new System.Windows.Forms.DataGridView();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualCompras)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -54,6 +54,18 @@
             this.sidepanel.Name = "sidepanel";
             this.sidepanel.Size = new System.Drawing.Size(200, 617);
             this.sidepanel.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 56);
+            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(187, 34);
+            this.label17.TabIndex = 51;
+            this.label17.Text = "Usted puede ver su historial de compra aquí";
             // 
             // panel1
             // 
@@ -135,30 +147,20 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
-            // listadoActualRoles
+            // listadoActualCompras
             // 
-            this.listadoActualRoles.AllowUserToAddRows = false;
-            this.listadoActualRoles.AllowUserToDeleteRows = false;
-            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualRoles.Location = new System.Drawing.Point(210, 56);
-            this.listadoActualRoles.MultiSelect = false;
-            this.listadoActualRoles.Name = "listadoActualRoles";
-            this.listadoActualRoles.ReadOnly = true;
-            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualRoles.Size = new System.Drawing.Size(1229, 549);
-            this.listadoActualRoles.TabIndex = 10;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 56);
-            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(187, 34);
-            this.label17.TabIndex = 51;
-            this.label17.Text = "Usted puede ver su historial de compra aquí";
+            this.listadoActualCompras.AllowUserToAddRows = false;
+            this.listadoActualCompras.AllowUserToDeleteRows = false;
+            this.listadoActualCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listadoActualCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.listadoActualCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoActualCompras.Location = new System.Drawing.Point(210, 56);
+            this.listadoActualCompras.MultiSelect = false;
+            this.listadoActualCompras.Name = "listadoActualCompras";
+            this.listadoActualCompras.ReadOnly = true;
+            this.listadoActualCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoActualCompras.Size = new System.Drawing.Size(1229, 549);
+            this.listadoActualCompras.TabIndex = 10;
             // 
             // BusquedaComprasCliente
             // 
@@ -168,7 +170,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.listadoActualRoles);
+            this.Controls.Add(this.listadoActualCompras);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -184,7 +186,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualCompras)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,7 +201,7 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
-        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.DataGridView listadoActualCompras;
         private System.Windows.Forms.Label label17;
 
     }

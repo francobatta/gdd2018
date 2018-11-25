@@ -165,7 +165,7 @@ CREATE TABLE EQUISDE.compra(
 	id_compra bigint PRIMARY KEY IDENTITY,
 	username varchar(50) REFERENCES EQUISDE.cliente,
 	id_ubicacion bigint REFERENCES EQUISDE.ubicacion,
-	main nvarchar(255),
+	email nvarchar(255),
 	fecha_compra datetime,
 	cantidad numeric(18,0),
 	puntos bigint

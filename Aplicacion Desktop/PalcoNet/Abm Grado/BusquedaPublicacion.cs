@@ -16,7 +16,7 @@ using System.Windows.Forms;
         }
         private void BusquedaPublicacion_Load(object sender, EventArgs e)
         {
-            listadoActualPublicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.publicacion WHERE username = '" + "06-68361819-16" + "'");
+            listadoActualPublicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.publicacion WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
