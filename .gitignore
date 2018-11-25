@@ -13,8 +13,6 @@
 *.userprefs
 
 # Build results
-Aplicacion Desktop/PalcoNet/bin/Debug
-Aplicacion Desktop/PalcoNet/obj/Debug
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
