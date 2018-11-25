@@ -57,7 +57,7 @@ using System.Windows.Forms;
         {
             grado gradoSeleccionado = (grado)gradosCombobox.SelectedItem;
             this.publicacionAUsar.id_grado = gradoSeleccionado.id_grado;
-            BDManager.updateSet("publicacion", this.publicacionAUsar.id_publicacion, publicacionAUsar);
+            BDManager.updateSet("publicacion","id_publicacion", publicacionAUsar);
             MessageBox.Show("Se modifico el grado", "Grado de la publicacion modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
