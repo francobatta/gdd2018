@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class empresa
+    class empresa
     {
         public string username { get; set; }
         public string razon_social { get; set; }
