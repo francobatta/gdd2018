@@ -55,6 +55,11 @@
             this.Compra = new System.Windows.Forms.Button();
             this.fechaIN = new System.Windows.Forms.DateTimePicker();
             this.FechaOut = new System.Windows.Forms.DateTimePicker();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.pagina = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -366,6 +371,55 @@
             this.FechaOut.TabIndex = 20;
             this.FechaOut.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(494, 303);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 21;
+            this.button3.Text = "<";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(635, 303);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 22;
+            this.button4.Text = ">";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(334, 303);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 23;
+            this.button5.Text = "<<";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(807, 303);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 24;
+            this.button6.Text = ">>";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // pagina
+            // 
+            this.pagina.AutoSize = true;
+            this.pagina.Location = new System.Drawing.Point(594, 308);
+            this.pagina.Name = "pagina";
+            this.pagina.Size = new System.Drawing.Size(13, 13);
+            this.pagina.TabIndex = 25;
+            this.pagina.Text = "0";
+            // 
             // nuevaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,6 +428,11 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.pagina);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.FechaOut);
             this.Controls.Add(this.fechaIN);
             this.Controls.Add(this.Compra);
@@ -443,5 +502,10 @@
         private System.Windows.Forms.Button Compra;
         private System.Windows.Forms.DateTimePicker fechaIN;
         private System.Windows.Forms.DateTimePicker FechaOut;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label pagina;
 
     }

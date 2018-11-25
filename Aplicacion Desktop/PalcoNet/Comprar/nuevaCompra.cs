@@ -13,16 +13,20 @@ using PalcoNet.BDManager;
     {
         public publicacion pub { get; set; }
         public ubicacion ubi { get; set; }
+        public String elSQL = "";
+        public int cantidad = 5;
+        public int posicion = 0;
         public nuevaCompra()
         {
             InitializeComponent();
         }
         private void nuevaCompra_Load(object sender, EventArgs e)
         {
+            //REEMPLAZAR EL GETDATE POR LA FECHA DE COMPRA
+            elSQL = "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento";
             //Falta validar rango fechas
-            ListaEsp.DataSource = BDManager.getData(
-                //REEMPLAZAR EL GETDATE POR LA FECHA DE COMPRA
-              "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento"
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY"
+              
               );
             //
             List<object> listaTraidaDeBD = BDManager.getList("SELECT codigo_tipo, descripcion FROM EQUISDE.tipo", new tipo());
@@ -143,11 +147,15 @@ using PalcoNet.BDManager;
                 filtroFechas = " AND p.fecha_publicacion BEETWEEN " + fechaIN.Text + " AND " + FechaOut.Text;
             }
             ListaEsp.DataSource = null;
-            ListaEsp.DataSource = BDManager.getData(
-                //REemplazar el getdate por la fecha de compra!
-              "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN EQUISDE.grado g ON g.id_grado=p.id_grado"+
-            "WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento AND p.descripcion LIKE '%" + Descripcion.Text + "%'"+filtroCategorias+filtroFechas+
-            "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC"
+            //REemplazar el getdate por la fecha de compra!
+            elSQL = "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN EQUISDE.grado g ON g.id_grado=p.id_grado" +
+            "WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento AND p.descripcion LIKE '%" + Descripcion.Text + "%'" + filtroCategorias + filtroFechas +
+            "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC";
+            //Reinicio
+            posicion = 0;
+            pagina.Text="0";
+            ListaEsp.DataSource = BDManager.getData(elSQL+"OFFSET "+posicion.ToString()+" ROWS FETCH NEXT "+cantidad.ToString()+" ROWS ONLY"
+             
               );
         }
 
@@ -209,5 +217,41 @@ using PalcoNet.BDManager;
         private void button3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ListaEsp.DataSource = null;
+            posicion+=cantidad;
+            pagina.Text = (posicion / cantidad).ToString();
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            ListaEsp.DataSource = null;
+            if (posicion > cantidad)
+                posicion -= cantidad;
+            else
+                posicion = 0;
+            pagina.Text = (posicion / cantidad).ToString();
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ListaEsp.DataSource = null;
+            posicion = 0;
+            pagina.Text = (posicion / cantidad).ToString();
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY");
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ListaEsp.DataSource = null;
+            int canti = BDManager.getData(elSQL).Rows.Count;
+            int pag = canti / cantidad;
+            pagina.Text = pag.ToString();
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + (pag*cantidad).ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY");
         }
         }
