@@ -40,7 +40,7 @@ using System.Threading.Tasks;
         public class CUIT : RegexType
         {
             public String Regex() { return @"^(20|23|24|27|30|33|34)(-)?[0-9]{8}(-)?[0-9]$"; }
-            public String Significado() { return "solo números"; }
+            public String Significado() { return "formato CUIT"; }
         }
         public class NumerosLetrasGuion : RegexType
         {

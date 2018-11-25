@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    class tarjeta
+    public class tarjeta
     {
-        public String nroTarjeta { get; set; }
+        public String nro_tarjeta { get; set; }
         public String username { get; set; }
-        public String codSeguridad { get; set; }
-        public String nombreTitularTarjeta { get; set; }
-        public String tipoTarjeta { get; set; }
-        public String fechaVto { get; set; }
+        public String cod_seguridad { get; set; }
+        public String nombre_titular { get; set; }
+        public String tipo_tarjeta { get; set; }
+        public String fecha_vencimiento { get; set; }
     }

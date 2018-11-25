@@ -67,7 +67,7 @@ using PalcoNet.BDManager;
             //
             BDManager.insertInto("direccion", d);
             String dirKey = default(string);
-            BDManager.genericFillObject("SELECT id_direccion FROM direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'"+" AND "+"d.depto="+
+            BDManager.genericFillObject("SELECT id_direccion FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
                 "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " +"d.piso=" + d.piso +" AND "+ "d.calle="  + "'" + d.calle + "'"
                 , dirKey);
             emp.id_direccion = dirKey;

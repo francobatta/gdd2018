@@ -209,15 +209,17 @@ namespace PalcoNet.BDManager
                 case queryTypes.SINGLE_RETURNING_QUERY:
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();
-                        reader.Read();
-                        foreach (PropertyInfo p in getPropertiesFromObj())
+                        if (reader.Read())
                         {
-                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ?  default(string) : reader[p.Name].ToString()));
+                            foreach (PropertyInfo p in getPropertiesFromObj())
+                            {
+                                p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            }
+                            foreach (PropertyInfo p in getIdFromObj())
+                            {
+                                p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
+                            } // en el caso del insert es necesario otorgar el id al objeto
                         }
-                        foreach (PropertyInfo p in getIdFromObj())
-                        {
-                            p.SetValue(BDManager.myObj, (reader[p.Name] == DBNull.Value ? default(string) : reader[p.Name].ToString()));
-                        } // en el caso del insert es necesario otorgar el id al objeto
                         reader.Close();
                         break; } 
                 case queryTypes.MULTIPLE_RETURNING_QUERY:

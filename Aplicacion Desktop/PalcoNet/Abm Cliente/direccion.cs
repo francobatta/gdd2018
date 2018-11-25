@@ -11,6 +11,7 @@ using System.Threading.Tasks;
         public String localidad { get; set; }
         public String ciudad { get; set; }
         public String calle { get; set; }
+        public String nro_calle { get; set; }
         public String piso { get; set; }
         public String depto { get; set; }
         public String cpostal { get; set; }

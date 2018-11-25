@@ -78,6 +78,8 @@
             this.tipoTarjeta = new System.Windows.Forms.ComboBox();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
+            this.label23 = new System.Windows.Forms.Label();
+            this.nroCalle = new System.Windows.Forms.TextBox();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -200,6 +202,7 @@
             // nombre
             // 
             this.nombre.Location = new System.Drawing.Point(299, 93);
+            this.nombre.MaxLength = 255;
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(247, 20);
             this.nombre.TabIndex = 6;
@@ -217,6 +220,7 @@
             // apellido
             // 
             this.apellido.Location = new System.Drawing.Point(299, 130);
+            this.apellido.MaxLength = 255;
             this.apellido.Name = "apellido";
             this.apellido.Size = new System.Drawing.Size(247, 20);
             this.apellido.TabIndex = 8;
@@ -253,6 +257,7 @@
             // nDoc
             // 
             this.nDoc.Location = new System.Drawing.Point(363, 204);
+            this.nDoc.MaxLength = 18;
             this.nDoc.Name = "nDoc";
             this.nDoc.Size = new System.Drawing.Size(183, 20);
             this.nDoc.TabIndex = 12;
@@ -270,6 +275,7 @@
             // CUIL
             // 
             this.CUIL.Location = new System.Drawing.Point(299, 241);
+            this.CUIL.MaxLength = 255;
             this.CUIL.Name = "CUIL";
             this.CUIL.Size = new System.Drawing.Size(247, 20);
             this.CUIL.TabIndex = 14;
@@ -287,6 +293,7 @@
             // email
             // 
             this.email.Location = new System.Drawing.Point(299, 278);
+            this.email.MaxLength = 255;
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(247, 20);
             this.email.TabIndex = 16;
@@ -304,6 +311,7 @@
             // telefono
             // 
             this.telefono.Location = new System.Drawing.Point(299, 315);
+            this.telefono.MaxLength = 50;
             this.telefono.Name = "telefono";
             this.telefono.Size = new System.Drawing.Size(247, 20);
             this.telefono.TabIndex = 18;
@@ -343,6 +351,7 @@
             // localidad
             // 
             this.localidad.Location = new System.Drawing.Point(299, 389);
+            this.localidad.MaxLength = 50;
             this.localidad.Name = "localidad";
             this.localidad.Size = new System.Drawing.Size(247, 20);
             this.localidad.TabIndex = 22;
@@ -360,6 +369,7 @@
             // ciudad
             // 
             this.ciudad.Location = new System.Drawing.Point(299, 426);
+            this.ciudad.MaxLength = 50;
             this.ciudad.Name = "ciudad";
             this.ciudad.Size = new System.Drawing.Size(247, 20);
             this.ciudad.TabIndex = 24;
@@ -377,8 +387,9 @@
             // calle
             // 
             this.calle.Location = new System.Drawing.Point(299, 463);
+            this.calle.MaxLength = 50;
             this.calle.Name = "calle";
-            this.calle.Size = new System.Drawing.Size(247, 20);
+            this.calle.Size = new System.Drawing.Size(151, 20);
             this.calle.TabIndex = 26;
             // 
             // label12
@@ -394,6 +405,7 @@
             // piso
             // 
             this.piso.Location = new System.Drawing.Point(299, 500);
+            this.piso.MaxLength = 18;
             this.piso.Name = "piso";
             this.piso.Size = new System.Drawing.Size(247, 20);
             this.piso.TabIndex = 28;
@@ -411,6 +423,7 @@
             // depto
             // 
             this.depto.Location = new System.Drawing.Point(299, 537);
+            this.depto.MaxLength = 50;
             this.depto.Name = "depto";
             this.depto.Size = new System.Drawing.Size(247, 20);
             this.depto.TabIndex = 30;
@@ -428,6 +441,7 @@
             // cpostal
             // 
             this.cpostal.Location = new System.Drawing.Point(299, 574);
+            this.cpostal.MaxLength = 50;
             this.cpostal.Name = "cpostal";
             this.cpostal.Size = new System.Drawing.Size(247, 20);
             this.cpostal.TabIndex = 32;
@@ -483,6 +497,7 @@
             // codSeguridad
             // 
             this.codSeguridad.Location = new System.Drawing.Point(722, 368);
+            this.codSeguridad.MaxLength = 10;
             this.codSeguridad.Name = "codSeguridad";
             this.codSeguridad.Size = new System.Drawing.Size(204, 20);
             this.codSeguridad.TabIndex = 39;
@@ -510,6 +525,7 @@
             // nroTarjeta
             // 
             this.nroTarjeta.Location = new System.Drawing.Point(679, 162);
+            this.nroTarjeta.MaxLength = 255;
             this.nroTarjeta.Name = "nroTarjeta";
             this.nroTarjeta.Size = new System.Drawing.Size(247, 20);
             this.nroTarjeta.TabIndex = 35;
@@ -540,6 +556,7 @@
             this.tipoTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoTarjeta.FormattingEnabled = true;
             this.tipoTarjeta.Location = new System.Drawing.Point(689, 573);
+            this.tipoTarjeta.MaxLength = 3;
             this.tipoTarjeta.Name = "tipoTarjeta";
             this.tipoTarjeta.Size = new System.Drawing.Size(237, 21);
             this.tipoTarjeta.TabIndex = 47;
@@ -570,6 +587,24 @@
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(456, 463);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 21);
+            this.label23.TabIndex = 50;
+            this.label23.Text = "N";
+            // 
+            // nroCalle
+            // 
+            this.nroCalle.Location = new System.Drawing.Point(484, 464);
+            this.nroCalle.MaxLength = 50;
+            this.nroCalle.Name = "nroCalle";
+            this.nroCalle.Size = new System.Drawing.Size(62, 20);
+            this.nroCalle.TabIndex = 51;
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -578,6 +613,8 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.nroCalle);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.tipoTarjeta);
@@ -694,5 +731,7 @@
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox nroCalle;
 
     }

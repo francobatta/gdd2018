@@ -23,8 +23,8 @@ using System.Windows.Forms;
             tipoDoc.Items.Add("LE");
             tipoDoc.Items.Add("CI");
             tipoDoc.SelectedIndex = 0;
-            tipoTarjeta.Items.Add("Mastercard");
-            tipoTarjeta.Items.Add("VISA");
+            tipoTarjeta.Items.Add("MAS");
+            tipoTarjeta.Items.Add("VIS");
             tipoTarjeta.SelectedIndex = 0;
         }
 
@@ -37,7 +37,7 @@ using System.Windows.Forms;
                 cliente c = new cliente();
                 direccion d = new direccion();
                 tarjeta t = new tarjeta();
-                 //c.username = Login.usuarioLogueado();
+                c.username = nDoc.Text;
                  c.nombre = nombre.Text;
                  c.apellido = apellido.Text;
                  c.tipo_documento = tipoDoc.Text;
@@ -52,11 +52,13 @@ using System.Windows.Forms;
                  d.piso = piso.Text;
                  d.depto = depto.Text;
                  d.cpostal = cpostal.Text;
-                 t.nroTarjeta = nroTarjeta.Text;
-                 t.codSeguridad = codSeguridad.Text;
-                 t.nombreTitularTarjeta = nombreTitularTarjeta.Text;
-                 t.tipoTarjeta = tipoTarjeta.Text;
-                 t.fechaVto = fechavtotarjeta.Text;
+                 d.nro_calle = nroCalle.Text;
+                 t.username = nDoc.Text;
+                 t.nro_tarjeta = nroTarjeta.Text;
+                 t.cod_seguridad = codSeguridad.Text;
+                 t.nombre_titular = nombreTitularTarjeta.Text;
+                 t.tipo_tarjeta = tipoTarjeta.Text;
+                 t.fecha_vencimiento = fechavtotarjeta.Text;
                 // valido CUIL
                 if (BDManager.exists("cliente", "CUIL", c.CUIL))
                     throw new ClienteInvalidoException();
@@ -64,15 +66,17 @@ using System.Windows.Forms;
                 if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"dni="+nDoc.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
-                BDManager.insertInto("direccion", d);
-                String dirKey = default(string);
-                BDManager.genericFillObject("SELECT id_direccion FROM direccion d JOIN cliente c ON d.id_direccion = c.id_direccion WHERE c.CUIL="+c.CUIL, dirKey);
-                c.id_direccion = dirKey;
-                // inserto tarjeta
-                BDManager.insertInto("tarjeta", t);
-                c.nroTarjeta = nroTarjeta.Text;
-                // inserto cliente
+                MessageBox.Show("SELECT id_direccion FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
+                    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'");
+                BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
+                    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
+                    , d);
+                c.id_direccion = d.id_direccion;
+                // inserto tarjeta y clientebueno
                 BDManager.insertInto("cliente", c);
+                BDManager.insertInto("direccion", d);
+                BDManager.insertInto("tarjeta", t);
+
                 MessageBox.Show("El cliente ha sido insertado", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
