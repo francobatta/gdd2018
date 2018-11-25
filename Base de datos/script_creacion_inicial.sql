@@ -18,8 +18,8 @@ IF OBJECT_ID('EQUISDE.publicacion') IS NOT NULL
 DROP TABLE EQUISDE.publicacion
 IF OBJECT_ID('EQUISDE.grado') IS NOT NULL
 DROP TABLE EQUISDE.grado 
-IF OBJECT_ID('EQUISDE.estado') IS NOT NULL
-DROP TABLE EQUISDE.estado
+IF OBJECT_ID('EQUISDE.estadop') IS NOT NULL
+DROP TABLE EQUISDE.estadop
 IF OBJECT_ID('EQUISDE.rubro') IS NOT NULL
 DROP TABLE EQUISDE.rubro
 IF OBJECT_ID('EQUISDE.rol_x_funcionalidad') IS NOT NULL
@@ -119,7 +119,7 @@ CREATE TABLE EQUISDE.rubro(
 	descripcion nvarchar(255)
 )
 
-CREATE TABLE EQUISDE.estado(
+CREATE TABLE EQUISDE.estadop(
 	id_estado bigint PRIMARY KEY IDENTITY,
 	estado char(1),
 	CHECK(estado IN ('P','B','F'))
@@ -135,7 +135,7 @@ CREATE TABLE EQUISDE.publicacion(
 	id_publicacion numeric(18,0) PRIMARY KEY IDENTITY,
 	id_rubro bigint REFERENCES EQUISDE.rubro,
 	id_direccion bigint REFERENCES EQUISDE.direccion,
-	id_estado bigint REFERENCES EQUISDE.estado,
+	id_estado bigint REFERENCES EQUISDE.estadop,
 	id_grado bigint REFERENCES EQUISDE.grado,
 	username varchar(50) REFERENCES EQUISDE.usuario,
 	descripcion nvarchar(255),
@@ -169,7 +169,8 @@ CREATE TABLE EQUISDE.compra(
 	email nvarchar(255),
 	fecha_compra datetime,
 	cantidad numeric(18,0),
-	puntos bigint DEFAULT 0
+	puntos bigint DEFAULT 0,
+	fecha_vencimiento_puntos datetime
 )
 
 CREATE TABLE EQUISDE.compra_x_ubicacion(
@@ -312,7 +313,7 @@ WHEN NOT MATCHED BY TARGET THEN
 	INSERT(descripcion)
 	VALUES(Espectaculo_Rubro_Descripcion);
 
-MERGE EQUISDE.estado d
+MERGE EQUISDE.estadop d
 USING (SELECT DISTINCT SUBSTRING(Espectaculo_Estado,1,1) estado FROM gd_esquema.Maestra)f
 ON f.estado = d.estado
 WHEN NOT MATCHED BY TARGET THEN
@@ -322,7 +323,7 @@ WHEN NOT MATCHED BY TARGET THEN
 
 SET IDENTITY_INSERT EQUISDE.publicacion ON 
 MERGE EQUISDE.publicacion d
-USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estado FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estado ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
+USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estado FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estadop ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
 ON f.Espectaculo_Cod = d.id_publicacion
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_publicacion, id_rubro, username,descripcion, fecha_publicacion,fecha_vencimiento,id_estado)

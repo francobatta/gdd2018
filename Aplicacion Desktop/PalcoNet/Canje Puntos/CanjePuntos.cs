@@ -16,7 +16,10 @@ using System.Windows.Forms;
         }
         private void CanjePuntos_Load(object sender, EventArgs e)
         {
-            listadoPuntos.DataSource = BDManager.getData("SELECT fecha_compra, puntos FROM EQUISDE.compra WHERE username = '" +/* usuarioGlobal.usuarioLogueado.username*/"10125617" + "'");
+            this.ActualizarDatos();
+        }
+        private void ActualizarDatos() {
+            listadoPuntos.DataSource = BDManager.getData("SELECT fecha_compra, puntos FROM EQUISDE.compra WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
             listadoComprasPuntos.DataSource = BDManager.getData("SELECT fecha_de_obtencion,puntos_necesarios FROM EQUISDE.premio_x_cliente pc JOIN EQUISDE.premio p ON(pc.id_premio = p.id_premio) WHERE username = '" + /*usuarioGlobal.usuarioLogueado.username*/ "10125617" + "'");
             List<int> listPuntos = new List<int>();
             foreach (DataGridViewRow item in listadoPuntos.Rows)
@@ -28,7 +31,7 @@ using System.Windows.Forms;
             {
                 listComprados.Add(Convert.ToInt32(item.Cells[1].Value));
             }
-            puntos_actual.Text = (listPuntos.Sum() - listComprados.Sum()).ToString(); 
+            puntos_actual.Text = (listPuntos.Sum() - listComprados.Sum()).ToString();
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -54,7 +57,7 @@ using System.Windows.Forms;
         private void btn_elegir_premios_Click(object sender, EventArgs e)
         {
             CompraPremio compraPremio = new CompraPremio(Convert.ToInt32(puntos_actual.Text));
-            compraPremio.Closed += (s, args) => this.Close();
+            compraPremio.Closed += (s, args) => this.ActualizarDatos();
             compraPremio.Show();
         }
 
