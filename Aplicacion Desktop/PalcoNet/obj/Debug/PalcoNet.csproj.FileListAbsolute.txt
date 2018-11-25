@@ -1,6 +1,4 @@
 \\VBOXSVR\PalcoNet\src\PalcoNet\bin\Debug\PalcoNet.exe.config
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.exe
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.pdb
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaCliente.resources
@@ -16,6 +14,9 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\C
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\CanjePuntos.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\nuevaCompra.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\nuevaTarjeta.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaPublicacionE.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaPublicacion.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ListadoEstadistico.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\MenuPrincipal.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\SeleccionaRol.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaPublicacion.resources
@@ -27,7 +28,7 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\B
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaUsuario.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\RegistraUsuario.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.exe
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.pdb
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ListadoEstadistico.resources

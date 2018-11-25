@@ -159,6 +159,18 @@
     <Compile Include="Comprar\nuevaTarjeta.Designer.cs">
       <DependentUpon>nuevaTarjeta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editar Publicacion\BusquedaPublicacionE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\BusquedaPublicacionE.Designer.cs">
+      <DependentUpon>BusquedaPublicacionE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificaPublicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editar Publicacion\ModificaPublicacion.Designer.cs">
+      <DependentUpon>ModificaPublicacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Publicacion\estadop.cs" />
     <Compile Include="Generar Publicacion\publicacion.cs" />
     <Compile Include="Generar Publicacion\rubro.cs" />
@@ -237,12 +249,6 @@
     </Compile>
     <Compile Include="Validaciones.cs" />
     <Compile Include="queryTypes.cs" />
-    <Compile Include="Editar Publicacion\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Editar Publicacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Generar Rendicion Comisiones\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Comprar\nuevaTarjeta.resx">
       <DependentUpon>nuevaTarjeta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\BusquedaPublicacionE.resx">
+      <DependentUpon>BusquedaPublicacionE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Editar Publicacion\ModificaPublicacion.resx">
+      <DependentUpon>ModificaPublicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Listado Estadistico\ListadoEstadistico.resx">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>

@@ -9,15 +9,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-    public partial class AltaPublicacion : Form
+    public partial class ModificaPublicacion : Form
     {
-        public AltaPublicacion()
+        public publicacion p { get; set; }
+        public ModificaPublicacion(publicacion _p)
         {
             InitializeComponent();
+            this.p = _p;
         }
         public List<ubicacion> ubicaciones = new List<ubicacion>();
-        private void AltaPublicacion_Load(object sender, EventArgs e)
+        private void ModificaPublicacion_Load(object sender, EventArgs e)
         {
+            List<object> listaDeBD = BDManager.getList("SELECT * FROM EQUISDE.ubicacion WHERE id_publicacion=" + p.id_publicacion, new ubicacion());
+            List<ubicacion> ubicaciones = listaDeBD.Cast<ubicacion>().ToList();
+            fechaPublicacion.Text = p.fecha_publicacion;
+            listaUbicaciones.DataSource = ubicaciones;
             grado.Items.Add("Alta");
             grado.Items.Add("Media");
             grado.Items.Add("Baja");
@@ -26,7 +32,6 @@ using System.Windows.Forms;
             estado.Items.Add('P');
             estado.Items.Add('F');
             estado.SelectedIndex = 0;
-            
             rubro.DataSource = BDManager.getData("SELECT * FROM EQUISDE.rubro");
             tipoUbicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.tipo");
             rubro.DisplayMember = "descripcion";
@@ -34,6 +39,22 @@ using System.Windows.Forms;
             rubro.SelectedIndex = 0;
             tipoUbicacion.DisplayMember = "descripcion";
             tipoUbicacion.ValueMember = "codigo_tipo";
+            descripcion.Text = p.descripcion;
+            listaFechasEspectaculo.Items.Add(p.fecha_vencimiento);
+            rubro.SelectedValue = p.id_rubro;
+            direccion d = new direccion();
+            BDManager.selectIntoObject("direccion", "id_direccion", p.id_direccion, d);
+            localidad.Text = d.localidad;
+            ciudad.Text = d.ciudad;
+            calle.Text = d.calle;
+            nroCalle.Text = d.nro_calle;
+            piso.Text = d.piso;
+            depto.Text = d.depto;
+            cpostal.Text = d.cpostal;
+            grado.SelectedValue = p.id_grado;
+            listaUbicaciones.Columns["id_ubicacion"].Visible = false;
+            listaUbicaciones.Columns["id_publicacion"].Visible = false;
+            listaUbicaciones.Columns["sin_numerar"].Visible = false;
         }
 
 
@@ -74,10 +95,10 @@ using System.Windows.Forms;
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
             // comienzo armado del objeto general
-                // rubro
+            // rubro
             publicacion nuevaPublicacion = new publicacion();
             nuevaPublicacion.id_rubro = rubro.SelectedValue.ToString();
-                // direccion
+            // direccion
             direccion d = new direccion();
             d.localidad = localidad.Text;
             d.ciudad = ciudad.Text;
@@ -86,16 +107,16 @@ using System.Windows.Forms;
             d.piso = piso.Text;
             d.depto = depto.Text;
             d.cpostal = cpostal.Text;
-            BDManager.insertInto("direccion", d);
+            BDManager.updateSet("direccion","id_direccion", d);
             BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
     "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
     , d);
             nuevaPublicacion.id_direccion = d.id_direccion;
-                // estado
+            // estado
             estadop est = new estadop();
             BDManager.selectIntoObjectByString("estadop", "estado", estado.SelectedItem.ToString(), est);
             nuevaPublicacion.id_estado = est.id_estadop;
-                // grado
+            // grado
             grado grad = new grado();
             BDManager.selectIntoObjectByString("grado", "estado", grado.SelectedItem.ToString(), grad);
             nuevaPublicacion.id_grado = grad.id_grado;
@@ -106,14 +127,14 @@ using System.Windows.Forms;
             foreach (DateTime f in listaFechasEspectaculo.Items)
             {
                 nuevaPublicacion.fecha_vencimiento = f.ToString();
-                BDManager.insertInto("publicacion", nuevaPublicacion);
+                BDManager.updateSet("publicacion","id_publicacion", nuevaPublicacion);
                 foreach (ubicacion u in ubicaciones)
                 {
                     publicacion pDummy = new publicacion();
                     BDManager.genericFillObject(
- "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento="+f.ToString("yyyy-mm-dd"), pDummy);
+ "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento=" + f.ToString("yyyy-mm-dd"), pDummy);
                     u.id_publicacion = pDummy.id_publicacion;
-                    BDManager.insertInto("ubicacion", u);
+                    BDManager.updateSet("ubicacion","ubicacion_id", u);
                 }
             }
             // ahora que todo fue bien inserto las ubicaciones
