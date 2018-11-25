@@ -60,6 +60,8 @@
     <Compile Include="Abm Cliente\ClienteInvalidoException.cs" />
     <Compile Include="Abm Cliente\direccion.cs" />
     <Compile Include="Abm Cliente\tarjeta.cs" />
+    <Compile Include="Abm Empresa Espectaculo\empresa.cs" />
+    <Compile Include="Abm Empresa Espectaculo\EmpresaInvalidadException.cs" />
     <Compile Include="Abm Rol\RolManager.cs" />
     <Compile Include="Abm Rol\rol_x_funcionalidad.cs" />
     <Compile Include="Abm Rol\funcionalidad.cs" />
