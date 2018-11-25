@@ -125,9 +125,11 @@ CREATE TABLE EQUISDE.estadop(
 	CHECK(estado IN ('P','B','F'))
 )
 
+INSERT INTO EQUISDE.grado
+VALUES(1,'Alta'),(2,'Media'),(3,'Baja');
 
 CREATE TABLE EQUISDE.grado(
-	id_grado bigint PRIMARY KEY IDENTITY,
+	id_grado bigint IDENTITY PRIMARY KEY,
 	estado varchar(30),
 	CHECK(estado IN ('Alta','Baja','Media'))
 )
@@ -136,7 +138,7 @@ CREATE TABLE EQUISDE.publicacion(
 	id_rubro bigint REFERENCES EQUISDE.rubro,
 	id_direccion bigint REFERENCES EQUISDE.direccion,
 	id_estado bigint REFERENCES EQUISDE.estadop,
-	id_grado bigint REFERENCES EQUISDE.grado,
+	id_grado bigint REFERENCES EQUISDE.grado DEFAULT(2),
 	username varchar(50) REFERENCES EQUISDE.usuario,
 	descripcion nvarchar(255),
 	fecha_publicacion datetime,
@@ -229,26 +231,26 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.username, HASHBYTES('SHA2_256',f.username));
 
 GO
+INSERT INTO EQUISDE.grado
+VALUES(1,'Alta'),(2,'Media'),(3,'Baja');
 
 INSERT INTO EQUISDE.rol
-(nombre,habilitado)
-VALUES('empresa',1),('cliente',1),('admin',1);
+(nombre)
+VALUES('empresa'),('cliente');
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario');
+VALUES('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario'),('ListadoEstadistico');
+
+
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'abm de rol' OR f.nombre = 'abm de clientes' OR f.nombre = 'abm de empresa de espectaculos' OR f.nombre = 'abm de rubro' OR f.nombre = 'listado estadistico') WHERE r.nombre = 'admin' 
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'RegistraUsuario' OR f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'registro de usuario' OR f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
-
-INSERT INTO EQUISDE.rol_x_funcionalidad
-(id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'registro de usuario' OR f.nombre = 'abm grado de publicacion' OR f.nombre = 'generar publicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'RegistraUsuario' OR f.nombre = 'AltaPublicacion' OR f.nombre = 'BusquedaPublicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
 
 
 MERGE EQUISDE.rol_x_usuario d
@@ -384,8 +386,7 @@ INSERT INTO EQUISDE.premio
 (fecha_vencimiento,fecha_emision,puntos_necesarios,descripcion)
 VALUES(convert(datetime,'01/01/2019',121),convert(datetime,'10/03/2018',121),321,'Entradas al superclasico'),(convert(datetime,'10/01/2019',121),convert(datetime,'11/12/2018',121),120,'Peluche de Winnie Pooh'),(convert(datetime,'02/04/2019',121),convert(datetime,'09/08/2018',121),0,'Alienware')
 
-INSERT INTO EQUISDE.grado
-VALUES('Alta'),('Media'),('Baja');
+
 
 INSERT INTO EQUISDE.estadop
 VALUES('B'),('F');
@@ -396,5 +397,8 @@ VALUES ('pelicula');
 INSERT INTO EQUISDE.usuario (username,password) VALUES ('admin',HASHBYTES('SHA2_256','w23e'))
 
 INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
-INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',4)
-INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 4 FROM EQUISDE.funcionalidad)
+INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',3)
+INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad)
+
+
+SELECT TOP 5 p.username,cuit,estado visibilidad,COUNT(*) cantidad FROM EQUISDE.publicacion p JOIN EQUISDE.empresa e ON(p.username = e.username) left JOIN EQUISDE.grado g ON(g.id_grado=p.id_grado) JOIN EQUISDE.ubicacion u ON (p.id_publicacion=u.id_publicacion) LEFT JOIN EQUISDE.compra_x_ubicacion cu ON (u.id_ubicacion = cu.id_ubicacion)  WHERE cu.id_compra IS NULL AND p.fecha_publicacion BETWEEN CAST('2018/01/01' AS datetime) AND CAST('2018/04/30' AS datetime) GROUP BY p.username,cuit,razon_social,estado,fecha_publicacion,p.id_grado,p.id_publicacion ORDER BY  cantidad DESC,fecha_publicacion,p.id_grado ASC

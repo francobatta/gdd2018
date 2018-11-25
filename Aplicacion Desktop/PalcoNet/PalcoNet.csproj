@@ -164,6 +164,12 @@
     <Compile Include="Generar Publicacion\rubro.cs" />
     <Compile Include="Generar Publicacion\tipo.cs" />
     <Compile Include="Generar Publicacion\ubicacion.cs" />
+    <Compile Include="Listado Estadistico\ListadoEstadistico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listado Estadistico\ListadoEstadistico.Designer.cs">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\DebeCambiarContraseniaException_2.cs" />
     <Compile Include="Login\usuarioGlobal.cs" />
     <Compile Include="Login\UsuarioInhabilitadoException.cs" />
@@ -290,6 +296,9 @@
     <EmbeddedResource Include="Comprar\nuevaTarjeta.resx">
       <DependentUpon>nuevaTarjeta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listado Estadistico\ListadoEstadistico.resx">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -336,9 +345,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Listado Estadistico\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

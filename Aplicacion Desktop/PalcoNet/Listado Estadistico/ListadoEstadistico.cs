@@ -1,5 +1,6 @@
 ﻿using PalcoNet.BDManager;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,11 +26,11 @@ using System.Windows.Forms;
             Combobox_listado.Items.Add("Clientes con mayor cantidad de compras");
             mes_dia_inicio = "01/01";
             mes_dia_fin = "03/31";
-            for (int i = 1950; i <= 2050; i++)
+            for (int i = 1990; i <= Convert.ToInt32(ConfigurationManager.AppSettings["fecha_actual"].Substring(0,4)); i++)
             {
                 comboAnio.Items.Add(i.ToString());
             }
-            MessageBox.Show(this.anio);
+           
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -60,6 +61,7 @@ using System.Windows.Forms;
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             this.anio = (String)comboAnio.SelectedItem;
+            MessageBox.Show(this.anio);
             primerTrimestre.Enabled = true;
             segundoTrimestre.Enabled = true;
             tercerTrimestre.Enabled = true;
@@ -98,7 +100,7 @@ using System.Windows.Forms;
             {
 
                 case "Empresas con mayor cantidad de localidades no vendidas":
-                    listado_estadistico.DataSource = BDManager.getData("SELECT TOP 5 p.username,cuit,estado visibilidad,COUNT(*) cantidad FROM EQUISDE.publicacion p JOIN EQUISDE.empresa e ON(p.username = e.username) JOIN EQUISDE.grado g ON(g.id_grado=p.id_grado) JOIN EQUISDE.ubicacion u ON (p.id_publicacion=u.id_publicacion) LEFT JOIN EQUISDE.compra_x_ubicacion cu ON (u.id_ubicacion = cu.id_ubicacion)  WHERE cu.id_compra IS NULL AND p.fecha_publicacion BETWEEN CAST('" + anio + "/" + mes_dia_inicio + "' AS datetime) AND CAST('" + anio + "/" + mes_dia_fin + "' AS datetime) GROUP BY p.username,cuit,razon_social,estado,fecha_publicacion,p.id_grado,p.id_publicacion ORDER BY  cantidad DESC,fecha_publicacion,p.id_grado ASC");
+                    listado_estadistico.DataSource = BDManager.getData("SELECT TOP 5 p.username,cuit,estado visibilidad,COUNT(*) cantidad FROM EQUISDE.publicacion p JOIN EQUISDE.empresa e ON(p.username = e.username) JOIN EQUISDE.grado g ON(g.id_grado=p.id_grado) JOIN EQUISDE.ubicacion u ON (p.id_publicacion=u.id_publicacion) LEFT JOIN EQUISDE.compra_x_ubicacion cu ON (u.id_ubicacion = cu.id_ubicacion)  WHERE cu.id_compra IS NULL AND p.fecha_publicacion BETWEEN CAST('" + anio + "/" + mes_dia_inicio + "' AS date) AND CAST('" + anio + "/" + mes_dia_fin + "' AS date) GROUP BY p.username,cuit,razon_social,estado,fecha_publicacion,p.id_grado,p.id_publicacion ORDER BY  cantidad DESC,fecha_publicacion,p.id_grado ASC");
                     break;
                 case "Clientes con mayores puntos vencidos":
                     listado_estadistico.DataSource = BDManager.getData("SELECT nombre,apellido,COUNT(id_compra)cantidad FROM EQUISDE.cliente cl JOIN EQUISDE.compra cp ON (cl.username = cp.username) WHERE cp.fecha_vencimiento_puntos BETWEEN CAST('" + anio + "/" + mes_dia_inicio + "' AS datetime) AND CAST('" + anio + "/" + mes_dia_fin + "' AS datetime) GROUP BY nombre,apellido");
