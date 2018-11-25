@@ -43,7 +43,7 @@
             this.descripcion = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.gradoActual = new System.Windows.Forms.Label();
-            this.grados = new System.Windows.Forms.ComboBox();
+            this.gradosCombobox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
@@ -234,13 +234,13 @@
             this.gradoActual.TabIndex = 14;
             this.gradoActual.Text = "-";
             // 
-            // grados
+            // gradosCombobox
             // 
-            this.grados.FormattingEnabled = true;
-            this.grados.Location = new System.Drawing.Point(210, 222);
-            this.grados.Name = "grados";
-            this.grados.Size = new System.Drawing.Size(318, 21);
-            this.grados.TabIndex = 15;
+            this.gradosCombobox.FormattingEnabled = true;
+            this.gradosCombobox.Location = new System.Drawing.Point(210, 222);
+            this.gradosCombobox.Name = "gradosCombobox";
+            this.gradosCombobox.Size = new System.Drawing.Size(318, 21);
+            this.gradosCombobox.TabIndex = 15;
             // 
             // label2
             // 
@@ -264,6 +264,7 @@
             this.btn_limpiar.TabIndex = 17;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // ElegirGrado
             // 
@@ -275,7 +276,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.grados);
+            this.Controls.Add(this.gradosCombobox);
             this.Controls.Add(this.gradoActual);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.descripcion);
@@ -321,7 +322,7 @@
         private System.Windows.Forms.Label descripcion;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label gradoActual;
-        private System.Windows.Forms.ComboBox grados;
+        private System.Windows.Forms.ComboBox gradosCombobox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_limpiar;
 
