@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class compra_x_ubicacion
+public class compra_x_ubicacion
     {
-        public String id_ubicacion;
-        public String id_compra;
+        public String id_ubicacion{get;set;}
+        public String id_compra { get; set; }
     }

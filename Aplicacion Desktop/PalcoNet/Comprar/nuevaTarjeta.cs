@@ -60,6 +60,7 @@ public partial class nuevaTarjeta : Form
                 tar.nombre_titular = NombreTitular.Text;
                 tar.fecha_vencimiento = FechaVencimiento.Text;
                 tar.cod_seguridad = CodSeguridad.Text;
+                BDManager.insertInto("tarjeta", tar);
                 MessageBox.Show("La tarjeta ha sido insertado", "Tarjeta insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

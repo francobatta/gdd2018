@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -23,18 +24,16 @@ using PalcoNet.BDManager;
         private void nuevaCompra_Load(object sender, EventArgs e)
         {
             //REEMPLAZAR EL GETDATE POR LA FECHA DE COMPRA
-            elSQL = "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento";
+            elSQL = "SELECT p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estadop e ON (p.id_estado=e.id_estadop) WHERE e.estado LIKE 'P' AND CAST('" + ConfigurationManager.AppSettings["fecha_actual"] + "' AS datetime) BETWEEN p.fecha_publicacion AND p.fecha_vencimiento ORDER BY 1 ";
             //Falta validar rango fechas
-            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY"
-              
-              );
+            ListaEsp.DataSource = BDManager.getData(elSQL + "OFFSET " + posicion.ToString() + " ROWS FETCH NEXT " + cantidad.ToString() + " ROWS ONLY");
             //
             List<object> listaTraidaDeBD = BDManager.getList("SELECT codigo_tipo, descripcion FROM EQUISDE.tipo", new tipo());
             List<tipo> listaTipos = listaTraidaDeBD.Cast<tipo>().ToList();
             tipoUbi.DataSource = listaTipos;
             tipoUbi.DisplayMember = "descripcion";
             tipoUbi.ValueMember = "codigo_tipo";
-
+            
 
         }
         // controles de cualquier form
@@ -65,9 +64,8 @@ using PalcoNet.BDManager;
                 DataGridViewRow filaElegida = ListaEsp.CurrentRow;
                 if (filaElegida == null || filaElegida.Selected == false)
                     throw new CamposInvalidosException();
-                BDManager.selectIntoObject("publicacion","id_publicacion",filaElegida.Cells["id_publicacion"].Value.ToString(),pub);
                 ListaUbi.DataSource = BDManager.getData(
-              "SELECT * FROM EQUISDE.ubicacion u WHERE u.id_publicacion ="+pub.id_publicacion
+              "SELECT * FROM EQUISDE.ubicacion u WHERE u.id_publicacion = "+filaElegida.Cells["id_publicacion"].Value.ToString()
               );
             }
             catch (CamposInvalidosException)
@@ -88,9 +86,8 @@ using PalcoNet.BDManager;
                 DataGridViewRow filaElegida = ListaUbi.CurrentRow;
                 if (filaElegida == null || filaElegida.Selected == false)
                     throw new CamposInvalidosException();
-                BDManager.selectIntoObject("Ubicacion", "id_ubicacion",filaElegida.Cells["id_ubicacion"].Value.ToString(), ubi);
                 //revisar
-                Carrito.Items.Add(ubi.id_ubicacion.ToString());
+                Carrito.Items.Add(filaElegida.Cells["id_ubicacion"].Value.ToString());
             }
             catch (CamposInvalidosException)
             {
@@ -150,7 +147,7 @@ using PalcoNet.BDManager;
             //REemplazar el getdate por la fecha de compra!
             elSQL = "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN EQUISDE.grado g ON g.id_grado=p.id_grado" +
             "WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento AND p.descripcion LIKE '%" + Descripcion.Text + "%'" + filtroCategorias + filtroFechas +
-            "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC";
+            "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC ";
             //Reinicio
             posicion = 0;
             pagina.Text="0";
@@ -179,7 +176,8 @@ using PalcoNet.BDManager;
             com.fecha_compra = null;
             com.cantidad = Carrito.Items.Count.ToString();
             //los puntos es la cantidad de ubicaciones que compro por 3
-            com.puntos = (Carrito.Items.Count * 3).ToString();
+                com.puntos = (Carrito.Items.Count * 3).ToString();
+                MessageBox.Show(com.username);
             float aux=0;
             foreach (var t in Carrito.Items)
             {
@@ -196,8 +194,8 @@ using PalcoNet.BDManager;
             com.forma_de_pago = "tarjeta";
             BDManager.insertInto("compra", com);
             cu.id_compra = com.id_compra;
-
-            foreach (var t in Carrito.Items)
+            
+           foreach (var t in Carrito.Items)
             {
                 cu.id_ubicacion = t.ToString();
                 BDManager.insertInto("compra_x_ubicacion", cu);

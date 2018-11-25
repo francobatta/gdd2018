@@ -242,7 +242,7 @@ VALUES('empresa'),('cliente');
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario'),('ListadoEstadistico');
+VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('nuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario'),('ListadoEstadistico');
 
 
 
@@ -329,7 +329,7 @@ MERGE EQUISDE.publicacion d
 USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estadop FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estadop ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
 ON f.Espectaculo_Cod = d.id_publicacion
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(id_publicacion, id_rubro, username,descripcion, fecha_publicacion,fecha_vencimiento,id_estado)
+	INSERT(id_publicacion, id_rubro, username,descripcion,fecha_vencimiento, fecha_publicacion,id_estado)
 	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estadop);
 SET IDENTITY_INSERT EQUISDE.publicacion OFF 
 
@@ -397,15 +397,16 @@ INSERT INTO EQUISDE.rubro
 VALUES ('pelicula');
 
 INSERT INTO EQUISDE.usuario (username,password) VALUES ('admin',HASHBYTES('SHA2_256','w23e'))
-
+INSERT INTO EQUISDE.cliente (username) VALUES('admin')
+INSERT INTO EQUISDE.empresa (username) VALUES('admin')
 INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
 INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',3)
-INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad)
+INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad) 
 
 SELECT nombre, apellido, COUNT(cp.id_compra) cantidad_compra, p.username usuario_empresa FROM EQUISDE.cliente cl
-JOIN EQUISDE.compra cp ON (cp.username = cl.username)
-JOIN EQUISDE.compra_x_ubicacion cu ON (cp.id_compra = cu.id_compra)
-JOIN EQUISDE.ubicacion u ON(cu.id_ubicacion = u.id_ubicacion)
-JOIN EQUISDE.publicacion p ON (p.id_publicacion = u.id_publicacion)
-GROUP BY nombre,apellido,p.username
-ORDER BY cantidad_compra
+ JOIN EQUISDE.compra cp ON (cp.username = cl.username)	 
+ JOIN EQUISDE.compra_x_ubicacion cu ON (cp.id_compra = cu.id_compra)	 
+JOIN EQUISDE.ubicacion u ON(cu.id_ubicacion = u.id_ubicacion)	
+JOIN EQUISDE.publicacion p ON (p.id_publicacion = u.id_publicacion)	
+GROUP BY nombre,apellido,p.username	
+ORDER BY cantidad_compra 

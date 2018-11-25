@@ -20,7 +20,7 @@ using System.Windows.Forms;
         }
         private void ActualizarDatos() {
             listadoPuntos.DataSource = BDManager.getData("SELECT fecha_compra, puntos FROM EQUISDE.compra WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
-            listadoComprasPuntos.DataSource = BDManager.getData("SELECT fecha_de_obtencion,puntos_necesarios FROM EQUISDE.premio_x_cliente pc JOIN EQUISDE.premio p ON(pc.id_premio = p.id_premio) WHERE username = '" + /*usuarioGlobal.usuarioLogueado.username*/ "10125617" + "'");
+            listadoComprasPuntos.DataSource = BDManager.getData("SELECT fecha_de_obtencion,puntos_necesarios FROM EQUISDE.premio_x_cliente pc JOIN EQUISDE.premio p ON(pc.id_premio = p.id_premio) WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
             List<int> listPuntos = new List<int>();
             foreach (DataGridViewRow item in listadoPuntos.Rows)
             {
