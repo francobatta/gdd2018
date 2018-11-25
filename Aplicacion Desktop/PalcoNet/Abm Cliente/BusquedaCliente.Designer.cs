@@ -209,6 +209,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Dar de baja";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_buscar
             // 
@@ -221,6 +222,7 @@
             this.btn_buscar.TabIndex = 12;
             this.btn_buscar.Text = "Buscar ";
             this.btn_buscar.UseVisualStyleBackColor = false;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // email
             // 
@@ -258,6 +260,7 @@
             // 
             // tipoDoc
             // 
+            this.tipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDoc.FormattingEnabled = true;
             this.tipoDoc.Location = new System.Drawing.Point(376, 147);
             this.tipoDoc.Name = "tipoDoc";
@@ -319,6 +322,7 @@
             this.btn_limpiar.TabIndex = 50;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // BusquedaCliente
             // 

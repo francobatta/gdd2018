@@ -22,7 +22,7 @@ namespace PalcoNet.BDManager
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
             builder.DataSource = "localhost\\SQLSERVER2012";
             builder.UserID = "gdEspectaculos2018";
-            builder.Password = "gd2018";
+            builder.Password = "gdEspectaculos2018";
             builder.InitialCatalog = "GD2C2018";
             return builder.ConnectionString;
         }
