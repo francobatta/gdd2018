@@ -125,6 +125,9 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\usuarioGlobal.cs" />
+    <Compile Include="Login\UsuarioInhabilitadoException.cs" />
+    <Compile Include="Login\UsuarioNoExistenteException.cs" />
     <Compile Include="MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>

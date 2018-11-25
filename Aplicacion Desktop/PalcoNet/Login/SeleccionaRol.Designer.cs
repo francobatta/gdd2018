@@ -37,7 +37,6 @@
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.usernameDisplay = new System.Windows.Forms.Label();
             this.listaRolesUsuario = new System.Windows.Forms.DataGridView();
@@ -159,26 +158,14 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Seleccionar un rol";
             // 
-            // btn_limpiar
-            // 
-            this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
-            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.Location = new System.Drawing.Point(210, 197);
-            this.btn_limpiar.Name = "btn_limpiar";
-            this.btn_limpiar.Size = new System.Drawing.Size(109, 67);
-            this.btn_limpiar.TabIndex = 49;
-            this.btn_limpiar.Text = "Limpiar";
-            this.btn_limpiar.UseVisualStyleBackColor = false;
-            // 
             // btn_ingresar
             // 
             this.btn_ingresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(146)))), ((int)(((byte)(29)))));
             this.btn_ingresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ingresar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ingresar.Location = new System.Drawing.Point(325, 197);
+            this.btn_ingresar.Location = new System.Drawing.Point(210, 197);
             this.btn_ingresar.Name = "btn_ingresar";
-            this.btn_ingresar.Size = new System.Drawing.Size(237, 67);
+            this.btn_ingresar.Size = new System.Drawing.Size(352, 67);
             this.btn_ingresar.TabIndex = 48;
             this.btn_ingresar.Text = "Ingresar con rol elegido";
             this.btn_ingresar.UseVisualStyleBackColor = false;
@@ -198,6 +185,8 @@
             // 
             this.listaRolesUsuario.AllowUserToAddRows = false;
             this.listaRolesUsuario.AllowUserToDeleteRows = false;
+            this.listaRolesUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaRolesUsuario.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.listaRolesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaRolesUsuario.Location = new System.Drawing.Point(210, 100);
             this.listaRolesUsuario.MultiSelect = false;
@@ -217,7 +206,6 @@
             this.ControlBox = false;
             this.Controls.Add(this.listaRolesUsuario);
             this.Controls.Add(this.usernameDisplay);
-            this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_ingresar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label1);
@@ -254,7 +242,6 @@
         private System.Windows.Forms.Panel sidepanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_ingresar;
         private System.Windows.Forms.Label usernameDisplay;
         private System.Windows.Forms.DataGridView listaRolesUsuario;

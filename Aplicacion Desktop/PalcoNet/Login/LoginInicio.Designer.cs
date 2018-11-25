@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
             this.sidepanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.username = new System.Windows.Forms.TextBox();
@@ -43,7 +44,6 @@
             this.btn_ingresar = new System.Windows.Forms.Button();
             this.passwordAnterior = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -142,6 +142,18 @@
             this.sidepanel.Size = new System.Drawing.Size(200, 277);
             this.sidepanel.TabIndex = 0;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(5, 62);
+            this.label2.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 170);
+            this.label2.TabIndex = 51;
+            this.label2.Text = resources.GetString("label2.Text");
+            // 
             // label17
             // 
             this.label17.AutoSize = true;
@@ -192,6 +204,7 @@
             this.btn_limpiar.TabIndex = 49;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_ingresar
             // 
@@ -204,6 +217,7 @@
             this.btn_ingresar.TabIndex = 48;
             this.btn_ingresar.Text = "Ingresar";
             this.btn_ingresar.UseVisualStyleBackColor = false;
+            this.btn_ingresar.Click += new System.EventHandler(this.btn_ingresar_Click);
             // 
             // passwordAnterior
             // 
@@ -222,18 +236,6 @@
             this.label4.Size = new System.Drawing.Size(103, 21);
             this.label4.TabIndex = 52;
             this.label4.Text = "Contraseña";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(5, 62);
-            this.label2.MaximumSize = new System.Drawing.Size(190, 190);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(187, 170);
-            this.label2.TabIndex = 51;
-            this.label2.Text = resources.GetString("label2.Text");
             // 
             // LoginInicio
             // 

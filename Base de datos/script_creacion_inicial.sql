@@ -45,6 +45,7 @@ DROP SCHEMA EQUISDE
 GO
 CREATE SCHEMA EQUISDE
 GO
+
 CREATE TABLE EQUISDE.usuario(
 	username varchar(50) PRIMARY KEY,
 	password varchar(64),
@@ -226,6 +227,22 @@ INSERT INTO EQUISDE.rol
 (nombre,habilitado)
 VALUES('empresa',1),('cliente',1),('admin',1);
 
+INSERT INTO EQUISDE.funcionalidad
+(nombre)
+VALUES('abm de rol'),('registro de usuario'),('abm de clientes'),('abm de empresa de espectaculos'),('abm de rubro'),('abm grado de publicacion'),('generar publicacion'),('editar publicacion'),('comprar'),('historial de cliente'),
+('canje de administracion de puntos'),('generar rendicion de comisiones'),('listado estadistico');
+
+INSERT INTO EQUISDE.rol_x_funcionalidad
+(id_funcionalidad,id_rol)
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'abm de rol' OR f.nombre = 'abm de clientes' OR f.nombre = 'abm de empresa de espectaculos' OR f.nombre = 'abm de rubro' OR f.nombre = 'listado estadistico') WHERE r.nombre = 'admin' 
+
+INSERT INTO EQUISDE.rol_x_funcionalidad
+(id_funcionalidad,id_rol)
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'registro de usuario' OR f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
+
+INSERT INTO EQUISDE.rol_x_funcionalidad
+(id_funcionalidad,id_rol)
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'registro de usuario' OR f.nombre = 'abm grado de publicacion' OR f.nombre = 'generar publicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
 
 
 MERGE EQUISDE.rol_x_usuario d
@@ -351,3 +368,6 @@ ON f.Factura_Nro = d.id_factura AND f.id_compra = d.id_compra AND f.Item_Factura
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_factura,id_compra,importe_comision,descripcion,cantidad)
 	VALUES(f.Factura_Nro,f.id_compra,f.Item_Factura_Monto,f.Item_Factura_Descripcion, f.Item_Factura_Cantidad);
+
+SELECT * FROM EQUISDE.funcionalidad
+SELECT * FROM EQUISDE.rol_x_funcionalidad
