@@ -366,6 +366,7 @@
             this.btn_agregarFechaEspectaculo.TabIndex = 51;
             this.btn_agregarFechaEspectaculo.Text = "Agregar Fecha";
             this.btn_agregarFechaEspectaculo.UseVisualStyleBackColor = false;
+            this.btn_agregarFechaEspectaculo.Click += new System.EventHandler(this.btn_agregarFechaEspectaculo_Click);
             // 
             // btn_eliminarFechaSeleccionada
             // 
@@ -378,6 +379,7 @@
             this.btn_eliminarFechaSeleccionada.TabIndex = 52;
             this.btn_eliminarFechaSeleccionada.Text = "Eliminar Fecha elegida";
             this.btn_eliminarFechaSeleccionada.UseVisualStyleBackColor = false;
+            this.btn_eliminarFechaSeleccionada.Click += new System.EventHandler(this.btn_eliminarFechaSeleccionada_Click);
             // 
             // label2
             // 

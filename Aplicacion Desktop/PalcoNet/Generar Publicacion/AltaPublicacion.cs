@@ -31,6 +31,10 @@ using System.Windows.Forms;
             estado.Items.Add('P');
             estado.Items.Add('F');
             estado.SelectedIndex = 0;
+            List<object> listaRubrosBD = BDManager.getList("SELECT * FROM EQUISDE.rubro", new rubro());
+            List<rubro> listaRubros = listaRubrosBD.Cast<rubro>().ToList();
+            rubro.DataSource = listaRubros;
+            rubro.DisplayMember = "descripcion";
         }
 
 
@@ -104,5 +108,18 @@ using System.Windows.Forms;
             listaUbicaciones.Items.Remove(listaUbicaciones.SelectedItem);
         else
             MessageBox.Show("Debe elegir una ubicación", "Fila no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+    }
+
+    private void btn_agregarFechaEspectaculo_Click(object sender, EventArgs e)
+    {
+        listaFechasEspectaculo.Items.Add(fechaEspectaculo.Value);
+    }
+
+    private void btn_eliminarFechaSeleccionada_Click(object sender, EventArgs e)
+    {
+        if (listaFechasEspectaculo.SelectedItem != null)
+        { listaFechasEspectaculo.Items.Remove(listaFechasEspectaculo.SelectedItem); }
+        else
+        { MessageBox.Show("Debe elegir una fecha a eliminar", "Fecha no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
     }

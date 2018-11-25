@@ -80,7 +80,7 @@ using PalcoNet.BDManager;
         }
         BDManager.updateSetStringKey("direccion", "id_direccion", empresaAUsar.id_direccion, d);
         BDManager.updateSetStringKey("empresa", "username", empresaAUsar.username, empresaAUsar);
-       MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+       MessageBox.Show("La empresa ha sido modificado", "Empresa modificada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la empresa a modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
