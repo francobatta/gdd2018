@@ -62,6 +62,7 @@
     <Compile Include="Abm Cliente\tarjeta.cs" />
     <Compile Include="Abm Empresa Espectaculo\empresa.cs" />
     <Compile Include="Abm Empresa Espectaculo\EmpresaInvalidadException.cs" />
+    <Compile Include="Abm Grado\grado.cs" />
     <Compile Include="Abm Rol\RolManager.cs" />
     <Compile Include="Abm Rol\rol_x_funcionalidad.cs" />
     <Compile Include="Abm Rol\funcionalidad.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="Abm Rubro\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Generar Publicacion\publicacion.cs" />
     <Compile Include="Login\usuarioGlobal.cs" />
     <Compile Include="Login\UsuarioInhabilitadoException.cs" />
     <Compile Include="Login\UsuarioNoExistenteException.cs" />

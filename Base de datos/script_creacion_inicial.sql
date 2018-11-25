@@ -12,12 +12,12 @@ IF OBJECT_ID('EQUISDE.ubicacion') IS NOT NULL
 DROP TABLE EQUISDE.ubicacion 
 IF OBJECT_ID('EQUISDE.tipo') IS NOT NULL
 DROP TABLE EQUISDE.tipo 
+IF OBJECT_ID('EQUISDE.publicacion') IS NOT NULL
+DROP TABLE EQUISDE.publicacion
 IF OBJECT_ID('EQUISDE.grado') IS NOT NULL
 DROP TABLE EQUISDE.grado 
 IF OBJECT_ID('EQUISDE.estado') IS NOT NULL
 DROP TABLE EQUISDE.estado
-IF OBJECT_ID('EQUISDE.publicacion') IS NOT NULL
-DROP TABLE EQUISDE.publicacion
 IF OBJECT_ID('EQUISDE.rubro') IS NOT NULL
 DROP TABLE EQUISDE.rubro
 IF OBJECT_ID('EQUISDE.rol_x_funcionalidad') IS NOT NULL
@@ -117,19 +117,8 @@ CREATE TABLE EQUISDE.rubro(
 	descripcion nvarchar(255)
 )
 
-CREATE TABLE EQUISDE.publicacion(
-	id_publicacion numeric(18,0) PRIMARY KEY IDENTITY,
-	id_rubro bigint REFERENCES EQUISDE.rubro,
-	id_direccion bigint REFERENCES EQUISDE.direccion,
-	username varchar(50) REFERENCES EQUISDE.usuario,
-	descripcion nvarchar(255),
-	fecha_publicacion datetime,
-	fecha_vencimiento datetime,
-)
-
 CREATE TABLE EQUISDE.estado(
 	id_estado bigint PRIMARY KEY IDENTITY,
-	id_publicacion numeric(18,0) REFERENCES EQUISDE.publicacion,
 	estado char(1),
 	CHECK(estado IN ('P','B','F'))
 )
@@ -137,10 +126,22 @@ CREATE TABLE EQUISDE.estado(
 
 CREATE TABLE EQUISDE.grado(
 	id_grado bigint PRIMARY KEY IDENTITY,
-	id_publicacion numeric(18,0) REFERENCES EQUISDE.publicacion,
-	grado char(1),
-	CHECK(grado IN ('A','B','M'))
+	estado varchar(30),
+	CHECK(estado IN ('Alta','Baja','Media'))
 )
+CREATE TABLE EQUISDE.publicacion(
+	id_publicacion numeric(18,0) PRIMARY KEY IDENTITY,
+	id_rubro bigint REFERENCES EQUISDE.rubro,
+	id_direccion bigint REFERENCES EQUISDE.direccion,
+	id_estado bigint REFERENCES EQUISDE.estado,
+	id_grado bigint REFERENCES EQUISDE.grado,
+	username varchar(50) REFERENCES EQUISDE.usuario,
+	descripcion nvarchar(255),
+	fecha_publicacion datetime,
+	fecha_vencimiento datetime,
+)
+
+
 
 CREATE TABLE EQUISDE.tipo(
 	codigo_tipo numeric(18,0) PRIMARY KEY IDENTITY,
@@ -208,7 +209,7 @@ CREATE TABLE EQUISDE.tarjeta(
 	fecha_vencimiento datetime,
 	cod_seguridad numeric(10,0),
 	nombre_titular nvarchar(255),
-	importe numeric(18,0),
+	importe numeric(18,0)
 )
 
 GO
@@ -304,26 +305,24 @@ WHEN NOT MATCHED BY TARGET THEN
 	INSERT(descripcion)
 	VALUES(Espectaculo_Rubro_Descripcion);
 
-SET IDENTITY_INSERT EQUISDE.publicacion ON 
+MERGE EQUISDE.estado d
+USING (SELECT DISTINCT SUBSTRING(Espectaculo_Estado,1,1) estado FROM gd_esquema.Maestra)f
+ON f.estado = d.estado
+WHEN NOT MATCHED BY TARGET THEN
+	INSERT(estado)
+	VALUES(f.estado);
 
+
+SET IDENTITY_INSERT EQUISDE.publicacion ON 
 MERGE EQUISDE.publicacion d
-USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion))f
+USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estado FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estado ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
 ON f.Espectaculo_Cod = d.id_publicacion
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(id_publicacion, id_rubro, username,descripcion, fecha_publicacion,fecha_vencimiento)
-	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc);
-
+	INSERT(id_publicacion, id_rubro, username,descripcion, fecha_publicacion,fecha_vencimiento,id_estado)
+	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estado);
 SET IDENTITY_INSERT EQUISDE.publicacion OFF 
 
-MERGE EQUISDE.estado d
-USING (SELECT DISTINCT Espectaculo_Cod,SUBSTRING(Espectaculo_Estado,1,1) estado FROM gd_esquema.Maestra)f
-ON f.Espectaculo_Cod = d.id_publicacion AND f.estado = d.estado
-WHEN NOT MATCHED BY TARGET THEN
-	INSERT(id_publicacion,estado)
-	VALUES(f.Espectaculo_Cod,f.estado);
-
 SET IDENTITY_INSERT EQUISDE.tipo ON 
-
 MERGE EQUISDE.tipo d
 USING (SELECT DISTINCT Ubicacion_Tipo_Codigo, Ubicacion_Tipo_Descripcion FROM gd_esquema.Maestra)f
 ON d.codigo_tipo = f.Ubicacion_Tipo_Codigo
@@ -367,5 +366,5 @@ WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_factura,id_compra,importe_comision,descripcion,cantidad)
 	VALUES(f.Factura_Nro,f.id_compra,f.Item_Factura_Monto,f.Item_Factura_Descripcion, f.Item_Factura_Cantidad);
 
-SELECT * FROM EQUISDE.funcionalidad
-SELECT * FROM EQUISDE.rol_x_funcionalidad
+INSERT INTO EQUISDE.grado
+VALUES('Alta'),('Media'),('Baja');

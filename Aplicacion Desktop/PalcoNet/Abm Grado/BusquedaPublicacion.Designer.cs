@@ -38,12 +38,12 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoActualRoles = new System.Windows.Forms.DataGridView();
+            this.listadoActualPublicacion = new System.Windows.Forms.DataGridView();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualPublicacion)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -174,18 +174,19 @@
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_elegir_grado_Click);
             // 
-            // listadoActualRoles
+            // listadoActualPublicacion
             // 
-            this.listadoActualRoles.AllowUserToAddRows = false;
-            this.listadoActualRoles.AllowUserToDeleteRows = false;
-            this.listadoActualRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoActualRoles.Location = new System.Drawing.Point(210, 76);
-            this.listadoActualRoles.MultiSelect = false;
-            this.listadoActualRoles.Name = "listadoActualRoles";
-            this.listadoActualRoles.ReadOnly = true;
-            this.listadoActualRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoActualRoles.Size = new System.Drawing.Size(742, 529);
-            this.listadoActualRoles.TabIndex = 10;
+            this.listadoActualPublicacion.AllowUserToAddRows = false;
+            this.listadoActualPublicacion.AllowUserToDeleteRows = false;
+            this.listadoActualPublicacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoActualPublicacion.Location = new System.Drawing.Point(210, 76);
+            this.listadoActualPublicacion.MultiSelect = false;
+            this.listadoActualPublicacion.Name = "listadoActualPublicacion";
+            this.listadoActualPublicacion.ReadOnly = true;
+            this.listadoActualPublicacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoActualPublicacion.Size = new System.Drawing.Size(742, 529);
+            this.listadoActualPublicacion.TabIndex = 10;
+            this.listadoActualPublicacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoActualPublicacion_CellContentClick);
             // 
             // BusquedaPublicacion
             // 
@@ -195,7 +196,7 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.listadoActualRoles);
+            this.Controls.Add(this.listadoActualPublicacion);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -213,7 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoActualRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoActualPublicacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,7 +232,7 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoActualRoles;
+        private System.Windows.Forms.DataGridView listadoActualPublicacion;
         private System.Windows.Forms.Label label17;
 
     }

@@ -21,18 +21,6 @@ using System.Windows.Forms;
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
         {

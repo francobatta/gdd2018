@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PalcoNet.BDManager;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ using System.Windows.Forms;
         }
         private void BusquedaPublicacion_Load(object sender, EventArgs e)
         {
-
+            listadoActualPublicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.publicacion WHERE username = '" + "06-68361819-16" + "'");
         }
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -39,6 +40,24 @@ using System.Windows.Forms;
         private const int HT_CAPTION = 0x2;
 
         private void btn_elegir_grado_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow filaElegida = listadoActualPublicacion.CurrentRow;
+                if (filaElegida == null || filaElegida.Selected == false)
+                    throw new CamposInvalidosException();
+                publicacion publicacionAUsar = new publicacion();
+                BDManager.selectIntoObject("publicacion", "id_publicacion", filaElegida.Cells["id_publicacion"].Value.ToString(), publicacionAUsar);
+                ElegirGrado elegirGrado = new ElegirGrado(publicacionAUsar); // SE LO PASO POR CONSTRUCTOR Y QUE EL MODIFICADOR SE ENCARGUE
+                elegirGrado.ShowDialog();
+            }
+            catch (CamposInvalidosException)
+            {
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar publicacion", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void listadoActualPublicacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
