@@ -58,6 +58,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
+            this.nroCalle = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.topbar.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -361,6 +363,24 @@
             this.btn_guardar.UseVisualStyleBackColor = false;
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
+            // nroCalle
+            // 
+            this.nroCalle.Location = new System.Drawing.Point(598, 365);
+            this.nroCalle.MaxLength = 50;
+            this.nroCalle.Name = "nroCalle";
+            this.nroCalle.Size = new System.Drawing.Size(62, 20);
+            this.nroCalle.TabIndex = 55;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(570, 364);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(22, 21);
+            this.label23.TabIndex = 54;
+            this.label23.Text = "N";
+            // 
             // ModificaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +389,8 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
+            this.Controls.Add(this.nroCalle);
+            this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.cpostal);
@@ -445,5 +467,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
+        private System.Windows.Forms.TextBox nroCalle;
+        private System.Windows.Forms.Label label23;
 
     }

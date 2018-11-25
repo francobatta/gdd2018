@@ -48,7 +48,7 @@ using PalcoNet.BDManager;
     {
         try
         {
-            validarCamposCliente();
+            validarCamposEmpresa();
             //
             empresa emp = new empresa();
             direccion d = new direccion();
@@ -87,7 +87,7 @@ using PalcoNet.BDManager;
         catch (EmpresaInvalidadException) { MessageBox.Show("CUIT ya existente en sistema", "Error al validar campos de la empresa a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
 
-    private void validarCamposCliente()
+    private void validarCamposEmpresa()
     {
         Validaciones.inicializarValidador();
         Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
@@ -100,6 +100,7 @@ using PalcoNet.BDManager;
         Validaciones.esValido(piso.Name, piso.Text, new Validaciones.NumerosGuion());
         Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
         Validaciones.esValido(cpostal.Name, cpostal.Text, new Validaciones.Numeros());
+        Validaciones.esValido(nroCalle.Name, nroCalle.Text, new Validaciones.Numeros());
         if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
             throw new CamposInvalidosException();
     }
@@ -116,5 +117,10 @@ using PalcoNet.BDManager;
         piso.Text = default(String);
         depto.Text = default(String);
         cpostal.Text = default(String);
+    }
+
+    private void nroCalle_TextChanged(object sender, EventArgs e)
+    {
+
     }
     }

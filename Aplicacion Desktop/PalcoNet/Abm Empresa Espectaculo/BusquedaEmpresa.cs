@@ -62,9 +62,15 @@ using System.Windows.Forms;
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            listadoEmpresas.DataSource = BDManager.getData(
-               "SELECT * FROM EQUISDE.empresa WHERE razon_social LIKE '%" + razonSocial.Text + "%' AND cuit LIKE '%" + CUIT.Text + "%' AND mail LIKE '%" + email.Text + "%'"
-               );
+            try
+            {
+                validarCamposEmpresa();
+                listadoEmpresas.DataSource = BDManager.getData(
+                   "SELECT * FROM EQUISDE.empresa WHERE razon_social LIKE '%" + razonSocial.Text + "%' AND cuit LIKE '%" + CUIT.Text + "%' AND mail LIKE '%" + email.Text + "%'"
+                   );
+            }
+            catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la empresa a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
@@ -74,7 +80,15 @@ using System.Windows.Forms;
             this.email.Text = default(String);
             listadoEmpresas.DataSource = null;
         }
-
+        private void validarCamposEmpresa()
+        {
+            Validaciones.inicializarValidador();
+            Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
+            Validaciones.esValido(CUIT.Name, CUIT.Text, new Validaciones.CUIT());
+            Validaciones.esValido(razonSocial.Name, razonSocial.Text, new Validaciones.NumerosLetrasGuion());
+            if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                throw new CamposInvalidosException();
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             try

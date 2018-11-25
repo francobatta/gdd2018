@@ -384,6 +384,7 @@
             this.nroCalle.Name = "nroCalle";
             this.nroCalle.Size = new System.Drawing.Size(62, 20);
             this.nroCalle.TabIndex = 53;
+            this.nroCalle.TextChanged += new System.EventHandler(this.nroCalle_TextChanged);
             // 
             // label23
             // 
