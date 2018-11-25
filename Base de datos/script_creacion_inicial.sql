@@ -170,7 +170,8 @@ CREATE TABLE EQUISDE.compra(
 	fecha_compra datetime,
 	cantidad numeric(18,0),
 	puntos bigint DEFAULT 0,
-	fecha_vencimiento_puntos datetime
+	fecha_vencimiento_puntos datetime,
+	forma_de_pago nvarchar(255)
 )
 
 CREATE TABLE EQUISDE.compra_x_ubicacion(
@@ -182,8 +183,7 @@ CREATE TABLE EQUISDE.compra_x_ubicacion(
 CREATE TABLE EQUISDE.factura(
 	id_factura numeric(18,0) PRIMARY KEY IDENTITY,
 	fecha_emision datetime,
-	factura_total numeric(18,2),
-	forma_de_pago nvarchar(255)
+	factura_total numeric(18,2)
 )
 
 CREATE TABLE EQUISDE.item(
@@ -348,11 +348,11 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.Espectaculo_Cod,f.Ubicacion_Tipo_Codigo,f.Ubicacion_Fila,f.Ubicacion_Asiento,f.Ubicacion_Precio,f.Ubicacion_Sin_numerar);
 
 MERGE EQUISDE.compra d
-USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL) f
-ON d.username = f.Cli_Dni AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha
+USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni,Forma_Pago_Desc FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL) f
+ON d.username = f.Cli_Dni AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha AND d.forma_de_pago = f.Forma_Pago_Desc
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(username,fecha_compra,cantidad)
-	VALUES(f.Cli_Dni,f.Compra_Fecha,f.Compra_Cantidad);
+	INSERT(username,fecha_compra,cantidad,forma_de_pago)
+	VALUES(f.Cli_Dni,f.Compra_Fecha,f.Compra_Cantidad,f.Forma_Pago_Desc);
 
 MERGE EQUISDE.compra_x_ubicacion d
 USING(SELECT DISTINCT id_ubicacion, id_compra FROM EQUISDE.ubicacion u JOIN gd_esquema.Maestra m ON (u.id_publicacion = m.Espectaculo_Cod AND u.codigo_tipo = m.Ubicacion_Tipo_Codigo AND u.fila = m.Ubicacion_Fila AND u.asiento = m.Ubicacion_Asiento AND u.precio = m.Ubicacion_Precio AND u.sin_numerar = m.Ubicacion_Sin_numerar)
@@ -365,11 +365,11 @@ WHEN NOT MATCHED BY TARGET THEN
 SET IDENTITY_INSERT EQUISDE.factura ON
 
 MERGE EQUISDE.factura d
-USING(SELECT DISTINCT Factura_Nro,Factura_Fecha,Factura_Total,Forma_Pago_Desc FROM gd_esquema.Maestra WHERE Factura_Nro IS NOT NULL)f
+USING(SELECT DISTINCT Factura_Nro,Factura_Fecha,Factura_Total FROM gd_esquema.Maestra WHERE Factura_Nro IS NOT NULL)f
 ON id_factura = Factura_Nro
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(id_factura,fecha_emision,factura_total,forma_de_pago)
-	VALUES(f.Factura_Nro,f.Factura_Fecha,f.Factura_Total,f.Forma_Pago_Desc);
+	INSERT(id_factura,fecha_emision,factura_total)
+	VALUES(f.Factura_Nro,f.Factura_Fecha,f.Factura_Total);
 
 SET IDENTITY_INSERT EQUISDE.factura OFF
 
@@ -389,7 +389,7 @@ INSERT INTO EQUISDE.grado
 VALUES('Alta'),('Media'),('Baja');
 
 INSERT INTO EQUISDE.estadop
-VALUES('B','F')
+VALUES('B'),('F');
 
 INSERT INTO EQUISDE.rubro
-VALUES ('pelicula')
+VALUES ('pelicula');

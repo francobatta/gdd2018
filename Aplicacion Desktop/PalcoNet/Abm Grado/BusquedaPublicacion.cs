@@ -16,6 +16,9 @@ using System.Windows.Forms;
         }
         private void BusquedaPublicacion_Load(object sender, EventArgs e)
         {
+            this.ActualizarDatos();
+        }
+        private void ActualizarDatos() {
             listadoActualPublicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.publicacion WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
         }
         // controles de cualquier form
@@ -49,7 +52,8 @@ using System.Windows.Forms;
                 publicacion publicacionAUsar = new publicacion();
                 BDManager.selectIntoObject("publicacion", "id_publicacion", filaElegida.Cells["id_publicacion"].Value.ToString(), publicacionAUsar);
                 ElegirGrado elegirGrado = new ElegirGrado(publicacionAUsar); // SE LO PASO POR CONSTRUCTOR Y QUE EL MODIFICADOR SE ENCARGUE
-                elegirGrado.ShowDialog();
+                elegirGrado.Closed += (s, args) => this.ActualizarDatos();
+                elegirGrado.Show();
             }
             catch (CamposInvalidosException)
             {
