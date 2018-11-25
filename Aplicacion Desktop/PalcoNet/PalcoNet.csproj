@@ -135,6 +135,7 @@
       <DependentUpon>comprar.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicacion\publicacion.cs" />
+    <Compile Include="Generar Publicacion\rubro.cs" />
     <Compile Include="Generar Publicacion\tipo.cs" />
     <Compile Include="Generar Publicacion\ubicacion.cs" />
     <Compile Include="Login\DebeCambiarContraseniaException_2.cs" />
