@@ -375,7 +375,6 @@
             this.Limpiar.TabIndex = 21;
             this.Limpiar.Text = "button3";
             this.Limpiar.UseVisualStyleBackColor = true;
-            this.Limpiar.Click += new System.EventHandler(this.button3_Click);
             // 
             // nuevaCompra
             // 
