@@ -17,12 +17,12 @@ using System.Windows.Forms;
         {
             InitializeComponent();
             this.user = u;
+            username.Text = user.username;
+            username.Enabled = false;
         }
 
         private void RegistraUsuario_Load(object sender, EventArgs e)
         {
-            //passwordAnterior.Text = user.password;
-            username.Text = user.username;
         }
 
         // controles de cualquier form
@@ -71,6 +71,7 @@ using System.Windows.Forms;
             user.password = passwordNueva.Text;
             BDManager.updateEncryptedUser(user);
             MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a registrar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (ControlDePKException) { MessageBox.Show("Contraseña nueva mal escrita", "Error al validar campos del usuario a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

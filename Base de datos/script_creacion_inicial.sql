@@ -208,9 +208,7 @@ CREATE TABLE EQUISDE.tarjeta(
 	fecha_vencimiento datetime,
 	cod_seguridad numeric(10,0),
 	nombre_titular nvarchar(255),
-	tipo_tarjeta varchar(3),
 	importe numeric(18,0),
-	CHECK(tipo_tarjeta in ('DNI','LE','CI'))
 )
 
 GO

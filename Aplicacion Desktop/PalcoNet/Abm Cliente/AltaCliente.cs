@@ -23,9 +23,6 @@ using System.Windows.Forms;
             tipoDoc.Items.Add("LE");
             tipoDoc.Items.Add("CI");
             tipoDoc.SelectedIndex = 0;
-            tipoTarjeta.Items.Add("MAS");
-            tipoTarjeta.Items.Add("VIS");
-            tipoTarjeta.SelectedIndex = 0;
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -37,7 +34,6 @@ using System.Windows.Forms;
                 cliente c = new cliente();
                 direccion d = new direccion();
                 tarjeta t = new tarjeta();
-                c.username = nDoc.Text;
                  c.nombre = nombre.Text;
                  c.apellido = apellido.Text;
                  c.tipo_documento = tipoDoc.Text;
@@ -53,11 +49,10 @@ using System.Windows.Forms;
                  d.depto = depto.Text;
                  d.cpostal = cpostal.Text;
                  d.nro_calle = nroCalle.Text;
-                 t.username = nDoc.Text;
+                 t.username = CUIL.Text;
                  t.nro_tarjeta = nroTarjeta.Text;
                  t.cod_seguridad = codSeguridad.Text;
                  t.nombre_titular = nombreTitularTarjeta.Text;
-                 t.tipo_tarjeta = tipoTarjeta.Text;
                  t.fecha_vencimiento = fechavtotarjeta.Text;
                 // valido CUIL
                 if (BDManager.exists("cliente", "CUIL", c.CUIL))
@@ -72,12 +67,19 @@ using System.Windows.Forms;
                     "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
                     , d);
                 c.id_direccion = d.id_direccion;
+                // el usuario que tendra el cliente
+                usuario u = new usuario();
+                u.username = c.CUIL;
+                u.password = c.CUIL;
+                c.username = c.CUIL;
                 // inserto tarjeta y clientebueno
-                BDManager.insertInto("cliente", c);
+                BDManager.insertEncryptedUser(u);
                 BDManager.insertInto("direccion", d);
+                BDManager.insertInto("cliente", c);
                 BDManager.insertInto("tarjeta", t);
-
-                MessageBox.Show("El cliente ha sido insertado", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El cliente ha sido insertado. Al clickear OK, se le pedirá que efectúe un cambio de contraseña predeterminada para su usuario nuevo.", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RegistraUsuario registraUsuario = new RegistraUsuario(u);
+                registraUsuario.ShowDialog();
                 this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
@@ -103,7 +105,6 @@ using System.Windows.Forms;
             Validaciones.esValido(nroTarjeta.Name, nroTarjeta.Text, new Validaciones.Numeros());
             Validaciones.esValido(codSeguridad.Name, codSeguridad.Text, new Validaciones.Numeros());
             Validaciones.esValido(nombreTitularTarjeta.Name, nombreTitularTarjeta.Text, new Validaciones.Letras());
-            Validaciones.esValido(tipoTarjeta.Name, tipoTarjeta.Text, new Validaciones.Letras());
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
         }
@@ -147,7 +148,6 @@ using System.Windows.Forms;
         nroTarjeta.Text = default(String);
         codSeguridad.Text = default(String);
         nombreTitularTarjeta.Text = default(String);
-        tipoTarjeta.Text = default(String);
         fechavtotarjeta.Text = default(String);
     }
     }

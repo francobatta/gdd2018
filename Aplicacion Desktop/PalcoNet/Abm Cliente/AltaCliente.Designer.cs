@@ -66,7 +66,6 @@
             this.cpostal = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.nombreTitularTarjeta = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.codSeguridad = new System.Windows.Forms.TextBox();
@@ -75,7 +74,6 @@
             this.nroTarjeta = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.fechavtotarjeta = new System.Windows.Forms.DateTimePicker();
-            this.tipoTarjeta = new System.Windows.Forms.ComboBox();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.label23 = new System.Windows.Forms.Label();
@@ -467,16 +465,6 @@
             this.label16.TabIndex = 33;
             this.label16.Text = "Datos de tarjeta de crédito";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(564, 573);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(125, 21);
-            this.label18.TabIndex = 42;
-            this.label18.Text = "Tipo de tarjeta";
-            // 
             // nombreTitularTarjeta
             // 
             this.nombreTitularTarjeta.Location = new System.Drawing.Point(742, 471);
@@ -551,16 +539,6 @@
             this.fechavtotarjeta.TabIndex = 46;
             this.fechavtotarjeta.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
-            // tipoTarjeta
-            // 
-            this.tipoTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoTarjeta.FormattingEnabled = true;
-            this.tipoTarjeta.Location = new System.Drawing.Point(689, 573);
-            this.tipoTarjeta.MaxLength = 3;
-            this.tipoTarjeta.Name = "tipoTarjeta";
-            this.tipoTarjeta.Size = new System.Drawing.Size(237, 21);
-            this.tipoTarjeta.TabIndex = 47;
-            // 
             // btn_limpiar
             // 
             this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
@@ -617,9 +595,7 @@
             this.Controls.Add(this.label23);
             this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.tipoTarjeta);
             this.Controls.Add(this.fechavtotarjeta);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.nombreTitularTarjeta);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.codSeguridad);
@@ -718,7 +694,6 @@
         private System.Windows.Forms.TextBox cpostal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox nombreTitularTarjeta;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox codSeguridad;
@@ -727,7 +702,6 @@
         private System.Windows.Forms.TextBox nroTarjeta;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.DateTimePicker fechavtotarjeta;
-        private System.Windows.Forms.ComboBox tipoTarjeta;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Label label17;
