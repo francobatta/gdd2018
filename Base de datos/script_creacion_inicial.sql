@@ -323,11 +323,11 @@ WHEN NOT MATCHED BY TARGET THEN
 
 SET IDENTITY_INSERT EQUISDE.publicacion ON 
 MERGE EQUISDE.publicacion d
-USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estado FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estadop ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
+USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcion,Espectaculo_Fecha,Espectaculo_Fecha_Venc,id_rubro,id_estadop FROM gd_esquema.Maestra JOIN EQUISDE.rubro ON(descripcion = Espectaculo_Rubro_Descripcion) JOIN EQUISDE.estadop ON (SUBSTRING(Espectaculo_Estado,1,1) = estado))f
 ON f.Espectaculo_Cod = d.id_publicacion
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_publicacion, id_rubro, username,descripcion, fecha_publicacion,fecha_vencimiento,id_estado)
-	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estado);
+	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estadop);
 SET IDENTITY_INSERT EQUISDE.publicacion OFF 
 
 SET IDENTITY_INSERT EQUISDE.tipo ON 
