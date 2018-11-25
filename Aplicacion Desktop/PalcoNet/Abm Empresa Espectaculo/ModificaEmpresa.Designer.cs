@@ -36,9 +36,9 @@
             this.title = new System.Windows.Forms.Label();
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.nombre = new System.Windows.Forms.TextBox();
+            this.razon_social = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.CUIL = new System.Windows.Forms.TextBox();
+            this.CUIT = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -164,29 +164,29 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Razón social";
             // 
-            // nombre
+            // razon_social
             // 
-            this.nombre.Location = new System.Drawing.Point(317, 93);
-            this.nombre.Name = "nombre";
-            this.nombre.Size = new System.Drawing.Size(229, 20);
-            this.nombre.TabIndex = 6;
+            this.razon_social.Location = new System.Drawing.Point(317, 93);
+            this.razon_social.Name = "razon_social";
+            this.razon_social.Size = new System.Drawing.Size(229, 20);
+            this.razon_social.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(206, 578);
+            this.label5.Location = new System.Drawing.Point(206, 519);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 21);
             this.label5.TabIndex = 13;
             this.label5.Text = "CUIT";
             // 
-            // CUIL
+            // CUIT
             // 
-            this.CUIL.Location = new System.Drawing.Point(299, 579);
-            this.CUIL.Name = "CUIL";
-            this.CUIL.Size = new System.Drawing.Size(247, 20);
-            this.CUIL.TabIndex = 14;
+            this.CUIT.Location = new System.Drawing.Point(299, 520);
+            this.CUIT.Name = "CUIT";
+            this.CUIT.Size = new System.Drawing.Size(247, 20);
+            this.CUIT.TabIndex = 14;
             // 
             // label6
             // 
@@ -218,7 +218,7 @@
             // 
             // localidad
             // 
-            this.localidad.Location = new System.Drawing.Point(299, 255);
+            this.localidad.Location = new System.Drawing.Point(299, 196);
             this.localidad.Name = "localidad";
             this.localidad.Size = new System.Drawing.Size(247, 20);
             this.localidad.TabIndex = 22;
@@ -227,7 +227,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(206, 254);
+            this.label10.Location = new System.Drawing.Point(206, 195);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 21);
             this.label10.TabIndex = 21;
@@ -235,7 +235,7 @@
             // 
             // ciudad
             // 
-            this.ciudad.Location = new System.Drawing.Point(299, 309);
+            this.ciudad.Location = new System.Drawing.Point(299, 250);
             this.ciudad.Name = "ciudad";
             this.ciudad.Size = new System.Drawing.Size(247, 20);
             this.ciudad.TabIndex = 24;
@@ -244,7 +244,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(206, 308);
+            this.label11.Location = new System.Drawing.Point(206, 249);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(69, 21);
             this.label11.TabIndex = 23;
@@ -252,7 +252,7 @@
             // 
             // calle
             // 
-            this.calle.Location = new System.Drawing.Point(299, 363);
+            this.calle.Location = new System.Drawing.Point(299, 304);
             this.calle.Name = "calle";
             this.calle.Size = new System.Drawing.Size(247, 20);
             this.calle.TabIndex = 26;
@@ -261,7 +261,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(206, 362);
+            this.label12.Location = new System.Drawing.Point(206, 303);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(50, 21);
             this.label12.TabIndex = 25;
@@ -269,7 +269,7 @@
             // 
             // piso
             // 
-            this.piso.Location = new System.Drawing.Point(299, 417);
+            this.piso.Location = new System.Drawing.Point(299, 358);
             this.piso.Name = "piso";
             this.piso.Size = new System.Drawing.Size(247, 20);
             this.piso.TabIndex = 28;
@@ -278,7 +278,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(206, 416);
+            this.label13.Location = new System.Drawing.Point(206, 357);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(62, 21);
             this.label13.TabIndex = 27;
@@ -286,7 +286,7 @@
             // 
             // depto
             // 
-            this.depto.Location = new System.Drawing.Point(299, 471);
+            this.depto.Location = new System.Drawing.Point(299, 412);
             this.depto.Name = "depto";
             this.depto.Size = new System.Drawing.Size(247, 20);
             this.depto.TabIndex = 30;
@@ -295,7 +295,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(206, 470);
+            this.label14.Location = new System.Drawing.Point(206, 411);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(64, 21);
             this.label14.TabIndex = 29;
@@ -303,7 +303,7 @@
             // 
             // cpostal
             // 
-            this.cpostal.Location = new System.Drawing.Point(299, 525);
+            this.cpostal.Location = new System.Drawing.Point(299, 466);
             this.cpostal.Name = "cpostal";
             this.cpostal.Size = new System.Drawing.Size(247, 20);
             this.cpostal.TabIndex = 32;
@@ -312,7 +312,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(206, 524);
+            this.label15.Location = new System.Drawing.Point(206, 465);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(79, 21);
             this.label15.TabIndex = 31;
@@ -389,9 +389,9 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.email);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.CUIL);
+            this.Controls.Add(this.CUIT);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.nombre);
+            this.Controls.Add(this.razon_social);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
@@ -424,9 +424,9 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Panel sidepanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.TextBox razon_social;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox CUIL;
+        private System.Windows.Forms.TextBox CUIT;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label label9;

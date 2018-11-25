@@ -39,7 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.descripcion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.fechaNac = new System.Windows.Forms.DateTimePicker();
+            this.fechaEspectaculo = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -58,12 +58,10 @@
             this.btn_eliminarFechaSeleccionada = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fechaPublicacion = new System.Windows.Forms.DateTimePicker();
             this.rubro = new System.Windows.Forms.ComboBox();
             this.grado = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.usuarioResponsable = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.estado = new System.Windows.Forms.ComboBox();
             this.listaUbicaciones = new System.Windows.Forms.ListBox();
@@ -216,13 +214,13 @@
             this.label3.TabIndex = 9;
             this.label3.Text = "Ubicaciones";
             // 
-            // fechaNac
+            // fechaEspectaculo
             // 
-            this.fechaNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fechaNac.Location = new System.Drawing.Point(744, 120);
-            this.fechaNac.Name = "fechaNac";
-            this.fechaNac.Size = new System.Drawing.Size(156, 20);
-            this.fechaNac.TabIndex = 19;
+            this.fechaEspectaculo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaEspectaculo.Location = new System.Drawing.Point(744, 120);
+            this.fechaEspectaculo.Name = "fechaEspectaculo";
+            this.fechaEspectaculo.Size = new System.Drawing.Size(156, 20);
+            this.fechaEspectaculo.TabIndex = 19;
             // 
             // label8
             // 
@@ -334,6 +332,7 @@
             this.btn_limpiar.TabIndex = 49;
             this.btn_limpiar.Text = "Limpiar";
             this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
             // btn_guardar
             // 
@@ -346,6 +345,7 @@
             this.btn_guardar.TabIndex = 48;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = false;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // listaFechasEspectaculo
             // 
@@ -396,20 +396,21 @@
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(206, 362);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(186, 21);
+            this.label10.Size = new System.Drawing.Size(180, 21);
             this.label10.TabIndex = 55;
-            this.label10.Text = "Fecha de espectáculo";
+            this.label10.Text = "Fecha de publicación";
             // 
-            // dateTimePicker1
+            // fechaPublicacion
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(394, 363);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(152, 20);
-            this.dateTimePicker1.TabIndex = 54;
+            this.fechaPublicacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaPublicacion.Location = new System.Drawing.Point(394, 363);
+            this.fechaPublicacion.Name = "fechaPublicacion";
+            this.fechaPublicacion.Size = new System.Drawing.Size(152, 20);
+            this.fechaPublicacion.TabIndex = 54;
             // 
             // rubro
             // 
+            this.rubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.rubro.FormattingEnabled = true;
             this.rubro.Location = new System.Drawing.Point(299, 389);
             this.rubro.Name = "rubro";
@@ -418,6 +419,7 @@
             // 
             // grado
             // 
+            this.grado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.grado.FormattingEnabled = true;
             this.grado.Location = new System.Drawing.Point(299, 520);
             this.grado.Name = "grado";
@@ -434,28 +436,11 @@
             this.label4.TabIndex = 57;
             this.label4.Text = "Grado";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(206, 547);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 21);
-            this.label5.TabIndex = 59;
-            this.label5.Text = "Usuario";
-            // 
-            // usuarioResponsable
-            // 
-            this.usuarioResponsable.Location = new System.Drawing.Point(299, 547);
-            this.usuarioResponsable.Name = "usuarioResponsable";
-            this.usuarioResponsable.Size = new System.Drawing.Size(247, 20);
-            this.usuarioResponsable.TabIndex = 60;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(206, 573);
+            this.label6.Location = new System.Drawing.Point(206, 550);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(64, 21);
             this.label6.TabIndex = 61;
@@ -463,8 +448,9 @@
             // 
             // estado
             // 
+            this.estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.estado.FormattingEnabled = true;
-            this.estado.Location = new System.Drawing.Point(299, 573);
+            this.estado.Location = new System.Drawing.Point(299, 550);
             this.estado.Name = "estado";
             this.estado.Size = new System.Drawing.Size(247, 21);
             this.estado.TabIndex = 62;
@@ -493,7 +479,7 @@
             // 
             // precioUbicacion
             // 
-            this.precioUbicacion.Location = new System.Drawing.Point(416, 198);
+            this.precioUbicacion.Location = new System.Drawing.Point(372, 198);
             this.precioUbicacion.Name = "precioUbicacion";
             this.precioUbicacion.Size = new System.Drawing.Size(45, 20);
             this.precioUbicacion.TabIndex = 66;
@@ -522,7 +508,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(413, 179);
+            this.label18.Location = new System.Drawing.Point(369, 179);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(48, 16);
             this.label18.TabIndex = 70;
@@ -530,17 +516,18 @@
             // 
             // tipoUbicacion
             // 
+            this.tipoUbicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoUbicacion.FormattingEnabled = true;
-            this.tipoUbicacion.Location = new System.Drawing.Point(510, 198);
+            this.tipoUbicacion.Location = new System.Drawing.Point(423, 198);
             this.tipoUbicacion.Name = "tipoUbicacion";
-            this.tipoUbicacion.Size = new System.Drawing.Size(36, 21);
+            this.tipoUbicacion.Size = new System.Drawing.Size(123, 21);
             this.tipoUbicacion.TabIndex = 71;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(507, 179);
+            this.label19.Location = new System.Drawing.Point(420, 179);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 16);
             this.label19.TabIndex = 72;
@@ -557,6 +544,7 @@
             this.btn_agregarUbicacion.TabIndex = 73;
             this.btn_agregarUbicacion.Text = "Agregar Ubicación";
             this.btn_agregarUbicacion.UseVisualStyleBackColor = false;
+            this.btn_agregarUbicacion.Click += new System.EventHandler(this.btn_agregarUbicacion_Click);
             // 
             // btn_eliminarUbicacionSeleccionada
             // 
@@ -569,6 +557,7 @@
             this.btn_eliminarUbicacionSeleccionada.TabIndex = 74;
             this.btn_eliminarUbicacionSeleccionada.Text = "Eliminar Ubicación elegida";
             this.btn_eliminarUbicacionSeleccionada.UseVisualStyleBackColor = false;
+            this.btn_eliminarUbicacionSeleccionada.Click += new System.EventHandler(this.btn_eliminarUbicacionSeleccionada_Click);
             // 
             // AltaPublicacion
             // 
@@ -591,13 +580,11 @@
             this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.estado);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.usuarioResponsable);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.grado);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.rubro);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.fechaPublicacion);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_eliminarFechaSeleccionada);
             this.Controls.Add(this.btn_agregarFechaEspectaculo);
@@ -615,7 +602,7 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.fechaNac);
+            this.Controls.Add(this.fechaEspectaculo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.descripcion);
             this.Controls.Add(this.label1);
@@ -653,7 +640,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox descripcion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker fechaNac;
+        private System.Windows.Forms.DateTimePicker fechaEspectaculo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
@@ -673,12 +660,10 @@
         private System.Windows.Forms.Button btn_eliminarFechaSeleccionada;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fechaPublicacion;
         private System.Windows.Forms.ComboBox rubro;
         private System.Windows.Forms.ComboBox grado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox usuarioResponsable;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox estado;
         private System.Windows.Forms.ListBox listaUbicaciones;

@@ -129,6 +129,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Publicacion\publicacion.cs" />
+    <Compile Include="Generar Publicacion\tipo.cs" />
+    <Compile Include="Generar Publicacion\ubicacion.cs" />
     <Compile Include="Login\DebeCambiarContraseniaException_2.cs" />
     <Compile Include="Login\usuarioGlobal.cs" />
     <Compile Include="Login\UsuarioInhabilitadoException.cs" />

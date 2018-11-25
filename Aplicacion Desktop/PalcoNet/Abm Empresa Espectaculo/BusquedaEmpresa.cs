@@ -47,10 +47,8 @@ using System.Windows.Forms;
                 if (filaElegida == null || filaElegida.Selected == false)
                     throw new CamposInvalidosException();
                 empresa emp = new empresa();
-                BDManager.selectIntoObjectByString("empresa", "username", filaElegida.Cells["username"].Value.ToString(),emp);
-                usuario us = new usuario();
-                BDManager.selectIntoObject("usuario", "username", emp.username, us);
-                ModificaEmpresa m = new  ModificaEmpresa (us);
+                BDManager.selectIntoObject("empresa", "username", "'"+filaElegida.Cells["username"].Value.ToString()+"'", emp);
+                ModificaEmpresa m = new  ModificaEmpresa (emp);
                 m.ShowDialog();
                 this.Close();
             }
@@ -62,14 +60,8 @@ using System.Windows.Forms;
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                validarCamposEmpresa();
-                listadoEmpresas.DataSource = BDManager.getData(
-                   "SELECT * FROM EQUISDE.empresa WHERE razon_social LIKE '%" + razonSocial.Text + "%' AND cuit LIKE '%" + CUIT.Text + "%' AND mail LIKE '%" + email.Text + "%'"
-                   );
-            }
-            catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la empresa a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            listadoEmpresas.DataSource = BDManager.getData("SELECT * FROM EQUISDE.empresa WHERE razon_social LIKE '%" + razonSocial.Text + "%' AND cuit LIKE '%" + CUIT.Text + "%' AND mail LIKE '%" + email.Text + "%'");
+
 
         }
 
@@ -79,15 +71,6 @@ using System.Windows.Forms;
             this.CUIT.Text = default(String);
             this.email.Text = default(String);
             listadoEmpresas.DataSource = null;
-        }
-        private void validarCamposEmpresa()
-        {
-            Validaciones.inicializarValidador();
-            Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
-            Validaciones.esValido(CUIT.Name, CUIT.Text, new Validaciones.CUIT());
-            Validaciones.esValido(razonSocial.Name, razonSocial.Text, new Validaciones.NumerosLetrasGuion());
-            if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
-                throw new CamposInvalidosException();
         }
         private void button1_Click(object sender, EventArgs e)
         {

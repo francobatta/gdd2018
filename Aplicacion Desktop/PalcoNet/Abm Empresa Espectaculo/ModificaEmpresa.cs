@@ -12,30 +12,28 @@ using PalcoNet.BDManager;
     public partial class ModificaEmpresa : Form
     {
 
-        public usuario us { get; set; }
-        public ModificaEmpresa(usuario o)
+        public empresa empresaAUsar { get; set; }
+        public ModificaEmpresa(empresa o)
         {
-            us = o;
+            empresaAUsar = o;
             InitializeComponent();
         }
 
         private void ModificaEmpresa_Load(object sender, EventArgs e)
         {
-
+            razon_social.Text = empresaAUsar.razon_social;
+            email.Text = empresaAUsar.mail;
+            CUIT.Text = empresaAUsar.cuit;
+            direccion direccionAModificar = new direccion();
+            BDManager.selectIntoObject("direccion", "id_direccion", empresaAUsar.id_direccion, direccionAModificar);
+            localidad.Text = direccionAModificar.localidad;
+            ciudad.Text = direccionAModificar.ciudad;
+            calle.Text = direccionAModificar.calle;
+            piso.Text = direccionAModificar.piso;
+            nroCalle.Text = direccionAModificar.nro_calle;
+            depto.Text = direccionAModificar.depto;
+            cpostal.Text = direccionAModificar.cpostal;
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // controles de cualquier form
         private void closingLabel_Click(object sender, EventArgs e)
@@ -64,11 +62,9 @@ using PalcoNet.BDManager;
         try{
 
         validarCamposEmpresa();
-        empresa emp = new empresa();
         direccion d = new direccion();
-        emp.razon_social = nombre.Text;
-        emp.mail = email.Text;
-        emp.cuit = CUIL.Text;
+        empresaAUsar.razon_social = razon_social.Text;
+        empresaAUsar.mail = email.Text;
         d.localidad = localidad.Text;
         d.ciudad = ciudad.Text;
         d.calle = calle.Text;
@@ -76,13 +72,15 @@ using PalcoNet.BDManager;
         d.depto = depto.Text;
         d.cpostal = cpostal.Text;
         d.nro_calle = nroCalle.Text;
-        if (BDManager.exists("empresa", "cuit", emp.cuit))
-            throw new EmpresaInvalidadException();
-        String dirKey = default(string);
-        BDManager.genericFillObject("SELECT id_direccion FROM EQUISDE.empresa d WHERE d.username=" + "'" + us.username + "'", dirKey);
-        BDManager.updateSetStringKey("direccion", "id_direccion", dirKey, d);
-        BDManager.updateSetStringKey("empresa","username",us.username,emp);
-        MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        if (!empresaAUsar.cuit.Equals(CUIT.Text))
+        {
+            empresaAUsar.cuit = CUIT.Text;
+            if (BDManager.exists("empresa", "cuit", empresaAUsar.cuit))
+                throw new EmpresaInvalidadException();
+        }
+        BDManager.updateSetStringKey("direccion", "id_direccion", empresaAUsar.id_direccion, d);
+        BDManager.updateSetStringKey("empresa", "username", empresaAUsar.username, empresaAUsar);
+       MessageBox.Show("El usuario ha sido modificado", "Usuario modificado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
         this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la empresa a modificar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
@@ -91,14 +89,9 @@ using PalcoNet.BDManager;
     private void validarCamposEmpresa()
     {
         Validaciones.inicializarValidador();
-        Validaciones.esValido(nombre.Name, nombre.Text, new Validaciones.Letras());
-        Validaciones.esValido(CUIL.Name, CUIL.Text, new Validaciones.CUIT());
-        Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
-        Validaciones.esValido(localidad.Name, localidad.Text, new Validaciones.NumerosLetrasGuion());
-        Validaciones.esValido(ciudad.Name, ciudad.Text, new Validaciones.NumerosLetrasGuion());
+        Validaciones.esValido(CUIT.Name, CUIT.Text, new Validaciones.CUIT());
         Validaciones.esValido(calle.Name, calle.Text, new Validaciones.NumerosLetrasGuion());
         Validaciones.esValido(piso.Name, piso.Text, new Validaciones.NumerosGuion());
-        Validaciones.esValido(depto.Name, depto.Text, new Validaciones.NumerosLetrasGuion());
         Validaciones.esValido(cpostal.Name, cpostal.Text, new Validaciones.Numeros());
         Validaciones.esValido(nroCalle.Name, nroCalle.Text, new Validaciones.Numeros());
         if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
@@ -106,8 +99,8 @@ using PalcoNet.BDManager;
     }
     private void btn_limpiar_Click(object sender, EventArgs e)
     {
-        nombre.Text = default(String);
-        CUIL.Text = default(String);
+        razon_social.Text = default(String);
+        CUIT.Text = default(String);
         email.Text = default(String);
         localidad.Text = default(String);
         ciudad.Text = default(String);

@@ -45,7 +45,6 @@
             this.gradoActual = new System.Windows.Forms.Label();
             this.gradosCombobox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btn_limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -253,19 +252,6 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Elija el nuevo grado para la publicación";
             // 
-            // btn_limpiar
-            // 
-            this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
-            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limpiar.Location = new System.Drawing.Point(210, 329);
-            this.btn_limpiar.Name = "btn_limpiar";
-            this.btn_limpiar.Size = new System.Drawing.Size(148, 67);
-            this.btn_limpiar.TabIndex = 17;
-            this.btn_limpiar.Text = "Limpiar";
-            this.btn_limpiar.UseVisualStyleBackColor = false;
-            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
-            // 
             // ElegirGrado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,7 +260,6 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(539, 408);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_limpiar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gradosCombobox);
             this.Controls.Add(this.gradoActual);
@@ -324,6 +309,5 @@
         private System.Windows.Forms.Label gradoActual;
         private System.Windows.Forms.ComboBox gradosCombobox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btn_limpiar;
 
     }
