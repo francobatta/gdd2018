@@ -145,7 +145,7 @@ using PalcoNet.BDManager;
             ListaEsp.DataSource = null;
             ListaEsp.DataSource = BDManager.getData(
                 //REemplazar el getdate por la fecha de compra!
-              "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN grado g ON g.id_grado=p.id_grado"+
+              "SELECT Distinct p.* FROM EQUISDE.publicacion p JOIN EQUISDE.estado e ON p.id_estado=e.id_estado JOIN EQUISDE.ubicacion u ON u.id_publicacion=p.id_publicacion JOIN EQUISDE.grado g ON g.id_grado=p.id_grado"+
             "WHERE e.estado LIKE 'Alta' AND GETDATE() BEETWEEN p.fecha_publicacion AND p.fecha_vencimiento AND p.descripcion LIKE '%" + Descripcion.Text + "%'"+filtroCategorias+filtroFechas+
             "GROUP BY p.id_publicacion, p.id_rubro, p.id_direccion, p.username, p.descripcion, p.fecha_publicacion,p.fecha_vencimiento,p.id_grado ORDER BY p.id_grado DESC"
               );
@@ -204,5 +204,10 @@ using PalcoNet.BDManager;
             Validaciones.esValido(Email.Name, Email.Text, new Validaciones.Email());
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
         }

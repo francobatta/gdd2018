@@ -55,7 +55,6 @@
             this.Compra = new System.Windows.Forms.Button();
             this.fechaIN = new System.Windows.Forms.DateTimePicker();
             this.FechaOut = new System.Windows.Forms.DateTimePicker();
-            this.Limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -367,15 +366,6 @@
             this.FechaOut.TabIndex = 20;
             this.FechaOut.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
             // 
-            // Limpiar
-            // 
-            this.Limpiar.Location = new System.Drawing.Point(1244, 82);
-            this.Limpiar.Name = "Limpiar";
-            this.Limpiar.Size = new System.Drawing.Size(195, 87);
-            this.Limpiar.TabIndex = 21;
-            this.Limpiar.Text = "button3";
-            this.Limpiar.UseVisualStyleBackColor = true;
-            // 
             // nuevaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,7 +374,6 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.Limpiar);
             this.Controls.Add(this.FechaOut);
             this.Controls.Add(this.fechaIN);
             this.Controls.Add(this.Compra);
@@ -454,6 +443,5 @@
         private System.Windows.Forms.Button Compra;
         private System.Windows.Forms.DateTimePicker fechaIN;
         private System.Windows.Forms.DateTimePicker FechaOut;
-        private System.Windows.Forms.Button Limpiar;
 
     }
