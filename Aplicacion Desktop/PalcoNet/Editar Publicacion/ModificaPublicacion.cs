@@ -18,7 +18,7 @@ using System.Windows.Forms;
             this.p = _p;
             InitializeComponent();
         }
-        private void ModificaPublicacion_Load(object sender, EventArgs e)
+        public void ModificaPublicacion_Load(object sender, EventArgs e)
         {
             List<object> listaDeBD = BDManager.getList("SELECT * FROM EQUISDE.ubicacion WHERE id_publicacion=" + p.id_publicacion, new ubicacion());
             List<ubicacion> ubicaciones = listaDeBD.Cast<ubicacion>().ToList();
@@ -164,7 +164,7 @@ using System.Windows.Forms;
         listaFechasEspectaculo.Items.Clear();
     }
 
-    private void btn_agregarUbicacion_Click(object sender, EventArgs e)
+    public void btn_agregarUbicacion_Click(object sender, EventArgs e)
     {
         try
         {
@@ -176,6 +176,7 @@ using System.Windows.Forms;
         if (!String.IsNullOrEmpty(Validaciones.camposInvalidos) || tipoUbicacion.SelectedItem == null)
             throw new CamposInvalidosException();
         ubicacion u = new ubicacion();
+        ubicaciones = listaUbicaciones.DataSource as List<ubicacion>;
         u.asiento = asientoUbicacion.Text;
         u.fila = filaUbicacion.Text;
         u.precio = precioUbicacion.Text;
