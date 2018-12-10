@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
     public partial class NuevaCompra : Form
     {
+        public publicacion pElegida { get; set; }
         public NuevaCompra()
         {
             InitializeComponent();
@@ -47,21 +48,23 @@ using System.Windows.Forms;
 
         private void btn_seleccionar_Click(object sender, EventArgs e)
         {
-               try
+            try
             {
- 
+                DataGridViewRow filaElegida = listadoPublicaciones.CurrentRow;
+                if (filaElegida == null || filaElegida.Selected == false)
+                    throw new CamposInvalidosException();
+                pElegida = new publicacion();
+                pElegida.id_publicacion = filaElegida.Cells["id_publicacion"].Value.ToString();
+                // etc
+                idPublicacionElegida.Text = pElegida.id_publicacion;
             }
-            catch (CamposInvalidosException)
-            {
-                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            catch (CamposInvalidosException) { MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar publicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            // falta paginar, between de fechas, incluir los rubros
             listadoPublicaciones.DataSource = BDManager.getData("SELECT * FROM EQUISDE.publicacion WHERE id_estado=1 AND descripcion LIKE '%"+descripcion.Text+"%' ORDER BY id_grado");
-
-
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)

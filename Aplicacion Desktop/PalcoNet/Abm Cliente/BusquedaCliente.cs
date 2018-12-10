@@ -61,7 +61,7 @@ using System.Windows.Forms;
             }
             catch (CamposInvalidosException)
             {
-                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar empresa", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar cliente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -97,7 +97,7 @@ using System.Windows.Forms;
             }
             catch (CamposInvalidosException)
             {
-                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar usuario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar cliente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

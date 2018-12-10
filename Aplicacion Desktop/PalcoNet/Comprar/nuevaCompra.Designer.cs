@@ -171,11 +171,11 @@
             this.btn_seleccionar.BackColor = System.Drawing.Color.LightCyan;
             this.btn_seleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_seleccionar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_seleccionar.Location = new System.Drawing.Point(958, 465);
+            this.btn_seleccionar.Location = new System.Drawing.Point(958, 279);
             this.btn_seleccionar.Name = "btn_seleccionar";
             this.btn_seleccionar.Size = new System.Drawing.Size(481, 67);
             this.btn_seleccionar.TabIndex = 9;
-            this.btn_seleccionar.Text = "Modificar";
+            this.btn_seleccionar.Text = "Seleccionar publicación";
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
