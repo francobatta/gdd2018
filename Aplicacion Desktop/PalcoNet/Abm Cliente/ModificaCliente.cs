@@ -45,6 +45,10 @@ public partial class ModificaCliente : Form
         nroCalle.Text = d.nro_calle;
         depto.Text = d.depto;
         cpostal.Text = d.cpostal;
+        nombreTitularTarjeta.Text = t.nombre_titular;
+        ntarjeta.Text = t.nro_tarjeta;
+        codSeguridad.Text = t.cod_seguridad;
+        fechavtotarjeta.Text = t.fecha_vencimiento;
     }
     // controles de cualquier form
     private void closingLabel_Click(object sender, EventArgs e)
@@ -102,9 +106,6 @@ public partial class ModificaCliente : Form
             if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
                 throw new CamposInvalidosException();
             // armar objetito cliente
-            cliente c = new cliente();
-            direccion d = new direccion();
-            tarjeta t = new tarjeta();
             c.nombre = nombre.Text;
             c.apellido = apellido.Text;
             c.tipo_documento = tipoDoc.Text;

@@ -61,6 +61,7 @@ namespace PalcoNet.BDManager
             var listaParaUpdate = Extensions.getPropertiesFromObj().Select(p => p.Name + "=@" + p.Name).ToArray();
             appendList(sql, listaParaUpdate, "", ",", "");
             sql.Append(" WHERE " + idColumn + "='" + idVal +"'");
+            MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(), queryTypes.NON_RETURNING_QUERY);
         }
         public static void insertInto(String tableName, object o)
