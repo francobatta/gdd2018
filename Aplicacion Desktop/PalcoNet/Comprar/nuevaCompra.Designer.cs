@@ -28,7 +28,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevaCompra));
             this.sidepanel = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.title = new System.Windows.Forms.Label();
@@ -38,45 +37,44 @@
             this.closingLabel = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.btn_seleccionar = new System.Windows.Forms.Button();
-            this.listadoEmpresas = new System.Windows.Forms.DataGridView();
+            this.listadoPublicaciones = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
-            this.email = new System.Windows.Forms.TextBox();
+            this.descripcion = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.CUIT = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.razonSocial = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
+            this.right = new System.Windows.Forms.Button();
+            this.left = new System.Windows.Forms.Button();
+            this.righttight = new System.Windows.Forms.Button();
+            this.leftleft = new System.Windows.Forms.Button();
+            this.nPag = new System.Windows.Forms.Label();
+            this.fechaFin = new System.Windows.Forms.DateTimePicker();
+            this.fechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.rubro = new System.Windows.Forms.ComboBox();
+            this.idPublicacionElegida = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_eliminarRubro = new System.Windows.Forms.Button();
+            this.btn_agregarRubro = new System.Windows.Forms.Button();
+            this.listadoRubros = new System.Windows.Forms.ListBox();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoPublicaciones)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
             this.sidepanel.Name = "sidepanel";
             this.sidepanel.Size = new System.Drawing.Size(200, 617);
             this.sidepanel.TabIndex = 0;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(4, 56);
-            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(187, 187);
-            this.label17.TabIndex = 52;
-            this.label17.Text = resources.GetString("label17.Text");
             // 
             // panel1
             // 
@@ -141,9 +139,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(251, 24);
+            this.titleLabel.Size = new System.Drawing.Size(96, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Búsqueda de empresas";
+            this.titleLabel.Text = "Compra";
             // 
             // closingLabel
             // 
@@ -181,18 +179,18 @@
             this.btn_seleccionar.UseVisualStyleBackColor = false;
             this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
             // 
-            // listadoEmpresas
+            // listadoPublicaciones
             // 
-            this.listadoEmpresas.AllowUserToAddRows = false;
-            this.listadoEmpresas.AllowUserToDeleteRows = false;
-            this.listadoEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoEmpresas.Location = new System.Drawing.Point(210, 248);
-            this.listadoEmpresas.MultiSelect = false;
-            this.listadoEmpresas.Name = "listadoEmpresas";
-            this.listadoEmpresas.ReadOnly = true;
-            this.listadoEmpresas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoEmpresas.Size = new System.Drawing.Size(742, 357);
-            this.listadoEmpresas.TabIndex = 10;
+            this.listadoPublicaciones.AllowUserToAddRows = false;
+            this.listadoPublicaciones.AllowUserToDeleteRows = false;
+            this.listadoPublicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoPublicaciones.Location = new System.Drawing.Point(210, 251);
+            this.listadoPublicaciones.MultiSelect = false;
+            this.listadoPublicaciones.Name = "listadoPublicaciones";
+            this.listadoPublicaciones.ReadOnly = true;
+            this.listadoPublicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoPublicaciones.Size = new System.Drawing.Size(742, 312);
+            this.listadoPublicaciones.TabIndex = 10;
             // 
             // button1
             // 
@@ -212,7 +210,7 @@
             this.btn_buscar.BackColor = System.Drawing.Color.LightGreen;
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar.Location = new System.Drawing.Point(958, 248);
+            this.btn_buscar.Location = new System.Drawing.Point(958, 206);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(481, 67);
             this.btn_buscar.TabIndex = 12;
@@ -220,56 +218,33 @@
             this.btn_buscar.UseVisualStyleBackColor = false;
             this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
-            // email
+            // descripcion
             // 
-            this.email.Location = new System.Drawing.Point(317, 222);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(247, 20);
-            this.email.TabIndex = 24;
+            this.descripcion.Location = new System.Drawing.Point(317, 180);
+            this.descripcion.Multiline = true;
+            this.descripcion.Name = "descripcion";
+            this.descripcion.Size = new System.Drawing.Size(317, 64);
+            this.descripcion.TabIndex = 24;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(206, 221);
+            this.label5.Location = new System.Drawing.Point(206, 179);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 21);
+            this.label5.Size = new System.Drawing.Size(100, 21);
             this.label5.TabIndex = 23;
-            this.label5.Text = "E-Mail";
-            // 
-            // CUIT
-            // 
-            this.CUIT.Location = new System.Drawing.Point(317, 147);
-            this.CUIT.Name = "CUIT";
-            this.CUIT.Size = new System.Drawing.Size(247, 20);
-            this.CUIT.TabIndex = 18;
+            this.label5.Text = "Descripción";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(206, 147);
+            this.label2.Location = new System.Drawing.Point(206, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 21);
+            this.label2.Size = new System.Drawing.Size(150, 21);
             this.label2.TabIndex = 17;
-            this.label2.Text = "CUIT";
-            // 
-            // razonSocial
-            // 
-            this.razonSocial.Location = new System.Drawing.Point(317, 76);
-            this.razonSocial.Name = "razonSocial";
-            this.razonSocial.Size = new System.Drawing.Size(247, 20);
-            this.razonSocial.TabIndex = 16;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(206, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 21);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Razón social";
+            this.label2.Text = "Rubros disponibles";
             // 
             // btn_limpiar
             // 
@@ -284,7 +259,160 @@
             this.btn_limpiar.UseVisualStyleBackColor = false;
             this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
-            // BusquedaEmpresa
+            // right
+            // 
+            this.right.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.right.Location = new System.Drawing.Point(609, 569);
+            this.right.Name = "right";
+            this.right.Size = new System.Drawing.Size(75, 48);
+            this.right.TabIndex = 51;
+            this.right.Text = ">";
+            this.right.UseVisualStyleBackColor = true;
+            // 
+            // left
+            // 
+            this.left.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.left.Location = new System.Drawing.Point(459, 569);
+            this.left.Name = "left";
+            this.left.Size = new System.Drawing.Size(75, 48);
+            this.left.TabIndex = 52;
+            this.left.Text = "<";
+            this.left.UseVisualStyleBackColor = true;
+            // 
+            // righttight
+            // 
+            this.righttight.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.righttight.Location = new System.Drawing.Point(877, 569);
+            this.righttight.Name = "righttight";
+            this.righttight.Size = new System.Drawing.Size(75, 48);
+            this.righttight.TabIndex = 53;
+            this.righttight.Text = ">>>";
+            this.righttight.UseVisualStyleBackColor = true;
+            // 
+            // leftleft
+            // 
+            this.leftleft.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leftleft.Location = new System.Drawing.Point(210, 569);
+            this.leftleft.Name = "leftleft";
+            this.leftleft.Size = new System.Drawing.Size(75, 48);
+            this.leftleft.TabIndex = 54;
+            this.leftleft.Text = "<<<";
+            this.leftleft.UseVisualStyleBackColor = true;
+            // 
+            // nPag
+            // 
+            this.nPag.AutoSize = true;
+            this.nPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nPag.Location = new System.Drawing.Point(560, 580);
+            this.nPag.Name = "nPag";
+            this.nPag.Size = new System.Drawing.Size(26, 25);
+            this.nPag.TabIndex = 55;
+            this.nPag.Text = "--";
+            // 
+            // fechaFin
+            // 
+            this.fechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaFin.Location = new System.Drawing.Point(741, 222);
+            this.fechaFin.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.fechaFin.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.fechaFin.Name = "fechaFin";
+            this.fechaFin.Size = new System.Drawing.Size(211, 20);
+            this.fechaFin.TabIndex = 56;
+            // 
+            // fechaInicio
+            // 
+            this.fechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fechaInicio.Location = new System.Drawing.Point(752, 196);
+            this.fechaInicio.MaxDate = new System.DateTime(2100, 12, 31, 0, 0, 0, 0);
+            this.fechaInicio.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            this.fechaInicio.Name = "fechaInicio";
+            this.fechaInicio.Size = new System.Drawing.Size(200, 20);
+            this.fechaInicio.TabIndex = 57;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(640, 196);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 21);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "Fecha inicial";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(640, 222);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 21);
+            this.label4.TabIndex = 59;
+            this.label4.Text = "Fecha final";
+            // 
+            // rubro
+            // 
+            this.rubro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rubro.FormattingEnabled = true;
+            this.rubro.Location = new System.Drawing.Point(380, 116);
+            this.rubro.Name = "rubro";
+            this.rubro.Size = new System.Drawing.Size(154, 21);
+            this.rubro.TabIndex = 60;
+            // 
+            // idPublicacionElegida
+            // 
+            this.idPublicacionElegida.AutoSize = true;
+            this.idPublicacionElegida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.idPublicacionElegida.Location = new System.Drawing.Point(933, 168);
+            this.idPublicacionElegida.Name = "idPublicacionElegida";
+            this.idPublicacionElegida.Size = new System.Drawing.Size(19, 25);
+            this.idPublicacionElegida.TabIndex = 61;
+            this.idPublicacionElegida.Text = "-";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(748, 172);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 21);
+            this.label1.TabIndex = 62;
+            this.label1.Text = "ID publicación elegida";
+            // 
+            // btn_eliminarRubro
+            // 
+            this.btn_eliminarRubro.BackColor = System.Drawing.Color.DarkOrange;
+            this.btn_eliminarRubro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_eliminarRubro.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminarRubro.Location = new System.Drawing.Point(380, 140);
+            this.btn_eliminarRubro.Name = "btn_eliminarRubro";
+            this.btn_eliminarRubro.Size = new System.Drawing.Size(154, 30);
+            this.btn_eliminarRubro.TabIndex = 83;
+            this.btn_eliminarRubro.Text = "Eliminar rubro elegido";
+            this.btn_eliminarRubro.UseVisualStyleBackColor = false;
+            this.btn_eliminarRubro.Click += new System.EventHandler(this.btn_eliminarRubro_Click);
+            // 
+            // btn_agregarRubro
+            // 
+            this.btn_agregarRubro.BackColor = System.Drawing.Color.Gold;
+            this.btn_agregarRubro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregarRubro.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregarRubro.Location = new System.Drawing.Point(206, 140);
+            this.btn_agregarRubro.Name = "btn_agregarRubro";
+            this.btn_agregarRubro.Size = new System.Drawing.Size(168, 30);
+            this.btn_agregarRubro.TabIndex = 82;
+            this.btn_agregarRubro.Text = "Agregar rubro";
+            this.btn_agregarRubro.UseVisualStyleBackColor = false;
+            this.btn_agregarRubro.Click += new System.EventHandler(this.btn_agregarRubro_Click);
+            // 
+            // listadoRubros
+            // 
+            this.listadoRubros.FormattingEnabled = true;
+            this.listadoRubros.Location = new System.Drawing.Point(540, 74);
+            this.listadoRubros.Name = "listadoRubros";
+            this.listadoRubros.Size = new System.Drawing.Size(412, 95);
+            this.listadoRubros.TabIndex = 84;
+            // 
+            // NuevaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -292,16 +420,28 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_limpiar);
-            this.Controls.Add(this.email);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.CUIT);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.razonSocial);
+            this.Controls.Add(this.listadoRubros);
+            this.Controls.Add(this.btn_eliminarRubro);
+            this.Controls.Add(this.btn_agregarRubro);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.idPublicacionElegida);
+            this.Controls.Add(this.rubro);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.fechaInicio);
+            this.Controls.Add(this.fechaFin);
+            this.Controls.Add(this.nPag);
+            this.Controls.Add(this.leftleft);
+            this.Controls.Add(this.righttight);
+            this.Controls.Add(this.left);
+            this.Controls.Add(this.right);
+            this.Controls.Add(this.btn_limpiar);
+            this.Controls.Add(this.descripcion);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.listadoEmpresas);
+            this.Controls.Add(this.listadoPublicaciones);
             this.Controls.Add(this.btn_seleccionar);
             this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
@@ -309,17 +449,16 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BusquedaEmpresa";
+            this.Name = "NuevaCompra";
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.NuevaCompra_Load);
             this.sidepanel.ResumeLayout(false);
-            this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoPublicaciones)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -337,16 +476,27 @@
         private System.Windows.Forms.Label minimizingLabel;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Button btn_seleccionar;
-        private System.Windows.Forms.DataGridView listadoEmpresas;
+        private System.Windows.Forms.DataGridView listadoPublicaciones;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_buscar;
-        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox descripcion;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox CUIT;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox razonSocial;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_limpiar;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button right;
+        private System.Windows.Forms.Button left;
+        private System.Windows.Forms.Button righttight;
+        private System.Windows.Forms.Button leftleft;
+        private System.Windows.Forms.Label nPag;
+        private System.Windows.Forms.DateTimePicker fechaFin;
+        private System.Windows.Forms.DateTimePicker fechaInicio;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox rubro;
+        private System.Windows.Forms.Label idPublicacionElegida;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_eliminarRubro;
+        private System.Windows.Forms.Button btn_agregarRubro;
+        private System.Windows.Forms.ListBox listadoRubros;
 
     }
