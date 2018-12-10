@@ -12,8 +12,6 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\B
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaRol.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\CompraPremio.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\CanjePuntos.resources
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\nuevaCompra.resources
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\nuevaTarjeta.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaPublicacionE.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaPublicacion.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ListadoEstadistico.resources
@@ -33,3 +31,4 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\P
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\NuevaCompra.resources

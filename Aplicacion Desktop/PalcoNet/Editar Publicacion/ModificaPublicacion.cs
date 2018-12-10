@@ -194,6 +194,7 @@ using System.Windows.Forms;
     {
         if (listaUbicaciones.CurrentRow != null && listaUbicaciones.SelectedRows[0].Index > -1)
         {
+            MessageBox.Show(listaUbicaciones.CurrentCell.RowIndex.ToString());
             ubicaciones.RemoveAt(listaUbicaciones.CurrentCell.RowIndex);
             listaUbicaciones.DataSource = ubicaciones;
             listaUbicaciones.DataSource = null;

@@ -242,17 +242,17 @@ VALUES('empresa'),('cliente');
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('nuevaCompra'),('NuevaTarjeta'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('RegistraUsuario'),('ListadoEstadistico');
+VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ListadoEstadistico');
 
 
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'RegistraUsuario' OR f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'RegistraUsuario' OR f.nombre = 'AltaPublicacion' OR f.nombre = 'BusquedaPublicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'AltaPublicacion' OR f.nombre = 'BusquedaPublicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
 
 
 MERGE EQUISDE.rol_x_usuario d

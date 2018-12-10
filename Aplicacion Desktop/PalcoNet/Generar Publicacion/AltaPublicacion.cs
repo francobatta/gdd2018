@@ -110,8 +110,10 @@ using System.Windows.Forms;
                 foreach (ubicacion u in ubicaciones)
                 {
                     publicacion pDummy = new publicacion();
+                    //MessageBox.Show("SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento='" + f.ToString("s") +"'");
                     BDManager.genericFillObject(
- "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento="+f.ToString("yyyy-mm-dd"), pDummy);
+ "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento='" + f.ToString("s") + "'", pDummy);
+                    
                     u.id_publicacion = pDummy.id_publicacion;
                     BDManager.insertInto("ubicacion", u);
                 }

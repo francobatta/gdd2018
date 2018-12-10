@@ -1,4 +1,4 @@
-﻿partial class nuevaCompra
+﻿partial class NuevaCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nuevaCompra));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NuevaCompra));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,36 +36,23 @@
             this.minimizingLabel = new System.Windows.Forms.Label();
             this.titleLabel = new System.Windows.Forms.Label();
             this.closingLabel = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ListaEsp = new System.Windows.Forms.DataGridView();
-            this.ListaUbi = new System.Windows.Forms.DataGridView();
+            this.label = new System.Windows.Forms.Label();
+            this.btn_seleccionar = new System.Windows.Forms.Button();
+            this.listadoEmpresas = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tipoUbi = new System.Windows.Forms.ComboBox();
-            this.agregarTipo = new System.Windows.Forms.Button();
-            this.eliminarTipo = new System.Windows.Forms.Button();
-            this.ListaCat = new System.Windows.Forms.ListBox();
-            this.Descripcionl = new System.Windows.Forms.Label();
-            this.Descripcion = new System.Windows.Forms.TextBox();
-            this.filtrar = new System.Windows.Forms.Button();
-            this.Emaill = new System.Windows.Forms.Label();
-            this.Email = new System.Windows.Forms.TextBox();
-            this.Carrito = new System.Windows.Forms.ListBox();
-            this.eliminarCarrito = new System.Windows.Forms.Button();
-            this.Compra = new System.Windows.Forms.Button();
-            this.fechaIN = new System.Windows.Forms.DateTimePicker();
-            this.FechaOut = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.pagina = new System.Windows.Forms.Label();
+            this.btn_buscar = new System.Windows.Forms.Button();
+            this.email = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CUIT = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.razonSocial = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_limpiar = new System.Windows.Forms.Button();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListaEsp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ListaUbi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
@@ -87,9 +74,9 @@
             this.label17.Location = new System.Drawing.Point(4, 56);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(165, 34);
-            this.label17.TabIndex = 51;
-            this.label17.Text = "Usted puede realizar sus compras aqui";
+            this.label17.Size = new System.Drawing.Size(187, 187);
+            this.label17.TabIndex = 52;
+            this.label17.Text = resources.GetString("label17.Text");
             // 
             // panel1
             // 
@@ -154,9 +141,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(102, 24);
+            this.titleLabel.Size = new System.Drawing.Size(251, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Comprar";
+            this.titleLabel.Text = "Búsqueda de empresas";
             // 
             // closingLabel
             // 
@@ -171,256 +158,133 @@
             this.closingLabel.Text = "X";
             this.closingLabel.Click += new System.EventHandler(this.closingLabel_Click);
             // 
-            // ListaEsp
+            // label
             // 
-            this.ListaEsp.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaEsp.Location = new System.Drawing.Point(288, 213);
-            this.ListaEsp.Name = "ListaEsp";
-            this.ListaEsp.Size = new System.Drawing.Size(617, 88);
-            this.ListaEsp.TabIndex = 2;
-            this.ListaEsp.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListaEsp_CellContentClick);
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.Location = new System.Drawing.Point(206, 52);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(208, 21);
+            this.label.TabIndex = 7;
+            this.label.Text = "Parámetros de búsqueda";
             // 
-            // ListaUbi
+            // btn_seleccionar
             // 
-            this.ListaUbi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaUbi.Location = new System.Drawing.Point(288, 332);
-            this.ListaUbi.Name = "ListaUbi";
-            this.ListaUbi.Size = new System.Drawing.Size(617, 91);
-            this.ListaUbi.TabIndex = 3;
+            this.btn_seleccionar.BackColor = System.Drawing.Color.LightCyan;
+            this.btn_seleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_seleccionar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_seleccionar.Location = new System.Drawing.Point(958, 465);
+            this.btn_seleccionar.Name = "btn_seleccionar";
+            this.btn_seleccionar.Size = new System.Drawing.Size(481, 67);
+            this.btn_seleccionar.TabIndex = 9;
+            this.btn_seleccionar.Text = "Modificar";
+            this.btn_seleccionar.UseVisualStyleBackColor = false;
+            this.btn_seleccionar.Click += new System.EventHandler(this.btn_seleccionar_Click);
+            // 
+            // listadoEmpresas
+            // 
+            this.listadoEmpresas.AllowUserToAddRows = false;
+            this.listadoEmpresas.AllowUserToDeleteRows = false;
+            this.listadoEmpresas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listadoEmpresas.Location = new System.Drawing.Point(210, 248);
+            this.listadoEmpresas.MultiSelect = false;
+            this.listadoEmpresas.Name = "listadoEmpresas";
+            this.listadoEmpresas.ReadOnly = true;
+            this.listadoEmpresas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listadoEmpresas.Size = new System.Drawing.Size(742, 357);
+            this.listadoEmpresas.TabIndex = 10;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.PaleGreen;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 2;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 15.25F);
-            this.button1.Location = new System.Drawing.Point(930, 214);
+            this.button1.BackColor = System.Drawing.Color.LightPink;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(958, 538);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(195, 87);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Seleccionar";
+            this.button1.Size = new System.Drawing.Size(481, 67);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Dar de baja";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_buscar
             // 
-            this.button2.BackColor = System.Drawing.Color.Gold;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button2.FlatAppearance.BorderSize = 2;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Century Gothic", 15.25F);
-            this.button2.Location = new System.Drawing.Point(930, 336);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(195, 87);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Agregar carrito";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_buscar.BackColor = System.Drawing.Color.LightGreen;
+            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar.Location = new System.Drawing.Point(958, 248);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(481, 67);
+            this.btn_buscar.TabIndex = 12;
+            this.btn_buscar.Text = "Buscar ";
+            this.btn_buscar.UseVisualStyleBackColor = false;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
-            // tipoUbi
+            // email
             // 
-            this.tipoUbi.FormattingEnabled = true;
-            this.tipoUbi.Location = new System.Drawing.Point(288, 82);
-            this.tipoUbi.Name = "tipoUbi";
-            this.tipoUbi.Size = new System.Drawing.Size(121, 21);
-            this.tipoUbi.TabIndex = 6;
-            this.tipoUbi.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.email.Location = new System.Drawing.Point(317, 222);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(247, 20);
+            this.email.TabIndex = 24;
             // 
-            // agregarTipo
+            // label5
             // 
-            this.agregarTipo.BackColor = System.Drawing.Color.Gold;
-            this.agregarTipo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.agregarTipo.FlatAppearance.BorderSize = 2;
-            this.agregarTipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.agregarTipo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agregarTipo.Location = new System.Drawing.Point(415, 82);
-            this.agregarTipo.Name = "agregarTipo";
-            this.agregarTipo.Size = new System.Drawing.Size(87, 23);
-            this.agregarTipo.TabIndex = 8;
-            this.agregarTipo.Text = "Agregar";
-            this.agregarTipo.UseVisualStyleBackColor = false;
-            this.agregarTipo.Click += new System.EventHandler(this.agregarTipo_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(206, 221);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(56, 21);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "E-Mail";
             // 
-            // eliminarTipo
+            // CUIT
             // 
-            this.eliminarTipo.BackColor = System.Drawing.Color.DarkOrange;
-            this.eliminarTipo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.eliminarTipo.FlatAppearance.BorderSize = 2;
-            this.eliminarTipo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.eliminarTipo.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.eliminarTipo.Location = new System.Drawing.Point(508, 82);
-            this.eliminarTipo.Name = "eliminarTipo";
-            this.eliminarTipo.Size = new System.Drawing.Size(75, 23);
-            this.eliminarTipo.TabIndex = 9;
-            this.eliminarTipo.Text = "Eliminar";
-            this.eliminarTipo.UseVisualStyleBackColor = false;
-            this.eliminarTipo.Click += new System.EventHandler(this.eliminarTipo_Click);
+            this.CUIT.Location = new System.Drawing.Point(317, 147);
+            this.CUIT.Name = "CUIT";
+            this.CUIT.Size = new System.Drawing.Size(247, 20);
+            this.CUIT.TabIndex = 18;
             // 
-            // ListaCat
+            // label2
             // 
-            this.ListaCat.FormattingEnabled = true;
-            this.ListaCat.Location = new System.Drawing.Point(288, 109);
-            this.ListaCat.Name = "ListaCat";
-            this.ListaCat.Size = new System.Drawing.Size(292, 56);
-            this.ListaCat.TabIndex = 10;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(206, 147);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(47, 21);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "CUIT";
             // 
-            // Descripcionl
+            // razonSocial
             // 
-            this.Descripcionl.AutoSize = true;
-            this.Descripcionl.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Descripcionl.Location = new System.Drawing.Point(285, 187);
-            this.Descripcionl.Name = "Descripcionl";
-            this.Descripcionl.Size = new System.Drawing.Size(70, 16);
-            this.Descripcionl.TabIndex = 11;
-            this.Descripcionl.Text = "Descripcion";
+            this.razonSocial.Location = new System.Drawing.Point(317, 76);
+            this.razonSocial.Name = "razonSocial";
+            this.razonSocial.Size = new System.Drawing.Size(247, 20);
+            this.razonSocial.TabIndex = 16;
             // 
-            // Descripcion
+            // label1
             // 
-            this.Descripcion.Location = new System.Drawing.Point(355, 187);
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Size = new System.Drawing.Size(100, 20);
-            this.Descripcion.TabIndex = 12;
-            this.Descripcion.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(206, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(105, 21);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Razón social";
             // 
-            // filtrar
+            // btn_limpiar
             // 
-            this.filtrar.BackColor = System.Drawing.Color.LightPink;
-            this.filtrar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.filtrar.FlatAppearance.BorderSize = 2;
-            this.filtrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.filtrar.Font = new System.Drawing.Font("Century Gothic", 15.25F);
-            this.filtrar.Location = new System.Drawing.Point(1022, 78);
-            this.filtrar.Name = "filtrar";
-            this.filtrar.Size = new System.Drawing.Size(195, 87);
-            this.filtrar.TabIndex = 13;
-            this.filtrar.Text = "Filtrar";
-            this.filtrar.UseVisualStyleBackColor = false;
-            this.filtrar.Click += new System.EventHandler(this.filtrar_Click);
+            this.btn_limpiar.BackColor = System.Drawing.Color.LightPink;
+            this.btn_limpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limpiar.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limpiar.Location = new System.Drawing.Point(958, 52);
+            this.btn_limpiar.Name = "btn_limpiar";
+            this.btn_limpiar.Size = new System.Drawing.Size(481, 67);
+            this.btn_limpiar.TabIndex = 50;
+            this.btn_limpiar.Text = "Limpiar";
+            this.btn_limpiar.UseVisualStyleBackColor = false;
+            this.btn_limpiar.Click += new System.EventHandler(this.btn_limpiar_Click);
             // 
-            // Emaill
-            // 
-            this.Emaill.AutoSize = true;
-            this.Emaill.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Emaill.Location = new System.Drawing.Point(285, 576);
-            this.Emaill.Name = "Emaill";
-            this.Emaill.Size = new System.Drawing.Size(36, 16);
-            this.Emaill.TabIndex = 14;
-            this.Emaill.Text = "Email";
-            // 
-            // Email
-            // 
-            this.Email.Location = new System.Drawing.Point(355, 573);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(100, 20);
-            this.Email.TabIndex = 15;
-            // 
-            // Carrito
-            // 
-            this.Carrito.FormattingEnabled = true;
-            this.Carrito.Location = new System.Drawing.Point(288, 467);
-            this.Carrito.Name = "Carrito";
-            this.Carrito.Size = new System.Drawing.Size(617, 69);
-            this.Carrito.TabIndex = 16;
-            // 
-            // eliminarCarrito
-            // 
-            this.eliminarCarrito.BackColor = System.Drawing.Color.DarkOrange;
-            this.eliminarCarrito.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.eliminarCarrito.FlatAppearance.BorderSize = 2;
-            this.eliminarCarrito.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.eliminarCarrito.Font = new System.Drawing.Font("Century Gothic", 15.25F);
-            this.eliminarCarrito.Location = new System.Drawing.Point(930, 467);
-            this.eliminarCarrito.Name = "eliminarCarrito";
-            this.eliminarCarrito.Size = new System.Drawing.Size(195, 64);
-            this.eliminarCarrito.TabIndex = 17;
-            this.eliminarCarrito.Text = "Eliminar";
-            this.eliminarCarrito.UseVisualStyleBackColor = false;
-            this.eliminarCarrito.Click += new System.EventHandler(this.eliminarCarrito_Click);
-            // 
-            // Compra
-            // 
-            this.Compra.BackColor = System.Drawing.Color.PaleGreen;
-            this.Compra.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Compra.FlatAppearance.BorderSize = 2;
-            this.Compra.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.Compra.Font = new System.Drawing.Font("Century Gothic", 15.25F);
-            this.Compra.Location = new System.Drawing.Point(930, 550);
-            this.Compra.Name = "Compra";
-            this.Compra.Size = new System.Drawing.Size(195, 64);
-            this.Compra.TabIndex = 18;
-            this.Compra.Text = "Compra";
-            this.Compra.UseVisualStyleBackColor = false;
-            this.Compra.Click += new System.EventHandler(this.Compra_Click);
-            // 
-            // fechaIN
-            // 
-            this.fechaIN.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fechaIN.Location = new System.Drawing.Point(682, 109);
-            this.fechaIN.Name = "fechaIN";
-            this.fechaIN.Size = new System.Drawing.Size(200, 21);
-            this.fechaIN.TabIndex = 19;
-            this.fechaIN.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
-            // 
-            // FechaOut
-            // 
-            this.FechaOut.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FechaOut.Location = new System.Drawing.Point(682, 144);
-            this.FechaOut.Name = "FechaOut";
-            this.FechaOut.Size = new System.Drawing.Size(200, 21);
-            this.FechaOut.TabIndex = 20;
-            this.FechaOut.Value = new System.DateTime(2018, 11, 20, 0, 0, 0, 0);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(494, 303);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "<";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(635, 303);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 22;
-            this.button4.Text = ">";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(334, 303);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 23;
-            this.button5.Text = "<<";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(807, 303);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 24;
-            this.button6.Text = ">>";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // pagina
-            // 
-            this.pagina.AutoSize = true;
-            this.pagina.Location = new System.Drawing.Point(594, 308);
-            this.pagina.Name = "pagina";
-            this.pagina.Size = new System.Drawing.Size(13, 13);
-            this.pagina.TabIndex = 25;
-            this.pagina.Text = "0";
-            // 
-            // nuevaCompra
+            // BusquedaEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -428,36 +292,26 @@
             this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1451, 617);
             this.ControlBox = false;
-            this.Controls.Add(this.pagina);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.FechaOut);
-            this.Controls.Add(this.fechaIN);
-            this.Controls.Add(this.Compra);
-            this.Controls.Add(this.eliminarCarrito);
-            this.Controls.Add(this.Carrito);
-            this.Controls.Add(this.Email);
-            this.Controls.Add(this.Emaill);
-            this.Controls.Add(this.filtrar);
-            this.Controls.Add(this.Descripcion);
-            this.Controls.Add(this.Descripcionl);
-            this.Controls.Add(this.ListaCat);
-            this.Controls.Add(this.eliminarTipo);
-            this.Controls.Add(this.agregarTipo);
-            this.Controls.Add(this.tipoUbi);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_limpiar);
+            this.Controls.Add(this.email);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.CUIT);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.razonSocial);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.ListaUbi);
-            this.Controls.Add(this.ListaEsp);
+            this.Controls.Add(this.listadoEmpresas);
+            this.Controls.Add(this.btn_seleccionar);
+            this.Controls.Add(this.label);
             this.Controls.Add(this.topbar);
             this.Controls.Add(this.sidepanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "nuevaCompra";
-            this.Load += new System.EventHandler(this.nuevaCompra_Load);
+            this.Name = "BusquedaEmpresa";
+            this.Text = "MainWindow";
+            this.Load += new System.EventHandler(this.NuevaCompra_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -465,8 +319,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ListaEsp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ListaUbi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listadoEmpresas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,30 +335,18 @@
         private System.Windows.Forms.Label closingLabel;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label minimizingLabel;
-        private System.Windows.Forms.Label label17;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridView ListaEsp;
-        private System.Windows.Forms.DataGridView ListaUbi;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Button btn_seleccionar;
+        private System.Windows.Forms.DataGridView listadoEmpresas;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox tipoUbi;
-        private System.Windows.Forms.Button agregarTipo;
-        private System.Windows.Forms.Button eliminarTipo;
-        private System.Windows.Forms.ListBox ListaCat;
-        private System.Windows.Forms.Label Descripcionl;
-        private System.Windows.Forms.TextBox Descripcion;
-        private System.Windows.Forms.Button filtrar;
-        private System.Windows.Forms.Label Emaill;
-        private System.Windows.Forms.TextBox Email;
-        private System.Windows.Forms.ListBox Carrito;
-        private System.Windows.Forms.Button eliminarCarrito;
-        private System.Windows.Forms.Button Compra;
-        private System.Windows.Forms.DateTimePicker fechaIN;
-        private System.Windows.Forms.DateTimePicker FechaOut;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label pagina;
+        private System.Windows.Forms.Button btn_buscar;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox CUIT;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox razonSocial;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_limpiar;
+        private System.Windows.Forms.Label label17;
 
     }

@@ -235,6 +235,7 @@
             // 
             // gradosCombobox
             // 
+            this.gradosCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.gradosCombobox.FormattingEnabled = true;
             this.gradosCombobox.Location = new System.Drawing.Point(210, 222);
             this.gradosCombobox.Name = "gradosCombobox";

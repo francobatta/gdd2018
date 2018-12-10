@@ -144,21 +144,15 @@
       <DependentUpon>CanjePuntos.cs</DependentUpon>
     </Compile>
     <Compile Include="Canje Puntos\PuntosFaltanteException.cs" />
+    <Compile Include="Comprar\NuevaCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comprar\NuevaCompra.Designer.cs">
+      <DependentUpon>NuevaCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Comprar\compra.cs" />
     <Compile Include="Comprar\CompraInvalidaException.cs" />
     <Compile Include="Comprar\compra_x_ubicacion.cs" />
-    <Compile Include="Comprar\nuevaCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Comprar\nuevaCompra.Designer.cs">
-      <DependentUpon>nuevaCompra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Comprar\nuevaTarjeta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Comprar\nuevaTarjeta.Designer.cs">
-      <DependentUpon>nuevaTarjeta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Editar Publicacion\BusquedaPublicacionE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,11 +290,8 @@
     <EmbeddedResource Include="Canje Puntos\CanjePuntos.resx">
       <DependentUpon>CanjePuntos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Comprar\nuevaCompra.resx">
-      <DependentUpon>nuevaCompra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Comprar\nuevaTarjeta.resx">
-      <DependentUpon>nuevaTarjeta.cs</DependentUpon>
+    <EmbeddedResource Include="Comprar\NuevaCompra.resx">
+      <DependentUpon>NuevaCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Editar Publicacion\BusquedaPublicacionE.resx">
       <DependentUpon>BusquedaPublicacionE.cs</DependentUpon>
