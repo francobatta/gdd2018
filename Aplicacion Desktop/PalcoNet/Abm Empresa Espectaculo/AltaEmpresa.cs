@@ -55,6 +55,7 @@ using PalcoNet.BDManager;
             emp.razon_social = nombre.Text;
             emp.mail = email.Text;
             emp.cuit = CUIL.Text;
+            emp.habilitado = "True";
             d.nro_calle = nroCalle.Text;
             d.localidad = localidad.Text;
             d.ciudad = ciudad.Text;
@@ -66,11 +67,10 @@ using PalcoNet.BDManager;
                 throw new EmpresaInvalidadException();
             //
             BDManager.insertInto("direccion", d);
-            String dirKey = default(string);
-            BDManager.genericFillObject("SELECT id_direccion FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'"+" AND "+"d.depto="+
-                "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " +"d.piso=" + d.piso +" AND "+ "d.calle="  + "'" + d.calle + "'"
-                , dirKey);
-            emp.id_direccion = dirKey;
+            BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
+                "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
+                , d);
+            emp.id_direccion = d.id_direccion;
             //
             usuario u = new usuario();
             u.username = emp.cuit;
@@ -78,12 +78,14 @@ using PalcoNet.BDManager;
             emp.username = emp.cuit;
             BDManager.insertEncryptedUser(u);
             BDManager.insertInto("empresa", emp);
-            MessageBox.Show("La empresa ha sido insertado", "Empresa insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            BDManager.insertInto("rol_x_usuario", new rol_x_usuario { username = emp.username, id_rol = "1" });
+            MessageBox.Show("La empresa ha sido insertada", "Empresa insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de la empresa a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (EmpresaInvalidadException) { MessageBox.Show("CUIT ya existente en sistema", "Error al validar campos de la empresa a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        catch (Exception ex) { MessageBox.Show("Error: " + ex.Message, "Error al insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
 
     private void validarCamposEmpresa()

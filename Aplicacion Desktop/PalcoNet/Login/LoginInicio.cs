@@ -71,6 +71,7 @@ using PalcoNet.Login;
                 throw new UsuarioInhabilitadoException();
             if (BDManager.existsButWith("usuario", "username", username.Text, "HASHBYTES('SHA2_256','" + passwordAnterior.Text + "')=HASHBYTES('SHA2_256','" + u.username + "')"))
             {
+                MessageBox.Show("Su usuario " + username.Text + " debe cambiar su contraseña, ya que es su primer ingreso. Acepte este cuadro de diálogo para hacerlo.", "Usuario logueado por primera vez", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 RegistraUsuario registraUsuario = new RegistraUsuario(u);
                 registraUsuario.ShowDialog();
                 throw new DebeCambiarContraseniaException();
@@ -102,10 +103,10 @@ using PalcoNet.Login;
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a loguear", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (PasswordIncorrectaException) {
-            usuarioGlobal.restarIntento(); ;MessageBox.Show("Contraseña incorrecta. Restan " + usuarioGlobal.numeroDeIntentos +" intentos", "Error en contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            usuarioGlobal.restarIntento(); ;MessageBox.Show("Contraseña incorrecta. Restan " + usuarioGlobal.numeroDeIntentos +" intento(s)", "Error en contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         catch (UsuarioNoExistenteException) { MessageBox.Show("Usuario no existente en el sistema", "Error al validar campos del usuario a loguear", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-        catch (UsuarioInhabilitadoException) { MessageBox.Show("El usuario" + username.Text +"se encuentra inhabilitado", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        catch (UsuarioInhabilitadoException) { MessageBox.Show("El usuario " + username.Text +" se encuentra inhabilitado", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (DebeCambiarContraseniaException) { }
         catch (UsuarioNoTieneRolesException) { MessageBox.Show("El usuario" + username.Text + " no posee roles", "Usuario incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }

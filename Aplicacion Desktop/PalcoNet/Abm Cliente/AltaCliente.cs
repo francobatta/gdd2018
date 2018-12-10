@@ -34,39 +34,38 @@ using System.Windows.Forms;
                 cliente c = new cliente();
                 direccion d = new direccion();
                 tarjeta t = new tarjeta();
-                 c.nombre = nombre.Text;
-                 c.apellido = apellido.Text;
-                 c.tipo_documento = tipoDoc.Text;
-                 c.dni = nDoc.Text;
-                 c.CUIL = CUIL.Text;
-                 c.mail = email.Text;
-                 c.telefono = telefono.Text;
-                 c.fecha_nacimiento = fechaNac.Text;
-                 d.localidad = localidad.Text;
-                 d.ciudad = ciudad.Text;
-                 d.calle = calle.Text;
-                 d.piso = piso.Text;
-                 d.depto = depto.Text;
-                 d.cpostal = cpostal.Text;
-                 d.nro_calle = nroCalle.Text;
-                 t.username = CUIL.Text;
-                 t.nro_tarjeta = nroTarjeta.Text;
-                 t.cod_seguridad = codSeguridad.Text;
-                 t.nombre_titular = nombreTitularTarjeta.Text;
-                 t.fecha_vencimiento = fechavtotarjeta.Text;
+                c.nombre = nombre.Text;
+                c.apellido = apellido.Text;
+                c.tipo_documento = tipoDoc.Text;
+                c.dni = nDoc.Text;
+                c.CUIL = CUIL.Text;
+                c.mail = email.Text;
+                c.telefono = telefono.Text;
+                c.fecha_nacimiento = fechaNac.Text;
+                c.habilitado = "True";
+                d.localidad = localidad.Text;
+                d.ciudad = ciudad.Text;
+                d.calle = calle.Text;
+                d.piso = piso.Text;
+                d.depto = depto.Text;
+                d.cpostal = cpostal.Text;
+                d.nro_calle = nroCalle.Text;
+                t.username = CUIL.Text;
+                t.nro_tarjeta = nroTarjeta.Text;
+                t.cod_seguridad = codSeguridad.Text;
+                t.nombre_titular = nombreTitularTarjeta.Text;
+                t.fecha_vencimiento = fechavtotarjeta.Text;
                 // valido CUIL
                 if (BDManager.exists("cliente", "CUIL", c.CUIL))
                     throw new ClienteInvalidoException();
                 // validar tipodoc+ndoc contra la base usando BDManager
-                if (BDManager.existsButWith("cliente","tipo_documento",tipoDoc.Text,"dni="+nDoc.Text))
+                if (BDManager.existsButWith("cliente", "tipo_documento", tipoDoc.Text, "dni=" + nDoc.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
                 BDManager.insertInto("direccion", d);
-                MessageBox.Show("SELECT id_direccion FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-                    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'");
                 BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-                    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
-                    , d);
+                                   "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
+                                   , d);
                 c.id_direccion = d.id_direccion;
                 // el usuario que tendra el cliente
                 usuario u = new usuario();
@@ -77,11 +76,14 @@ using System.Windows.Forms;
                 BDManager.insertEncryptedUser(u);
                 BDManager.insertInto("cliente", c);
                 BDManager.insertInto("tarjeta", t);
-                MessageBox.Show("El cliente ha sido insertado.", "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // ahora el rol del cliente
+                BDManager.insertInto("rol_x_usuario", new rol_x_usuario { username = c.username, id_rol = "2" });
+                MessageBox.Show("Cliente insertado correctamente, su username y primer password son: " + c.username, "Cliente insertado correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-            catch (ClienteInvalidoException) { MessageBox.Show("CUIL ya existente en sistema", "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (ClienteInvalidoException) { MessageBox.Show("CUIL o DOC ya existente en sistema", "Error al validar campos del cliente a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (Exception ex) { MessageBox.Show("Error: " +ex.Message, "Error al insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void validarCamposCliente()
