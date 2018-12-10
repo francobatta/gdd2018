@@ -12,18 +12,19 @@ using System.Windows.Forms;
     public partial class ModificaPublicacion : Form
     {
         public publicacion p { get; set; }
+        public List<ubicacion> ubicaciones = new List<ubicacion>();
         public ModificaPublicacion(publicacion _p)
         {
-            InitializeComponent();
             this.p = _p;
+            InitializeComponent();
         }
-        public List<ubicacion> ubicaciones = new List<ubicacion>();
         private void ModificaPublicacion_Load(object sender, EventArgs e)
         {
             List<object> listaDeBD = BDManager.getList("SELECT * FROM EQUISDE.ubicacion WHERE id_publicacion=" + p.id_publicacion, new ubicacion());
             List<ubicacion> ubicaciones = listaDeBD.Cast<ubicacion>().ToList();
             fechaPublicacion.Text = p.fecha_publicacion;
             listaUbicaciones.DataSource = ubicaciones;
+            MessageBox.Show(ubicaciones.Count.ToString());
             grado.Items.Add("Alta");
             grado.Items.Add("Media");
             grado.Items.Add("Baja");
@@ -43,6 +44,7 @@ using System.Windows.Forms;
             listaFechasEspectaculo.Items.Add(p.fecha_vencimiento);
             rubro.SelectedValue = p.id_rubro;
             direccion d = new direccion();
+            MessageBox.Show(p.id_direccion);
             BDManager.selectIntoObject("direccion", "id_direccion", p.id_direccion, d);
             localidad.Text = d.localidad;
             ciudad.Text = d.ciudad;
@@ -100,6 +102,7 @@ using System.Windows.Forms;
             nuevaPublicacion.id_rubro = rubro.SelectedValue.ToString();
             // direccion
             direccion d = new direccion();
+            BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.id_direccion="+p.id_direccion,d);
             d.localidad = localidad.Text;
             d.ciudad = ciudad.Text;
             d.calle = calle.Text;
@@ -107,10 +110,7 @@ using System.Windows.Forms;
             d.piso = piso.Text;
             d.depto = depto.Text;
             d.cpostal = cpostal.Text;
-            BDManager.updateSet("direccion","id_direccion", d);
-            BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-    "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
-    , d);
+            BDManager.updateSet("direccion", "id_direccion", d);
             nuevaPublicacion.id_direccion = d.id_direccion;
             // estado
             estadop est = new estadop();
@@ -180,12 +180,14 @@ using System.Windows.Forms;
         u.fila = filaUbicacion.Text;
         u.precio = precioUbicacion.Text;
         u.codigo_tipo = tipoUbicacion.SelectedValue.ToString();
+        MessageBox.Show(ubicaciones.Count.ToString());
         ubicaciones.Add(u);
         listaUbicaciones.DataSource = null;
         listaUbicaciones.DataSource = ubicaciones;
         listaUbicaciones.Columns["id_ubicacion"].Visible = false;
         listaUbicaciones.Columns["id_publicacion"].Visible = false;
         listaUbicaciones.Columns["sin_numerar"].Visible = false;
+        MessageBox.Show(ubicaciones.Count.ToString());
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de ubicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }

@@ -49,7 +49,7 @@ using System.Windows.Forms;
                 publicacion p = new publicacion();
                 p.id_publicacion = filaElegida.Cells["id_publicacion"].Value.ToString();
                 p.id_rubro = filaElegida.Cells["id_rubro"].Value.ToString();
-                p.id_direccion = filaElegida.Cells["id_estado"].Value.ToString();
+                p.id_direccion = filaElegida.Cells["id_direccion"].Value.ToString();
                 p.id_grado = filaElegida.Cells["id_grado"].Value.ToString();
                 p.id_estado = "2";
                 p.descripcion = filaElegida.Cells["descripcion"].Value.ToString();
