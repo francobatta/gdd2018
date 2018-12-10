@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -26,7 +27,7 @@ using System.Windows.Forms;
             estado.Items.Add('P');
             estado.Items.Add('F');
             estado.SelectedIndex = 0;
-            
+            fechaPublicacion.Text = ConfigurationManager.AppSettings["today"].ToString();
             rubro.DataSource = BDManager.getData("SELECT * FROM EQUISDE.rubro");
             tipoUbicacion.DataSource = BDManager.getData("SELECT * FROM EQUISDE.tipo");
             rubro.DisplayMember = "descripcion";

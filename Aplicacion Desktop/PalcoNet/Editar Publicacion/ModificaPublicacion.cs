@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,11 +25,11 @@ using System.Windows.Forms;
             List<ubicacion> ubicaciones = listaDeBD.Cast<ubicacion>().ToList();
             fechaPublicacion.Text = p.fecha_publicacion;
             listaUbicaciones.DataSource = ubicaciones;
-            MessageBox.Show(ubicaciones.Count.ToString());
             grado.Items.Add("Alta");
             grado.Items.Add("Media");
             grado.Items.Add("Baja");
             grado.SelectedIndex = 0;
+            fechaPublicacion.Text = ConfigurationManager.AppSettings["today"].ToString();
             estado.Items.Add('B');
             estado.Items.Add('P');
             estado.Items.Add('F');
@@ -41,10 +42,9 @@ using System.Windows.Forms;
             tipoUbicacion.DisplayMember = "descripcion";
             tipoUbicacion.ValueMember = "codigo_tipo";
             descripcion.Text = p.descripcion;
-            listaFechasEspectaculo.Items.Add(p.fecha_vencimiento);
+            listaFechasEspectaculo.Items.Add(DateTime.Parse(p.fecha_vencimiento));
             rubro.SelectedValue = p.id_rubro;
             direccion d = new direccion();
-            MessageBox.Show(p.id_direccion);
             BDManager.selectIntoObject("direccion", "id_direccion", p.id_direccion, d);
             localidad.Text = d.localidad;
             ciudad.Text = d.ciudad;
@@ -85,6 +85,7 @@ using System.Windows.Forms;
     {
         try
         {
+            ubicaciones = listaUbicaciones.DataSource as List<ubicacion>;
             Validaciones.inicializarValidador();
             Validaciones.esValido(descripcion.Name, descripcion.Text, new Validaciones.NumerosLetrasGuion());
             Validaciones.esValido("ubicaciones", ubicaciones.Count.ToString(), new Validaciones.NumeroNoCreo());
@@ -99,6 +100,7 @@ using System.Windows.Forms;
             // comienzo armado del objeto general
             // rubro
             publicacion nuevaPublicacion = new publicacion();
+            nuevaPublicacion.id_publicacion = p.id_publicacion;
             nuevaPublicacion.id_rubro = rubro.SelectedValue.ToString();
             // direccion
             direccion d = new direccion();
@@ -128,13 +130,16 @@ using System.Windows.Forms;
             {
                 nuevaPublicacion.fecha_vencimiento = f.ToString();
                 BDManager.updateSet("publicacion","id_publicacion", nuevaPublicacion);
+                BDManager.deleteByField("ubicacion", "id_publicacion", nuevaPublicacion.id_publicacion);
                 foreach (ubicacion u in ubicaciones)
                 {
                     publicacion pDummy = new publicacion();
+                    //MessageBox.Show("SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento='" + f.ToString("s") +"'");
                     BDManager.genericFillObject(
- "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento=" + f.ToString("yyyy-mm-dd"), pDummy);
+ "SELECT * FROM EQUISDE.publicacion WHERE username='" + usuarioGlobal.usuarioLogueado.username + "' AND descripcion='" + nuevaPublicacion.descripcion + "' AND fecha_vencimiento='" + f.ToString("s") + "'", pDummy);
+
                     u.id_publicacion = pDummy.id_publicacion;
-                    BDManager.updateSet("ubicacion","ubicacion_id", u);
+                    BDManager.insertInto("ubicacion", u);
                 }
             }
             // ahora que todo fue bien inserto las ubicaciones
@@ -181,14 +186,12 @@ using System.Windows.Forms;
         u.fila = filaUbicacion.Text;
         u.precio = precioUbicacion.Text;
         u.codigo_tipo = tipoUbicacion.SelectedValue.ToString();
-        MessageBox.Show(ubicaciones.Count.ToString());
         ubicaciones.Add(u);
         listaUbicaciones.DataSource = null;
         listaUbicaciones.DataSource = ubicaciones;
         listaUbicaciones.Columns["id_ubicacion"].Visible = false;
         listaUbicaciones.Columns["id_publicacion"].Visible = false;
         listaUbicaciones.Columns["sin_numerar"].Visible = false;
-        MessageBox.Show(ubicaciones.Count.ToString());
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de ubicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
     }
@@ -197,7 +200,7 @@ using System.Windows.Forms;
     {
         if (listaUbicaciones.CurrentRow != null && listaUbicaciones.SelectedRows[0].Index > -1)
         {
-            MessageBox.Show(listaUbicaciones.CurrentCell.RowIndex.ToString());
+            ubicaciones = listaUbicaciones.DataSource as List<ubicacion>;
             ubicaciones.RemoveAt(listaUbicaciones.CurrentCell.RowIndex);
             listaUbicaciones.DataSource = ubicaciones;
             listaUbicaciones.DataSource = null;
