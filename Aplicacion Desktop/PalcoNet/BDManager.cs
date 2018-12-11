@@ -15,6 +15,7 @@ namespace PalcoNet.BDManager
     {
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        public static Int32 returnDummy { get; set; }
         public static Type dummyType { get; set; }
         public static ComboBox toFill { get; set; }
         public static List<object> listaObjetosRetornados = new List<object>();
@@ -176,7 +177,9 @@ namespace PalcoNet.BDManager
     public enum queryTypes
     {
         NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY,
-        JUST_DO_STUFF
+        JUST_DO_STUFF,
+        AGG_FUNCTION,
+        COUNT
     }
     public static class Extensions
     {
@@ -242,6 +245,11 @@ namespace PalcoNet.BDManager
                             BDManager.listaObjetosRetornados.Add(instance);
                         }
                         reader.Close();
+                        break;
+                    }
+                case queryTypes.COUNT:
+                    {
+                        BDManager.returnDummy = (Int32) BDManager.command.ExecuteScalar();
                         break;
                     }
             }
