@@ -131,6 +131,7 @@ using PalcoNet.Comprar;
             listaUbicaciones.DataSource = null;
             idPublicacionElegida.Text = "-";
             pElegida = null;
+            importeTotal.Text = "-";
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -211,9 +212,21 @@ using PalcoNet.Comprar;
                     listaUbicacionesAComprar.Columns["id_publicacion"].Visible = false;
                     listaUbicacionesAComprar.Columns["codigo_tipo"].Visible = false;
                     listaUbicacionesAComprar.Columns["sin_numerar"].Visible = false;
+                    calcularImporteTotal();
+               
             }
             catch (CamposInvalidosException) { MessageBox.Show("Debe elegir una ubicación para agregar", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             catch (UbicacionRepetidaException) { MessageBox.Show("Ubicación ya seleccionada", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void calcularImporteTotal()
+        {
+            int sum = 0;
+            foreach (DataGridViewRow r in listaUbicacionesAComprar.Rows)
+            {
+                sum += Int32.Parse(r.Cells["precio"].Value.ToString());
+            }
+            importeTotal.Text = sum.ToString();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -228,6 +241,7 @@ using PalcoNet.Comprar;
                 listaUbicacionesAComprar.Columns["id_publicacion"].Visible = false;
                 listaUbicacionesAComprar.Columns["codigo_tipo"].Visible = false;
                 listaUbicacionesAComprar.Columns["sin_numerar"].Visible = false;
+                calcularImporteTotal();
             }
             else
                 MessageBox.Show("Debe elegir una ubicación", "Fila no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
