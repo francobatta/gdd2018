@@ -182,4 +182,7 @@
         jIsYQMxKrT0KgfBNCL6ZagVaIXzE2sdwesS0MDT0P8i+ODPNDiS2AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Solo se mostrarán aquellas publicaciones que cumplan con la restricción del config: el día "hoy" debe encontrarse entre la fecha de publicación y la de vencimiento. El paginado es de a 10 publicaciones.</value>
+  </data>
 </root>

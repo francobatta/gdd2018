@@ -59,21 +59,34 @@
             this.btn_eliminarRubro = new System.Windows.Forms.Button();
             this.btn_agregarRubro = new System.Windows.Forms.Button();
             this.listadoRubros = new System.Windows.Forms.ListBox();
+            this.listaUbicaciones = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.listaUbicacionesAComprar = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_agregarUbicacion = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.sidepanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.topbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoPublicaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicaciones)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicacionesAComprar)).BeginInit();
             this.SuspendLayout();
             // 
             // sidepanel
             // 
             this.sidepanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.sidepanel.Controls.Add(this.label17);
             this.sidepanel.Controls.Add(this.panel1);
             this.sidepanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.sidepanel.Location = new System.Drawing.Point(0, 0);
             this.sidepanel.Name = "sidepanel";
-            this.sidepanel.Size = new System.Drawing.Size(200, 617);
+            this.sidepanel.Size = new System.Drawing.Size(200, 742);
             this.sidepanel.TabIndex = 0;
             // 
             // panel1
@@ -199,7 +212,7 @@
             this.comprar_seleccionadas.BackColor = System.Drawing.Color.LightPink;
             this.comprar_seleccionadas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comprar_seleccionadas.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comprar_seleccionadas.Location = new System.Drawing.Point(957, 535);
+            this.comprar_seleccionadas.Location = new System.Drawing.Point(957, 663);
             this.comprar_seleccionadas.Name = "comprar_seleccionadas";
             this.comprar_seleccionadas.Size = new System.Drawing.Size(481, 67);
             this.comprar_seleccionadas.TabIndex = 11;
@@ -419,14 +432,138 @@
             this.listadoRubros.Size = new System.Drawing.Size(412, 69);
             this.listadoRubros.TabIndex = 84;
             // 
+            // listaUbicaciones
+            // 
+            this.listaUbicaciones.AllowUserToAddRows = false;
+            this.listaUbicaciones.AllowUserToDeleteRows = false;
+            this.listaUbicaciones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaUbicaciones.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.listaUbicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaUbicaciones.Location = new System.Drawing.Point(210, 548);
+            this.listaUbicaciones.MultiSelect = false;
+            this.listaUbicaciones.Name = "listaUbicaciones";
+            this.listaUbicaciones.ReadOnly = true;
+            this.listaUbicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaUbicaciones.Size = new System.Drawing.Size(741, 155);
+            this.listaUbicaciones.TabIndex = 85;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(206, 212);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(202, 21);
+            this.label6.TabIndex = 86;
+            this.label6.Text = "Listado de publicaciones";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(210, 524);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(435, 21);
+            this.label7.TabIndex = 87;
+            this.label7.Text = "Listado de ubicaciones para publicación seleccionada";
+            // 
+            // email
+            // 
+            this.email.Location = new System.Drawing.Point(479, 709);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(472, 20);
+            this.email.TabIndex = 88;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(4, 52);
+            this.label17.MaximumSize = new System.Drawing.Size(190, 190);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(189, 136);
+            this.label17.TabIndex = 51;
+            this.label17.Text = resources.GetString("label17.Text");
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(206, 709);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(267, 21);
+            this.label8.TabIndex = 89;
+            this.label8.Text = "Mail del comprador para factura";
+            // 
+            // listaUbicacionesAComprar
+            // 
+            this.listaUbicacionesAComprar.AllowUserToAddRows = false;
+            this.listaUbicacionesAComprar.AllowUserToDeleteRows = false;
+            this.listaUbicacionesAComprar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listaUbicacionesAComprar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.listaUbicacionesAComprar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaUbicacionesAComprar.Location = new System.Drawing.Point(958, 390);
+            this.listaUbicacionesAComprar.MultiSelect = false;
+            this.listaUbicacionesAComprar.Name = "listaUbicacionesAComprar";
+            this.listaUbicacionesAComprar.ReadOnly = true;
+            this.listaUbicacionesAComprar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaUbicacionesAComprar.Size = new System.Drawing.Size(480, 155);
+            this.listaUbicacionesAComprar.TabIndex = 90;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.DarkOrange;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1284, 553);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 62);
+            this.button1.TabIndex = 92;
+            this.button1.Text = "Eliminar ubicación elegida";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btn_agregarUbicacion
+            // 
+            this.btn_agregarUbicacion.BackColor = System.Drawing.Color.Gold;
+            this.btn_agregarUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_agregarUbicacion.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_agregarUbicacion.Location = new System.Drawing.Point(959, 551);
+            this.btn_agregarUbicacion.Name = "btn_agregarUbicacion";
+            this.btn_agregarUbicacion.Size = new System.Drawing.Size(319, 64);
+            this.btn_agregarUbicacion.TabIndex = 91;
+            this.btn_agregarUbicacion.Text = "Agregar ubicación";
+            this.btn_agregarUbicacion.UseVisualStyleBackColor = false;
+            this.btn_agregarUbicacion.Click += new System.EventHandler(this.btn_agregarUbicacion_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(954, 366);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(274, 21);
+            this.label9.TabIndex = 93;
+            this.label9.Text = "Listado de ubicaciones a comprar";
+            // 
             // NuevaCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1451, 617);
+            this.ClientSize = new System.Drawing.Size(1451, 742);
             this.ControlBox = false;
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_agregarUbicacion);
+            this.Controls.Add(this.listaUbicacionesAComprar);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.email);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.listaUbicaciones);
             this.Controls.Add(this.listadoRubros);
             this.Controls.Add(this.btn_eliminarRubro);
             this.Controls.Add(this.btn_agregarRubro);
@@ -460,12 +597,15 @@
             this.Text = "MainWindow";
             this.Load += new System.EventHandler(this.NuevaCompra_Load);
             this.sidepanel.ResumeLayout(false);
+            this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.topbar.ResumeLayout(false);
             this.topbar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoPublicaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicaciones)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUbicacionesAComprar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,5 +645,15 @@
         private System.Windows.Forms.Button btn_eliminarRubro;
         private System.Windows.Forms.Button btn_agregarRubro;
         private System.Windows.Forms.ListBox listadoRubros;
+        private System.Windows.Forms.DataGridView listaUbicaciones;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridView listaUbicacionesAComprar;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_agregarUbicacion;
+        private System.Windows.Forms.Label label9;
 
     }

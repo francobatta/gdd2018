@@ -153,6 +153,7 @@
     <Compile Include="Comprar\compra.cs" />
     <Compile Include="Comprar\CompraInvalidaException.cs" />
     <Compile Include="Comprar\compra_x_ubicacion.cs" />
+    <Compile Include="Comprar\UbicacionRepetidaException.cs" />
     <Compile Include="Editar Publicacion\BusquedaPublicacionE.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,10 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PalcoNet.Comprar;
+
     public partial class NuevaCompra : Form
     {
         public publicacion pElegida { get; set; }
         public String queryLimpio;
+        public List<ubicacion> ubicaciones = new List<ubicacion>();
         public NuevaCompra()
         {
             InitializeComponent();
@@ -70,6 +73,11 @@ using System.Windows.Forms;
                 pElegida.id_rubro = filaElegida.Cells["id_rubro"].Value.ToString();
                 pElegida.username = filaElegida.Cells["username"].Value.ToString();
                 idPublicacionElegida.Text = pElegida.id_publicacion;
+                listaUbicaciones.DataSource = BDManager.getData("SELECT * FROM EQUISDE.ubicacion WHERE id_publicacion="+pElegida.id_publicacion);
+                listaUbicaciones.Columns["id_ubicacion"].Visible = false;
+                listaUbicaciones.Columns["id_publicacion"].Visible = false;
+                listaUbicaciones.Columns["codigo_tipo"].Visible = false;
+                listaUbicaciones.Columns["sin_numerar"].Visible = false;
             }
             catch (CamposInvalidosException) { MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar publicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
@@ -88,7 +96,7 @@ using System.Windows.Forms;
             queryLimpio = default(string);
             listadoPublicaciones.DataSource = null;
             String query = default(string);
-            query = "SELECT DISTINCT * FROM EQUISDE.publicacion WHERE id_estado=1 AND fecha_vencimiento BETWEEN '" + fechaInicio.Value.ToShortDateString() + "' AND '" + fechaFin.Value.ToShortDateString() + "' AND descripcion LIKE '%" + descripcion.Text + "%'";
+            query = "SELECT DISTINCT * FROM EQUISDE.publicacion WHERE id_estado=1 AND '" + ConfigurationManager.AppSettings["today"] +"' BETWEEN fecha_publicacion AND fecha_vencimiento AND fecha_vencimiento BETWEEN '" + fechaInicio.Value.ToShortDateString() + "' AND '" + fechaFin.Value.ToShortDateString() + "' AND descripcion LIKE '%" + descripcion.Text + "%'";
             bool esElPrimerRubro = true;
             foreach (rubro r in listadoRubros.Items)
             {
@@ -109,6 +117,20 @@ using System.Windows.Forms;
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
+            listaUbicacionesAComprar.DataSource = null;
+            listadoPublicaciones.DataSource = null;
+            left.Enabled = false;
+            leftleft.Enabled = false;
+            right.Enabled = false;
+            righttight.Enabled = false;
+            descripcion.Text = default(string);
+            fechaInicio.Text = ConfigurationManager.AppSettings["today"].ToString();
+            fechaFin.Text = ConfigurationManager.AppSettings["today"].ToString();
+            listadoRubros.Items.Clear();
+            nPag.Text = "--";
+            listaUbicaciones.DataSource = null;
+            idPublicacionElegida.Text = "-";
+            pElegida = null;
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -161,5 +183,53 @@ using System.Windows.Forms;
             //MessageBox.Show(myq);
             BDManager.queryOptionalObject(myq, queryTypes.COUNT);
             llenarGrillaPublicaciones(((int)Math.Floor((double)BDManager.returnDummy/10)));
+        }
+
+        private void btn_agregarUbicacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(listaUbicaciones.CurrentRow == null || listaUbicaciones.SelectedRows[0].Index < 0)
+                    throw new CamposInvalidosException();
+                ubicacion u = new ubicacion();
+                u.precio = listaUbicaciones.SelectedRows[0].Cells["precio"].Value.ToString();
+                u.asiento = listaUbicaciones.SelectedRows[0].Cells["asiento"].Value.ToString();
+                u.id_publicacion = listaUbicaciones.SelectedRows[0].Cells["id_publicacion"].Value.ToString();
+                u.id_ubicacion = listaUbicaciones.SelectedRows[0].Cells["id_ubicacion"].Value.ToString();
+                u.codigo_tipo = listaUbicaciones.SelectedRows[0].Cells["codigo_tipo"].Value.ToString();
+                u.sin_numerar = listaUbicaciones.SelectedRows[0].Cells["sin_numerar"].Value.ToString();
+                u.fila = listaUbicaciones.SelectedRows[0].Cells["fila"].Value.ToString();
+                foreach (DataGridViewRow r in listaUbicacionesAComprar.Rows)
+                {
+                    if (u.id_ubicacion.Equals(r.Cells["id_ubicacion"].Value.ToString()))
+                        throw new UbicacionRepetidaException();
+                }
+                    ubicaciones.Add(u);
+                    listaUbicacionesAComprar.DataSource = null;
+                    listaUbicacionesAComprar.DataSource = ubicaciones;
+                    listaUbicacionesAComprar.Columns["id_ubicacion"].Visible = false;
+                    listaUbicacionesAComprar.Columns["id_publicacion"].Visible = false;
+                    listaUbicacionesAComprar.Columns["codigo_tipo"].Visible = false;
+                    listaUbicacionesAComprar.Columns["sin_numerar"].Visible = false;
+            }
+            catch (CamposInvalidosException) { MessageBox.Show("Debe elegir una ubicación para agregar", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (UbicacionRepetidaException) { MessageBox.Show("Ubicación ya seleccionada", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (listaUbicacionesAComprar.CurrentRow != null && listaUbicacionesAComprar.SelectedRows[0].Index > -1)
+            {
+                ubicaciones.RemoveAt(listaUbicacionesAComprar.CurrentCell.RowIndex);
+                listaUbicacionesAComprar.DataSource = ubicaciones;
+                listaUbicacionesAComprar.DataSource = null;
+                listaUbicacionesAComprar.DataSource = ubicaciones;
+                listaUbicacionesAComprar.Columns["id_ubicacion"].Visible = false;
+                listaUbicacionesAComprar.Columns["id_publicacion"].Visible = false;
+                listaUbicacionesAComprar.Columns["codigo_tipo"].Visible = false;
+                listaUbicacionesAComprar.Columns["sin_numerar"].Visible = false;
+            }
+            else
+                MessageBox.Show("Debe elegir una ubicación", "Fila no elegida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
