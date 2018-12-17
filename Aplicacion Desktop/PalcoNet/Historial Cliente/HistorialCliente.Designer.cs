@@ -1,4 +1,4 @@
-﻿    partial class BusquedaComprasCliente
+﻿partial class HistorialCliente
     {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BusquedaComprasCliente));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistorialCliente));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -162,7 +162,7 @@
             this.listadoActualCompras.Size = new System.Drawing.Size(1229, 549);
             this.listadoActualCompras.TabIndex = 10;
             // 
-            // BusquedaComprasCliente
+            // HistorialCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -176,9 +176,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "BusquedaComprasCliente";
+            this.Name = "HistorialCliente";
             this.Text = "MainWindow";
-            this.Load += new System.EventHandler(this.BusquedaComprasCliente_Load);
+            this.Load += new System.EventHandler(this.HistorialCliente_Load);
             this.sidepanel.ResumeLayout(false);
             this.sidepanel.PerformLayout();
             this.panel1.ResumeLayout(false);

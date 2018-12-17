@@ -1,6 +1,7 @@
 \\VBOXSVR\PalcoNet\src\PalcoNet\bin\Debug\PalcoNet.exe.config
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.pdb
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaCliente.resources
@@ -21,7 +22,6 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\L
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\MenuPrincipal.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\SeleccionaRol.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaPublicacion.resources
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaComprasCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Properties.Resources.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\LoginInicio.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaUsuario.resources
@@ -31,4 +31,5 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\R
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\HistorialCliente.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\RendicionComisiones.resources

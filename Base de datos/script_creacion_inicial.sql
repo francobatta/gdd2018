@@ -244,7 +244,7 @@ VALUES('empresa'),('cliente');
 
 INSERT INTO EQUISDE.funcionalidad
 (nombre)
-VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('NuevaCompra'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ListadoEstadistico');
+VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('RendicionComisiones'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('HistorialCliente'),('NuevaCompra'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ListadoEstadistico');
 
 
 

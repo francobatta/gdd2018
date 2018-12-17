@@ -9,13 +9,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-    public partial class BusquedaComprasCliente : Form
+    public partial class HistorialCliente : Form
     {
-        public BusquedaComprasCliente()
+        public HistorialCliente()
         {
             InitializeComponent();
         }
-        private void BusquedaComprasCliente_Load(object sender, EventArgs e)
+        private void HistorialCliente_Load(object sender, EventArgs e)
         {
             listadoActualCompras.DataSource = BDManager.getData("SELECT DISTINCT fecha_compra,email,c.cantidad,puntos,forma_de_pago FROM EQUISDE.compra c JOIN EQUISDE.item i ON(i.id_compra=c.id_compra) JOIN EQUISDE.factura f ON(f.id_factura=i.id_factura) WHERE username = '" + usuarioGlobal.usuarioLogueado.username + "'");
         }
