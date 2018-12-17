@@ -42,8 +42,8 @@ using System.Windows.Forms;
 
         private void btn_verSinRendir_Click(object sender, EventArgs e)
         {
-            
-            listadoComprasNoRendidas.DataSource = BDManager.getData("SELECT * FROM EQUISDE.compra WHERE id_compra NOT IN (SELECT DISTINCT id_compra FROM EQUISDE.item) ORDER BY 4");
+
+            listadoComprasNoRendidas.DataSource = BDManager.getData("SELECT * FROM EQUISDE.compra c WHERE NOT EXISTS (SELECT DISTINCT id_compra FROM EQUISDE.item i WHERE i.id_compra = c.id_compra) ORDER BY 4");
         }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
@@ -58,6 +58,10 @@ using System.Windows.Forms;
 
         private void agregar_a_rendir_Click(object sender, EventArgs e)
         {
-            listadoComprasARendir.DataSource = BDManager.getData("SELECT TOP " + nroComprasAAgregar.Text + " * FROM EQUISDE.compra WHERE id_compra NOT IN (SELECT DISTINCT id_compra FROM EQUISDE.item) ORDER BY 4");
+            int intValue = -1;
+            if (int.TryParse(nroComprasAAgregar.Text, out intValue) && intValue > 0)
+                listadoComprasARendir.DataSource = BDManager.getData("SELECT TOP " + intValue + " * FROM EQUISDE.compra c WHERE NOT EXISTS (SELECT DISTINCT id_compra FROM EQUISDE.item i WHERE i.id_compra = c.id_compra) ORDER BY 4");
+            else
+                MessageBox.Show("Error: debe ingresar un número entero", "Error al dar compras", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
