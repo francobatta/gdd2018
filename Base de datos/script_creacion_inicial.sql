@@ -395,21 +395,9 @@ VALUES('B'),('F');
 INSERT INTO EQUISDE.rubro
 VALUES ('pelicula');
 
-SELECT * FROM EQUISDE.compra_x_ubicacion
-
-SELECT * FROM EQUISDE.compra WHERE cantidad
-
 INSERT INTO EQUISDE.usuario (username,password) VALUES ('admin',HASHBYTES('SHA2_256','w23e'))
 INSERT INTO EQUISDE.cliente (username) VALUES('admin')
 INSERT INTO EQUISDE.empresa (username) VALUES('admin')
 INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
 INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',3)
 INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad) 
-
-SELECT nombre, apellido, COUNT(cp.id_compra) cantidad_compra, p.username usuario_empresa FROM EQUISDE.cliente cl
- JOIN EQUISDE.compra cp ON (cp.username = cl.username)	 
- JOIN EQUISDE.compra_x_ubicacion cu ON (cp.id_compra = cu.id_compra)	 
-JOIN EQUISDE.ubicacion u ON(cu.id_ubicacion = u.id_ubicacion)	
-JOIN EQUISDE.publicacion p ON (p.id_publicacion = u.id_publicacion)	
-GROUP BY nombre,apellido,p.username	
-ORDER BY cantidad_compra 
