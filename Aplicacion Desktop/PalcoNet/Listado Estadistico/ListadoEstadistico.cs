@@ -26,7 +26,7 @@ using System.Windows.Forms;
             Combobox_listado.Items.Add("Clientes con mayor cantidad de compras");
             mes_dia_inicio = "01/01";
             mes_dia_fin = "03/31";
-            for (int i = 1990; i <= Convert.ToInt32(ConfigurationManager.AppSettings["fecha_actual"].Substring(0,4)); i++)
+            for (int i = 1990; i <= Convert.ToInt32(ConfigurationManager.AppSettings["today"].Substring(6,4)); i++)
             {
                 comboAnio.Items.Add(i.ToString());
             }
