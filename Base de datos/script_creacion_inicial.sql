@@ -129,11 +129,13 @@ CREATE TABLE EQUISDE.estadop(
 CREATE TABLE EQUISDE.grado(
 	id_grado bigint IDENTITY PRIMARY KEY,
 	estado varchar(30),
+	porcentaje numeric(3,2),
 	CHECK(estado IN ('Alta','Baja','Media'))
 )
 
 INSERT INTO EQUISDE.grado
-VALUES('Alta'),('Media'),('Baja');
+(estado,porcentaje)
+VALUES('Alta',0.4),('Media',0.2),('Baja',0.05);
 
 
 CREATE TABLE EQUISDE.publicacion(
@@ -351,7 +353,7 @@ WHEN NOT MATCHED BY TARGET THEN
 	VALUES(f.Espectaculo_Cod,f.Ubicacion_Tipo_Codigo,f.Ubicacion_Fila,f.Ubicacion_Asiento,f.Ubicacion_Precio,f.Ubicacion_Sin_numerar);
 
 MERGE EQUISDE.compra d
-USING(SELECT DISTINCT Compra_Fecha,Compra_Cantidad,Cli_Dni,Forma_Pago_Desc FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL) f
+USING(SELECT Compra_Fecha,Compra_Cantidad,Cli_Dni,Forma_Pago_Desc FROM gd_esquema.Maestra  WHERE Compra_Fecha IS NOT NULL AND Forma_Pago_Desc IS NOT NULL) f
 ON d.username = f.Cli_Dni AND d.cantidad = f.Compra_Cantidad AND d.fecha_compra = f.Compra_Fecha AND d.forma_de_pago = f.Forma_Pago_Desc
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,fecha_compra,cantidad,forma_de_pago,fecha_vencimiento_puntos)
@@ -376,25 +378,26 @@ WHEN NOT MATCHED BY TARGET THEN
 
 SET IDENTITY_INSERT EQUISDE.factura OFF
 
-
 MERGE EQUISDE.item d
 USING(SELECT DISTINCT Factura_Nro,Item_Factura_Monto,Item_Factura_Cantidad,Item_Factura_Descripcion, id_compra FROM gd_esquema.Maestra gd JOIN EQUISDE.compra ON(username = Cli_Dni AND fecha_compra = Compra_Fecha AND cantidad = Compra_Cantidad) WHERE Factura_Nro IS NOT NULL)f
 ON f.Factura_Nro = d.id_factura AND f.id_compra = d.id_compra AND f.Item_Factura_Monto = d.importe_comision AND  d.descripcion = f.Item_Factura_Descripcion AND d.cantidad = f.Item_Factura_Cantidad
 WHEN NOT MATCHED BY TARGET THEN
-	INSERT(id_factura,id_compra,importe_comision,descripcion,cantidad)
-	VALUES(f.Factura_Nro,f.id_compra,f.Item_Factura_Monto,f.Item_Factura_Descripcion, f.Item_Factura_Cantidad);
+	INSERT(id_factura,id_compra,importe_venta,importe_comision,descripcion,cantidad)
+	VALUES(f.Factura_Nro,f.id_compra,f.Item_Factura_Monto,f.Item_Factura_Monto*0.2,f.Item_Factura_Descripcion, f.Item_Factura_Cantidad);
 
 INSERT INTO EQUISDE.premio
 (fecha_vencimiento,fecha_emision,puntos_necesarios,descripcion)
 VALUES(convert(datetime,'01/01/2019',121),convert(datetime,'10/03/2018',121),321,'Entradas al superclasico'),(convert(datetime,'10/01/2019',121),convert(datetime,'11/12/2018',121),120,'Peluche de Winnie Pooh'),(convert(datetime,'02/04/2019',121),convert(datetime,'09/08/2018',121),0,'Alienware')
-
-
 
 INSERT INTO EQUISDE.estadop
 VALUES('B'),('F');
 
 INSERT INTO EQUISDE.rubro
 VALUES ('pelicula');
+
+SELECT * FROM EQUISDE.compra_x_ubicacion
+
+SELECT * FROM EQUISDE.compra WHERE cantidad
 
 INSERT INTO EQUISDE.usuario (username,password) VALUES ('admin',HASHBYTES('SHA2_256','w23e'))
 INSERT INTO EQUISDE.cliente (username) VALUES('admin')
