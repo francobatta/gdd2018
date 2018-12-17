@@ -137,7 +137,6 @@ using PalcoNet.Comprar;
         {
             try
             {
-                MessageBox.Show("Gracias por la compra! :D");
                 Validaciones.inicializarValidador();
                 compra_x_ubicacion cu = new compra_x_ubicacion();
                 compra com = new compra();
@@ -157,23 +156,19 @@ using PalcoNet.Comprar;
                     m.ShowDialog();
                 }*/
                 com.forma_de_pago = "tarjeta";
-                BDManager.insertInto("compra", com);
-                MessageBox.Show(BDManager.idInsertado.ToString());
-                //BDManager.genericFillObject("SELECT * FROM EQUISDE.compra c WHERE c.username='" + usuarioGlobal.usuarioLogueado.username + "' AND c.fecha_compra='" + com.fecha_compra+"'", com);
-                cu.id_compra = com.id_compra;
-                MessageBox.Show(cu.id_compra);
+                BDManager.insertIntoAndGetID("compra","id_compra", com);
+                cu.id_compra = BDManager.idInsertado;
                 foreach (DataGridViewRow t in listaUbicacionesAComprar.Rows)
                 {
                     cu.id_ubicacion = t.Cells["id_ubicacion"].Value.ToString();
-                    MessageBox.Show(cu.id_ubicacion);
                     BDManager.insertInto("compra_x_ubicacion", cu);
                 }
                 cliente cli = new cliente();
-                BDManager.selectIntoObject("cliente", "username", usuarioGlobal.usuarioLogueado.username, cli);
+                BDManager.selectIntoObjectByString("cliente", "username", usuarioGlobal.usuarioLogueado.username, cli);
                 int ptos = Int32.Parse(cli.puntos);
                 ptos += Int32.Parse(com.puntos);
                 cli.puntos = ptos.ToString();
-                BDManager.updateSet("cliente", "username", cli);
+                BDManager.updateSetStringKey("cliente","username",usuarioGlobal.usuarioLogueado.username,cli);
                 MessageBox.Show("Gracias por la compra! :D");
             }
             catch (CamposInvalidosException)
