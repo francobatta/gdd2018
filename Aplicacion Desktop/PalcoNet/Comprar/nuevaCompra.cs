@@ -136,7 +136,39 @@ using PalcoNet.Comprar;
         private void button1_Click(object sender, EventArgs e)
         {
             try
-            {  }
+            {
+                Validaciones.inicializarValidador();
+                compra_x_ubicacion cu = new compra_x_ubicacion();
+                compra com = new compra();
+                com.username = usuarioGlobal.usuarioLogueado.username;
+                com.email = email.Text;
+                //Falta atributo fecha
+                com.fecha_compra = ConfigurationManager.AppSettings["today"].ToString();
+                com.cantidad = listaUbicacionesAComprar.Rows.Count.ToString();
+                //los puntos es la cantidad de ubicaciones que compro por 3
+                com.puntos = (listaUbicacionesAComprar.Rows.Count * 3).ToString();
+            /*   if (!BDManager.exists("tarjeta", "username", usuarioGlobal.usuarioLogueado.username))
+                {
+                    nuevaTarjeta m = new nuevaTarjeta();
+                    m.ShowDialog();
+                }*/
+                com.forma_de_pago = "tarjeta";
+                BDManager.insertInto("compra", com);
+                cu.id_compra = com.id_compra;
+
+                foreach (var t in listaUbicacionesAComprar.Rows)
+                {
+                    cu.id_ubicacion = t.ToString();
+                    BDManager.insertInto("compra_x_ubicacion", cu);
+                }
+                cliente cli = new cliente();
+                BDManager.selectIntoObject("cliente", "username", usuarioGlobal.usuarioLogueado.username, cli);
+                int ptos = Int32.Parse(cli.puntos);
+                ptos += Int32.Parse(com.puntos);
+                cli.puntos = ptos.ToString();
+                BDManager.updateSet("cliente", "username", cli);
+                MessageBox.Show("Gracias por la compra! :D");
+            }
             catch (CamposInvalidosException)
             {
                 MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning);

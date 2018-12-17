@@ -87,7 +87,7 @@ CREATE TABLE EQUISDE.cliente(
 	telefono nvarchar(50),
 	fecha_creacion datetime,
 	habilitado bit DEFAULT 1,
-	puntos bigint,
+	puntos bigint DEFAULT 0,
 	cuil nvarchar(255),
 	tipo_documento nvarchar(30) DEFAULT 'DNI'
 )
