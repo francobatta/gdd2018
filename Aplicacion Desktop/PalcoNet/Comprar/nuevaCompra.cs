@@ -137,6 +137,7 @@ using PalcoNet.Comprar;
         {
             try
             {
+                MessageBox.Show("Gracias por la compra! :D");
                 Validaciones.inicializarValidador();
                 compra_x_ubicacion cu = new compra_x_ubicacion();
                 compra com = new compra();
@@ -144,6 +145,9 @@ using PalcoNet.Comprar;
                 com.email = email.Text;
                 //Falta atributo fecha
                 com.fecha_compra = ConfigurationManager.AppSettings["today"].ToString();
+                DateTime fecha = DateTime.ParseExact(com.fecha_compra, "dd-MM-yyyy",null);
+                DateTime fechaVencimiento = fecha.AddMonths(3);
+                com.fecha_vencimiento_puntos = fecha.ToString("s");
                 com.cantidad = listaUbicacionesAComprar.Rows.Count.ToString();
                 //los puntos es la cantidad de ubicaciones que compro por 3
                 com.puntos = (listaUbicacionesAComprar.Rows.Count * 3).ToString();
@@ -154,11 +158,13 @@ using PalcoNet.Comprar;
                 }*/
                 com.forma_de_pago = "tarjeta";
                 BDManager.insertInto("compra", com);
+                BDManager.genericFillObject("SELECT * FROM EQUISDE.compra c WHERE c.username='" + usuarioGlobal.usuarioLogueado.username + "' AND c.fecha_compra='" + com.fecha_compra+"'", com);
                 cu.id_compra = com.id_compra;
-
-                foreach (var t in listaUbicacionesAComprar.Rows)
+                MessageBox.Show(cu.id_compra);
+                foreach (DataGridViewRow t in listaUbicacionesAComprar.Rows)
                 {
-                    cu.id_ubicacion = t.ToString();
+                    cu.id_ubicacion = t.Cells["id_ubicacion"].Value.ToString();
+                    MessageBox.Show(cu.id_ubicacion);
                     BDManager.insertInto("compra_x_ubicacion", cu);
                 }
                 cliente cli = new cliente();
