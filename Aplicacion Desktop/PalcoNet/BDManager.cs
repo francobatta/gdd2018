@@ -71,10 +71,20 @@ namespace PalcoNet.BDManager
             myObj = o;
             var sql = new StringBuilder("INSERT INTO EQUISDE." + tableName + " (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray());
-            sql.Append(" OUTPUT INSERTED.id_"+tableName+" VALUES (");
+            sql.Append(" VALUES (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
             //MessageBox.Show(sql.ToString());
-            queryOptionalObject(sql.ToString(),queryTypes.INSERTING_QUERY);
+            queryOptionalObject(sql.ToString());
+        }
+        public static void insertIntoAndGetID(String tableName,String idColumn, object o)
+        {
+            myObj = o;
+            var sql = new StringBuilder("INSERT INTO EQUISDE." + tableName + " (");
+            appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray());
+            sql.Append(" OUTPUT INSERTED." + idColumn + " VALUES (");
+            appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
+            //MessageBox.Show(sql.ToString());
+            queryOptionalObject(sql.ToString(), queryTypes.INSERTING_QUERY);
         }
         public static void insertEncryptedUser(usuario u)
         {

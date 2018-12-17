@@ -62,10 +62,8 @@ using System.Windows.Forms;
                 if (BDManager.existsButWith("cliente", "tipo_documento", tipoDoc.Text, "dni=" + nDoc.Text))
                     throw new ClienteInvalidoException();
                 // inserto dir
-                BDManager.insertInto("direccion", d);
-                BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-                                   "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
-                                   , d);
+                BDManager.insertIntoAndGetID("direccion","id_direccion", d);
+                d.id_direccion = BDManager.idInsertado;
                 c.id_direccion = d.id_direccion;
                 // el usuario que tendra el cliente
                 usuario u = new usuario();

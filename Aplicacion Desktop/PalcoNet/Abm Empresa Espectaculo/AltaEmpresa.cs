@@ -66,10 +66,8 @@ using PalcoNet.BDManager;
             if (BDManager.exists("empresa", "cuit", emp.cuit))
                 throw new EmpresaInvalidadException();
             //
-            BDManager.insertInto("direccion", d);
-            BDManager.genericFillObject("SELECT * FROM EQUISDE.direccion d WHERE d.localidad=" + "'" + d.localidad + "'" + " AND " + "d.cpostal=" + "'" + d.cpostal + "'" + " AND " + "d.depto=" +
-                "'" + d.depto + "'" + " AND " + "d.ciudad=" + "'" + d.ciudad + "'" + " AND " + "d.piso=" + d.piso + " AND " + "d.calle=" + "'" + d.calle + "'"
-                , d);
+            BDManager.insertIntoAndGetID("direccion","id_direccion", d);
+            d.id_direccion = BDManager.idInsertado;
             emp.id_direccion = d.id_direccion;
             //
             usuario u = new usuario();
