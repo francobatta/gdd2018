@@ -15,6 +15,7 @@ namespace PalcoNet.BDManager
     {
         public static SqlCommand command { get; set; }
         public static object myObj { get; set; }
+        public static String idInsertado { get; set; }
         public static Int32 returnDummy { get; set; }
         public static Type dummyType { get; set; }
         public static ComboBox toFill { get; set; }
@@ -70,10 +71,10 @@ namespace PalcoNet.BDManager
             myObj = o;
             var sql = new StringBuilder("INSERT INTO EQUISDE." + tableName + " (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray());
-            sql.Append(" VALUES (");
+            sql.Append(" OUTPUT INSERTED.id_"+tableName+" VALUES (");
             appendList(sql, Extensions.getPropertiesFromObj().Select(p => p.Name).ToArray(), "@");
             //MessageBox.Show(sql.ToString());
-            queryOptionalObject(sql.ToString());
+            queryOptionalObject(sql.ToString(),queryTypes.INSERTING_QUERY);
         }
         public static void insertEncryptedUser(usuario u)
         {
@@ -185,7 +186,8 @@ namespace PalcoNet.BDManager
         NON_RETURNING_QUERY, SINGLE_RETURNING_QUERY, MULTIPLE_RETURNING_QUERY,
         JUST_DO_STUFF,
         AGG_FUNCTION,
-        COUNT
+        COUNT,
+        INSERTING_QUERY
     }
     public static class Extensions
     {
@@ -216,6 +218,15 @@ namespace PalcoNet.BDManager
                     }
                     BDManager.command.ExecuteNonQuery(); break;
                 }
+                case queryTypes.INSERTING_QUERY:
+                    {
+                        foreach (PropertyInfo p in getPropertiesFromObj())
+                        {
+                            BDManager.command.Parameters.AddWithValue("@" + p.Name, p.GetValue(BDManager.myObj) ?? DBNull.Value); // ?? para que null no de error
+                        }
+                        BDManager.idInsertado = BDManager.command.ExecuteScalar().ToString();
+                        break;
+                    }
                 case queryTypes.SINGLE_RETURNING_QUERY:
                     {
                         SqlDataReader reader = BDManager.command.ExecuteReader();

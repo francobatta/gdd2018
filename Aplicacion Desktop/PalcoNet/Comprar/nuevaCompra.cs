@@ -158,7 +158,8 @@ using PalcoNet.Comprar;
                 }*/
                 com.forma_de_pago = "tarjeta";
                 BDManager.insertInto("compra", com);
-                BDManager.genericFillObject("SELECT * FROM EQUISDE.compra c WHERE c.username='" + usuarioGlobal.usuarioLogueado.username + "' AND c.fecha_compra='" + com.fecha_compra+"'", com);
+                MessageBox.Show(BDManager.idInsertado.ToString());
+                //BDManager.genericFillObject("SELECT * FROM EQUISDE.compra c WHERE c.username='" + usuarioGlobal.usuarioLogueado.username + "' AND c.fecha_compra='" + com.fecha_compra+"'", com);
                 cu.id_compra = com.id_compra;
                 MessageBox.Show(cu.id_compra);
                 foreach (DataGridViewRow t in listaUbicacionesAComprar.Rows)
