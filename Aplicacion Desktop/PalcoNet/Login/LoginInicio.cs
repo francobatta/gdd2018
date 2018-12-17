@@ -63,7 +63,9 @@ using PalcoNet.Login;
             if (!BDManager.exists("usuario", "username", username.Text))
                 throw new UsuarioNoExistenteException();
             if (!BDManager.existsButWith("usuario", "username", username.Text, "password=HASHBYTES('SHA2_256','" + passwordAnterior.Text + "')"))
-            {   if (usuarioGlobal.numeroDeIntentos < 1) throw new UsuarioInhabilitadoException();
+            {
+                usuarioGlobal.restarIntento();
+                if (usuarioGlobal.numeroDeIntentos < 1) { usuario ur = new usuario(); ur.username = username.Text; ur.habilitado = "False"; BDManager.updateEncryptedUser(ur); throw new UsuarioInhabilitadoException(); }
                 throw new PasswordIncorrectaException();}
             usuario u = new usuario();
             BDManager.selectIntoObjectByString("usuario", "username", username.Text, u);
@@ -102,8 +104,7 @@ using PalcoNet.Login;
             this.Close();
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a loguear", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-        catch (PasswordIncorrectaException) {
-            usuarioGlobal.restarIntento(); ;MessageBox.Show("Contraseña incorrecta. Restan " + usuarioGlobal.numeroDeIntentos +" intento(s)", "Error en contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        catch (PasswordIncorrectaException) {MessageBox.Show("Contraseña incorrecta. Restan " + usuarioGlobal.numeroDeIntentos +" intento(s)", "Error en contraseña" , MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
         catch (UsuarioNoExistenteException) { MessageBox.Show("Usuario no existente en el sistema", "Error al validar campos del usuario a loguear", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (UsuarioInhabilitadoException) { MessageBox.Show("El usuario " + username.Text +" se encuentra inhabilitado", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

@@ -83,7 +83,13 @@ namespace PalcoNet.BDManager
         }
         public static void updateEncryptedUser(usuario u)
         {
-            var sql = new StringBuilder("UPDATE EQUISDE.usuario SET username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='"+u.username+"'");
+            StringBuilder sql = new StringBuilder();
+        if (String.IsNullOrEmpty(u.habilitado))
+        {sql = new StringBuilder("UPDATE EQUISDE.usuario SET username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='"+u.username+"'");}
+        else if (u.habilitado.Equals("True"))
+        {sql = new StringBuilder("UPDATE EQUISDE.usuario SET habilitado=1, username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='" + u.username + "'"); }
+        else if (u.habilitado.Equals("False"))
+        {sql = new StringBuilder("UPDATE EQUISDE.usuario SET habilitado=0, username='" + u.username + "',password=HASHBYTES('SHA2_256','" + u.password + "') WHERE username='" + u.username + "'"); }
             //MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(), queryTypes.JUST_DO_STUFF);
         }
