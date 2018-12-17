@@ -60,8 +60,32 @@ using System.Windows.Forms;
         {
             int intValue = -1;
             if (int.TryParse(nroComprasAAgregar.Text, out intValue) && intValue > 0)
+            {
                 listadoComprasARendir.DataSource = BDManager.getData("SELECT TOP " + intValue + " * FROM EQUISDE.compra c WHERE NOT EXISTS (SELECT DISTINCT id_compra FROM EQUISDE.item i WHERE i.id_compra = c.id_compra) ORDER BY 4");
+                calcularImporteTotal();
+            }
             else
                 MessageBox.Show("Error: debe ingresar un número entero", "Error al dar compras", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        private void calcularImporteTotal()
+        {
+            int sum = 0;
+            double sumComisiones = 0;
+            foreach (DataGridViewRow r in listadoComprasARendir.Rows)
+            {
+                List<ubicacion> ubicaciones = new List<ubicacion>();
+                String elId = r.Cells["id_compra"].Value.ToString();
+                BDManager.getList("SELECT u.* EQUISDE.compra_x_ubicacion cu ON id_compra ="+elId+" JOIN EQUISDE.ubicacion u on u.id_ubicacion=cu.id_ubicacion", ubicaciones);
+                foreach (ubicacion u in ubicaciones)
+                {
+                    grado g = new grado();
+                    sum += Int32.Parse(u.precio);
+                    BDManager.genericFillObject("SELECT g.* FROM EQUISDE.ubicacion JOIN EQUISDE.publicacion p ON p.id_publicacion="+u.id_publicacion+" JOIN EQUISDE.grado g ON g.id_grado=p.id_grado",g);
+                    sumComisiones += double.Parse(u.precio) * double.Parse(g.porcentaje);
+                }
+            }
+            total.Text = sum.ToString();
+            totalComisiones.Text = sumComisiones.ToString();
+            totalVendedores.Text = (sum - sumComisiones).ToString();
         }
     }

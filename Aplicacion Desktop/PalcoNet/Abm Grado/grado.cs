@@ -8,4 +8,5 @@ public class grado
 {
     public String id_grado { get; set; }
     public String estado { get; set; }
+    public String porcentaje { get; set; }
 }
