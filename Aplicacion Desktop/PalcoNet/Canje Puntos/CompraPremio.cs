@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PalcoNet.Canje_Puntos;
+using System.Configuration;
 
 public partial class CompraPremio : Form
 {
@@ -58,7 +59,7 @@ public partial class CompraPremio : Form
             }
             premio_x_cliente premioCliente = new premio_x_cliente();
             premioCliente.username = usuarioGlobal.usuarioLogueado.username;
-            premioCliente.fecha_de_obtencion = null;
+            premioCliente.fecha_de_obtencion = ConfigurationManager.AppSettings["today"];
             premioCliente.id_premio = filaElegida.Cells["id_premio"].Value.ToString();
             BDManager.insertInto("premio_x_cliente", premioCliente);
             this.Close();
