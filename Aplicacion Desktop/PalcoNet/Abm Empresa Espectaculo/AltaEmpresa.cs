@@ -78,6 +78,7 @@ using PalcoNet.BDManager;
             BDManager.insertInto("empresa", emp);
             BDManager.insertInto("rol_x_usuario", new rol_x_usuario { username = emp.username, id_rol = "1" });
             MessageBox.Show("La empresa ha sido insertada", "Empresa insertada correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Su usuario y contrseña son la CUIT que usted inserto");
             this.Close();
 
         }
