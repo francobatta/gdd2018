@@ -1,7 +1,6 @@
 \\VBOXSVR\PalcoNet\src\PalcoNet\bin\Debug\PalcoNet.exe.config
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\bin\Debug\PalcoNet.pdb
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaCliente.resources
@@ -15,13 +14,16 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\B
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaRol.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\CompraPremio.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\CanjePuntos.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\NuevaTarjeta.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\NuevaCompra.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\BusquedaPublicacionE.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ModificaPublicacion.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\RendicionComisiones.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\ListadoEstadistico.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\MenuPrincipal.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\SeleccionaRol.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaPublicacion.resources
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\HistorialCliente.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.Properties.Resources.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\LoginInicio.resources
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\AltaUsuario.resources
@@ -31,5 +33,3 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\R
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\HistorialCliente.resources
-C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\RendicionComisiones.resources

@@ -77,10 +77,10 @@
             this.label17.Location = new System.Drawing.Point(4, 56);
             this.label17.MaximumSize = new System.Drawing.Size(190, 190);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(182, 85);
+            this.label17.Size = new System.Drawing.Size(190, 119);
             this.label17.TabIndex = 51;
-            this.label17.Text = "El botón \"agregar compra a rendir\" agrega secuencialmente las compras que el admi" +
-    "nistrador desee.";
+            this.label17.Text = "El botón \"fijar n. de compra(s) a rendir\" agrega secuencialmente las compras que " +
+    "el administrador desee en base al número escrito en el cuadro de arriba.";
             // 
             // panel1
             // 
@@ -212,7 +212,7 @@
             this.agregar_a_rendir.Name = "agregar_a_rendir";
             this.agregar_a_rendir.Size = new System.Drawing.Size(481, 44);
             this.agregar_a_rendir.TabIndex = 52;
-            this.agregar_a_rendir.Text = "Agregar compra(s) a rendir";
+            this.agregar_a_rendir.Text = "Fijar n. de compra(s) a rendir";
             this.agregar_a_rendir.UseVisualStyleBackColor = false;
             this.agregar_a_rendir.Click += new System.EventHandler(this.agregar_a_rendir_Click);
             // 
@@ -232,9 +232,9 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(958, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(326, 21);
+            this.label1.Size = new System.Drawing.Size(243, 21);
             this.label1.TabIndex = 63;
-            this.label1.Text = "Número de compras a agregar p/ rendir:";
+            this.label1.Text = "Número de compras p/ rendir:";
             // 
             // listadoComprasARendir
             // 

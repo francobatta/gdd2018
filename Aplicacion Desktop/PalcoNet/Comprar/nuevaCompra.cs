@@ -61,7 +61,7 @@ using PalcoNet.Comprar;
             {
                 DataGridViewRow filaElegida = listadoPublicaciones.CurrentRow;
                 if (filaElegida == null || filaElegida.Selected == false)
-                    throw new CamposInvalidosException();
+                    throw new NoNullAllowedException();
                 pElegida = new publicacion();
                 pElegida.id_publicacion = filaElegida.Cells["id_publicacion"].Value.ToString();
                 pElegida.descripcion = filaElegida.Cells["descripcion"].Value.ToString();
@@ -79,7 +79,7 @@ using PalcoNet.Comprar;
                 listaUbicaciones.Columns["codigo_tipo"].Visible = false;
                 listaUbicaciones.Columns["sin_numerar"].Visible = false;
             }
-            catch (CamposInvalidosException) { MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar publicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            catch (NoNullAllowedException) { MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar publicación", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
@@ -117,6 +117,7 @@ using PalcoNet.Comprar;
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
+            email.Text = default(string);
             listaUbicacionesAComprar.DataSource = null;
             listadoPublicaciones.DataSource = null;
             left.Enabled = false;
@@ -138,6 +139,10 @@ using PalcoNet.Comprar;
             try
             {
                 Validaciones.inicializarValidador();
+                Validaciones.esValido(email.Name, email.Text, new Validaciones.Email());
+                Validaciones.esValido("Ubicaciones a comprar", listaUbicacionesAComprar.Rows.Count.ToString(), new Validaciones.NumeroNoCreo());
+                if (!String.IsNullOrEmpty(Validaciones.camposInvalidos))
+                    throw new CamposInvalidosException();
                 compra_x_ubicacion cu = new compra_x_ubicacion();
                 compra com = new compra();
                 com.username = usuarioGlobal.usuarioLogueado.username;
@@ -150,17 +155,21 @@ using PalcoNet.Comprar;
                 com.cantidad = listaUbicacionesAComprar.Rows.Count.ToString();
                 //los puntos es la cantidad de ubicaciones que compro por 3
                 com.puntos = (listaUbicacionesAComprar.Rows.Count * 3).ToString();
-            /*   if (!BDManager.exists("tarjeta", "username", usuarioGlobal.usuarioLogueado.username))
+                if (!BDManager.exists("tarjeta", "username", usuarioGlobal.usuarioLogueado.username))
                 {
-                    nuevaTarjeta m = new nuevaTarjeta();
+                    NuevaTarjeta m = new NuevaTarjeta();
                     m.ShowDialog();
-                }*/
+                }
+                tarjeta t = new tarjeta();
+                BDManager.selectIntoObjectByString("tarjeta","username",usuarioGlobal.usuarioLogueado.username,t);
+                if (t.importe.Equals("NULL") || double.Parse(t.importe) <= 0 || double.Parse(t.importe) < double.Parse(importeTotal.Text))
+                    throw new ImporteInvalidoException();
                 com.forma_de_pago = "tarjeta";
                 BDManager.insertIntoAndGetID("compra","id_compra", com);
                 cu.id_compra = BDManager.idInsertado;
-                foreach (DataGridViewRow t in listaUbicacionesAComprar.Rows)
+                foreach (DataGridViewRow dt in listaUbicacionesAComprar.Rows)
                 {
-                    cu.id_ubicacion = t.Cells["id_ubicacion"].Value.ToString();
+                    cu.id_ubicacion = dt.Cells["id_ubicacion"].Value.ToString();
                     BDManager.insertInto("compra_x_ubicacion", cu);
                 }
                 cliente cli = new cliente();
@@ -168,12 +177,18 @@ using PalcoNet.Comprar;
                 int ptos = Int32.Parse(cli.puntos);
                 ptos += Int32.Parse(com.puntos);
                 cli.puntos = ptos.ToString();
+                t.importe = (double.Parse(t.importe) - double.Parse(importeTotal.Text)).ToString();
                 BDManager.updateSetStringKey("cliente","username",usuarioGlobal.usuarioLogueado.username,cli);
-                MessageBox.Show("Gracias por la compra! :D");
+                BDManager.updateSetStringKey("tarjeta", "username", usuarioGlobal.usuarioLogueado.username, t);
+                MessageBox.Show("Gracias por su compra!", "Compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (CamposInvalidosException)
             {
-                MessageBox.Show("Error: debe seleccionar una fila del grid", "Error al seleccionar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos de compra a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (ImporteInvalidoException)
+            {
+                MessageBox.Show("El importe de la tarjeta es inválido o menor al total de compra", "Error al comprar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

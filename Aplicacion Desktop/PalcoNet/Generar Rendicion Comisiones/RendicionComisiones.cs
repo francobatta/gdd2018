@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PalcoNet.Generar_Rendicion_Comisiones;
 
     public partial class RendicionComisiones : Form
     {
@@ -50,36 +51,44 @@ using System.Windows.Forms;
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
             listadoComprasNoRendidas.DataSource = null;
+            listadoComprasARendir.DataSource = null;
+            nroComprasAAgregar.Text = default(string);
         }
 
         private void rendirElegidas_Click(object sender, EventArgs e)
         {
-            factura fact = new factura();
-            fact.factura_total = totalComisiones.Text;
-            fact.fecha_emision = ConfigurationManager.AppSettings["today"].ToString();
-            BDManager.insertIntoAndGetID("factura", "id_factura", fact);
-            item itemAInsertar = new item();
-            itemAInsertar.id_factura = BDManager.idInsertado;
-            foreach (DataGridViewRow r in listadoComprasARendir.Rows)
+            try
             {
-                String elId = r.Cells["id_compra"].Value.ToString();
-                List<object> listaFuncionalidadesGeneralesBD = BDManager.getList("SELECT u.* FROM EQUISDE.compra_x_ubicacion cu JOIN EQUISDE.ubicacion u on u.id_ubicacion=cu.id_ubicacion WHERE id_compra =" + elId, new ubicacion());
-                List<ubicacion> ubicaciones = listaFuncionalidadesGeneralesBD.Cast<ubicacion>().ToList();
-                itemAInsertar.id_compra = elId;
-                foreach (ubicacion u in ubicaciones)
+                if(listadoComprasARendir.Rows.Count <= 0)
+                    throw new NoHayComprasARendirException();
+                factura fact = new factura();
+                fact.factura_total = totalComisiones.Text;
+                fact.fecha_emision = ConfigurationManager.AppSettings["today"].ToString();
+                BDManager.insertIntoAndGetID("factura", "id_factura", fact);
+                item itemAInsertar = new item();
+                itemAInsertar.id_factura = BDManager.idInsertado;
+                foreach (DataGridViewRow r in listadoComprasARendir.Rows)
                 {
-                    grado g = new grado();
-                    int sum = Int32.Parse(u.precio);
-                    BDManager.genericFillObject("SELECT g.* FROM EQUISDE.ubicacion JOIN EQUISDE.publicacion p ON p.id_publicacion=" + u.id_publicacion + " JOIN EQUISDE.grado g ON g.id_grado=p.id_grado", g);
-                    double comision = double.Parse(u.precio) * double.Parse(g.porcentaje);
-                    itemAInsertar.importe_venta = sum.ToString();
-                    itemAInsertar.importe_comision = comision.ToString();
-                    itemAInsertar.descripcion = "comision por compra";
-                    itemAInsertar.cantidad = "1";
-                    BDManager.insertInto("item", itemAInsertar);
+                    String elId = r.Cells["id_compra"].Value.ToString();
+                    List<object> listaFuncionalidadesGeneralesBD = BDManager.getList("SELECT u.* FROM EQUISDE.compra_x_ubicacion cu JOIN EQUISDE.ubicacion u on u.id_ubicacion=cu.id_ubicacion WHERE id_compra =" + elId, new ubicacion());
+                    List<ubicacion> ubicaciones = listaFuncionalidadesGeneralesBD.Cast<ubicacion>().ToList();
+                    itemAInsertar.id_compra = elId;
+                    foreach (ubicacion u in ubicaciones)
+                    {
+                        grado g = new grado();
+                        int sum = Int32.Parse(u.precio);
+                        BDManager.genericFillObject("SELECT g.* FROM EQUISDE.ubicacion JOIN EQUISDE.publicacion p ON p.id_publicacion=" + u.id_publicacion + " JOIN EQUISDE.grado g ON g.id_grado=p.id_grado", g);
+                        double comision = double.Parse(u.precio) * double.Parse(g.porcentaje);
+                        itemAInsertar.importe_venta = sum.ToString();
+                        itemAInsertar.importe_comision = comision.ToString();
+                        itemAInsertar.descripcion = "comision por compra";
+                        itemAInsertar.cantidad = "1";
+                        BDManager.insertInto("item", itemAInsertar);
+                    }
                 }
+                MessageBox.Show("Se ha realizado correctamente la rendicion. \nNro_Factura: " + itemAInsertar.id_factura + "\nMonto: " + fact.factura_total, "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            MessageBox.Show("Se ha realizado correctamente la rendicion. \nNro_Factura: "+itemAInsertar.id_factura+ "\nMonto: "+fact.factura_total, "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            catch (NoHayComprasARendirException) { MessageBox.Show("No hay compras seleccionadas para rendir", "Error al rendir", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
 
         private void agregar_a_rendir_Click(object sender, EventArgs e)
