@@ -83,6 +83,7 @@ using PalcoNet.Registro_de_Usuario;
             if (BDManager.exists("usuario", "username", u.username))
             { throw new ControlDePKException(); }
             BDManager.insertEncryptedUser(u);
+            MessageBox.Show("Usuario dado de alta correctamente!");
         }
         catch (CamposInvalidosException) { MessageBox.Show(Validaciones.camposInvalidos, "Error al validar campos del usuario a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         catch (ControlDePKException) { MessageBox.Show("El usuario "+username.Text+" ya existe en el sistema", "Error al validar campos del usuario a insertar", MessageBoxButtons.OK, MessageBoxIcon.Warning); }

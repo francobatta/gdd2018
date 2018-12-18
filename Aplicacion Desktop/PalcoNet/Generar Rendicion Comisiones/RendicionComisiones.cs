@@ -50,9 +50,16 @@ using PalcoNet.Generar_Rendicion_Comisiones;
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
+            this.limpiar();
+        }
+
+        private void limpiar() {
             listadoComprasNoRendidas.DataSource = null;
             listadoComprasARendir.DataSource = null;
             nroComprasAAgregar.Text = default(string);
+            total.Text = "--";
+            totalComisiones.Text = "--";
+            totalVendedores.Text = "--";
         }
 
         private void rendirElegidas_Click(object sender, EventArgs e)
@@ -87,6 +94,7 @@ using PalcoNet.Generar_Rendicion_Comisiones;
                     }
                 }
                 MessageBox.Show("Se ha realizado correctamente la rendicion. \nNro_Factura: " + itemAInsertar.id_factura + "\nMonto: " + fact.factura_total, "Factura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.limpiar();
             }
             catch (NoHayComprasARendirException) { MessageBox.Show("No hay compras seleccionadas para rendir", "Error al rendir", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }

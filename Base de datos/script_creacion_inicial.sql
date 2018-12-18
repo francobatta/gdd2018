@@ -229,7 +229,7 @@ CREATE TABLE EQUISDE.tarjeta(
 
 GO
 MERGE EQUISDE.usuario d
-USING (SELECT DISTINCT Espec_Empresa_Cuit username FROM gd_esquema.Maestra WHERE Espec_Empresa_Cuit IS NOT NULL) f
+USING (SELECT DISTINCT CAST(REPLACE(Espec_Empresa_Cuit,'-','') AS VARCHAR(255)) username FROM gd_esquema.Maestra WHERE Espec_Empresa_Cuit IS NOT NULL) f
 ON f.username = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,password)
@@ -247,18 +247,17 @@ INSERT INTO EQUISDE.funcionalidad
 VALUES('BusquedaPublicacionE'),('AltaCliente'),('BusquedaCliente'),('AltaEmpresa'),('BusquedaEmpresa'),('RendicionComisiones'),('CanjePuntos'),('BusquedaPublicacion'),('AltaRol'),('BusquedaRol'),('HistorialCliente'),('NuevaCompra'),('AltaPublicacion'),('AltaUsuario'),('BusquedaUsuario'),('ListadoEstadistico');
 
 
+INSERT INTO EQUISDE.rol_x_funcionalidad
+(id_funcionalidad,id_rol)
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'HistorialCliente' OR f.nombre = 'NuevaCompra' OR f.nombre = 'CanjePuntos') WHERE r.nombre = 'cliente' 
 
 INSERT INTO EQUISDE.rol_x_funcionalidad
 (id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'historial de cliente' OR f.nombre = 'comprar' OR f.nombre = 'canje de administracion de puntos') WHERE r.nombre = 'cliente' 
-
-INSERT INTO EQUISDE.rol_x_funcionalidad
-(id_funcionalidad,id_rol)
-SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'AltaPublicacion' OR f.nombre = 'BusquedaPublicacion' OR f.nombre = 'editar publicacion' OR f.nombre = 'generar rendicion de comisiones') WHERE r.nombre = 'empresa' 
+SELECT id_funcionalidad,id_rol FROM EQUISDE.rol r JOIN EQUISDE.funcionalidad f ON(f.nombre = 'AltaPublicacion' OR f.nombre = 'BusquedaPublicacion' OR f.nombre = 'BusquedaPublicacionE' OR f.nombre = 'RendicionComisiones') WHERE r.nombre = 'empresa' 
 
 
 MERGE EQUISDE.rol_x_usuario d
-USING (SELECT DISTINCT Espec_Empresa_Cuit username,id_rol FROM gd_esquema.Maestra JOIN EQUISDE.rol ON(nombre='empresa') WHERE Espec_Empresa_Cuit IS NOT NULL) f
+USING (SELECT DISTINCT REPLACE(Espec_Empresa_Cuit,'-','') username,id_rol FROM gd_esquema.Maestra JOIN EQUISDE.rol ON(nombre='empresa') WHERE Espec_Empresa_Cuit IS NOT NULL) f
 ON d.username = f.username AND d.id_rol = f.id_rol
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,id_rol)
@@ -301,7 +300,7 @@ ON(gd.Espec_Empresa_Dom_Calle = di.calle AND gd.Espec_Empresa_Nro_Calle= di.nro_
 ON f.Espec_Empresa_Cuit = d.username
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(username,razon_social,cuit,fecha_creacion,mail,id_direccion)
-	VALUES(f.Espec_Empresa_Cuit,f.Espec_Empresa_Razon_Social,f.Espec_Empresa_Cuit,f.Espec_Empresa_Fecha_Creacion,f.Espec_Empresa_Mail,f.id_direccion);
+	VALUES(REPLACE(f.Espec_Empresa_Cuit,'-',''),f.Espec_Empresa_Razon_Social,f.Espec_Empresa_Cuit,f.Espec_Empresa_Fecha_Creacion,f.Espec_Empresa_Mail,f.id_direccion);
 
 MERGE EQUISDE.cliente d
 USING (SELECT DISTINCT Cli_Dni,Cli_Apeliido,Cli_Nombre,Cli_Fecha_Nac,Cli_Mail,GETDATE() fecha_creacion, id_direccion FROM gd_esquema.Maestra gd JOIN EQUISDE.direccion di
@@ -332,7 +331,7 @@ USING (SELECT DISTINCT Espec_Empresa_Cuit,Espectaculo_Cod,Espectaculo_Descripcio
 ON f.Espectaculo_Cod = d.id_publicacion
 WHEN NOT MATCHED BY TARGET THEN
 	INSERT(id_publicacion, id_rubro, username,descripcion,fecha_vencimiento, fecha_publicacion,id_estado)
-	VALUES(f.Espectaculo_Cod,f.id_rubro,f.Espec_Empresa_Cuit,f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estadop);
+	VALUES(f.Espectaculo_Cod,f.id_rubro,REPLACE(f.Espec_Empresa_Cuit,'-',''),f.Espectaculo_Descripcion,f.Espectaculo_Fecha,f.Espectaculo_Fecha_Venc,id_estadop);
 SET IDENTITY_INSERT EQUISDE.publicacion OFF 
 
 SET IDENTITY_INSERT EQUISDE.tipo ON 
@@ -400,4 +399,4 @@ INSERT INTO EQUISDE.cliente (username) VALUES('admin')
 INSERT INTO EQUISDE.empresa (username) VALUES('admin')
 INSERT INTO EQUISDE.rol (nombre) VALUES ('Administrador General')
 INSERT INTO EQUISDE.rol_x_usuario (username,id_rol) VALUES ('admin',3)
-INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad) 
+INSERT INTO EQUISDE.rol_x_funcionalidad (id_funcionalidad,id_rol) (SELECT id_funcionalidad, 3 FROM EQUISDE.funcionalidad)

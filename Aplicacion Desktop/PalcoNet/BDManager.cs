@@ -89,7 +89,6 @@ namespace PalcoNet.BDManager
         public static void insertEncryptedUser(usuario u)
         {
             var sql = new StringBuilder("INSERT INTO EQUISDE.usuario (username,password) VALUES ('"+u.username+"',HASHBYTES('SHA2_256','"+u.password+"'))");
-            MessageBox.Show(sql.ToString());
             queryOptionalObject(sql.ToString(),queryTypes.JUST_DO_STUFF);
         }
         public static void updateEncryptedUser(usuario u)
