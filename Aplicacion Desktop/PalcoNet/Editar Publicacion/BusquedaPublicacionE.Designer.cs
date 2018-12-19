@@ -117,9 +117,9 @@
             this.titleLabel.ForeColor = System.Drawing.Color.White;
             this.titleLabel.Location = new System.Drawing.Point(6, 12);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(273, 24);
+            this.titleLabel.Size = new System.Drawing.Size(311, 24);
             this.titleLabel.TabIndex = 3;
-            this.titleLabel.Text = "Búsqueda de publicación";
+            this.titleLabel.Text = "Publicaciones de este usuario";
             // 
             // closingLabel
             // 

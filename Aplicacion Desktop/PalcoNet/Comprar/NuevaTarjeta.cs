@@ -47,7 +47,10 @@ using PalcoNet.Comprar;
 
     private void btn_limpiar_Click(object sender, EventArgs e)
     {
-
+        nroTarje.Text = default(string);
+        codS.Text = default(string);
+        titular.Text = default(string);
+        fechaVto.Value = DateTime.Today;
     }
 
     private void btn_asociar_Click(object sender, EventArgs e)

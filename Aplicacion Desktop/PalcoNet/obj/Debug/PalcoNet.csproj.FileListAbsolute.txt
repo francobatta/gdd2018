@@ -33,3 +33,4 @@ C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\R
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csproj.GenerateResource.Cache
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.exe
 C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.pdb
+C:\Users\Franc6\Documents\GitHub\gdd2018\Aplicacion Desktop\PalcoNet\obj\Debug\PalcoNet.csprojResolveAssemblyReference.cache

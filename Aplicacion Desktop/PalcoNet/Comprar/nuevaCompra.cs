@@ -157,6 +157,7 @@ using PalcoNet.Comprar;
                 com.puntos = (listaUbicacionesAComprar.Rows.Count * 3).ToString();
                 if (!BDManager.exists("tarjeta", "username", usuarioGlobal.usuarioLogueado.username))
                 {
+                    MessageBox.Show("Usted no posee tarjeta de crédito, por lo que asociará una ahora. Acepte este cuadro.", "Asociar tarjeta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     NuevaTarjeta m = new NuevaTarjeta();
                     m.ShowDialog();
                 }
@@ -181,6 +182,7 @@ using PalcoNet.Comprar;
                 BDManager.updateSetStringKey("cliente","username",usuarioGlobal.usuarioLogueado.username,cli);
                 BDManager.updateSetStringKey("tarjeta", "username", usuarioGlobal.usuarioLogueado.username, t);
                 MessageBox.Show("Gracias por su compra!", "Compra", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch (CamposInvalidosException)
             {
@@ -194,7 +196,6 @@ using PalcoNet.Comprar;
 
         private void btn_agregarRubro_Click(object sender, EventArgs e)
         {
-            // NO PUEDE SER MAS PORONGA EL LENGUAJE?
             if (!listadoRubros.Items.Cast<rubro>().Any(x => x.id_rubro.Equals(rubro.SelectedValue.ToString())))
             {
                 listadoRubros.Items.Add(new rubro { descripcion = rubro.Text, id_rubro = rubro.SelectedValue.ToString() });

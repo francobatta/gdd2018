@@ -31,8 +31,60 @@ using System.Windows.Forms;
                     Size = new Size(200, 100),
                     Font = new Font("Century Gothic", 12),
                     ForeColor = Color.Gainsboro,
-                    BackColor = Color.DarkBlue,
+                    BackColor = Color.DarkBlue
                 };
+                switch (btn.Text)
+                {
+                    case "AltaCliente":
+                        btn.Text = "Alta de cliente";
+                        break;
+                    case "BusquedaPublicacionE":
+                        btn.Text = "Editar publicación";
+                        break;
+                    case "BusquedaCliente":
+                        btn.Text = "Búsqueda de clientes";
+                        break;
+                    case "AltaEmpresa":
+                        btn.Text = "Alta de empresa";
+                        break;
+                    case "BusquedaEmpresa":
+                        btn.Text = "Búsqueda de empresas";
+                        break;
+                    case "RendicionComisiones":
+                        btn.Text = "Rendición de comisiones";
+                        break;
+                    case "CanjePuntos":
+                        btn.Text = "Canje de puntos";
+                        break;
+                    case "BusquedaPublicacion":
+                        btn.Text = "Búsqueda de publicación";
+                        break;
+                    case "AltaRol":
+                        btn.Text = "Alta de rol";
+                        break;
+                    case "BusquedaRol":
+                        btn.Text = "Búsqueda de rol";
+                        break;
+                    case "HistorialCliente":
+                        btn.Text = "Historial de cliente";
+                        break;
+                    case "NuevaCompra":
+                        btn.Text = "Realizar compra";
+                        break;
+                    case "AltaPublicacion":
+                        btn.Text = "Alta de publicación";
+                        break;
+                    case "AltaUsuario":
+                        btn.Text = "Alta de usuario";
+                        break;
+                    case "BusquedaUsuario":
+                        btn.Text = "Búsqueda de usuario";
+                        break;
+                    case "ListadoEstadistico":
+                        btn.Text = "Listado estadístico";
+                        break;
+                }
+                    
                 btn.Click += (s, efe) =>
                 {
                     Type myType = Type.GetType(f.nombre);
